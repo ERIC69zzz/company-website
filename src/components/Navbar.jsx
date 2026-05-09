@@ -1,0 +1,97 @@
+import { useState, useEffect } from 'react';
+import { Menu, X, HardDrive } from 'lucide-react';
+
+const navItems = [
+  { label: '首页', href: '#home' },
+  { label: '产品中心', href: '#products' },
+  { label: '解决方案', href: '#services' },
+  { label: '关于我们', href: '#about' },
+  { label: '联系我们', href: '#contact' },
+];
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleClick = (e, href) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'glass shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          <a
+            href="#home"
+            onClick={(e) => handleClick(e, '#home')}
+            className="flex items-center gap-2 group"
+          >
+            <div className="w-9 h-9 rounded-lg bg-brand-500 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <HardDrive className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-lg font-bold text-white tracking-tight">
+              友质科技
+            </span>
+          </a>
+
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleClick(e, item.href)}
+                className="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5 transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={(e) => handleClick(e, '#contact')}
+              className="ml-3 px-5 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 rounded-lg transition-colors shadow-lg shadow-brand-900/30"
+            >
+              立即咨询
+            </a>
+          </div>
+
+          <button
+            className="md:hidden p-2 text-zinc-300 hover:text-white"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div className="md:hidden glass border-t border-white/5">
+          <div className="px-4 py-3 space-y-1">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleClick(e, item.href)}
+                className="block px-3 py-2.5 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
