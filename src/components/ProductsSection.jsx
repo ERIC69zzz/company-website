@@ -17,8 +17,8 @@ const products = [
   {
     icon: Server,
     title: 'NAS私有云设备',
-    desc: '绿联NAS全系产品，从双盘位到八盘位，搭载自研UGOS Pro系统，支持万兆网口与AI智能相册。',
-    tags: ['绿联授权', 'UGOS Pro', '万兆网口'],
+    desc: '绿联、极空间NAS全系产品，从双盘位到八盘位，搭载自研系统，支持万兆网口、AI智能相册与影视墙功能。',
+    tags: ['绿联授权', '极空间代理', '万兆网口'],
   },
   {
     icon: Layers,

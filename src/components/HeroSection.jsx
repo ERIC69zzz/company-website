@@ -86,7 +86,7 @@ export default function HeroSection() {
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-white">NAS 私有云</div>
-                    <div className="text-xs text-zinc-500">DXP4800 Plus · 在线</div>
+                    <div className="text-xs text-zinc-500">绿联 / 极空间 · 在线</div>
                   </div>
                   <div className="ml-auto flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

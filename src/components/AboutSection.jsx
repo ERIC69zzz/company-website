@@ -21,8 +21,8 @@ export default function AboutSection() {
                     <Award className="w-6 h-6 text-brand-400" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">绿联授权经销商</div>
-                    <div className="text-xs text-zinc-500">NAS私有云 · 硬盘 · 数码配件</div>
+                    <div className="text-sm font-semibold text-white">绿联授权 · 极空间代理</div>
+                    <div className="text-xs text-zinc-500">NAS私有云 · 硬盘 · 存储配件</div>
                   </div>
                 </div>
                 <div className="h-px bg-white/5" />
