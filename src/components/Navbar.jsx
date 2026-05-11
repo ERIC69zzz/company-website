@@ -6,7 +6,7 @@ const navItems = [
   { label: '首页', href: '#home', type: 'anchor' },
   { label: '产品中心', href: '/products', type: 'route' },
   { label: '解决方案', href: '#services', type: 'anchor' },
-  { label: '关于我们', href: '#about', type: 'anchor' },
+  { label: '品牌天地', href: '/brand', type: 'route' },
   { label: '联系我们', href: '#contact', type: 'anchor' },
 ];
 

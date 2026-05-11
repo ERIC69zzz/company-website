@@ -9,6 +9,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import BrandPage from './pages/BrandPage';
 
 function HomePage() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
+          <Route path="/brand" element={<BrandPage />} />
         </Routes>
         <Footer />
       </div>
