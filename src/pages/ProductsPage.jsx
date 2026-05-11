@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ImageOff } from 'lucide-react';
 import { products, categories } from '../data/products';
 import ScrollReveal from '../components/ScrollReveal';
@@ -53,7 +53,27 @@ function ProductCard({ product }) {
 }
 
 export default function ProductsPage() {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [activeCategory, setActiveCategory] = useState(() => {
+    const cat = searchParams.get('category');
+    return cat && categories.some((c) => c.id === cat) ? cat : 'all';
+  });
+
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat && categories.some((c) => c.id === cat)) {
+      setActiveCategory(cat);
+    }
+  }, [searchParams]);
+
+  const handleCategoryChange = (catId) => {
+    setActiveCategory(catId);
+    if (catId === 'all') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category: catId });
+    }
+  };
 
   const filteredProducts =
     activeCategory === 'all'
@@ -84,7 +104,7 @@ export default function ProductsPage() {
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => handleCategoryChange(cat.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeCategory === cat.id
                     ? 'bg-brand-600 text-white shadow-lg shadow-brand-900/30'
