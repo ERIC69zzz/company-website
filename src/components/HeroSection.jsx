@@ -1,4 +1,5 @@
 import { ArrowRight, Shield, Server, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 
 export default function HeroSection() {
@@ -43,13 +44,13 @@ export default function HeroSection() {
 
             <ScrollReveal delay={0.3}>
               <div className="flex flex-wrap gap-4 mb-10">
-                <button
-                  onClick={() => handleScroll('#products')}
+                <Link
+                  to="/products"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/40 hover:shadow-brand-900/60 hover:-translate-y-0.5"
                 >
                   浏览产品
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
                 <button
                   onClick={() => handleScroll('#contact')}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 transition-all hover:-translate-y-0.5"
