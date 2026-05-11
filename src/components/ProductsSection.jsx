@@ -1,4 +1,5 @@
-import { HardDrive, Server, Database, Layers } from 'lucide-react';
+import { HardDrive, Server, Database, Layers, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 
 const products = [
@@ -74,6 +75,18 @@ export default function ProductsSection() {
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal delay={0.4}>
+          <div className="text-center mt-12">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
+            >
+              查看全部产品
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

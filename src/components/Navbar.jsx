@@ -1,17 +1,21 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, HardDrive } from 'lucide-react';
 
 const navItems = [
-  { label: '首页', href: '#home' },
-  { label: '产品中心', href: '#products' },
-  { label: '解决方案', href: '#services' },
-  { label: '关于我们', href: '#about' },
-  { label: '联系我们', href: '#contact' },
+  { label: '首页', href: '#home', type: 'anchor' },
+  { label: '产品中心', href: '/products', type: 'route' },
+  { label: '解决方案', href: '#services', type: 'anchor' },
+  { label: '关于我们', href: '#about', type: 'anchor' },
+  { label: '联系我们', href: '#contact', type: 'anchor' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -19,11 +23,21 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleClick = (e, href) => {
+  const handleNavClick = (e, item) => {
     e.preventDefault();
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+
+    if (item.type === 'route') {
+      navigate(item.href);
+      return;
+    }
+
+    if (isHome) {
+      const el = document.querySelector(item.href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate(`/${item.href}`);
+    }
   };
 
   return (
@@ -34,9 +48,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a
-            href="#home"
-            onClick={(e) => handleClick(e, '#home')}
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
             className="flex items-center gap-2 group"
           >
             <div className="w-9 h-9 rounded-lg bg-brand-500 flex items-center justify-center group-hover:scale-105 transition-transform">
@@ -45,22 +64,22 @@ export default function Navbar() {
             <span className="text-lg font-bold text-white tracking-tight">
               友质科技
             </span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
-                className="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5 transition-colors"
+                onClick={(e) => handleNavClick(e, item)}
+                className="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
               >
                 {item.label}
               </a>
             ))}
             <a
               href="#contact"
-              onClick={(e) => handleClick(e, '#contact')}
+              onClick={(e) => handleNavClick(e, { href: '#contact', type: 'anchor' })}
               className="ml-3 px-5 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 rounded-lg transition-colors shadow-lg shadow-brand-900/30"
             >
               立即咨询
@@ -83,8 +102,8 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
-                className="block px-3 py-2.5 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5"
+                onClick={(e) => handleNavClick(e, item)}
+                className="block px-3 py-2.5 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5 cursor-pointer"
               >
                 {item.label}
               </a>
