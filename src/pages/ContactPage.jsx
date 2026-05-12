@@ -6,7 +6,7 @@ const contactInfo = [
   {
     icon: Phone,
     label: '联系电话',
-    value: '010-8888-6666',
+    value: '133-0133-5226',
     desc: '工作日 9:00-18:00',
   },
   {
@@ -18,7 +18,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: '公司地址',
-    value: '北京市海淀区中关村科技园区',
+    value: '北京市海淀区中关村南大街甲2号',
     desc: '欢迎上门咨询',
   },
   {

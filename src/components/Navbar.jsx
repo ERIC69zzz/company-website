@@ -108,6 +108,13 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
+            <a
+              href="/consult"
+              onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
+              className="block px-3 py-2.5 text-sm font-semibold text-white bg-brand-600 rounded-lg mt-2 cursor-pointer"
+            >
+              立即咨询
+            </a>
           </div>
         </div>
       )}

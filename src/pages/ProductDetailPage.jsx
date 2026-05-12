@@ -101,13 +101,7 @@ export default function ProductDetailPage() {
                     电话咨询
                   </a>
                   <button
-                    onClick={() => {
-                      const el = document.querySelector('#contact');
-                      if (el) {
-                        navigate('/');
-                        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
-                      }
-                    }}
+                    onClick={() => navigate('/consult')}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 transition-all"
                   >
                     <ShoppingCart className="w-4 h-4" />

@@ -1,4 +1,5 @@
 import { Settings, Wrench, HeadphonesIcon, Cloud } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 
 const services = [
@@ -76,16 +77,12 @@ export default function ServicesSection() {
                 </p>
               </div>
               <div className="flex lg:justify-end">
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                <Link
+                  to="/consult"
                   className="inline-flex items-center justify-center px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30 w-full sm:w-auto"
                 >
                   免费咨询
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,21 +1,38 @@
 import { HardDrive } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const links = [
   {
     title: '产品',
-    items: ['机械硬盘', '固态硬盘', 'NAS私有云', '存储配件'],
+    items: [
+      { label: '机械硬盘', href: '/products?category=hdd' },
+      { label: '固态硬盘', href: '/products?category=ssd' },
+      { label: 'NAS私有云', href: '/products?category=nas' },
+      { label: '存储配件', href: '/products?category=accessory' },
+    ],
   },
   {
     title: '服务',
-    items: ['方案定制', '上门部署', '售后维保', '云迁移'],
+    items: [
+      { label: '方案定制', href: '/consult' },
+      { label: '上门部署', href: '/consult' },
+      { label: '售后维保', href: '/consult' },
+      { label: '云迁移', href: '/consult' },
+    ],
   },
   {
     title: '公司',
-    items: ['关于我们', '联系方式', '营业时间', '隐私政策'],
+    items: [
+      { label: '品牌天地', href: '/brand' },
+      { label: '联系方式', href: '/contact' },
+      { label: '营业时间', href: null },
+      { label: '隐私政策', href: null },
+    ],
   },
 ];
 
 export default function Footer() {
+  const navigate = useNavigate();
   return (
     <footer className="relative border-t border-white/5 bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -41,10 +58,19 @@ export default function Footer() {
               <div className="text-sm font-semibold text-white mb-4">{group.title}</div>
               <ul className="space-y-2.5">
                 {group.items.map((item) => (
-                  <li key={item}>
-                    <span className="text-sm text-zinc-500 hover:text-brand-400 transition-colors cursor-default">
-                      {item}
-                    </span>
+                  <li key={item.label}>
+                    {item.href ? (
+                      <span
+                        onClick={() => navigate(item.href)}
+                        className="text-sm text-zinc-500 hover:text-brand-400 transition-colors cursor-pointer"
+                      >
+                        {item.label}
+                      </span>
+                    ) : (
+                      <span className="text-sm text-zinc-500 cursor-default">
+                        {item.label}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>

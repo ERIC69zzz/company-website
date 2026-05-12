@@ -69,8 +69,8 @@ export default function ConsultPage() {
                   <Phone className="w-5 h-5 text-brand-400" />
                   <div>
                     <div className="text-sm text-zinc-400">或直接拨打</div>
-                    <a href="tel:010-8888-6666" className="text-lg font-bold text-white hover:text-brand-400 transition-colors">
-                      010-8888-6666
+                    <a href="tel:13301335226" className="text-lg font-bold text-white hover:text-brand-400 transition-colors">
+                      133-0133-5226
                     </a>
                   </div>
                 </div>
