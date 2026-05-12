@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Newspaper, Handshake, CalendarDays, Trophy } from 'lucide-react';
+import { ArrowLeft, Newspaper, Handshake, CalendarDays, Trophy, ExternalLink, Building2 } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
+import zspaceNews from '../data/zspace-news.json';
 
 const news = [
   {
@@ -85,14 +86,63 @@ export default function BrandPage() {
           </div>
         </ScrollReveal>
 
-        {/* 新闻动态 */}
+        {/* 极空间动态 */}
         <ScrollReveal>
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
                 <Newspaper className="w-5 h-5 text-brand-400" />
               </div>
-              <h3 className="text-xl font-bold text-white">新闻动态</h3>
+              <div>
+                <h3 className="text-xl font-bold text-white">极空间动态</h3>
+                <p className="text-xs text-zinc-500 mt-0.5">同步自极空间官网媒体报道</p>
+              </div>
+            </div>
+            {zspaceNews.length === 0 ? (
+              <div className="text-center py-12 text-zinc-500">
+                暂无新闻数据
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {zspaceNews.slice(0, 6).map((item, i) => (
+                  <a
+                    key={item.id}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group glass-card rounded-2xl p-6 border border-white/5 hover:border-brand-700/30 transition-all hover:-translate-y-1"
+                  >
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="px-2 py-0.5 text-xs font-medium text-brand-300 bg-brand-900/40 border border-brand-800/40 rounded-md">
+                        {item.media}
+                      </span>
+                      <span className="text-xs text-zinc-500">{item.date}</span>
+                    </div>
+                    <h4 className="text-base font-bold text-white mb-3 leading-snug group-hover:text-brand-300 transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-zinc-400 leading-relaxed line-clamp-3">
+                      {item.desc}
+                    </p>
+                    <div className="mt-4 flex items-center gap-1 text-xs text-zinc-500 group-hover:text-brand-400 transition-colors">
+                      <ExternalLink className="w-3 h-3" />
+                      查看原文
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </ScrollReveal>
+
+        {/* 公司动态 */}
+        <ScrollReveal>
+          <div className="mb-16">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
+                <Building2 className="w-5 h-5 text-brand-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white">公司动态</h3>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {news.map((item) => (

@@ -1,33 +1,7 @@
-import { HardDrive, Server, Database, Layers, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
-
-const products = [
-  {
-    icon: HardDrive,
-    title: '机械硬盘',
-    category: 'hdd',
-    desc: '希捷酷狼、西数红盘等企业级NAS专用硬盘，7×24小时稳定运行。',
-  },
-  {
-    icon: Database,
-    title: '固态硬盘',
-    category: 'ssd',
-    desc: '高速NVMe与SATA SSD，满足NAS缓存加速与高性能存储需求。',
-  },
-  {
-    icon: Server,
-    title: 'NAS私有云',
-    category: 'nas',
-    desc: '绿联、极空间全系产品，从双盘位到八盘位，搭载自研系统。',
-  },
-  {
-    icon: Layers,
-    title: '存储配件',
-    category: 'accessory',
-    desc: '硬盘盒、扩展卡、RAID卡等周边配件，一站式配齐存储方案。',
-  },
-];
+import { productCategoryCards } from '../data/site';
 
 export default function ProductsSection() {
   return (
@@ -49,21 +23,21 @@ export default function ProductsSection() {
         </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product, i) => (
-            <ScrollReveal key={product.title} delay={i * 0.1}>
+          {productCategoryCards.map((category, i) => (
+            <ScrollReveal key={category.title} delay={i * 0.1}>
               <Link
-                to={`/products?category=${product.category}`}
+                to={`/products?category=${category.category}`}
                 className="block h-full group"
               >
                 <div className="glass-card rounded-2xl p-6 h-full flex flex-col transition-all duration-300 hover:bg-brand-900/20 hover:border-brand-700/50 hover:shadow-lg hover:shadow-brand-900/20">
                   <div className="w-12 h-12 rounded-xl bg-brand-600/15 flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
-                    <product.icon className="w-6 h-6 text-brand-400" />
+                    <category.icon className="w-6 h-6 text-brand-400" />
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-300 transition-colors">
-                    {product.title}
+                    {category.title}
                   </h3>
                   <p className="text-sm text-zinc-400 leading-relaxed flex-1">
-                    {product.desc}
+                    {category.desc}
                   </p>
                 </div>
               </Link>

@@ -1,29 +1,7 @@
-import { Settings, Wrench, HeadphonesIcon, Cloud, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
-
-const services = [
-  {
-    icon: Settings,
-    title: '方案定制',
-    desc: '根据数据规模与场景，量身定制硬盘选型与NAS架构方案。',
-  },
-  {
-    icon: Wrench,
-    title: '上门部署',
-    desc: '北京地区专业技术人员上门安装调试，全程无忧。',
-  },
-  {
-    icon: HeadphonesIcon,
-    title: '售后维保',
-    desc: '全生命周期售后服务，7×12小时响应，质保跟踪到底。',
-  },
-  {
-    icon: Cloud,
-    title: '云迁移服务',
-    desc: '协助企业将公有云数据平滑迁移至私有NAS环境。',
-  },
-];
+import { services } from '../data/site';
 
 export default function ServicesSection() {
   return (
