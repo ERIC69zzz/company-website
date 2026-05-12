@@ -1,4 +1,4 @@
-import { Settings, Wrench, HeadphonesIcon, Cloud } from 'lucide-react';
+import { Settings, Wrench, HeadphonesIcon, Cloud, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 
@@ -6,22 +6,22 @@ const services = [
   {
     icon: Settings,
     title: '方案定制',
-    desc: '根据您的数据规模、预算及使用场景，量身定制硬盘选型与NAS架构方案，让每一分投入都物有所值。',
+    desc: '根据数据规模与场景，量身定制硬盘选型与NAS架构方案。',
   },
   {
     icon: Wrench,
     title: '上门部署',
-    desc: '北京地区提供专业技术人员上门安装调试服务，包括NAS系统初始化、硬盘组RAID、网络配置及权限设置。',
+    desc: '北京地区专业技术人员上门安装调试，全程无忧。',
   },
   {
     icon: HeadphonesIcon,
     title: '售后维保',
-    desc: '提供硬盘与NAS设备的质保跟踪、故障诊断、数据恢复协助等全生命周期售后服务，7×12小时响应。',
+    desc: '全生命周期售后服务，7×12小时响应，质保跟踪到底。',
   },
   {
     icon: Cloud,
     title: '云迁移服务',
-    desc: '协助企业将公有云数据平滑迁移至私有NAS环境，降低长期存储成本，提升数据主权与安全性。',
+    desc: '协助企业将公有云数据平滑迁移至私有NAS环境。',
   },
 ];
 
@@ -33,13 +33,13 @@ export default function ServicesSection() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-4">
-              解决方案
+              专业服务
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              专业服务体系
+              一站式存储服务
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
-              不止于产品销售，更提供从规划到落地、从部署到运维的一站式存储服务
+              不止于产品销售，更提供从规划到落地、从部署到运维的全流程服务
             </p>
           </div>
         </ScrollReveal>
@@ -65,26 +65,28 @@ export default function ServicesSection() {
           ))}
         </div>
 
+        {/* CTA 卡片 */}
         <ScrollReveal delay={0.3}>
-          <div className="mt-16 rounded-2xl border border-white/5 bg-white/[0.02] p-8 lg:p-10">
-            <div className="grid lg:grid-cols-3 gap-8 items-center">
-              <div className="lg:col-span-2">
-                <h3 className="text-xl font-bold text-white mb-3">
-                  需要企业级存储方案定制？
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed">
-                  我们为中小企业、设计工作室、影视制作团队、科研机构等提供专业的NAS私有云组网与数据备份方案。无论您是首次部署还是扩容升级，都可以获得免费的需求评估与方案设计。
-                </p>
-              </div>
-              <div className="flex lg:justify-end">
-                <Link
-                  to="/consult"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30 w-full sm:w-auto"
-                >
+          <div className="mt-10">
+            <Link
+              to="/consult"
+              className="group block rounded-2xl border border-white/5 bg-white/[0.02] p-8 lg:p-10 hover:border-brand-700/30 hover:bg-brand-900/10 transition-all"
+            >
+              <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center justify-between">
+                <div className="lg:col-span-2 text-center lg:text-left">
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    需要企业级存储方案定制？
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed max-w-xl">
+                    我们为中小企业、设计工作室、影视制作团队、科研机构等提供专业的NAS私有云组网与数据备份方案。无论您是首次部署还是扩容升级，都可以获得免费的需求评估与方案设计。
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 px-6 py-3 bg-brand-600 group-hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30 whitespace-nowrap">
                   免费咨询
-                </Link>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </ScrollReveal>
       </div>

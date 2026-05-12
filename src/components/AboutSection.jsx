@@ -1,4 +1,5 @@
-import { Award, Users, Calendar, MapPin } from 'lucide-react';
+import { Award, Users, Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 
 const stats = [
@@ -53,22 +54,22 @@ export default function AboutSection() {
           <div>
             <ScrollReveal>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-4">
-                关于我们
+                品牌理念
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-                专注存储，值得信赖
+                以友相待 <span className="text-brand-400">·</span> 以质为本
               </h2>
               <p className="text-zinc-400 leading-relaxed mb-6">
-                北京友质科技有限公司成立于2010年，总部位于北京市海淀区中关村科技园区。十五年来，我们始终专注于数据存储领域，为个人用户、中小企业及大型机构提供高品质的硬盘与NAS私有云产品及服务。
+                北京友质科技有限公司成立于2010年，十五年来始终专注于数据存储领域。作为绿联、极空间等一线品牌的核心授权经销商，我们确保每一件产品均为正品行货，享受官方完整质保。
               </p>
               <p className="text-zinc-400 leading-relaxed mb-8">
-                作为绿联等知名品牌的核心授权经销商，我们确保每一件产品均为正品行货，享受官方完整质保。凭借专业的技术团队与丰富的项目经验，我们已成功为超过1000位客户部署了稳定可靠的存储解决方案。
+                凭借专业的技术团队与丰富的项目经验，我们已成功为超过1000位客户部署了稳定可靠的存储解决方案。
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {stats.map((stat, i) => (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                {stats.map((stat) => (
                   <div
                     key={stat.label}
                     className="rounded-xl border border-white/5 bg-white/[0.02] p-4 text-center"
@@ -79,6 +80,16 @@ export default function AboutSection() {
                   </div>
                 ))}
               </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3}>
+              <Link
+                to="/brand"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
+              >
+                了解品牌故事
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
             </ScrollReveal>
           </div>
         </div>
