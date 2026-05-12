@@ -57,7 +57,7 @@ export default function AboutSection() {
                 品牌理念
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-                以友相待 <span className="text-brand-400">·</span> 以质为本
+                友聚四海 <span className="text-brand-400">·</span> 质服五洲
               </h2>
               <p className="text-zinc-400 leading-relaxed mb-6">
                 北京友质科技有限公司成立于2010年，十五年来始终专注于数据存储领域。作为绿联、极空间等一线品牌的核心授权经销商，我们确保每一件产品均为正品行货，享受官方完整质保。

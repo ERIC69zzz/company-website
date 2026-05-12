@@ -77,7 +77,7 @@ export default function BrandPage() {
               北京友质科技有限公司
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              以友相待 <span className="text-brand-400">·</span> 以质为本
+              友聚四海 <span className="text-brand-400">·</span> 质服五洲
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
               始于 2010，十五年专注数据存储领域。我们不仅是产品的销售者，更是客户数据安全的守护者。以朋友般的真诚服务每一位客户，以高品质的产品与方案赢得长久信赖。

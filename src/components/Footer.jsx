@@ -83,7 +83,7 @@ export default function Footer() {
             © {new Date().getFullYear()} 北京友质科技有限公司 版权所有
           </div>
           <div className="text-xs text-zinc-600">
-            专注存储 · 值得信赖
+            友聚四海 · 质服五洲
           </div>
         </div>
       </div>
