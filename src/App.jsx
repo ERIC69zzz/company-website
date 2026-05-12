@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import BrandPage from './pages/BrandPage';
+import ContactPage from './pages/ContactPage';
+import ConsultPage from './pages/ConsultPage';
 
 function HomePage() {
   return (
@@ -42,6 +44,8 @@ export default function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/brand" element={<BrandPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/consult" element={<ConsultPage />} />
         </Routes>
         <Footer />
       </div>

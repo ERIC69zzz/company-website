@@ -7,7 +7,7 @@ const navItems = [
   { label: '产品中心', href: '/products', type: 'route' },
   { label: '解决方案', href: '#services', type: 'anchor' },
   { label: '品牌天地', href: '/brand', type: 'route' },
-  { label: '联系我们', href: '#contact', type: 'anchor' },
+  { label: '联系我们', href: '/contact', type: 'route' },
 ];
 
 export default function Navbar() {
@@ -78,8 +78,8 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, { href: '#contact', type: 'anchor' })}
+              href="/consult"
+              onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
               className="ml-3 px-5 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 rounded-lg transition-colors shadow-lg shadow-brand-900/30"
             >
               立即咨询
