@@ -47,20 +47,22 @@ export default function ServicesSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <ScrollReveal key={service.title} delay={i * 0.1}>
-              <div className="group relative rounded-2xl p-6 h-full border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all hover:-translate-y-1">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="w-11 h-11 rounded-lg bg-brand-600/15 flex items-center justify-center mb-5 group-hover:bg-brand-600/25 transition-colors">
-                    <service.icon className="w-5 h-5 text-brand-400" />
+              <Link to="/consult" className="block h-full group">
+                <div className="relative rounded-2xl p-6 h-full border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all hover:-translate-y-1">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative">
+                    <div className="w-11 h-11 rounded-lg bg-brand-600/15 flex items-center justify-center mb-5 group-hover:bg-brand-600/25 transition-colors">
+                      <service.icon className="w-5 h-5 text-brand-400" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-300 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm text-zinc-400 leading-relaxed">
+                      {service.desc}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed">
-                    {service.desc}
-                  </p>
                 </div>
-              </div>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
