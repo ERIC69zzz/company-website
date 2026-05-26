@@ -1,7 +1,9 @@
-import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ImageOff, ShoppingCart, Phone } from 'lucide-react';
+import { ShoppingCart, Phone } from 'lucide-react';
 import { products } from '../data/products';
+import { company } from '../data/site';
+import PageHeader from '../components/PageHeader';
+import ProductImage from '../components/ProductImage';
 import ScrollReveal from '../components/ScrollReveal';
 
 export default function ProductDetailPage() {
@@ -23,46 +25,24 @@ export default function ProductDetailPage() {
     );
   }
 
-  const [imgError, setImgError] = useState(false);
-
   return (
     <div className="min-h-screen bg-dark-900 pt-20 pb-16">
-      {/* 顶部栏 */}
-      <div className="glass sticky top-0 z-40 border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center">
-          <button
-            onClick={() => navigate('/products')}
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            返回产品列表
-          </button>
-        </div>
-      </div>
+      <PageHeader
+        backTo="/products"
+        backLabel="返回产品列表"
+        maxWidth="max-w-5xl"
+      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* 左侧图片 */}
           <ScrollReveal>
-            <div className="aspect-square rounded-2xl bg-dark-800 border border-white/5 overflow-hidden flex items-center justify-center">
-              {!imgError ? (
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                  onError={() => setImgError(true)}
-                />
-              ) : (
-                <div className="flex flex-col items-center text-zinc-600">
-                  <ImageOff className="w-16 h-16 mb-4" />
-                  <span className="text-lg font-medium">{product.brand}</span>
-                  <span className="text-xl font-bold mt-2">{product.name}</span>
-                </div>
-              )}
-            </div>
+            <ProductImage
+              product={product}
+              className="aspect-square rounded-2xl bg-dark-800 border border-white/5 overflow-hidden flex items-center justify-center"
+              fallbackIconClassName="w-16 h-16 mb-4"
+            />
           </ScrollReveal>
 
-          {/* 右侧信息 */}
           <div className="flex flex-col">
             <ScrollReveal>
               <div className="mb-6">
@@ -79,7 +59,6 @@ export default function ProductDetailPage() {
                   {product.price}
                 </div>
 
-                {/* 标签 */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   {product.tags.map((tag) => (
                     <span
@@ -91,10 +70,9 @@ export default function ProductDetailPage() {
                   ))}
                 </div>
 
-                {/* 操作按钮 */}
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="tel:13301335226"
+                    href={company.telHref}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all"
                   >
                     <Phone className="w-4 h-4" />
@@ -111,7 +89,6 @@ export default function ProductDetailPage() {
               </div>
             </ScrollReveal>
 
-            {/* 规格参数 */}
             <ScrollReveal delay={0.2}>
               <div className="mt-auto">
                 <h3 className="text-lg font-bold text-white mb-4">规格参数</h3>

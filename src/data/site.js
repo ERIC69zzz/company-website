@@ -120,3 +120,19 @@ export const consultationTopics = [
   '上门部署',
   '数据恢复',
 ];
+
+export const consultationTypes = [
+  '产品咨询',
+  '方案定制',
+  '售后支持',
+  '价格询价',
+  '上门部署',
+  '其他',
+];
+
+export const initialConsultForm = {
+  name: '',
+  phone: '',
+  type: '产品咨询',
+  content: '',
+};

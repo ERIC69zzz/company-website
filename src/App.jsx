@@ -7,6 +7,7 @@ import ServicesSection from './components/ServicesSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import ChatWidget from './components/ChatWidget';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import BrandPage from './pages/BrandPage';
@@ -56,6 +57,7 @@ export default function App() {
           <Route path="/consult" element={<ConsultPage />} />
         </Routes>
         <Footer />
+        <ChatWidget />
       </div>
     </BrowserRouter>
   );

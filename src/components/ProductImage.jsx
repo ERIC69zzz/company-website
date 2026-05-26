@@ -9,10 +9,12 @@ export default function ProductImage({
   showBrandBadge = false,
 }) {
   const [imgError, setImgError] = useState(false);
+  const useProductImages = import.meta.env.VITE_USE_PRODUCT_IMAGES === 'true';
+  const showImage = useProductImages && product.image && !imgError;
 
   return (
     <div className={className}>
-      {!imgError ? (
+      {showImage ? (
         <img
           src={product.image}
           alt={product.name}
@@ -20,10 +22,11 @@ export default function ProductImage({
           onError={() => setImgError(true)}
         />
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center bg-dark-800 text-zinc-600">
-          <ImageOff className={fallbackIconClassName} />
-          <span className="text-xs">{product.brand}</span>
-          <span className="text-sm font-medium mt-1">{product.name}</span>
+        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-dark-800 to-dark-700 text-zinc-500 p-4 text-center">
+          <ImageOff className={`${fallbackIconClassName} text-zinc-600`} />
+          <span className="text-xs text-brand-300">{product.brand}</span>
+          <span className="text-sm font-medium text-zinc-300 mt-1">{product.name}</span>
+          <span className="text-[10px] text-zinc-600 mt-2">图片待更新</span>
         </div>
       )}
 

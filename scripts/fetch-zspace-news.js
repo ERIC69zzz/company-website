@@ -1,4 +1,4 @@
-import { writeFileSync, existsSync, readFileSync } from 'fs';
+import { writeFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -9,8 +9,11 @@ const API_URL = 'https://vapi.zenithspace.net/api/v1/content/contentmedia/list?p
 const OUTPUT_FILE = join(__dirname, '..', 'src', 'data', 'zspace-news.json');
 
 async function fetchNews() {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+
   try {
-    const res = await fetch(API_URL, { timeout: 15000 });
+    const res = await fetch(API_URL, { signal: controller.signal });
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}`);
     }
@@ -44,6 +47,8 @@ async function fetchNews() {
       writeFileSync(OUTPUT_FILE, '[]\n', 'utf-8');
     }
     return false;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 

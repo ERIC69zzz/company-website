@@ -1,16 +1,27 @@
-# React + Vite
+# 北京友质科技官网
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite + React 官网项目，包含产品目录、品牌动态、联系方式、咨询表单和 Kimi AI 客服。
 
-Currently, two official plugins are available:
+## 本地开发
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## 环境变量
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+复制 `.env.example` 到 `.env.local`，按需填写：
 
-## Expanding the ESLint configuration
+- `WECOM_WEBHOOK_URL`：企业微信机器人 Webhook，用于接收咨询表单。
+- `MOONSHOT_API_KEY`：Kimi/Moonshot API Key，用于 AI 客服。
+- `KIMI_BASE_URL`：Kimi OpenAI 兼容接口地址，默认 `https://api.moonshot.cn/v1`。
+- `KIMI_MODEL`：Kimi 模型 ID。如果要使用 Kimiclaw 或其它可用模型，填对应模型名。
+- `VITE_USE_PRODUCT_IMAGES`：产品图准备好后设为 `true`，当前默认显示占位符。
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 常用命令
+
+```bash
+npm run lint
+npm run build
+```

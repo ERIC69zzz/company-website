@@ -1,33 +1,7 @@
-import { Phone, MapPin, Mail, Clock, ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
-
-const contactInfo = [
-  {
-    icon: Phone,
-    title: '电话咨询',
-    content: '133-0133-5226',
-    desc: '工作日 9:00 - 18:00',
-  },
-  {
-    icon: MapPin,
-    title: '公司地址',
-    content: '北京市海淀区中关村南大街甲2号',
-    desc: '数码大厦B座901',
-  },
-  {
-    icon: Mail,
-    title: '电子邮箱',
-    content: 'contact@bjyzyes.com',
-    desc: '24小时内回复',
-  },
-  {
-    icon: Clock,
-    title: '营业时间',
-    content: '周一至周六',
-    desc: '09:00 - 18:00',
-  },
-];
+import { contactCards } from '../data/site';
 
 export default function ContactSection() {
   return (
@@ -50,7 +24,7 @@ export default function ContactSection() {
 
         <ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {contactInfo.map((item, i) => (
+            {contactCards.map((item) => (
               <div
                 key={item.title}
                 className="glass-card rounded-2xl p-6 border border-white/5 text-center hover:border-brand-700/30 transition-all"

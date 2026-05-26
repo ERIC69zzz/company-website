@@ -1,54 +1,13 @@
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Phone, MapPin, Mail, Clock } from 'lucide-react';
+import { company, contactCards } from '../data/site';
+import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
-
-const contactInfo = [
-  {
-    icon: Phone,
-    label: '联系电话',
-    value: '133-0133-5226',
-    desc: '工作日 9:00-18:00',
-  },
-  {
-    icon: Mail,
-    label: '电子邮箱',
-    value: 'contact@bjyzyes.com',
-    desc: '24 小时内回复',
-  },
-  {
-    icon: MapPin,
-    label: '公司地址',
-    value: '北京市海淀区中关村南大街甲2号',
-    desc: '欢迎上门咨询',
-  },
-  {
-    icon: Clock,
-    label: '工作时间',
-    value: '周一至周六 9:00 - 18:00',
-    desc: '节假日另行通知',
-  },
-];
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-dark-900 pt-20 pb-16">
-      {/* 顶部导航栏 */}
-      <div className="glass sticky top-0 z-40 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <Link
-            to="/"
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            返回首页
-          </Link>
-          <h1 className="text-base font-bold text-white">联系我们</h1>
-          <div className="w-16" />
-        </div>
-      </div>
+      <PageHeader title="联系我们" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* 标题 */}
         <ScrollReveal>
           <div className="text-center py-12 lg:py-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-6">
@@ -63,12 +22,11 @@ export default function ContactPage() {
           </div>
         </ScrollReveal>
 
-        {/* 联系方式卡片 */}
         <ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {contactInfo.map((item, i) => (
+            {contactCards.map((item) => (
               <div
-                key={i}
+                key={item.label}
                 className="glass-card rounded-2xl p-6 border border-white/5 text-center hover:border-brand-700/30 transition-all"
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-600/15 flex items-center justify-center mx-auto mb-4">
@@ -82,7 +40,6 @@ export default function ContactPage() {
           </div>
         </ScrollReveal>
 
-        {/* 地图占位 + 补充信息 */}
         <ScrollReveal>
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="glass-card rounded-2xl p-8 border border-white/5">
@@ -112,7 +69,7 @@ export default function ContactPage() {
                 <div className="h-px bg-white/5" />
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-zinc-400">售后工单邮箱</span>
-                  <span className="text-white font-medium">support@bjyzyes.com</span>
+                  <span className="text-white font-medium">{company.supportEmail}</span>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div className="flex items-center justify-between text-sm">

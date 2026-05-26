@@ -1,19 +1,55 @@
+const MAX_NAME_LENGTH = 30;
+const MAX_CONTENT_LENGTH = 800;
+const consultationTypes = new Set([
+  '产品咨询',
+  '方案定制',
+  '售后支持',
+  '价格询价',
+  '上门部署',
+  '其他',
+]);
+
+const json = (res, status, body) => res.status(status).json(body);
+
+const cleanText = (value, maxLength) =>
+  String(value || '')
+    .split('')
+    .map((char) => {
+      const code = char.charCodeAt(0);
+      return code < 32 || code === 127 ? ' ' : char;
+    })
+    .join('')
+    .replace(/[<>]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, maxLength);
+
+const normalizePhone = (value) =>
+  String(value || '').replace(/[^\d+]/g, '').trim();
+
 export default async function handler(req, res) {
   // 只允许 POST
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return json(res, 405, { error: 'Method not allowed' });
   }
 
-  const { name, phone, type, content } = req.body;
+  const name = cleanText(req.body?.name, MAX_NAME_LENGTH);
+  const phone = normalizePhone(req.body?.phone);
+  const type = consultationTypes.has(req.body?.type) ? req.body.type : '其他';
+  const content = cleanText(req.body?.content, MAX_CONTENT_LENGTH);
 
   if (!name || !phone || !content) {
-    return res.status(400).json({ error: 'Missing required fields' });
+    return json(res, 400, { error: '请填写姓名、联系电话和咨询内容' });
+  }
+
+  if (!/^(\+?86)?1[3-9]\d{9}$/.test(phone) && !/^\+?\d{7,20}$/.test(phone)) {
+    return json(res, 400, { error: '联系电话格式不正确' });
   }
 
   const webhookUrl = process.env.WECOM_WEBHOOK_URL;
 
   if (!webhookUrl) {
-    return res.status(500).json({ error: 'Webhook not configured' });
+    return json(res, 500, { error: 'Webhook not configured' });
   }
 
   try {
@@ -23,18 +59,20 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         msgtype: 'markdown',
         markdown: {
-          content: `**📝 新咨询通知**\n\n> **姓名：**${name}\n> **电话：**${phone}\n> **类型：**${type}\n> **内容：**${content}\n\n---\n来自：bjyzyes.com 官网`,
+          content: `**新咨询通知**\n\n> **姓名：**${name}\n> **电话：**${phone}\n> **类型：**${type}\n> **内容：**${content}\n\n---\n来自：bjyzyes.com 官网`,
         },
       }),
     });
 
     if (!response.ok) {
       const text = await response.text();
-      return res.status(500).json({ error: 'Webhook failed', detail: text });
+      console.error('WeCom webhook failed:', response.status, text);
+      return json(res, 500, { error: 'Webhook failed' });
     }
 
-    return res.status(200).json({ success: true });
+    return json(res, 200, { success: true });
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    console.error('Notify failed:', err);
+    return json(res, 500, { error: 'Notify failed' });
   }
 }

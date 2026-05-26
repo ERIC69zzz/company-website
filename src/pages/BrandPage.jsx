@@ -104,7 +104,7 @@ export default function BrandPage() {
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {zspaceNews.slice(0, 6).map((item, i) => (
+                {zspaceNews.slice(0, 6).map((item) => (
                   <a
                     key={item.id}
                     href={item.url}
