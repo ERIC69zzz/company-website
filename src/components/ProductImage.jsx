@@ -9,8 +9,7 @@ export default function ProductImage({
   showBrandBadge = false,
 }) {
   const [imgError, setImgError] = useState(false);
-  const useProductImages = import.meta.env.VITE_USE_PRODUCT_IMAGES === 'true';
-  const showImage = useProductImages && product.image && !imgError;
+  const showImage = product.image && !imgError;
 
   return (
     <div className={className}>

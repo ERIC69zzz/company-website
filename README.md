@@ -17,7 +17,10 @@ npm run dev
 - `MOONSHOT_API_KEY`：Kimi/Moonshot API Key，用于 AI 客服。
 - `KIMI_BASE_URL`：Kimi OpenAI 兼容接口地址，默认 `https://api.moonshot.cn/v1`。
 - `KIMI_MODEL`：Kimi 模型 ID。如果要使用 Kimiclaw 或其它可用模型，填对应模型名。
-- `VITE_USE_PRODUCT_IMAGES`：产品图准备好后设为 `true`，当前默认显示占位符。
+
+## 产品图片
+
+产品图放在 `public/products/` 下，文件名与 `src/data/products.js` 中的 `image` 字段对应（如 `zspace-q2c.jpg`）。有图的产品自动显示图片，缺图或加载失败时自动回退为占位符。
 
 ## 常用命令
 
