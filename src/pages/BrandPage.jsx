@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Newspaper, Handshake, CalendarDays, Trophy, ExternalLink, Building2 } from 'lucide-react';
+import { Newspaper, Handshake, CalendarDays, Trophy, ExternalLink, Building2 } from 'lucide-react';
+import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import zspaceNews from '../data/zspace-news.json';
 
@@ -55,20 +55,7 @@ const partners = [
 export default function BrandPage() {
   return (
     <div className="min-h-screen bg-dark-900 pt-20 pb-16">
-      {/* 顶部导航栏 */}
-      <div className="glass sticky top-0 z-40 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <Link
-            to="/"
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            返回首页
-          </Link>
-          <h1 className="text-base font-bold text-white">品牌天地</h1>
-          <div className="w-16" />
-        </div>
-      </div>
+      <PageHeader title="品牌天地" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 品牌标语 */}

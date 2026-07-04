@@ -1,0 +1,34 @@
+name: 同步极空间新闻
+
+on:
+  schedule:
+    # 每周一 09:00（北京时间），UTC 01:00
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 抓取最新新闻
+        run: node scripts/fetch-zspace-news.js
+
+      - name: 提交变更并推送
+        run: |
+          if git diff --quiet src/data/zspace-news.json; then
+            echo "新闻无更新，跳过提交"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/zspace-news.json
+          git commit -m "chore: 自动同步极空间新闻"
+          git push

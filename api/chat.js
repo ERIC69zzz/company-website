@@ -26,6 +26,21 @@ const cleanText = (value, maxLength = MAX_MESSAGE_LENGTH) =>
     .trim()
     .slice(0, maxLength);
 
+// 清理 AI 回复：去掉控制字符但保留换行，前端按 pre-wrap 渲染分段
+const cleanReply = (value, maxLength) =>
+  String(value || '')
+    .split('')
+    .map((char) => {
+      const code = char.charCodeAt(0);
+      if (char === '\n') return char;
+      return code < 32 || code === 127 ? ' ' : char;
+    })
+    .join('')
+    .replace(/[^\S\n]+/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+    .slice(0, maxLength);
+
 const normalizeMessages = (messages) => {
   if (!Array.isArray(messages)) return [];
 
@@ -81,7 +96,7 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
-    const reply = cleanText(data.choices?.[0]?.message?.content, 2000);
+    const reply = cleanReply(data.choices?.[0]?.message?.content, 2000);
 
     if (!reply) {
       return json(res, 502, { error: 'Empty AI response' });

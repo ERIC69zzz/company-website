@@ -1,5 +1,32 @@
 [
   {
+    "id": 119,
+    "title": "极空间携手腾讯手游加速器:深化开放生态,突破AINAS游戏娱乐新边界",
+    "desc": "近日，国内NAS领先品牌极空间私有云应用商店正式上线腾讯手游加速器。玩家只需将安卓手机与极空间NAS连接至同一局域网，即可通过预下载本地缓存实现手游疾速更新，彻底告别版本更新慢、高峰下载卡顿的困扰。",
+    "url": "https://stor.zol.com.cn/1208/12086763.html",
+    "media": "中关村在线",
+    "date": "2026-07-03",
+    "image": "https://img.zconnect.cn/faq/ab98be3261d1407354e9ffd9e4ed7314.jpg"
+  },
+  {
+    "id": 118,
+    "title": "极空间私有云Z425轻享版正式发布 引领国产AI NAS价值新标杆",
+    "desc": "在AI技术深度融入数字生活的今天，NAS私有云的角色已经从单纯的存储设备向智能数据中心加速演进。作为中国NAS行业的领军品牌，极空间私有云今日正式宣布Z425轻享版全新上市。这是继2025年Z425之后，该系列推出的又一重磅力作，标志着极空间\"AI NAS\"战略向更广泛用户群体的深度渗透，也为国产NAS品牌在AI时代的品牌与价值竞争树立了全新标杆。",
+    "url": "https://caijing.chinadaily.com.cn/a/202605/21/WS6a0ebeb2a310942cc49ad897.html",
+    "media": "东方网",
+    "date": "2026-05-21",
+    "image": "https://img.zconnect.cn/faq/6870623ff258e5f7e9fe0b206fc7c1b1.jpg"
+  },
+  {
+    "id": 117,
+    "title": "极空间联合 VidHub 构建“安全存储 + 全端播放”影音新生态",
+    "desc": "近日，国内领先的私有云品牌极空间正式宣布，与全球知名工具类软件研发企业 VidHub 达成深度战略合作。双方将围绕跨平台影音播放体验展开技术协同与生态融合，旨在打破设备壁垒，为用户打造更安全、流畅高效且多终端无缝衔接的家庭数字影音解决方案。",
+    "url": "https://www.ithome.com/0/952/796.htm",
+    "media": "IT之家",
+    "date": "2026-05-21",
+    "image": "https://img.zconnect.cn/faq/a1159ade48af0bcb7449058670a8a73f.jpg"
+  },
+  {
     "id": 116,
     "title": "极空间携手网易爆米花，推动私有云影音生态升级",
     "desc": "近日，国内领先的私有云标杆品牌极空间，正式宣布与网易旗下全场景影音解决方案产品《网易爆米花》达成深度战略合作。双方以技术协同为核心、用户需求为导向，实现生态无缝融合，构建「安全存储+全终端播放」的影音新生态，为用户带来更智能、更便捷、更安全的数字影音体验，推动私有云与影音播放行业的双向升级。",
@@ -52,32 +79,5 @@
     "media": "央广网",
     "date": "2025-05-15",
     "image": "https://img.zconnect.cn/faq/de07bf6f23f7e4e4c17fb186395113b5.jpg"
-  },
-  {
-    "id": 110,
-    "title": "UnifyDrive 亮相 CES：发布全球首款大语言模型 AI NAS",
-    "desc": "作为国内领先的网络存储品牌极空间私有云此次联合 UnifyDrive 宣布推出全球首款配备大语言模型（LLM）的 AI NAS，同时也是全球首款便携式 AI 平板 NAS：UnifyDrive UP6。本次产品为双方共同研发并首次亮相 CES，生动诠释了科技赋能生活的无限可能。",
-    "url": "https://www.ithome.com/0/822/968.htm",
-    "media": "IT之家",
-    "date": "2025-02-11",
-    "image": "https://img.zconnect.cn/faq/0098b8d3e0aee15aa61bc487ec00a8a7.jpg"
-  },
-  {
-    "id": 109,
-    "title": "2024 GG100｜极空间私有云Q4创新设计获奖",
-    "desc": "ZAO2024中关村在线年度观察推选年度百大优秀产品奖项Good Gear 100（以下简称GG100），用以表彰年度科技行业标杆产品。",
-    "url": "https://stor.zol.com.cn/929/9298993.html",
-    "media": "中关村在线",
-    "date": "2025-02-11",
-    "image": "https://doc-fd.zol-img.com.cn/t_s2000x2000/g7/M00/0F/0C/ChMkK2dliSmIf5AuAAG2hI-MUxUAAm_FgKxFPcAAbac928.jpg"
-  },
-  {
-    "id": 108,
-    "title": "极空间私有云荣获2024私有云领军企业“金i奖”",
-    "desc": "24年末，极空间推出优雅Q4与随身T2S新品，不仅在产品上做到“人无我有，人有我优”，在服务上更是不断追求创新，赢得了用户和市场的广泛认同，进一步奠定了自己网络存储行业领航者的地位。",
-    "url": "http://enet.com.cn/article/2024/1220/A202412201271903.html",
-    "media": "互联网周刊",
-    "date": "2025-02-11",
-    "image": "https://img.zconnect.cn/faq/900d5d2ed6675d177a67b71e25e5e540.jpg"
   }
 ]
