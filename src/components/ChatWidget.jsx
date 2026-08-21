@@ -196,6 +196,7 @@ export default function ChatWidget({ embedded = false }) {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
+            aria-label="咨询问题"
             placeholder="请输入您的问题..."
             rows={1}
             className="flex-1 min-h-[40px] max-h-[100px] bg-dark-800 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 resize-none focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/20 transition-all"

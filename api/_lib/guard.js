@@ -6,6 +6,30 @@
 const buckets = new Map();
 const MAX_BUCKETS = 5000;
 
+const isGlobalBucket = (key) => key.endsWith(':__global__');
+
+const makeRoomForBucket = (now) => {
+  for (const [key, bucket] of buckets) {
+    if (now >= bucket.resetAt) buckets.delete(key);
+  }
+
+  if (buckets.size < MAX_BUCKETS) return;
+
+  // Map 保持插入顺序，优先淘汰最早创建的 IP 桶，避免攻击流量
+  // 把实例级总量桶挤掉并重置全局限额。
+  for (const key of buckets.keys()) {
+    if (!isGlobalBucket(key)) {
+      buckets.delete(key);
+      return;
+    }
+  }
+
+  // 理论上只有创建了数千个不同 name 的全局桶才会走到这里。
+  // 仍淘汰最老项，确保 MAX_BUCKETS 始终是硬上限。
+  const oldestKey = buckets.keys().next().value;
+  if (oldestKey) buckets.delete(oldestKey);
+};
+
 const getClientIp = (req) => {
   const forwarded = req.headers['x-forwarded-for'];
   if (typeof forwarded === 'string' && forwarded) {
@@ -52,12 +76,8 @@ const takeToken = (key, limit, windowMs) => {
   const bucket = buckets.get(key);
 
   if (!bucket || now >= bucket.resetAt) {
-    // 简单防内存膨胀：超量时清掉已过期的桶
-    if (buckets.size >= MAX_BUCKETS) {
-      for (const [k, v] of buckets) {
-        if (now >= v.resetAt) buckets.delete(k);
-      }
-    }
+    if (bucket) buckets.delete(key);
+    if (buckets.size >= MAX_BUCKETS) makeRoomForBucket(now);
     buckets.set(key, { count: 1, resetAt: now + windowMs });
     return { allowed: true, retryAfter: 0 };
   }
@@ -98,4 +118,13 @@ export const guard = (req, { name, limit, windowMs, globalLimit }) => {
   }
 
   return null;
+};
+
+// 仅供 node:test 验证限流边界，生产代码只使用 guard。
+export const __testing = {
+  maxBuckets: MAX_BUCKETS,
+  bucketCount: () => buckets.size,
+  hasBucket: (key) => buckets.has(key),
+  reset: () => buckets.clear(),
+  takeToken,
 };

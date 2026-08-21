@@ -1,5 +1,5 @@
 import { HardDrive } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const links = [
   {
@@ -32,7 +32,6 @@ const links = [
 ];
 
 export default function Footer() {
-  const navigate = useNavigate();
   return (
     <footer className="relative border-t border-white/5 bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -60,12 +59,12 @@ export default function Footer() {
                 {group.items.map((item) => (
                   <li key={item.label}>
                     {item.href ? (
-                      <span
-                        onClick={() => navigate(item.href)}
+                      <Link
+                        to={item.href}
                         className="text-sm text-zinc-500 hover:text-brand-400 transition-colors cursor-pointer"
                       >
                         {item.label}
-                      </span>
+                      </Link>
                     ) : (
                       <span className="text-sm text-zinc-500 cursor-default">
                         {item.label}

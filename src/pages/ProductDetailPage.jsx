@@ -5,6 +5,7 @@ import { company } from '../data/site';
 import PageHeader from '../components/PageHeader';
 import ProductImage from '../components/ProductImage';
 import ScrollReveal from '../components/ScrollReveal';
+import NotFoundPage from './NotFoundPage';
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -12,17 +13,7 @@ export default function ProductDetailPage() {
   const product = products.find((p) => p.id === id);
 
   if (!product) {
-    return (
-      <div className="min-h-screen bg-dark-900 pt-32 text-center">
-        <p className="text-zinc-400">产品不存在</p>
-        <button
-          onClick={() => navigate('/products')}
-          className="mt-4 text-brand-400 hover:text-brand-300"
-        >
-          返回产品列表
-        </button>
-      </div>
-    );
+    return <NotFoundPage />;
   }
 
   return (
