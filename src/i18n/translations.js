@@ -119,6 +119,32 @@ export const translations = {
         { label: '联系我们', desc: '电话与地址信息' },
       ],
     },
+    showcase: {
+      title: '看得见的每一处细节',
+      subtitle: '滚动了解企业级 NAS 的关键设计',
+      stages: {
+        whole: {
+          eyebrow: '整机',
+          title: '为长时间运行而生',
+          desc: '全金属机身、低噪散热结构，支持 7×24 小时不间断运行。开箱通电即可进入配置向导，无需专业运维背景。',
+        },
+        bays: {
+          eyebrow: '盘位',
+          title: '4 盘位，最大 96TB',
+          desc: '免工具热插拔托架，换盘不停机。支持 RAID 0/1/5/10 多种阵列模式，单盘故障时数据依然完整可读。',
+        },
+        ports: {
+          eyebrow: '接口',
+          title: '双 2.5GbE，可选万兆',
+          desc: '双网口支持链路聚合与故障切换。设计素材、4K 视频等大文件读写不再受千兆网络限制，多人协作互不抢占带宽。',
+        },
+        system: {
+          eyebrow: '系统',
+          title: '状态一目了然',
+          desc: '前面板指示灯直观反馈电源、网络与硬盘状态。配合手机 App 远程查看容量、温度与健康度，异常自动推送提醒。',
+        },
+      },
+    },
     chat: {
       botName: 'KimiClaw 智能客服', welcome: '您好！我是友质科技的智能客服助手，很高兴为您服务。请问有什么可以帮您？',
       offline: '智能客服暂时不可用，我先按常见问题为您回复。也可以拨打 177-4358-8003 联系人工客服。',
@@ -280,6 +306,32 @@ export const translations = {
         { label: 'Contact Us', desc: 'Phone and address details' },
       ],
     },
+    showcase: {
+      title: 'Every detail, up close',
+      subtitle: 'Scroll to explore the key design of enterprise NAS',
+      stages: {
+        whole: {
+          eyebrow: 'Overview',
+          title: 'Built to run non-stop',
+          desc: 'All-metal chassis with low-noise cooling, rated for 24/7 operation. Power it on and the setup wizard takes over — no IT background required.',
+        },
+        bays: {
+          eyebrow: 'Drive bays',
+          title: '4 bays, up to 96TB',
+          desc: 'Tool-free hot-swap trays let you replace a disk without downtime. RAID 0/1/5/10 supported, so a single drive failure never costs you the data.',
+        },
+        ports: {
+          eyebrow: 'Connectivity',
+          title: 'Dual 2.5GbE, 10G optional',
+          desc: 'Two ports with link aggregation and failover. Large design files and 4K footage are no longer capped by gigabit, and teams stop competing for bandwidth.',
+        },
+        system: {
+          eyebrow: 'System',
+          title: 'Status at a glance',
+          desc: 'Front-panel indicators report power, network and disk health directly. Pair it with the mobile app for remote capacity, temperature and alert notifications.',
+        },
+      },
+    },
     chat: {
       botName: 'KimiClaw AI Support', welcome: 'Hello! I’m Youzhi Technology’s AI support assistant. How can I help you today?',
       offline: 'AI support is temporarily unavailable, so I’ll answer from our common support topics. You can also call 177-4358-8003 for human assistance.',
@@ -440,6 +492,32 @@ export const translations = {
         { label: 'ホームへ戻る', desc: 'トップページを表示' }, { label: '製品センター', desc: 'すべての製品を見る' },
         { label: 'お問い合わせ', desc: '電話番号と所在地を確認' },
       ],
+    },
+    showcase: {
+      title: 'ディテールをクローズアップ',
+      subtitle: 'スクロールしてエンタープライズ NAS の設計を見る',
+      stages: {
+        whole: {
+          eyebrow: '本体',
+          title: '連続稼働のための設計',
+          desc: 'オールメタル筐体と静音冷却構造により、24時間365日の連続運転に対応。電源を入れるだけで設定ウィザードが起動し、専門知識は不要です。',
+        },
+        bays: {
+          eyebrow: 'ドライブベイ',
+          title: '4ベイ、最大96TB',
+          desc: '工具不要のホットスワップトレイで、停止せずにディスク交換が可能。RAID 0/1/5/10 に対応し、1台の故障でもデータは保護されます。',
+        },
+        ports: {
+          eyebrow: 'インターフェース',
+          title: 'デュアル2.5GbE、10G対応',
+          desc: 'リンクアグリゲーションとフェイルオーバーに対応した2ポート構成。デザイン素材や4K映像の読み書きがギガビットの制限を受けません。',
+        },
+        system: {
+          eyebrow: 'システム',
+          title: '状態がひと目でわかる',
+          desc: 'フロントパネルのインジケーターが電源・ネットワーク・ディスクの状態を表示。モバイルアプリで容量や温度を遠隔確認し、異常時は自動通知します。',
+        },
+      },
     },
     chat: {
       botName: 'KimiClaw AIサポート', welcome: 'こんにちは。友質科技のAIサポートです。本日はどのようなご相談でしょうか？',

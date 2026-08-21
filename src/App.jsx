@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import ScrollStory from './components/ScrollStory';
 import ProductsSection from './components/ProductsSection';
 import ServicesSection from './components/ServicesSection';
 import AboutSection from './components/AboutSection';
@@ -20,6 +21,7 @@ function HomePage() {
   return (
     <>
       <HeroSection />
+      <ScrollStory />
       <ProductsSection />
       <ServicesSection />
       <AboutSection />
