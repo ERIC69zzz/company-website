@@ -63,7 +63,7 @@ export const translations = {
     footer: {
       fullName: '北京友质科技有限公司',
       description: '成立于2010年，专注硬盘与NAS私有云存储领域，为个人及企业客户提供一站式数据存储解决方案。',
-      address: '北京市海淀区中关村南大街甲2号数码大厦B座901', phone: '电话：133-0133-5226',
+      address: '北京市海淀区知春路113号银网中心8层808室', phone: '电话：177-4358-8003',
       copyright: '北京友质科技有限公司 版权所有', slogan: '友聚四海 · 质服五洲',
       groups: [
         { title: '产品', items: ['机械硬盘', '固态硬盘', 'NAS私有云', '存储配件'] },
@@ -121,16 +121,16 @@ export const translations = {
     },
     chat: {
       botName: 'KimiClaw 智能客服', welcome: '您好！我是友质科技的智能客服助手，很高兴为您服务。请问有什么可以帮您？',
-      offline: '智能客服暂时不可用，我先按常见问题为您回复。也可以拨打 133-0133-5226 联系人工客服。',
-      unknown: '抱歉，我暂时无法理解这个问题。您可以拨打服务热线 **133-0133-5226** 联系人工客服，或在「立即咨询」页面提交详细需求，我们会尽快与您联系。',
+      offline: '智能客服暂时不可用，我先按常见问题为您回复。也可以拨打 177-4358-8003 联系人工客服。',
+      unknown: '抱歉，我暂时无法理解这个问题。您可以拨打服务热线 177-4358-8003 联系人工客服，或在「立即咨询」页面提交详细需求，我们会尽快与您联系。',
       unavailable: '抱歉，服务暂时不可用，请稍后再试。', online: 'AI 在线', fallback: '本地兜底', close: '关闭',
       inputLabel: '咨询问题', placeholder: '请输入您的问题...', send: '发送', hint: 'AI 客服可回答选型、方案、售后和联系方式问题', open: '打开客服',
       presetQA: [
         { keywords: ['产品', '硬盘', 'nas', '买什么', '推荐'], answer: '我们主营机械硬盘（希捷酷狼、西数红盘等）、固态硬盘（NVMe/SATA SSD）以及 NAS 私有云（绿联、极空间全系产品）。请问您的使用场景是什么？家庭存储还是企业级方案？' },
         { keywords: ['价格', '多少钱', '报价', '询价'], answer: '我们的产品价格会根据市场波动和采购量有所调整。您可以留下联系方式，我们会安排专人为您提供最新报价，或者访问「产品中心」查看公开价格。' },
         { keywords: ['售后', '保修', '维修', '质保'], answer: '我们提供全生命周期售后服务，7×12小时响应。所有硬盘均享受官方质保，NAS 产品享受品牌官方保修和我们提供的上门技术支持。' },
-        { keywords: ['地址', '在哪', '公司', '位置'], answer: '公司地址：北京市海淀区中关村南大街甲2号数码大厦B座901。欢迎预约上门参观洽谈。' },
-        { keywords: ['电话', '联系', '怎么找你们'], answer: '您可以拨打我们的服务热线：133-0133-5226（周一至周六 9:00-18:00），或发送邮件至 contact@bjyzyes.com，我们会尽快回复您。' },
+        { keywords: ['地址', '在哪', '公司', '位置'], answer: '公司地址：北京市海淀区知春路113号银网中心8层808室。欢迎预约上门参观洽谈。' },
+        { keywords: ['电话', '联系', '怎么找你们'], answer: '您可以拨打我们的服务热线：177-4358-8003（周一至周六 9:00-18:00），或发送邮件至 contact@bjyzyes.com，我们会尽快回复您。' },
         { keywords: ['上门', '部署', '安装', '调试'], answer: '我们提供北京地区专业技术人员上门安装调试服务，包括 NAS 组网、硬盘配置、数据迁移等。可在「立即咨询」页面提交需求。' },
         { keywords: ['方案', '定制', '架构'], answer: '我们可以根据您的数据规模、访问频率、预算等需求，量身定制硬盘选型与 NAS 架构方案。请描述一下您的具体需求（数据量、用户数、预算范围等）。' },
       ],
@@ -144,8 +144,8 @@ export const translations = {
         { title: '存储配件', desc: '硬盘盒、扩展卡、RAID卡等周边配件，一站式配齐存储方案。' },
       ],
       contactCards: [
-        { title: '电话咨询', label: '联系电话', content: '133-0133-5226', desc: '周一至周六 9:00 - 18:00' },
-        { title: '公司地址', label: '公司地址', content: '北京市海淀区中关村南大街甲2号', desc: '数码大厦B座901' },
+        { title: '电话咨询', label: '联系电话', content: '177-4358-8003', desc: '周一至周六 9:00 - 18:00' },
+        { title: '公司地址', label: '公司地址', content: '北京市海淀区知春路113号', desc: '银网中心8层808室' },
         { title: '电子邮箱', label: '电子邮箱', content: 'contact@bjyzyes.com', desc: '24小时内回复' },
         { title: '营业时间', label: '工作时间', content: '周一至周六', desc: '09:00 - 18:00' },
       ],
@@ -157,7 +157,7 @@ export const translations = {
       ],
       consultationTopics: ['产品选型', '方案定制', '售后支持', '价格询价', '上门部署', '数据恢复'],
       consultationTypes: consultationValues.map((value) => ({ value, label: value })),
-      businessDays: '周一至周六', address: '北京市海淀区中关村南大街甲2号', addressDetail: '数码大厦B座901',
+      businessDays: '周一至周六', address: '北京市海淀区知春路113号', addressDetail: '银网中心8层808室',
     },
   },
 
@@ -216,7 +216,7 @@ export const translations = {
     footer: {
       fullName: 'Beijing Youzhi Technology Co., Ltd.',
       description: 'Focused on hard drives and private-cloud NAS since 2010, providing one-stop data storage solutions for individuals and businesses.',
-      address: 'Room 901, Tower B, Digital Building, A2 Zhongguancun South Street, Haidian District, Beijing', phone: 'Phone: 133-0133-5226',
+      address: 'Room 808, 8th Floor, Yinwang Center, 113 Zhichun Road, Haidian District, Beijing', phone: 'Phone: 177-4358-8003',
       copyright: 'Beijing Youzhi Technology Co., Ltd. All rights reserved.', slogan: 'Friends Worldwide · Quality Everywhere',
       groups: [
         { title: 'Products', items: ['Hard Drives', 'Solid-State Drives', 'Private Cloud NAS', 'Accessories'] },
@@ -282,16 +282,16 @@ export const translations = {
     },
     chat: {
       botName: 'KimiClaw AI Support', welcome: 'Hello! I’m Youzhi Technology’s AI support assistant. How can I help you today?',
-      offline: 'AI support is temporarily unavailable, so I’ll answer from our common support topics. You can also call 133-0133-5226 for human assistance.',
-      unknown: 'Sorry, I could not match that question. Call **133-0133-5226** for human assistance, or submit your requirements on the “Get Advice” page and we will contact you soon.',
+      offline: 'AI support is temporarily unavailable, so I’ll answer from our common support topics. You can also call 177-4358-8003 for human assistance.',
+      unknown: 'Sorry, I could not match that question. Call 177-4358-8003 for human assistance, or submit your requirements on the “Get Advice” page and we will contact you soon.',
       unavailable: 'Sorry, the service is temporarily unavailable. Please try again later.', online: 'AI online', fallback: 'Local answers', close: 'Close',
       inputLabel: 'Consultation question', placeholder: 'Type your question...', send: 'Send', hint: 'Ask about product selection, solutions, support and contact details.', open: 'Open customer support',
       presetQA: [
         { keywords: ['product', 'drive', 'hdd', 'ssd', 'nas', 'recommend'], answer: 'We supply NAS hard drives such as Seagate IronWolf and WD Red, NVMe/SATA SSDs, and private-cloud NAS systems from UGREEN and ZSpace. Is this for home storage or a business deployment?' },
         { keywords: ['price', 'cost', 'quote'], answer: 'Prices vary with the market and order volume. Leave your contact details for a current quote, or visit the Product Center to see listed prices.' },
         { keywords: ['support', 'warranty', 'repair'], answer: 'We provide lifecycle support with a 7×12-hour response window. Drives include the manufacturer’s warranty, while NAS products include official brand coverage plus our onsite technical support.' },
-        { keywords: ['address', 'location', 'office'], answer: 'Our office is Room 901, Tower B, Digital Building, A2 Zhongguancun South Street, Haidian District, Beijing. Please make an appointment before visiting.' },
-        { keywords: ['phone', 'contact', 'email'], answer: 'Call 133-0133-5226 from Monday to Saturday, 9:00–18:00, or email contact@bjyzyes.com. We will respond as soon as possible.' },
+        { keywords: ['address', 'location', 'office'], answer: 'Our office is Room 808, 8th Floor, Yinwang Center, 113 Zhichun Road, Haidian District, Beijing. Please make an appointment before visiting.' },
+        { keywords: ['phone', 'contact', 'email'], answer: 'Call 177-4358-8003 from Monday to Saturday, 9:00–18:00, or email contact@bjyzyes.com. We will respond as soon as possible.' },
         { keywords: ['onsite', 'deploy', 'install', 'setup'], answer: 'We offer professional onsite service in Beijing, including NAS networking, drive configuration and data migration. Submit your requirements on the Get Advice page.' },
         { keywords: ['solution', 'custom', 'architecture'], answer: 'We can design drive selection and NAS architecture around your data volume, access patterns and budget. Please tell us your expected capacity, user count and budget range.' },
       ],
@@ -305,8 +305,8 @@ export const translations = {
         { title: 'Storage Accessories', desc: 'Enclosures, expansion cards, RAID cards and related accessories for a complete storage setup.' },
       ],
       contactCards: [
-        { title: 'Phone Consultation', label: 'Phone', content: '133-0133-5226', desc: 'Mon–Sat, 9:00–18:00' },
-        { title: 'Office Address', label: 'Address', content: 'A2 Zhongguancun South Street, Haidian, Beijing', desc: 'Room 901, Tower B, Digital Building' },
+        { title: 'Phone Consultation', label: 'Phone', content: '177-4358-8003', desc: 'Mon–Sat, 9:00–18:00' },
+        { title: 'Office Address', label: 'Address', content: '113 Zhichun Road, Haidian, Beijing', desc: 'Room 808, 8F, Yinwang Center' },
         { title: 'Email', label: 'Email', content: 'contact@bjyzyes.com', desc: 'Replies within 24 hours' },
         { title: 'Business Hours', label: 'Hours', content: 'Monday to Saturday', desc: '09:00–18:00' },
       ],
@@ -318,7 +318,7 @@ export const translations = {
       ],
       consultationTopics: ['Product Selection', 'Solution Design', 'After-Sales Support', 'Pricing', 'Onsite Deployment', 'Data Recovery'],
       consultationTypes: consultationValues.map((value, index) => ({ value, label: ['Product Inquiry', 'Solution Design', 'After-Sales Support', 'Pricing', 'Onsite Deployment', 'Other'][index] })),
-      businessDays: 'Monday to Saturday', address: 'A2 Zhongguancun South Street, Haidian, Beijing', addressDetail: 'Room 901, Tower B, Digital Building',
+      businessDays: 'Monday to Saturday', address: '113 Zhichun Road, Haidian, Beijing', addressDetail: 'Room 808, 8F, Yinwang Center',
     },
   },
 
@@ -377,7 +377,7 @@ export const translations = {
     footer: {
       fullName: '北京友質科技有限公司',
       description: '2010年創業。HDDとプライベートクラウドNASを中心に、個人・法人向けのワンストップデータストレージを提供します。',
-      address: '北京市海淀区中関村南大街甲2号 デジタルビルB棟901号室', phone: '電話：133-0133-5226',
+      address: '北京市海淀区知春路113号 銀網センター8階808号室', phone: '電話：177-4358-8003',
       copyright: '北京友質科技有限公司 All rights reserved.', slogan: '世界に友情を · 五大陸に品質を',
       groups: [
         { title: '製品', items: ['ハードディスク', 'SSD', 'プライベートクラウドNAS', '周辺機器'] },
@@ -443,16 +443,16 @@ export const translations = {
     },
     chat: {
       botName: 'KimiClaw AIサポート', welcome: 'こんにちは。友質科技のAIサポートです。本日はどのようなご相談でしょうか？',
-      offline: 'AIサポートは一時的に利用できません。よくあるご質問に基づいて回答します。担当者へのご相談は 133-0133-5226 へお電話ください。',
-      unknown: '申し訳ありませんが、ご質問に合う回答が見つかりませんでした。**133-0133-5226** へお電話いただくか、「相談する」ページから詳しい内容をお送りください。',
+      offline: 'AIサポートは一時的に利用できません。よくあるご質問に基づいて回答します。担当者へのご相談は 177-4358-8003 へお電話ください。',
+      unknown: '申し訳ありませんが、ご質問に合う回答が見つかりませんでした。177-4358-8003 へお電話いただくか、「相談する」ページから詳しい内容をお送りください。',
       unavailable: '現在サービスをご利用いただけません。時間をおいて再度お試しください。', online: 'AIオンライン', fallback: 'ローカル回答', close: '閉じる',
       inputLabel: '相談内容', placeholder: 'ご質問を入力...', send: '送信', hint: '製品選定、構成、サポート、連絡先について回答します。', open: 'サポートを開く',
       presetQA: [
         { keywords: ['製品', 'ドライブ', 'hdd', 'ssd', 'nas', 'おすすめ'], answer: 'Seagate IronWolfやWD RedなどのNAS向けHDD、NVMe/SATA SSD、UGREEN・ZSpaceのプライベートクラウドNASを取り扱っています。ご家庭用でしょうか、法人導入でしょうか？' },
         { keywords: ['価格', '料金', '見積'], answer: '価格は市場状況と数量により変動します。最新のお見積りは連絡先をお残しいただくか、製品センターの掲載価格をご確認ください。' },
         { keywords: ['サポート', '保証', '修理'], answer: '製品ライフサイクル全体を支援し、7×12時間の対応体制を設けています。ドライブはメーカー保証、NASはメーカー保証に加えて当社の訪問技術支援をご利用いただけます。' },
-        { keywords: ['住所', '場所', '会社'], answer: '所在地は北京市海淀区中関村南大街甲2号 デジタルビルB棟901号室です。ご来訪の際は事前にご予約ください。' },
-        { keywords: ['電話', '連絡', 'メール'], answer: '月曜から土曜の9:00〜18:00に 133-0133-5226 へお電話いただくか、contact@bjyzyes.com へメールをお送りください。' },
+        { keywords: ['住所', '場所', '会社'], answer: '所在地は北京市海淀区知春路113号 銀網センター8階808号室です。ご来訪の際は事前にご予約ください。' },
+        { keywords: ['電話', '連絡', 'メール'], answer: '月曜から土曜の9:00〜18:00に 177-4358-8003 へお電話いただくか、contact@bjyzyes.com へメールをお送りください。' },
         { keywords: ['訪問', '導入', '設置', '設定'], answer: '北京市内でNASネットワーク、ドライブ設定、データ移行などの訪問導入を提供しています。「相談する」ページからご要望をお送りください。' },
         { keywords: ['構成', '提案', '設計'], answer: 'データ容量、アクセス頻度、ご予算に合わせてドライブ選定とNAS構成を設計します。想定容量、利用人数、ご予算をお知らせください。' },
       ],
@@ -466,8 +466,8 @@ export const translations = {
         { title: 'ストレージ周辺機器', desc: 'ドライブケース、拡張カード、RAIDカードなど、必要な周辺機器をまとめてご用意。' },
       ],
       contactCards: [
-        { title: '電話相談', label: '電話番号', content: '133-0133-5226', desc: '月〜土 9:00〜18:00' },
-        { title: '会社所在地', label: '所在地', content: '北京市海淀区中関村南大街甲2号', desc: 'デジタルビルB棟901号室' },
+        { title: '電話相談', label: '電話番号', content: '177-4358-8003', desc: '月〜土 9:00〜18:00' },
+        { title: '会社所在地', label: '所在地', content: '北京市海淀区知春路113号', desc: '銀網センター8階808号室' },
         { title: 'メール', label: 'メール', content: 'contact@bjyzyes.com', desc: '24時間以内に返信' },
         { title: '営業時間', label: '受付時間', content: '月曜日〜土曜日', desc: '09:00〜18:00' },
       ],
@@ -479,7 +479,7 @@ export const translations = {
       ],
       consultationTopics: ['製品選定', '構成設計', 'アフターサポート', '価格・見積り', '訪問導入', 'データ復旧'],
       consultationTypes: consultationValues.map((value, index) => ({ value, label: ['製品について', '構成設計', 'アフターサポート', '価格・見積り', '訪問導入', 'その他'][index] })),
-      businessDays: '月曜日〜土曜日', address: '北京市海淀区中関村南大街甲2号', addressDetail: 'デジタルビルB棟901号室',
+      businessDays: '月曜日〜土曜日', address: '北京市海淀区知春路113号', addressDetail: '銀網センター8階808号室',
     },
   },
 };
