@@ -13,6 +13,7 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import BrandPage from './pages/BrandPage';
 import ContactPage from './pages/ContactPage';
 import ConsultPage from './pages/ConsultPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function HomePage() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="/brand" element={<BrandPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/consult" element={<ConsultPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
         <ChatWidget />

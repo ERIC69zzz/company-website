@@ -83,4 +83,8 @@ async function fetchNews() {
   }
 }
 
-fetchNews();
+// 失败时以非 0 退出码结束，让 GitHub Actions 亮红灯并告警。
+// 注意：上面的失败分支不会覆盖已有数据，这里只负责让人知道上游出了问题。
+fetchNews().then((ok) => {
+  if (!ok) process.exitCode = 1;
+});

@@ -33,6 +33,14 @@ npm run dev
 
 产品图放在 `public/products/` 下，文件名与 `src/data/products.js` 中的 `image` 字段对应（如 `zspace-q2c.jpg`）。有图的产品自动显示图片，缺图或加载失败时自动回退为占位符。
 
+## SEO 文件
+
+`public/robots.txt` 是静态文件；`public/sitemap.xml` 由 `scripts/generate-sitemap.js`
+从 `src/data/products.js` 自动生成，已挂在 `prebuild` 钩子上，每次 `npm run build`
+（含 Vercel 部署）都会重新生成，新增产品无需手动同步。
+
+站点域名默认取 `https://www.bjyzyes.com`，可用 `SITE_URL` 环境变量覆盖。
+
 ## 常用命令
 
 ```bash
