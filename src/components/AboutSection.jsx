@@ -11,7 +11,7 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-24 lg:py-32">
+    <section id="about" className="relative overflow-x-clip py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <ScrollReveal>

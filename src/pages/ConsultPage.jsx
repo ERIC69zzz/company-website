@@ -139,10 +139,11 @@ export default function ConsultPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label className="block text-sm text-zinc-400 mb-1.5">您的姓名</label>
+                    <label htmlFor="consult-name" className="block text-sm text-zinc-400 mb-1.5">您的姓名</label>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                       <input
+                        id="consult-name"
                         type="text"
                         required
                         value={form.name}
@@ -154,10 +155,11 @@ export default function ConsultPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-zinc-400 mb-1.5">联系电话</label>
+                    <label htmlFor="consult-phone" className="block text-sm text-zinc-400 mb-1.5">联系电话</label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                       <input
+                        id="consult-phone"
                         type="tel"
                         required
                         value={form.phone}
@@ -169,8 +171,9 @@ export default function ConsultPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-zinc-400 mb-1.5">咨询类型</label>
+                    <label htmlFor="consult-type" className="block text-sm text-zinc-400 mb-1.5">咨询类型</label>
                     <select
+                      id="consult-type"
                       value={form.type}
                       onChange={(e) => setForm({ ...form, type: e.target.value })}
                       className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
@@ -182,8 +185,9 @@ export default function ConsultPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm text-zinc-400 mb-1.5">咨询内容</label>
+                    <label htmlFor="consult-content" className="block text-sm text-zinc-400 mb-1.5">咨询内容</label>
                     <textarea
+                      id="consult-content"
                       required
                       rows={4}
                       value={form.content}
@@ -194,7 +198,7 @@ export default function ConsultPage() {
                   </div>
 
                   {error && (
-                    <div className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-2.5">
+                    <div role="alert" className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-2.5">
                       {error}
                     </div>
                   )}

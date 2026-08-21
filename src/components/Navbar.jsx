@@ -87,8 +87,12 @@ export default function Navbar() {
           </div>
 
           <button
+            type="button"
             className="md:hidden p-2 text-zinc-300 hover:text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? '关闭导航菜单' : '打开导航菜单'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -96,7 +100,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden glass border-t border-white/5">
+        <div id="mobile-navigation" className="md:hidden glass border-t border-white/5">
           <div className="px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <a

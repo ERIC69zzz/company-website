@@ -23,5 +23,8 @@ jobs:
       - name: 代码检查
         run: npm run lint
 
+      - name: 自动化测试
+        run: npm test
+
       - name: 构建
         run: npm run build

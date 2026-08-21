@@ -45,5 +45,6 @@ npm run dev
 
 ```bash
 npm run lint
+npm test
 npm run build
 ```
