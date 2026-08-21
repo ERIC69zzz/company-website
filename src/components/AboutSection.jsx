@@ -1,6 +1,7 @@
 import { Award, Users, Calendar, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
+import { accentByIndex } from '../lib/accent';
 
 const stats = [
   { icon: Calendar, value: '15+', label: '年行业经验' },
@@ -47,7 +48,7 @@ export default function AboutSection() {
                 </div>
               </div>
               <div className="absolute -z-10 -top-6 -left-6 w-48 h-48 bg-brand-600/15 rounded-full blur-[60px]" />
-              <div className="absolute -z-10 -bottom-6 -right-6 w-40 h-40 bg-brand-500/10 rounded-full blur-[50px]" />
+              <div className="absolute -z-10 -bottom-6 -right-6 w-40 h-40 bg-accent-500/12 rounded-full blur-[50px]" />
             </div>
           </ScrollReveal>
 
@@ -57,7 +58,7 @@ export default function AboutSection() {
                 品牌理念
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-                友聚四海 <span className="text-brand-400">·</span> 质服五洲
+                友聚四海 <span className="text-accent-400">·</span> 质服五洲
               </h2>
               <p className="text-zinc-400 leading-relaxed mb-6">
                 北京友质科技有限公司成立于2010年，十五年来始终专注于数据存储领域。作为绿联、极空间等一线品牌的核心授权经销商，我们确保每一件产品均为正品行货，享受官方完整质保。
@@ -69,12 +70,12 @@ export default function AboutSection() {
 
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-                {stats.map((stat) => (
+                {stats.map((stat, i) => (
                   <div
                     key={stat.label}
                     className="rounded-xl border border-white/5 bg-white/[0.02] p-4 text-center"
                   >
-                    <stat.icon className="w-5 h-5 text-brand-400 mx-auto mb-2" />
+                    <stat.icon className={`w-5 h-5 ${accentByIndex(i).icon} mx-auto mb-2`} />
                     <div className="text-xl font-bold text-white mb-0.5">{stat.value}</div>
                     <div className="text-xs text-zinc-500">{stat.label}</div>
                   </div>

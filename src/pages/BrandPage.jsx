@@ -69,7 +69,7 @@ export default function BrandPage() {
               北京友质科技有限公司
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              友聚四海 <span className="text-brand-400">·</span> 质服五洲
+              友聚四海 <span className="text-accent-400">·</span> 质服五洲
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
               始于 2010，十五年专注数据存储领域。我们不仅是产品的销售者，更是客户数据安全的守护者。以朋友般的真诚服务每一位客户，以高品质的产品与方案赢得长久信赖。
@@ -163,8 +163,8 @@ export default function BrandPage() {
         <ScrollReveal>
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
-                <CalendarDays className="w-5 h-5 text-brand-400" />
+              <div className="w-10 h-10 rounded-xl bg-accent-600/15 flex items-center justify-center">
+                <CalendarDays className="w-5 h-5 text-accent-400" />
               </div>
               <h3 className="text-xl font-bold text-white">行业足迹</h3>
             </div>
@@ -175,8 +175,8 @@ export default function BrandPage() {
                   className="flex flex-col sm:flex-row gap-4 sm:gap-8 glass-card rounded-2xl p-6 border border-white/5"
                 >
                   <div className="sm:w-24 flex-shrink-0">
-                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-brand-900/40 border border-brand-800/40">
-                      <span className="text-sm font-bold text-brand-300">{event.year}</span>
+                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-accent-900/40 border border-accent-800/40">
+                      <span className="text-sm font-bold text-accent-300">{event.year}</span>
                     </div>
                   </div>
                   <div className="flex-1">
@@ -197,8 +197,8 @@ export default function BrandPage() {
         <ScrollReveal>
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
-                <Handshake className="w-5 h-5 text-brand-400" />
+              <div className="w-10 h-10 rounded-xl bg-accent-600/15 flex items-center justify-center">
+                <Handshake className="w-5 h-5 text-accent-400" />
               </div>
               <h3 className="text-xl font-bold text-white">合作伙伴</h3>
             </div>
@@ -208,7 +208,7 @@ export default function BrandPage() {
                   key={i}
                   className="glass-card rounded-2xl p-6 border border-white/5 text-center hover:border-brand-700/30 transition-all"
                 >
-                  <Trophy className="w-6 h-6 text-brand-400 mx-auto mb-3" />
+                  <Trophy className="w-6 h-6 text-accent-400 mx-auto mb-3" />
                   <div className="text-base font-bold text-white mb-1">{p.name}</div>
                   <div className="text-sm text-zinc-500">{p.role}</div>
                 </div>

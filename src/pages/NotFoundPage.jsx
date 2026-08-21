@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Compass, Home, Package, Phone } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
+import { accentByIndex } from '../lib/accent';
 
 const shortcuts = [
   { to: '/', icon: Home, label: '返回首页', desc: '回到网站首页' },
@@ -46,14 +47,14 @@ export default function NotFoundPage() {
 
         <ScrollReveal>
           <div className="grid sm:grid-cols-3 gap-4">
-            {shortcuts.map((item) => (
+            {shortcuts.map((item, i) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="glass-card rounded-2xl p-6 border border-white/5 text-center hover:border-brand-700/30 transition-all hover:-translate-y-1"
+                className={`glass-card ${accentByIndex(i).card} rounded-2xl p-6 border border-white/5 text-center ${accentByIndex(i).hover} transition-all hover:-translate-y-1`}
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-600/15 flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-brand-400" />
+                <div className={`w-12 h-12 rounded-xl ${accentByIndex(i).iconBox} flex items-center justify-center mx-auto mb-4`}>
+                  <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />
                 </div>
                 <div className="text-base font-bold text-white mb-1">{item.label}</div>
                 <div className="text-xs text-zinc-500">{item.desc}</div>

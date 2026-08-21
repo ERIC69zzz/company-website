@@ -1,6 +1,7 @@
 import { company, contactCards } from '../data/site';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
+import { accentByIndex } from '../lib/accent';
 
 export default function ContactPage() {
   return (
@@ -24,13 +25,13 @@ export default function ContactPage() {
 
         <ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {contactCards.map((item) => (
+            {contactCards.map((item, i) => (
               <div
                 key={item.label}
-                className="glass-card rounded-2xl p-6 border border-white/5 text-center hover:border-brand-700/30 transition-all"
+                className={`glass-card ${accentByIndex(i).card} rounded-2xl p-6 border border-white/5 text-center ${accentByIndex(i).hover} transition-all`}
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-600/15 flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-brand-400" />
+                <div className={`w-12 h-12 rounded-xl ${accentByIndex(i).iconBox} flex items-center justify-center mx-auto mb-4`}>
+                  <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />
                 </div>
                 <div className="text-sm text-zinc-500 mb-1">{item.label}</div>
                 <div className="text-base font-bold text-white mb-1">{item.value}</div>

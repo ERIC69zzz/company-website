@@ -12,6 +12,18 @@
   --color-brand-800: #9a3412;
   --color-brand-900: #7c2d12;
 
+  /* 辅助色：取自公司 logo 的草绿 */
+  --color-accent-50: #f2fbec;
+  --color-accent-100: #e0f6d3;
+  --color-accent-200: #c3ecab;
+  --color-accent-300: #9cdf7a;
+  --color-accent-400: #78d052;
+  --color-accent-500: #5cbf3c;
+  --color-accent-600: #46a02b;
+  --color-accent-700: #377d24;
+  --color-accent-800: #2f6321;
+  --color-accent-900: #29521f;
+
   --color-dark-900: #0f0f11;
   --color-dark-800: #18181b;
   --color-dark-700: #27272a;
@@ -69,8 +81,22 @@ body {
   box-shadow: 0 12px 40px -8px rgba(249, 115, 22, 0.15);
 }
 
+/* 绿色悬停变体，与橙色卡片交替使用，呼应 logo 的橙绿双色 */
+.glass-card-accent:hover {
+  border-color: rgba(92, 191, 60, 0.4);
+  box-shadow: 0 12px 40px -8px rgba(92, 191, 60, 0.15);
+}
+
 .text-gradient {
   background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 橙绿渐变，用于品牌感最强的标题 */
+.text-gradient-brand {
+  background: linear-gradient(120deg, #fb923c 0%, #f97316 45%, #5cbf3c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

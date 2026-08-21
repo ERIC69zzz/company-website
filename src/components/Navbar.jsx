@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, HardDrive } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 const navItems = [
   { label: '首页', href: '#home', type: 'anchor' },
@@ -58,9 +59,7 @@ export default function Navbar() {
             }}
             className="flex items-center gap-2 group"
           >
-            <div className="w-9 h-9 rounded-lg bg-brand-500 flex items-center justify-center group-hover:scale-105 transition-transform">
-              <HardDrive className="w-5 h-5 text-white" />
-            </div>
+            <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" />
             <span className="text-lg font-bold text-white tracking-tight">
               友质科技
             </span>

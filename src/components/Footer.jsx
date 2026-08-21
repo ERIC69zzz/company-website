@@ -1,5 +1,5 @@
-import { HardDrive } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 
 const links = [
   {
@@ -38,9 +38,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
-                <HardDrive className="w-4 h-4 text-white" />
-              </div>
+              <Logo className="w-8 h-8" alt="北京友质科技有限公司" />
               <span className="text-base font-bold text-white">北京友质科技有限公司</span>
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed max-w-sm mb-6">

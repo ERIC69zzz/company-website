@@ -15,7 +15,7 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 bg-grid opacity-40" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-600/20 rounded-full blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brand-500/10 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-500/12 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -106,14 +106,14 @@ export default function HeroSection() {
                   <div className="rounded-xl bg-dark-800/60 p-3 border border-white/5">
                     <div className="text-xs text-zinc-500 mb-1">传输速度</div>
                     <div className="text-xl font-bold text-white">10 Gbps</div>
-                    <div className="text-xs text-brand-400 mt-1">万兆网口</div>
+                    <div className="text-xs text-accent-400 mt-1">万兆网口</div>
                   </div>
                 </div>
 
                 <div className="rounded-xl bg-dark-800/60 p-3 border border-white/5">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs text-zinc-500">硬盘状态</span>
-                    <span className="text-xs text-emerald-400">全部正常</span>
+                    <span className="text-xs text-accent-400">全部正常</span>
                   </div>
                   <div className="space-y-2">
                     {[
@@ -124,7 +124,7 @@ export default function HeroSection() {
                         <span className="text-xs text-zinc-400 w-10">{disk.name}</span>
                         <div className="flex-1 h-2 bg-dark-700 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-gradient-to-r from-brand-600 to-brand-400 rounded-full"
+                            className="h-full bg-gradient-to-r from-brand-600 to-accent-500 rounded-full"
                             style={{ width: `${disk.pct}%` }}
                           />
                         </div>

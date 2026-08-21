@@ -127,7 +127,7 @@ export default function ChatWidget({ embedded = false }) {
               {KIMI_CONFIG.botName}
             </div>
             <div className="text-xs text-white/70 flex items-center gap-1">
-              <span className={`w-1.5 h-1.5 rounded-full inline-block ${aiAvailable ? 'bg-green-400' : 'bg-amber-300'}`} />
+              <span className={`w-1.5 h-1.5 rounded-full inline-block ${aiAvailable ? 'bg-accent-400' : 'bg-amber-300'}`} />
               {aiAvailable ? 'AI 在线' : '本地兜底'}
             </div>
           </div>

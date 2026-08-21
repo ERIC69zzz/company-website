@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MessageCircle, Phone, User, MessageSquare } from 'lucide-react';
+import { MessageCircle, Phone, User, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { company, consultationTopics, consultationTypes, initialConsultForm } from '../data/site';
 import ChatWidget from '../components/ChatWidget';
 import PageHeader from '../components/PageHeader';
@@ -122,8 +122,8 @@ export default function ConsultPage() {
 
               {submitted ? (
                 <div className="text-center py-12">
-                  <div className="w-16 h-16 rounded-full bg-brand-600/20 flex items-center justify-center mx-auto mb-4">
-                    <MessageCircle className="w-8 h-8 text-brand-400" />
+                  <div className="w-16 h-16 rounded-full bg-accent-600/20 flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="w-8 h-8 text-accent-400" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-2">提交成功</h4>
                   <p className="text-sm text-zinc-400">
@@ -131,7 +131,7 @@ export default function ConsultPage() {
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm(initialConsultForm); }}
-                    className="mt-6 px-5 py-2 text-sm font-medium text-brand-300 bg-brand-900/40 border border-brand-800/40 rounded-lg hover:bg-brand-900/60 transition-colors"
+                    className="mt-6 px-5 py-2 text-sm font-medium text-accent-300 bg-accent-900/40 border border-accent-800/40 rounded-lg hover:bg-accent-900/60 transition-colors"
                   >
                     继续咨询
                   </button>

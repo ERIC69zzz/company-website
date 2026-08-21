@@ -2,6 +2,7 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 import { contactCards } from '../data/site';
+import { accentByIndex } from '../lib/accent';
 
 export default function ContactSection() {
   return (
@@ -24,13 +25,13 @@ export default function ContactSection() {
 
         <ScrollReveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {contactCards.map((item) => (
+            {contactCards.map((item, i) => (
               <div
                 key={item.title}
-                className="glass-card rounded-2xl p-6 border border-white/5 text-center hover:border-brand-700/30 transition-all"
+                className={`glass-card ${accentByIndex(i).card} rounded-2xl p-6 border border-white/5 text-center ${accentByIndex(i).hover} transition-all`}
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-600/15 flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-6 h-6 text-brand-400" />
+                <div className={`w-12 h-12 rounded-xl ${accentByIndex(i).iconBox} flex items-center justify-center mx-auto mb-4`}>
+                  <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />
                 </div>
                 <div className="text-sm text-zinc-500 mb-1">{item.title}</div>
                 <div className="text-base font-bold text-white mb-1">{item.content}</div>
