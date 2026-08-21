@@ -1,7 +1,12 @@
+import { guard } from './_lib/guard.js';
+
 const DEFAULT_BASE_URL = 'https://api.moonshot.cn/v1';
 const DEFAULT_MODEL = 'moonshot-v1-8k';
 const MAX_MESSAGES = 12;
 const MAX_MESSAGE_LENGTH = 1200;
+
+// AI 调用直接消耗 API 额度，限流收得比表单更紧
+const RATE_LIMIT = { name: 'chat', limit: 20, windowMs: 60 * 60 * 1000, globalLimit: 200 };
 
 const SYSTEM_PROMPT = [
   '你是北京友质科技有限公司的智能客服助手。',
@@ -56,6 +61,14 @@ const normalizeMessages = (messages) => {
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return json(res, 405, { error: 'Method not allowed' });
+  }
+
+  const blocked = guard(req, RATE_LIMIT);
+  if (blocked) {
+    if (blocked.headers) {
+      for (const [key, value] of Object.entries(blocked.headers)) res.setHeader(key, value);
+    }
+    return json(res, blocked.status, blocked.body);
   }
 
   const apiKey = process.env.MOONSHOT_API_KEY || process.env.KIMI_API_KEY;

@@ -8,6 +8,34 @@ const __dirname = dirname(__filename);
 const API_URL = 'https://vapi.zenithspace.net/api/v1/content/contentmedia/list?pageIndex=1&pageSize=9';
 const OUTPUT_FILE = join(__dirname, '..', 'src', 'data', 'zspace-news.json');
 
+const MAX_TITLE_LENGTH = 200;
+const MAX_DESC_LENGTH = 500;
+
+// 上游 API 的返回会被自动提交并渲染成官网上的链接，
+// 因此只接受 http/https，挡掉 javascript: 等危险协议。
+const safeUrl = (value) => {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  try {
+    const parsed = new URL(raw);
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:' ? parsed.href : '';
+  } catch {
+    return '';
+  }
+};
+
+const safeText = (value, maxLength) =>
+  String(value || '')
+    .split('')
+    .map((char) => {
+      const code = char.charCodeAt(0);
+      return code < 32 || code === 127 ? ' ' : char;
+    })
+    .join('')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, maxLength);
+
 async function fetchNews() {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 15000);
@@ -23,15 +51,18 @@ async function fetchNews() {
       throw new Error(`API error: ${data.msg || 'unknown'}`);
     }
 
-    const news = data.data.list.map((item) => ({
-      id: item.id,
-      title: item.title,
-      desc: item.content,
-      url: item.url,
-      media: item.from_media,
-      date: item.createdAt?.split('T')[0] || '',
-      image: item.pic || '',
-    }));
+    const news = data.data.list
+      .map((item) => ({
+        id: item.id,
+        title: safeText(item.title, MAX_TITLE_LENGTH),
+        desc: safeText(item.content, MAX_DESC_LENGTH),
+        url: safeUrl(item.url),
+        media: safeText(item.from_media, 50),
+        date: safeText(item.createdAt, 30).split('T')[0] || '',
+        image: safeUrl(item.pic),
+      }))
+      // 丢弃标题或链接不合法的条目，避免官网出现空链接卡片
+      .filter((item) => item.title && item.url);
 
     writeFileSync(OUTPUT_FILE, JSON.stringify(news, null, 2) + '\n', 'utf-8');
     console.log(`✅ 成功抓取 ${news.length} 条极空间新闻`);

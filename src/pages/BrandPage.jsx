@@ -3,6 +3,10 @@ import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import zspaceNews from '../data/zspace-news.json';
 
+// 新闻数据来自第三方 API 自动同步，渲染前再校验一次链接协议
+const isSafeHref = (url) => /^https?:\/\//i.test(String(url || ''));
+const safeNews = zspaceNews.filter((item) => isSafeHref(item.url));
+
 const news = [
   {
     id: 1,
@@ -85,13 +89,13 @@ export default function BrandPage() {
                 <p className="text-xs text-zinc-500 mt-0.5">同步自极空间官网媒体报道</p>
               </div>
             </div>
-            {zspaceNews.length === 0 ? (
+            {safeNews.length === 0 ? (
               <div className="text-center py-12 text-zinc-500">
                 暂无新闻数据
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {zspaceNews.slice(0, 6).map((item) => (
+                {safeNews.slice(0, 6).map((item) => (
                   <a
                     key={item.id}
                     href={item.url}
