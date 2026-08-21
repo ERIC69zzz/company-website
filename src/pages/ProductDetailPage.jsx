@@ -6,11 +6,17 @@ import PageHeader from '../components/PageHeader';
 import ProductImage from '../components/ProductImage';
 import ScrollReveal from '../components/ScrollReveal';
 import NotFoundPage from './NotFoundPage';
+import { useLanguage } from '../i18n/language';
+import { localizeProducts } from '../i18n/products';
 
 export default function ProductDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = products.find((p) => p.id === id);
+  const { language, copy } = useLanguage();
+  const originalProduct = products.find((p) => p.id === id);
+  const product = originalProduct
+    ? localizeProducts([originalProduct], language)[0]
+    : null;
 
   if (!product) {
     return <NotFoundPage />;
@@ -20,7 +26,7 @@ export default function ProductDetailPage() {
     <div className="min-h-screen bg-dark-900 pt-20 pb-16">
       <PageHeader
         backTo="/products"
-        backLabel="返回产品列表"
+        backLabel={copy.common.backProducts}
         maxWidth="max-w-5xl"
       />
 
@@ -67,14 +73,14 @@ export default function ProductDetailPage() {
                     className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all"
                   >
                     <Phone className="w-4 h-4" />
-                    电话咨询
+                    {copy.productDetail.phone}
                   </a>
                   <button
                     onClick={() => navigate('/consult')}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 transition-all"
                   >
                     <ShoppingCart className="w-4 h-4" />
-                    在线咨询
+                    {copy.productDetail.online}
                   </button>
                 </div>
               </div>
@@ -82,7 +88,7 @@ export default function ProductDetailPage() {
 
             <ScrollReveal delay={0.2}>
               <div className="mt-auto">
-                <h3 className="text-lg font-bold text-white mb-4">规格参数</h3>
+                <h3 className="text-lg font-bold text-white mb-4">{copy.productDetail.specs}</h3>
                 <div className="rounded-xl border border-white/5 bg-white/[0.02] overflow-hidden">
                   {Object.entries(product.specs).map(([key, value], i, arr) => (
                     <div

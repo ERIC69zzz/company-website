@@ -2,8 +2,15 @@ import { ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 import { productCategoryCards } from '../data/site';
+import { useLanguage } from '../i18n/language';
 
 export default function ProductsSection() {
+  const { copy } = useLanguage();
+  const localizedCategories = productCategoryCards.map((category, index) => ({
+    ...category,
+    ...copy.data.categoryCards[index],
+  }));
+
   return (
     <section id="products" className="relative py-24 lg:py-32">
       <div className="absolute inset-0 bg-grid opacity-20" />
@@ -11,19 +18,19 @@ export default function ProductsSection() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-4">
-              核心产品
+              {copy.productsSection.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              全品类存储产品
+              {copy.productsSection.title}
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
-              代理绿联、极空间等一线品牌，覆盖从个人家庭到企业级的全场景数据存储需求
+              {copy.productsSection.description}
             </p>
           </div>
         </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {productCategoryCards.map((category, i) => (
+          {localizedCategories.map((category, i) => (
             <ScrollReveal key={category.title} delay={i * 0.1}>
               <Link
                 to={`/products?category=${category.category}`}
@@ -59,15 +66,15 @@ export default function ProductsSection() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white group-hover:text-brand-300 transition-colors">
-                      探索全部产品
+                      {copy.productsSection.explore}
                     </h3>
                     <p className="text-sm text-zinc-400 mt-0.5">
-                      浏览完整产品目录、详细参数与实时报价
+                      {copy.productsSection.exploreDesc}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 px-5 py-2.5 bg-brand-600 group-hover:bg-brand-500 text-white font-semibold rounded-xl transition-colors shadow-lg shadow-brand-900/30">
-                  前往产品中心
+                  {copy.productsSection.go}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </div>

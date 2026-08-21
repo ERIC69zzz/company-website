@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ImageOff } from 'lucide-react';
+import { useLanguage } from '../i18n/language';
 
 export default function ProductImage({
   product,
@@ -9,6 +10,7 @@ export default function ProductImage({
   showBrandBadge = false,
 }) {
   const [imgError, setImgError] = useState(false);
+  const { copy } = useLanguage();
   const showImage = product.image && !imgError;
 
   return (
@@ -25,7 +27,7 @@ export default function ProductImage({
           <ImageOff className={`${fallbackIconClassName} text-zinc-600`} />
           <span className="text-xs text-brand-300">{product.brand}</span>
           <span className="text-sm font-medium text-zinc-300 mt-1">{product.name}</span>
-          <span className="text-[10px] text-zinc-600 mt-2">图片待更新</span>
+          <span className="text-[10px] text-zinc-600 mt-2">{copy.common.imagePending}</span>
         </div>
       )}
 

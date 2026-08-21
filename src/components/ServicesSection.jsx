@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 import { services } from '../data/site';
 import { accentByIndex } from '../lib/accent';
+import { useLanguage } from '../i18n/language';
 
 export default function ServicesSection() {
+  const { copy } = useLanguage();
+  const localizedServices = services.map((service, index) => ({
+    ...service,
+    ...copy.data.services[index],
+  }));
+
   return (
     <section id="services" className="relative py-24 lg:py-32 bg-dark-800/30">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-900/50 to-transparent" />
@@ -12,19 +19,19 @@ export default function ServicesSection() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-4">
-              专业服务
+              {copy.servicesSection.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              一站式存储服务
+              {copy.servicesSection.title}
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto">
-              不止于产品销售，更提供从规划到落地、从部署到运维的全流程服务
+              {copy.servicesSection.description}
             </p>
           </div>
         </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, i) => {
+          {localizedServices.map((service, i) => {
             const tone = accentByIndex(i);
             return (
             <ScrollReveal key={service.title} delay={i * 0.1}>
@@ -59,14 +66,14 @@ export default function ServicesSection() {
               <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center justify-between">
                 <div className="lg:col-span-2 text-center lg:text-left">
                   <h3 className="text-xl font-bold text-white mb-3">
-                    需要企业级存储方案定制？
+                    {copy.servicesSection.ctaTitle}
                   </h3>
                   <p className="text-zinc-400 text-sm leading-relaxed max-w-xl">
-                    我们为中小企业、设计工作室、影视制作团队、科研机构等提供专业的NAS私有云组网与数据备份方案。无论您是首次部署还是扩容升级，都可以获得免费的需求评估与方案设计。
+                    {copy.servicesSection.ctaDesc}
                   </p>
                 </div>
                 <div className="flex items-center gap-2 px-6 py-3 bg-brand-600 group-hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30 whitespace-nowrap">
-                  免费咨询
+                  {copy.servicesSection.cta}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </div>

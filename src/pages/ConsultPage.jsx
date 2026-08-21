@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { MessageCircle, Phone, User, MessageSquare, CheckCircle2 } from 'lucide-react';
-import { company, consultationTopics, consultationTypes, initialConsultForm } from '../data/site';
+import { company, initialConsultForm } from '../data/site';
 import ChatWidget from '../components/ChatWidget';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
+import { useLanguage } from '../i18n/language';
 
 export default function ConsultPage() {
+  const { language, copy } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -20,13 +22,13 @@ export default function ConsultPage() {
       const res = await fetch('/api/notify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, language }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || '提交失败，请稍后重试');
+        throw new Error(data.error || copy.consultPage.submitError);
       }
 
       setSubmitted(true);
@@ -39,7 +41,7 @@ export default function ConsultPage() {
 
   return (
     <div className="min-h-screen bg-dark-900 pt-20 pb-16">
-      <PageHeader title="立即咨询" />
+      <PageHeader title={copy.consultPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -51,8 +53,8 @@ export default function ConsultPage() {
                     <MessageCircle className="w-5 h-5 text-brand-400" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">AI 智能咨询</h3>
-                    <p className="text-xs text-zinc-500">先聊选型、方案和售后问题，需要人工时再留言</p>
+                    <h3 className="text-lg font-bold text-white">{copy.consultPage.aiTitle}</h3>
+                    <p className="text-xs text-zinc-500">{copy.consultPage.aiDesc}</p>
                   </div>
                 </div>
                 <ChatWidget embedded />
@@ -64,8 +66,8 @@ export default function ConsultPage() {
                     <MessageCircle className="w-5 h-5 text-brand-400" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">微信在线咨询</h3>
-                    <p className="text-xs text-zinc-500">扫码添加客服微信，实时沟通</p>
+                    <h3 className="text-lg font-bold text-white">{copy.consultPage.wechatTitle}</h3>
+                    <p className="text-xs text-zinc-500">{copy.consultPage.wechatDesc}</p>
                   </div>
                 </div>
 
@@ -75,14 +77,14 @@ export default function ConsultPage() {
                     {/* 替换为实际微信二维码图片 */}
                     <div className="text-center text-zinc-400">
                       <MessageSquare className="w-12 h-12 mx-auto mb-2 text-zinc-300" />
-                      <p className="text-xs">请添加客服微信二维码</p>
+                      <p className="text-xs">{copy.consultPage.qr}</p>
                     </div>
                   </div>
                   <p className="text-sm text-zinc-400 text-center">
-                    微信搜索添加：<span className="text-white font-medium">{company.wechat}</span>
+                    {copy.consultPage.wechatSearch}<span className="text-white font-medium">{company.wechat}</span>
                   </p>
                   <p className="text-xs text-zinc-500 text-center mt-1">
-                    工作时间：{company.businessDays} {company.businessHours}
+                    {copy.consultPage.hours}{copy.data.businessDays} {company.businessHours}
                   </p>
                 </div>
 
@@ -91,7 +93,7 @@ export default function ConsultPage() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-brand-400" />
                   <div>
-                    <div className="text-sm text-zinc-400">或直接拨打</div>
+                    <div className="text-sm text-zinc-400">{copy.consultPage.call}</div>
                     <a href={company.telHref} className="text-lg font-bold text-white hover:text-brand-400 transition-colors">
                       {company.phone}
                     </a>
@@ -100,9 +102,9 @@ export default function ConsultPage() {
               </div>
 
               <div className="glass-card rounded-2xl p-6 border border-white/5">
-                <h4 className="text-sm font-bold text-white mb-3">咨询范围</h4>
+                <h4 className="text-sm font-bold text-white mb-3">{copy.consultPage.scope}</h4>
                 <div className="grid grid-cols-2 gap-2">
-                  {consultationTopics.map((t) => (
+                  {copy.data.consultationTopics.map((t) => (
                     <div key={t} className="flex items-center gap-2 text-sm text-zinc-400">
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-400" />
                       {t}
@@ -115,9 +117,9 @@ export default function ConsultPage() {
 
           <ScrollReveal delay={0.1}>
             <div className="glass-card rounded-2xl p-8 border border-white/5">
-              <h3 className="text-lg font-bold text-white mb-2">留言咨询</h3>
+              <h3 className="text-lg font-bold text-white mb-2">{copy.consultPage.formTitle}</h3>
               <p className="text-sm text-zinc-500 mb-6">
-                填写您的需求，我们将在 24 小时内与您联系
+                {copy.consultPage.formDesc}
               </p>
 
               {submitted ? (
@@ -125,21 +127,21 @@ export default function ConsultPage() {
                   <div className="w-16 h-16 rounded-full bg-accent-600/20 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-8 h-8 text-accent-400" />
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">提交成功</h4>
+                  <h4 className="text-lg font-bold text-white mb-2">{copy.consultPage.successTitle}</h4>
                   <p className="text-sm text-zinc-400">
-                    您的咨询已收到，我们会尽快通过电话或微信与您取得联系。
+                    {copy.consultPage.successDesc}
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm(initialConsultForm); }}
                     className="mt-6 px-5 py-2 text-sm font-medium text-accent-300 bg-accent-900/40 border border-accent-800/40 rounded-lg hover:bg-accent-900/60 transition-colors"
                   >
-                    继续咨询
+                    {copy.consultPage.continue}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label htmlFor="consult-name" className="block text-sm text-zinc-400 mb-1.5">您的姓名</label>
+                    <label htmlFor="consult-name" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.name}</label>
                     <div className="relative">
                       <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                       <input
@@ -148,14 +150,14 @@ export default function ConsultPage() {
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="请输入姓名"
+                        placeholder={copy.consultPage.namePlaceholder}
                         className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="consult-phone" className="block text-sm text-zinc-400 mb-1.5">联系电话</label>
+                    <label htmlFor="consult-phone" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.phone}</label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                       <input
@@ -164,35 +166,35 @@ export default function ConsultPage() {
                         required
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        placeholder="请输入手机号"
+                        placeholder={copy.consultPage.phonePlaceholder}
                         className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="consult-type" className="block text-sm text-zinc-400 mb-1.5">咨询类型</label>
+                    <label htmlFor="consult-type" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.type}</label>
                     <select
                       id="consult-type"
                       value={form.type}
                       onChange={(e) => setForm({ ...form, type: e.target.value })}
                       className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
                     >
-                      {consultationTypes.map((t) => (
-                        <option key={t} value={t} className="bg-dark-800">{t}</option>
+                      {copy.data.consultationTypes.map((item) => (
+                        <option key={item.value} value={item.value} className="bg-dark-800">{item.label}</option>
                       ))}
                     </select>
                   </div>
 
                   <div>
-                    <label htmlFor="consult-content" className="block text-sm text-zinc-400 mb-1.5">咨询内容</label>
+                    <label htmlFor="consult-content" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.content}</label>
                     <textarea
                       id="consult-content"
                       required
                       rows={4}
                       value={form.content}
                       onChange={(e) => setForm({ ...form, content: e.target.value })}
-                      placeholder="请描述您的需求或问题..."
+                      placeholder={copy.consultPage.contentPlaceholder}
                       className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all resize-none"
                     />
                   </div>
@@ -208,7 +210,7 @@ export default function ConsultPage() {
                     disabled={submitting}
                     className="w-full py-3 bg-brand-600 hover:bg-brand-500 disabled:bg-brand-800/50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
                   >
-                    {submitting ? '提交中...' : '提交咨询'}
+                    {submitting ? copy.consultPage.submitting : copy.consultPage.submit}
                   </button>
                 </form>
               )}

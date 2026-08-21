@@ -17,6 +17,12 @@ const SYSTEM_PROMPT = [
   '回答要专业、简洁、偏销售咨询场景。涉及实时价格、库存、质保细则或上门排期时，不要编造，建议用户留下联系方式或拨打电话确认。',
 ].join('\n');
 
+const LANGUAGE_INSTRUCTIONS = {
+  zh: '请使用简体中文回答。',
+  en: 'Reply in English.',
+  ja: '日本語で回答してください。',
+};
+
 const json = (res, status, body) => res.status(status).json(body);
 
 const cleanText = (value, maxLength = MAX_MESSAGE_LENGTH) =>
@@ -83,6 +89,7 @@ export default async function handler(req, res) {
 
   const baseUrl = process.env.KIMI_BASE_URL || DEFAULT_BASE_URL;
   const model = process.env.KIMI_MODEL || DEFAULT_MODEL;
+  const languageInstruction = LANGUAGE_INSTRUCTIONS[req.body?.language] || LANGUAGE_INSTRUCTIONS.zh;
 
   try {
     const response = await fetch(`${baseUrl}/chat/completions`, {
@@ -94,7 +101,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model,
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'system', content: `${SYSTEM_PROMPT}\n${languageInstruction}` },
           ...messages,
         ],
         temperature: 0.35,

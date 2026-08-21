@@ -2,15 +2,14 @@ import { Award, Users, Calendar, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
 import { accentByIndex } from '../lib/accent';
+import { useLanguage } from '../i18n/language';
 
-const stats = [
-  { icon: Calendar, value: '15+', label: '年行业经验' },
-  { icon: Users, value: '1000+', label: '服务客户' },
-  { icon: Award, value: '正品', label: '授权保障' },
-  { icon: MapPin, value: '北京', label: '本地服务' },
-];
+const statIcons = [Calendar, Users, Award, MapPin];
 
 export default function AboutSection() {
+  const { copy } = useLanguage();
+  const stats = copy.about.stats.map((stat, index) => ({ ...stat, icon: statIcons[index] }));
+
   return (
     <section id="about" className="relative overflow-x-clip py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -23,27 +22,27 @@ export default function AboutSection() {
                     <Award className="w-6 h-6 text-brand-400" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">绿联授权 · 极空间代理</div>
-                    <div className="text-xs text-zinc-500">NAS私有云 · 硬盘 · 存储配件</div>
+                    <div className="text-sm font-semibold text-white">{copy.about.authorized}</div>
+                    <div className="text-xs text-zinc-500">{copy.about.products}</div>
                   </div>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">成立时间</span>
-                    <span className="text-white font-medium">2010年</span>
+                    <span className="text-zinc-400">{copy.about.foundedLabel}</span>
+                    <span className="text-white font-medium">{copy.about.founded}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">所在地区</span>
-                    <span className="text-white font-medium">北京市海淀区</span>
+                    <span className="text-zinc-400">{copy.about.locationLabel}</span>
+                    <span className="text-white font-medium">{copy.about.location}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">主营业务</span>
-                    <span className="text-white font-medium">硬盘 / NAS私有云</span>
+                    <span className="text-zinc-400">{copy.about.businessLabel}</span>
+                    <span className="text-white font-medium">{copy.about.business}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">服务范围</span>
-                    <span className="text-white font-medium">全国发货 · 北京上门</span>
+                    <span className="text-zinc-400">{copy.about.coverageLabel}</span>
+                    <span className="text-white font-medium">{copy.about.coverage}</span>
                   </div>
                 </div>
               </div>
@@ -55,16 +54,16 @@ export default function AboutSection() {
           <div>
             <ScrollReveal>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-4">
-                品牌理念
+                {copy.about.badge}
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-                友聚四海 <span className="text-accent-400">·</span> 质服五洲
+                {copy.about.titleStart} <span className="text-accent-400">·</span> {copy.about.titleEnd}
               </h2>
               <p className="text-zinc-400 leading-relaxed mb-6">
-                北京友质科技有限公司成立于2010年，十五年来始终专注于数据存储领域。作为绿联、极空间等一线品牌的核心授权经销商，我们确保每一件产品均为正品行货，享受官方完整质保。
+                {copy.about.paragraph1}
               </p>
               <p className="text-zinc-400 leading-relaxed mb-8">
-                凭借专业的技术团队与丰富的项目经验，我们已成功为超过1000位客户部署了稳定可靠的存储解决方案。
+                {copy.about.paragraph2}
               </p>
             </ScrollReveal>
 
@@ -88,7 +87,7 @@ export default function AboutSection() {
                 to="/brand"
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
               >
-                了解品牌故事
+                {copy.about.story}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </ScrollReveal>

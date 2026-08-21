@@ -3,13 +3,13 @@ import { useState } from 'react';
 // 公司标识的内联回退图形：橙绿双色圆环 + 深青色中心，
 // 与 logo 主色一致。当 public/logo.png 尚未放入或加载失败时使用，
 // 避免出现破图。
-export function LogoMark({ className = 'w-9 h-9' }) {
+export function LogoMark({ className = 'w-9 h-9', alt = '友质科技' }) {
   return (
     <svg
       viewBox="0 0 48 48"
       className={className}
       role="img"
-      aria-label="友质科技标识"
+      aria-label={alt}
     >
       <defs>
         <linearGradient id="youzhi-orange" x1="0" y1="1" x2="1" y2="0">
@@ -45,7 +45,7 @@ export default function Logo({ className = 'w-9 h-9', alt = '友质科技' }) {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
-    return <LogoMark className={className} />;
+    return <LogoMark className={className} alt={alt} />;
   }
 
   return (

@@ -11,6 +11,12 @@ const consultationTypes = new Set([
   '其他',
 ]);
 
+const ERROR_MESSAGES = {
+  zh: { required: '请填写姓名、联系电话和咨询内容', phone: '联系电话格式不正确' },
+  en: { required: 'Please enter your name, phone number and inquiry.', phone: 'Please enter a valid phone number.' },
+  ja: { required: 'お名前、電話番号、お問い合わせ内容を入力してください。', phone: '有効な電話番号を入力してください。' },
+};
+
 // 表单提交频率天然很低，按天限流
 const RATE_LIMIT = { name: 'notify', limit: 5, windowMs: 24 * 60 * 60 * 1000, globalLimit: 100 };
 
@@ -50,13 +56,14 @@ export default async function handler(req, res) {
   const phone = normalizePhone(req.body?.phone);
   const type = consultationTypes.has(req.body?.type) ? req.body.type : '其他';
   const content = cleanText(req.body?.content, MAX_CONTENT_LENGTH);
+  const errors = ERROR_MESSAGES[req.body?.language] || ERROR_MESSAGES.zh;
 
   if (!name || !phone || !content) {
-    return json(res, 400, { error: '请填写姓名、联系电话和咨询内容' });
+    return json(res, 400, { error: errors.required });
   }
 
-  if (!/^(\+?86)?1[3-9]\d{9}$/.test(phone) && !/^\+\d{8,15}$/.test(phone)) {
-    return json(res, 400, { error: '联系电话格式不正确' });
+  if (!/^\+?\d{8,15}$/.test(phone)) {
+    return json(res, 400, { error: errors.phone });
   }
 
   const webhookUrl = process.env.WECOM_WEBHOOK_URL;

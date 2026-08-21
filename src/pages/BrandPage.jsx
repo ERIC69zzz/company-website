@@ -2,77 +2,41 @@ import { Newspaper, Handshake, CalendarDays, Trophy, ExternalLink, Building2 } f
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import zspaceNews from '../data/zspace-news.json';
+import { useLanguage } from '../i18n/language';
 
 // 新闻数据来自第三方 API 自动同步，渲染前再校验一次链接协议
 const isSafeHref = (url) => /^https?:\/\//i.test(String(url || ''));
 const safeNews = zspaceNews.filter((item) => isSafeHref(item.url));
 
-const news = [
-  {
-    id: 1,
-    date: '2025-04-15',
-    title: '友质科技成为绿联 NAS 华北区核心授权经销商',
-    desc: '正式签约绿联科技，成为 DXP 系列 NAS 产品在华北地区的核心授权经销商，为用户提供更完善的售前咨询与售后服务。',
-    tag: '合作签约',
-  },
-  {
-    id: 2,
-    date: '2025-03-20',
-    title: '极空间 Z4 Pro 新品首发，友质科技同步到货',
-    desc: '极空间发布年度旗舰 Z4 Pro，搭载 Intel N97 处理器，友质科技作为极空间授权代理，首批产品已到店开售。',
-    tag: '产品发布',
-  },
-  {
-    id: 3,
-    date: '2025-01-10',
-    title: '友质科技 2024 年度客户突破 1000 家',
-    desc: '截至 2024 年底，累计服务企业客户及个人用户超过 1000 家，覆盖影视制作、设计工作室、科研机构等多个领域。',
-    tag: '公司动态',
-  },
-];
-
-const events = [
-  {
-    year: '2025',
-    title: '中国国际信息通信展览会',
-    desc: '参展 PT Expo，展示企业级 NAS 存储方案与数据备份解决方案。',
-  },
-  {
-    year: '2024',
-    title: '绿联科技渠道合作伙伴大会',
-    desc: '受邀参加绿联年度渠道大会，荣获"优秀合作伙伴"称号。',
-  },
-  {
-    year: '2023',
-    title: '极空间新品发布会 · 北京站',
-    desc: '作为极空间授权代理参加新品发布会，现场签约多个企业客户。',
-  },
-];
-
-const partners = [
-  { name: '绿联科技', role: 'NAS 设备授权经销商' },
-  { name: '极空间', role: '全系产品授权代理' },
-  { name: '希捷', role: '酷狼系列企业级渠道' },
-  { name: '西部数据', role: '红盘系列核心渠道' },
-];
+const newsDates = ['2025-04-15', '2025-03-20', '2025-01-10'];
+const eventYears = ['2025', '2024', '2023'];
 
 export default function BrandPage() {
+  const { copy } = useLanguage();
+  const news = copy.brandPage.news.map((item, index) => ({ ...item, id: index + 1, date: newsDates[index] }));
+  const events = copy.brandPage.eventItems.map((item, index) => ({ ...item, year: eventYears[index] }));
+  const partners = copy.brandPage.partnerItems;
+  const localizedExternalNews = safeNews.map((item) => ({
+    ...item,
+    ...(copy.brandPage.externalNews?.[item.id] || {}),
+  }));
+
   return (
     <div className="min-h-screen bg-dark-900 pt-20 pb-16">
-      <PageHeader title="品牌天地" />
+      <PageHeader title={copy.brandPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 品牌标语 */}
         <ScrollReveal>
           <div className="text-center py-16 lg:py-24">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-6">
-              北京友质科技有限公司
+              {copy.brandPage.company}
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              友聚四海 <span className="text-accent-400">·</span> 质服五洲
+              {copy.brandPage.sloganStart} <span className="text-accent-400">·</span> {copy.brandPage.sloganEnd}
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-              始于 2010，十五年专注数据存储领域。我们不仅是产品的销售者，更是客户数据安全的守护者。以朋友般的真诚服务每一位客户，以高品质的产品与方案赢得长久信赖。
+              {copy.brandPage.intro}
             </p>
           </div>
         </ScrollReveal>
@@ -85,17 +49,17 @@ export default function BrandPage() {
                 <Newspaper className="w-5 h-5 text-brand-400" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">极空间动态</h3>
-                <p className="text-xs text-zinc-500 mt-0.5">同步自极空间官网媒体报道</p>
+                <h3 className="text-xl font-bold text-white">{copy.brandPage.zspaceNews}</h3>
+                <p className="text-xs text-zinc-500 mt-0.5">{copy.brandPage.newsSource}</p>
               </div>
             </div>
             {safeNews.length === 0 ? (
               <div className="text-center py-12 text-zinc-500">
-                暂无新闻数据
+                {copy.brandPage.noNews}
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {safeNews.slice(0, 6).map((item) => (
+                {localizedExternalNews.slice(0, 6).map((item) => (
                   <a
                     key={item.id}
                     href={item.url}
@@ -117,7 +81,7 @@ export default function BrandPage() {
                     </p>
                     <div className="mt-4 flex items-center gap-1 text-xs text-zinc-500 group-hover:text-brand-400 transition-colors">
                       <ExternalLink className="w-3 h-3" />
-                      查看原文
+                      {copy.brandPage.original}
                     </div>
                   </a>
                 ))}
@@ -133,7 +97,7 @@ export default function BrandPage() {
               <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-brand-400" />
               </div>
-              <h3 className="text-xl font-bold text-white">公司动态</h3>
+              <h3 className="text-xl font-bold text-white">{copy.brandPage.companyNews}</h3>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {news.map((item) => (
@@ -166,7 +130,7 @@ export default function BrandPage() {
               <div className="w-10 h-10 rounded-xl bg-accent-600/15 flex items-center justify-center">
                 <CalendarDays className="w-5 h-5 text-accent-400" />
               </div>
-              <h3 className="text-xl font-bold text-white">行业足迹</h3>
+              <h3 className="text-xl font-bold text-white">{copy.brandPage.events}</h3>
             </div>
             <div className="space-y-6">
               {events.map((event, i) => (
@@ -200,7 +164,7 @@ export default function BrandPage() {
               <div className="w-10 h-10 rounded-xl bg-accent-600/15 flex items-center justify-center">
                 <Handshake className="w-5 h-5 text-accent-400" />
               </div>
-              <h3 className="text-xl font-bold text-white">合作伙伴</h3>
+              <h3 className="text-xl font-bold text-white">{copy.brandPage.partners}</h3>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {partners.map((p, i) => (

@@ -1,8 +1,10 @@
 import { ArrowRight, Shield, Server, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ScrollReveal from './ScrollReveal';
+import { useLanguage } from '../i18n/language';
 
 export default function HeroSection() {
+  const { copy } = useLanguage();
   const handleScroll = (id) => {
     const el = document.querySelector(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -23,22 +25,22 @@ export default function HeroSection() {
             <ScrollReveal>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" />
-                始于2010 · 专注存储15年
+                {copy.hero.badge}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6">
-                企业级{' '}
-                <span className="text-gradient">硬盘与NAS</span>
+                {copy.hero.titleStart}{' '}
+                <span className="text-gradient">{copy.hero.titleAccent}</span>
                 <br />
-                私有云存储专家
+                {copy.hero.titleEnd}
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
               <p className="text-lg text-zinc-400 leading-relaxed mb-8 max-w-xl">
-                北京友质科技有限公司，为您提供从机械硬盘、固态硬盘到NAS私有云存储的一站式数据存储解决方案，让数据安全、高效、可控。
+                {copy.hero.description}
               </p>
             </ScrollReveal>
 
@@ -48,14 +50,14 @@ export default function HeroSection() {
                   to="/products"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/40 hover:shadow-brand-900/60 hover:-translate-y-0.5"
                 >
-                  浏览产品
+                  {copy.hero.products}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <button
                   onClick={() => handleScroll('#contact')}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 transition-all hover:-translate-y-0.5"
                 >
-                  联系我们
+                  {copy.hero.contact}
                 </button>
               </div>
             </ScrollReveal>
@@ -64,15 +66,15 @@ export default function HeroSection() {
               <div className="flex items-center gap-6 text-sm text-zinc-500">
                 <div className="flex items-center gap-1.5">
                   <Shield className="w-4 h-4 text-brand-400" />
-                  <span>数据安全</span>
+                  <span>{copy.hero.safe}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Server className="w-4 h-4 text-brand-400" />
-                  <span>企业方案</span>
+                  <span>{copy.hero.enterprise}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Zap className="w-4 h-4 text-brand-400" />
-                  <span>极速响应</span>
+                  <span>{copy.hero.response}</span>
                 </div>
               </div>
             </ScrollReveal>
@@ -86,39 +88,39 @@ export default function HeroSection() {
                     <Server className="w-5 h-5 text-brand-400" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">NAS 私有云</div>
-                    <div className="text-xs text-zinc-500">绿联 / 极空间 · 在线</div>
+                    <div className="text-sm font-semibold text-white">{copy.hero.nas}</div>
+                    <div className="text-xs text-zinc-500">{copy.hero.brands}</div>
                   </div>
                   <div className="ml-auto flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-xs text-emerald-400 font-medium">运行中</span>
+                    <span className="text-xs text-emerald-400 font-medium">{copy.hero.running}</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="rounded-xl bg-dark-800/60 p-3 border border-white/5">
-                    <div className="text-xs text-zinc-500 mb-1">总容量</div>
+                    <div className="text-xs text-zinc-500 mb-1">{copy.hero.total}</div>
                     <div className="text-xl font-bold text-white">32 TB</div>
                     <div className="w-full h-1.5 bg-dark-700 rounded-full mt-2 overflow-hidden">
                       <div className="h-full bg-brand-500 rounded-full" style={{ width: '62%' }} />
                     </div>
                   </div>
                   <div className="rounded-xl bg-dark-800/60 p-3 border border-white/5">
-                    <div className="text-xs text-zinc-500 mb-1">传输速度</div>
+                    <div className="text-xs text-zinc-500 mb-1">{copy.hero.speed}</div>
                     <div className="text-xl font-bold text-white">10 Gbps</div>
-                    <div className="text-xs text-accent-400 mt-1">万兆网口</div>
+                    <div className="text-xs text-accent-400 mt-1">{copy.hero.network}</div>
                   </div>
                 </div>
 
                 <div className="rounded-xl bg-dark-800/60 p-3 border border-white/5">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-zinc-500">硬盘状态</span>
-                    <span className="text-xs text-accent-400">全部正常</span>
+                    <span className="text-xs text-zinc-500">{copy.hero.diskStatus}</span>
+                    <span className="text-xs text-accent-400">{copy.hero.normal}</span>
                   </div>
                   <div className="space-y-2">
                     {[
-                      { name: '盘位 1', cap: '16TB', pct: 58 },
-                      { name: '盘位 2', cap: '16TB', pct: 42 },
+                      { name: copy.hero.bay1, cap: '16TB', pct: 58 },
+                      { name: copy.hero.bay2, cap: '16TB', pct: 42 },
                     ].map((disk) => (
                       <div key={disk.name} className="flex items-center gap-3">
                         <span className="text-xs text-zinc-400 w-10">{disk.name}</span>

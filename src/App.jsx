@@ -14,6 +14,7 @@ import BrandPage from './pages/BrandPage';
 import ContactPage from './pages/ContactPage';
 import ConsultPage from './pages/ConsultPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { LanguageProvider } from './i18n/LanguageContext';
 
 function HomePage() {
   return (
@@ -45,22 +46,24 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <div className="min-h-screen bg-dark-900 text-zinc-100">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:id" element={<ProductDetailPage />} />
-          <Route path="/brand" element={<BrandPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/consult" element={<ConsultPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-        <ChatWidget />
-      </div>
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <div className="min-h-screen bg-dark-900 text-zinc-100">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:id" element={<ProductDetailPage />} />
+            <Route path="/brand" element={<BrandPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/consult" element={<ConsultPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+          <Footer />
+          <ChatWidget />
+        </div>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

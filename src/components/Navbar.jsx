@@ -1,22 +1,46 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Languages, Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import { languageOptions, useLanguage } from '../i18n/language';
 
-const navItems = [
-  { label: '首页', href: '#home', type: 'anchor' },
-  { label: '产品中心', href: '/products', type: 'route' },
-  { label: '解决方案', href: '#services', type: 'anchor' },
-  { label: '品牌天地', href: '/brand', type: 'route' },
-  { label: '联系我们', href: '/contact', type: 'route' },
-];
+function LanguageSwitcher({ compact = false }) {
+  const { language, setLanguage, copy } = useLanguage();
+
+  return (
+    <label className="relative flex items-center text-zinc-400 hover:text-white transition-colors">
+      <span className="sr-only">{copy.language.label}</span>
+      <Languages className="absolute left-2.5 w-4 h-4 pointer-events-none" />
+      <select
+        value={language}
+        onChange={(event) => setLanguage(event.target.value)}
+        aria-label={copy.language.label}
+        className={`appearance-none rounded-lg border border-white/10 bg-white/5 py-2 pl-8 pr-2 text-xs font-medium text-zinc-200 outline-none hover:bg-white/10 focus:border-brand-500/60 ${compact ? 'w-[74px]' : 'w-[92px]'}`}
+      >
+        {languageOptions.map((option) => (
+          <option key={option.value} value={option.value} className="bg-dark-800">
+            {compact ? option.shortLabel : option.label}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { copy } = useLanguage();
   const isHome = location.pathname === '/';
+  const navItems = [
+    { label: copy.nav.home, href: '#home', type: 'anchor' },
+    { label: copy.nav.products, href: '/products', type: 'route' },
+    { label: copy.nav.solutions, href: '#services', type: 'anchor' },
+    { label: copy.nav.brandWorld, href: '/brand', type: 'route' },
+    { label: copy.nav.contact, href: '/contact', type: 'route' },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -59,13 +83,13 @@ export default function Navbar() {
             }}
             className="flex items-center gap-2 group"
           >
-            <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" />
+            <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" alt={copy.nav.brand} />
             <span className="text-lg font-bold text-white tracking-tight">
-              友质科技
+              {copy.nav.brand}
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -81,25 +105,29 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
               className="ml-3 px-5 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 rounded-lg transition-colors shadow-lg shadow-brand-900/30"
             >
-              立即咨询
+              {copy.nav.consult}
             </a>
+            <LanguageSwitcher />
           </div>
 
-          <button
-            type="button"
-            className="md:hidden p-2 text-zinc-300 hover:text-white"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? '关闭导航菜单' : '打开导航菜单'}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-navigation"
-          >
-            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-1.5">
+            <LanguageSwitcher compact />
+            <button
+              type="button"
+              className="p-2 text-zinc-300 hover:text-white"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? copy.nav.close : copy.nav.open}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
+            >
+              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {mobileOpen && (
-        <div id="mobile-navigation" className="md:hidden glass border-t border-white/5">
+        <div id="mobile-navigation" className="lg:hidden glass border-t border-white/5">
           <div className="px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <a
@@ -116,7 +144,7 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
               className="block px-3 py-2.5 text-sm font-semibold text-white bg-brand-600 rounded-lg mt-2 cursor-pointer"
             >
-              立即咨询
+              {copy.nav.consult}
             </a>
           </div>
         </div>

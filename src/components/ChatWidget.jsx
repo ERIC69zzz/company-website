@@ -1,13 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, Loader2 } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
-import { KIMI_CONFIG, presetQA } from '../config/kimi';
+import { useLanguage } from '../i18n/language';
 
 export default function ChatWidget({ embedded = false }) {
   const location = useLocation();
+  const { language, copy } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: KIMI_CONFIG.welcomeMessage },
+    { role: 'assistant', isWelcome: true },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -45,15 +46,12 @@ export default function ChatWidget({ embedded = false }) {
   // 本地预设回复匹配
   const getPresetReply = (text) => {
     const lower = text.toLowerCase();
-    for (const qa of presetQA) {
+    for (const qa of copy.chat.presetQA) {
       if (qa.keywords.some((k) => lower.includes(k))) {
         return qa.answer;
       }
     }
-    return (
-      '抱歉，我暂时无法理解这个问题。您可以拨打服务热线 **133-0133-5226** 联系人工客服，' +
-      '或在「立即咨询」页面提交详细需求，我们会尽快与您联系。'
-    );
+    return copy.chat.unknown;
   };
 
   const callChatAPI = async (userMessages) => {
@@ -61,7 +59,11 @@ export default function ChatWidget({ embedded = false }) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        messages: userMessages.map((m) => ({ role: m.role, content: m.content })),
+        messages: userMessages.map((m) => ({
+          role: m.role,
+          content: m.isWelcome ? copy.chat.welcome : m.content,
+        })),
+        language,
       }),
     });
 
@@ -70,7 +72,7 @@ export default function ChatWidget({ embedded = false }) {
     }
 
     const data = await response.json();
-    return data.reply || '抱歉，服务暂时不可用，请稍后再试。';
+    return data.reply || copy.chat.unavailable;
   };
 
   const handleSend = async () => {
@@ -93,7 +95,7 @@ export default function ChatWidget({ embedded = false }) {
         ...prev,
         {
           role: 'assistant',
-          content: `${KIMI_CONFIG.offlineMessage}\n\n${getPresetReply(text)}`,
+          content: `${copy.chat.offline}\n\n${getPresetReply(text)}`,
         },
       ]);
     } finally {
@@ -124,11 +126,11 @@ export default function ChatWidget({ embedded = false }) {
           </div>
           <div>
             <div className="text-sm font-semibold text-white">
-              {KIMI_CONFIG.botName}
+              {copy.chat.botName}
             </div>
             <div className="text-xs text-white/70 flex items-center gap-1">
               <span className={`w-1.5 h-1.5 rounded-full inline-block ${aiAvailable ? 'bg-accent-400' : 'bg-amber-300'}`} />
-              {aiAvailable ? 'AI 在线' : '本地兜底'}
+              {aiAvailable ? copy.chat.online : copy.chat.fallback}
             </div>
           </div>
         </div>
@@ -136,7 +138,7 @@ export default function ChatWidget({ embedded = false }) {
           <button
             onClick={() => setIsOpen(false)}
             className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-            aria-label="关闭"
+            aria-label={copy.chat.close}
           >
             <X className="w-5 h-5" />
           </button>
@@ -170,7 +172,7 @@ export default function ChatWidget({ embedded = false }) {
                   : 'bg-dark-700 text-zinc-200 border border-white/5 rounded-tl-sm'
               }`}
             >
-              {msg.content}
+              {msg.isWelcome ? copy.chat.welcome : msg.content}
             </div>
           </div>
         ))}
@@ -196,8 +198,8 @@ export default function ChatWidget({ embedded = false }) {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            aria-label="咨询问题"
-            placeholder="请输入您的问题..."
+            aria-label={copy.chat.inputLabel}
+            placeholder={copy.chat.placeholder}
             rows={1}
             className="flex-1 min-h-[40px] max-h-[100px] bg-dark-800 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 resize-none focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/20 transition-all"
           />
@@ -205,13 +207,13 @@ export default function ChatWidget({ embedded = false }) {
             onClick={handleSend}
             disabled={!inputValue.trim() || loading}
             className="w-10 h-10 rounded-xl bg-brand-600 hover:bg-brand-500 disabled:bg-dark-700 disabled:text-zinc-500 text-white flex items-center justify-center transition-all shrink-0 active:scale-95"
-            aria-label="发送"
+            aria-label={copy.chat.send}
           >
             <Send className="w-4 h-4" />
           </button>
         </div>
         <div className="mt-1.5 text-[10px] text-zinc-500 text-center">
-          AI 客服可回答选型、方案、售后和联系方式问题
+          {copy.chat.hint}
         </div>
       </div>
     </div>
@@ -232,7 +234,7 @@ export default function ChatWidget({ embedded = false }) {
         <button
           onClick={handleOpen}
           className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-900/40 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
-          aria-label="打开客服"
+          aria-label={copy.chat.open}
         >
           <MessageCircle className="w-6 h-6" />
           {hasNewMessage && (

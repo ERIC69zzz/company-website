@@ -4,14 +4,21 @@ import { Compass, Home, Package, Phone } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import { accentByIndex } from '../lib/accent';
+import { useLanguage } from '../i18n/language';
 
-const shortcuts = [
-  { to: '/', icon: Home, label: '返回首页', desc: '回到网站首页' },
-  { to: '/products', icon: Package, label: '产品中心', desc: '浏览全部存储产品' },
-  { to: '/contact', icon: Phone, label: '联系我们', desc: '电话与地址信息' },
+const shortcutRoutes = [
+  { to: '/', icon: Home },
+  { to: '/products', icon: Package },
+  { to: '/contact', icon: Phone },
 ];
 
 export default function NotFoundPage() {
+  const { copy } = useLanguage();
+  const shortcuts = shortcutRoutes.map((item, index) => ({
+    ...item,
+    ...copy.notFound.shortcuts[index],
+  }));
+
   // 单页应用无法在客户端改 HTTP 状态码，
   // 用 noindex 阻止搜索引擎把不存在的地址收进索引（soft 404）。
   useEffect(() => {
@@ -26,7 +33,7 @@ export default function NotFoundPage() {
 
   return (
     <div className="min-h-screen bg-dark-900 pt-20 pb-16">
-      <PageHeader title="页面不存在" />
+      <PageHeader title={copy.notFound.title} />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <ScrollReveal>
@@ -36,11 +43,10 @@ export default function NotFoundPage() {
             </div>
             <div className="text-6xl font-bold text-brand-500/30 mb-4">404</div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              没有找到这个页面
+              {copy.notFound.heading}
             </h2>
             <p className="text-zinc-400 max-w-md mx-auto">
-              页面可能已经下架或地址有误。您可以从下面的入口继续浏览，
-              或拨打服务热线由我们协助您。
+              {copy.notFound.desc}
             </p>
           </div>
         </ScrollReveal>
