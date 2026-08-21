@@ -1,29 +1,110 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useId, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Languages, Menu, X } from 'lucide-react';
+import { Check, ChevronDown, Languages, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import { languageOptions, useLanguage } from '../i18n/language';
 
 function LanguageSwitcher({ compact = false }) {
   const { language, setLanguage, copy } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef(null);
+  const triggerRef = useRef(null);
+  const menuId = useId();
+  const currentLanguage = languageOptions.find((option) => option.value === language);
+
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (!containerRef.current?.contains(event.target)) setOpen(false);
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
+
+  const selectLanguage = (value) => {
+    setLanguage(value);
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
 
   return (
-    <label className="relative flex items-center text-zinc-400 hover:text-white transition-colors">
-      <span className="sr-only">{copy.language.label}</span>
-      <Languages className="absolute left-2.5 w-4 h-4 pointer-events-none" />
-      <select
-        value={language}
-        onChange={(event) => setLanguage(event.target.value)}
+    <div ref={containerRef} className="relative">
+      <button
+        ref={triggerRef}
+        type="button"
+        onClick={() => setOpen((current) => !current)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-controls={menuId}
         aria-label={copy.language.label}
-        className={`appearance-none rounded-lg border border-white/10 bg-white/5 py-2 pl-8 pr-2 text-xs font-medium text-zinc-200 outline-none hover:bg-white/10 focus:border-brand-500/60 ${compact ? 'w-[74px]' : 'w-[92px]'}`}
+        className={`group flex h-10 items-center rounded-xl border border-white/10 bg-dark-800/70 text-zinc-200 shadow-sm backdrop-blur-xl transition-all hover:border-brand-500/35 hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 ${compact ? 'gap-1.5 px-2' : 'gap-2 px-2.5'}`}
       >
-        {languageOptions.map((option) => (
-          <option key={option.value} value={option.value} className="bg-dark-800">
-            {compact ? option.shortLabel : option.label}
-          </option>
-        ))}
-      </select>
-    </label>
+        <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-brand-500/15 bg-gradient-to-br from-brand-500/15 to-accent-500/10 text-brand-300 transition-colors group-hover:border-brand-500/30">
+          <Languages className="h-3.5 w-3.5" />
+        </span>
+        <span className={`text-xs font-semibold tracking-wide ${compact ? 'min-w-5 text-center' : 'min-w-12 text-left'}`}>
+          {compact ? currentLanguage.shortLabel : currentLanguage.label}
+        </span>
+        <ChevronDown className={`h-3.5 w-3.5 text-zinc-500 transition-transform duration-200 group-hover:text-zinc-300 ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      {open && (
+        <div
+          id={menuId}
+          role="menu"
+          aria-label={copy.language.label}
+          className="absolute right-0 top-full z-[70] mt-2 w-44 overflow-hidden rounded-2xl border border-white/10 bg-dark-900/95 p-1.5 shadow-2xl shadow-black/50 backdrop-blur-2xl"
+          style={{ animation: 'chatFadeIn 0.18s ease-out' }}
+        >
+          <div className="px-2.5 pb-1.5 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
+            {copy.language.label}
+          </div>
+          {languageOptions.map((option) => {
+            const active = option.value === language;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="menuitemradio"
+                aria-checked={active}
+                onClick={() => selectLanguage(option.value)}
+                className={`flex w-full items-center gap-3 rounded-xl border px-2 py-2 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40 ${
+                  active
+                    ? 'border-brand-500/20 bg-brand-500/10 text-white'
+                    : 'border-transparent text-zinc-400 hover:bg-white/[0.06] hover:text-white'
+                }`}
+              >
+                <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[11px] font-bold ${
+                  active
+                    ? 'bg-brand-500/20 text-brand-300'
+                    : 'bg-white/5 text-zinc-500'
+                }`}>
+                  {option.shortLabel}
+                </span>
+                <span className="flex-1 text-sm font-medium">{option.label}</span>
+                <span className={`flex h-5 w-5 items-center justify-center rounded-full transition-all ${
+                  active ? 'bg-accent-500/15 text-accent-400' : 'text-transparent'
+                }`}>
+                  <Check className="h-3.5 w-3.5" />
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }
 
