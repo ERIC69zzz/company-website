@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
@@ -18,10 +18,15 @@ import NotFoundPage from './pages/NotFoundPage';
 import { LanguageProvider } from './i18n/LanguageContext';
 
 function HomePage() {
+  const nasHandoffTargetRef = useRef(null);
+
   return (
     <>
-      <HeroSection />
-      <ScrollStory />
+      <div className="relative overflow-x-clip bg-dark-900">
+        <div className="pointer-events-none absolute inset-0 bg-grid opacity-20" aria-hidden="true" />
+        <HeroSection handoffTargetRef={nasHandoffTargetRef} />
+        <ScrollStory deviceTargetRef={nasHandoffTargetRef} />
+      </div>
       <ProductsSection />
       <ServicesSection />
       <AboutSection />

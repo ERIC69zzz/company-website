@@ -47,6 +47,46 @@ export function useScrollProgress(ref) {
   return progress;
 }
 
+// 返回一个普通首屏离开视口时的进度 0..1。
+// 与 useScrollProgress 不同，首屏本身不需要比视口更高，也不会制造第二段钉屏；
+// 它只负责把自然滚动映射为文案退场和产品视觉接力。
+export function useExitProgress(ref) {
+  const [progress, setProgress] = useState(0);
+  const frame = useRef(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const compute = () => {
+      frame.current = 0;
+      const rect = el.getBoundingClientRect();
+      const distance = Math.max(rect.height, window.innerHeight, 1);
+      const raw = -rect.top / distance;
+      setProgress(raw < 0 ? 0 : raw > 1 ? 1 : raw);
+    };
+
+    const onScroll = () => {
+      if (frame.current) return;
+      frame.current = requestAnimationFrame(compute);
+    };
+
+    compute();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame.current) {
+        cancelAnimationFrame(frame.current);
+        frame.current = 0;
+      }
+    };
+  }, [ref]);
+
+  return progress;
+}
+
 // 是否开启了「减少动态效果」的系统偏好。
 // 开启时降级为静态堆叠布局，不做钉屏和缩放。
 export function useReducedMotion() {

@@ -6,7 +6,7 @@ import NasDevice, { REGIONS } from './NasDevice';
 // 每个阶段对应设备的一次镜头运动 + 一块文案。
 // scale/x/y 是相对 SVG 舞台的变换，逐帧插值以获得连续的推拉感。
 const STAGES = [
-  { key: 'whole', region: REGIONS.all, litBays: 1, scale: 1, x: 0, y: 0 },
+  { key: 'whole', region: REGIONS.all, litBays: 4, scale: 1, x: 0, y: 0 },
   { key: 'bays', region: REGIONS.bays, litBays: 4, scale: 2.05, x: 8, y: 2 },
   { key: 'ports', region: REGIONS.ports, litBays: 4, scale: 2.35, x: -22, y: -20 },
   { key: 'system', region: REGIONS.status, litBays: 4, scale: 1.9, x: -20, y: 12 },
@@ -17,7 +17,7 @@ const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 // 缓动，让镜头在每个阶段停顿、切换时加速，接近 Apple 的节奏
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
-export default function ScrollStory() {
+export default function ScrollStory({ deviceTargetRef }) {
   const { copy } = useLanguage();
   const sectionRef = useRef(null);
   const progress = useScrollProgress(sectionRef);
@@ -39,11 +39,11 @@ export default function ScrollStory() {
   // 减少动态效果：降级为普通堆叠，不钉屏、不缩放
   if (reduced) {
     return (
-      <section className="relative py-24 bg-dark-900">
+      <section className="relative py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">{s.title}</h2>
           <p className="text-zinc-400 mb-12">{s.subtitle}</p>
-          <div className="w-full max-w-sm mx-auto mb-12">
+          <div ref={deviceTargetRef} className="w-full max-w-sm mx-auto mb-12">
             <NasDevice activeRegion={REGIONS.all} litBays={4} />
           </div>
           <div className="grid sm:grid-cols-2 gap-8">
@@ -77,21 +77,28 @@ export default function ScrollStory() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[320vh] md:h-[420vh] bg-dark-900"
+      className="relative h-[320vh] md:h-[420vh]"
       aria-label={s.title}
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
-        <div className="absolute inset-0 bg-grid opacity-20" />
+      <div
+        className="pointer-events-none absolute -top-60 left-1/2 h-[30rem] w-full -translate-x-1/2 rounded-full bg-brand-500/[0.065] blur-[140px]"
+        aria-hidden="true"
+      />
+      <div className="sticky top-0 h-screen">
         <div
           className="absolute left-1/2 top-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[130px] transition-colors duration-700"
           style={{ background: active.region === REGIONS.ports ? 'rgba(92,191,60,0.10)' : 'rgba(249,115,22,0.10)' }}
         />
 
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 overflow-hidden flex items-center">
+          <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 标题：进入时淡出，把注意力交给特写 */}
           <div
-            className="absolute inset-x-0 -top-24 lg:-top-28 text-center px-4"
-            style={{ opacity: clamp01(1 - progress * 6), transition: 'opacity .2s linear' }}
+            className="absolute z-30 inset-x-0 -top-24 lg:-top-16 text-center px-4"
+            style={{
+              opacity: `calc(var(--nas-handoff-title-opacity, 0) * ${clamp01(1 - progress * 6)})`,
+              transition: 'opacity .2s linear',
+            }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">{s.title}</h2>
             <p className="text-zinc-400 text-sm">{s.subtitle}</p>
@@ -99,10 +106,16 @@ export default function ScrollStory() {
 
           <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             {/* 设备舞台 */}
-            <div className="relative aspect-[4/3] max-w-[260px] sm:max-w-sm lg:max-w-lg mx-auto w-full">
+            <div
+              ref={deviceTargetRef}
+              className="nas-handoff-target relative aspect-[4/3] max-w-[260px] sm:max-w-sm lg:max-w-lg mx-auto w-full"
+            >
               <div
-                className="absolute inset-0 will-change-transform"
-                style={{ transform: `scale(${scale}) translate(${x}%, ${y}%)` }}
+                className="absolute inset-0 will-change-transform drop-shadow-[0_35px_45px_rgba(0,0,0,0.48)]"
+                style={{
+                  transform: `scale(${scale}) translate(${x}%, ${y}%)`,
+                  opacity: 'var(--nas-handoff-opacity, 0)',
+                }}
               >
                 <NasDevice activeRegion={active.region} litBays={active.litBays} />
               </div>
@@ -148,6 +161,7 @@ export default function ScrollStory() {
                 }}
               />
             ))}
+          </div>
           </div>
         </div>
       </div>

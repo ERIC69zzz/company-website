@@ -42,6 +42,147 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 首页首屏：一次性的分层入场 + 与下一段产品特写的滚动接力。 */
+@keyframes hero-reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-title-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 112%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-device-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(38px, 24px, 0) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-card-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.96);
+  }
+  to {
+    opacity: var(--hero-detail-opacity, 1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-sheen {
+  0%, 20% {
+    opacity: 0;
+    transform: translate3d(-135%, 0, 0) skewX(-14deg);
+  }
+  42% {
+    opacity: 0.45;
+  }
+  72%, 100% {
+    opacity: 0;
+    transform: translate3d(145%, 0, 0) skewX(-14deg);
+  }
+}
+
+@keyframes hero-status-pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+.hero-reveal-up {
+  animation: hero-reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--hero-delay, 0ms);
+}
+
+.hero-title-line {
+  animation: hero-title-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--hero-delay, 0ms);
+}
+
+.hero-device-reveal {
+  --hero-detail-opacity: 1;
+  --hero-label-shift: 0px;
+  animation: hero-device-reveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
+}
+
+.hero-device-handoff {
+  transform: translate3d(var(--hero-shift-x, 0px), var(--hero-shift-y, 0px), 0) scale(var(--hero-scale, 1));
+  transform-origin: center center;
+  backface-visibility: hidden;
+  opacity: var(--hero-opacity, 1);
+}
+
+.hero-handoff-details {
+  opacity: var(--hero-detail-opacity, 1);
+}
+
+.hero-handoff-labels {
+  opacity: var(--hero-detail-opacity, 1);
+  transform: translate3d(0, var(--hero-label-shift, 0px), 0);
+  will-change: opacity, transform;
+}
+
+.nas-handoff-target {
+  --nas-handoff-opacity: 0;
+}
+
+.hero-float-card {
+  animation: hero-card-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) 720ms both;
+}
+
+.hero-float-card-late {
+  animation-delay: 820ms;
+}
+
+.hero-float-card-last {
+  animation-delay: 920ms;
+}
+
+.hero-product-sheen {
+  width: 28%;
+  left: 0;
+  right: auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  mix-blend-mode: screen;
+  animation: hero-sheen 1.6s ease-out 880ms both;
+}
+
+.hero-status-pulse {
+  animation: hero-status-pulse 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-reveal-up,
+  .hero-title-line,
+  .hero-device-reveal,
+  .hero-float-card,
+  .hero-product-sheen,
+  .hero-status-pulse {
+    animation: none !important;
+  }
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-12px); }

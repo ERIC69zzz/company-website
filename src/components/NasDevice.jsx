@@ -1,3 +1,5 @@
+import { useId } from 'react';
+
 // 纯 SVG 绘制的 NAS 设备，供滚动特写缩放使用。
 // 用 SVG 而非位图，是因为特写需要放大到 2 倍以上仍然清晰；
 // activeRegion 决定哪个区域高亮、其余压暗。
@@ -7,18 +9,25 @@ const dim = (region, active) =>
   active === REGIONS.all || active === region ? 1 : 0.28;
 
 export default function NasDevice({ activeRegion = REGIONS.all, litBays = 4 }) {
+  // 首页首屏和滚动特写区会同时渲染设备，SVG 定义必须使用独立 id，
+  // 否则渐变和发光滤镜可能错误地引用到另一台设备。
+  const id = useId().replace(/[^a-zA-Z0-9_-]/g, '');
+  const bodyGradientId = `${id}-nas-body`;
+  const trayGradientId = `${id}-nas-tray`;
+  const glowFilterId = `${id}-nas-glow`;
+
   return (
     <svg viewBox="0 0 400 300" className="w-full h-full" aria-hidden="true">
       <defs>
-        <linearGradient id="nas-body" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={bodyGradientId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#26262b" />
           <stop offset="100%" stopColor="#141417" />
         </linearGradient>
-        <linearGradient id="nas-tray" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id={trayGradientId} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#1f1f24" />
           <stop offset="100%" stopColor="#2b2b32" />
         </linearGradient>
-        <filter id="nas-glow" x="-60%" y="-60%" width="220%" height="220%">
+        <filter id={glowFilterId} x="-60%" y="-60%" width="220%" height="220%">
           <feGaussianBlur stdDeviation="4" result="b" />
           <feMerge>
             <feMergeNode in="b" />
@@ -29,7 +38,7 @@ export default function NasDevice({ activeRegion = REGIONS.all, litBays = 4 }) {
 
       {/* 机身 */}
       <rect x="50" y="20" width="300" height="260" rx="18"
-            fill="url(#nas-body)" stroke="rgba(255,255,255,0.10)" strokeWidth="1.5" />
+            fill={`url(#${bodyGradientId})`} stroke="rgba(255,255,255,0.10)" strokeWidth="1.5" />
       <rect x="50" y="20" width="300" height="260" rx="18"
             fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
 
@@ -41,14 +50,14 @@ export default function NasDevice({ activeRegion = REGIONS.all, litBays = 4 }) {
           return (
             <g key={i}>
               <rect x="72" y={y} width="170" height="46" rx="7"
-                    fill="url(#nas-tray)" stroke="rgba(255,255,255,0.08)" />
+                    fill={`url(#${trayGradientId})`} stroke="rgba(255,255,255,0.08)" />
               {/* 抽取手柄 */}
               <rect x="82" y={y + 16} width="52" height="5" rx="2.5" fill="rgba(255,255,255,0.16)" />
               <rect x="82" y={y + 26} width="30" height="4" rx="2" fill="rgba(255,255,255,0.08)" />
               {/* 工作指示灯 */}
               <circle cx="228" cy={y + 23} r="4.5"
                       fill={lit ? '#5cbf3c' : '#3a3a42'}
-                      filter={lit ? 'url(#nas-glow)' : undefined}
+                      filter={lit ? `url(#${glowFilterId})` : undefined}
                       style={{ transition: 'fill .35s ease' }} />
             </g>
           );
@@ -65,7 +74,7 @@ export default function NasDevice({ activeRegion = REGIONS.all, litBays = 4 }) {
           { label: 'HDD', color: '#5cbf3c', y: 116 },
         ].map((s) => (
           <g key={s.label}>
-            <circle cx="278" cy={s.y} r="4" fill={s.color} filter="url(#nas-glow)" />
+            <circle cx="278" cy={s.y} r="4" fill={s.color} filter={`url(#${glowFilterId})`} />
             <text x="290" y={s.y + 4} fontSize="9" fill="rgba(255,255,255,0.45)"
                   fontFamily="ui-monospace, monospace">{s.label}</text>
           </g>
