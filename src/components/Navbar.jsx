@@ -146,6 +146,19 @@ export default function Navbar() {
     }
   };
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    setMobileOpen(false);
+
+    const isCanonicalHome = isHome && !location.search && !location.hash;
+    if (isCanonicalHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    navigate('/');
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -156,12 +169,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link
             to="/"
-            onClick={(e) => {
-              if (isHome) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}
+            onClick={handleLogoClick}
+            aria-label={copy.nav.home}
             className="flex items-center gap-2 group"
           >
             <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" alt={copy.nav.brand} />
