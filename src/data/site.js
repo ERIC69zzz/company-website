@@ -27,6 +27,12 @@ export const company = {
   wechat: 'bjyzyes',
 };
 
+// 售后紧急支持的值班电话。与主号分开，避免上次那样漏改。
+export const dutyPhones = [
+  { display: '139-1055-2844', href: 'tel:13910552844' },
+  { display: '133-0133-5226', href: 'tel:13301335226' },
+];
+
 export const productCategoryCards = [
   {
     icon: HardDrive,

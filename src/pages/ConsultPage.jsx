@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { MessageCircle, Phone, User, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, Phone, User, CheckCircle2 } from 'lucide-react';
 import { company, initialConsultForm } from '../data/site';
+import WechatQr from '../components/WechatQr';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../i18n/language';
@@ -57,15 +58,8 @@ export default function ConsultPage() {
                   </div>
                 </div>
 
-                {/* 二维码占位 */}
                 <div className="flex flex-col items-center py-4">
-                  <div className="w-48 h-48 rounded-xl bg-white flex items-center justify-center mb-4 overflow-hidden">
-                    {/* 替换为实际微信二维码图片 */}
-                    <div className="text-center text-zinc-400">
-                      <MessageSquare className="w-12 h-12 mx-auto mb-2 text-zinc-300" />
-                      <p className="text-xs">{copy.consultPage.qr}</p>
-                    </div>
-                  </div>
+                  <WechatQr alt={copy.consultPage.wechatTitle} fallbackText={copy.consultPage.qr} />
                   <p className="text-sm text-zinc-400 text-center">
                     {copy.consultPage.wechatSearch}<span className="text-white font-medium">{company.wechat}</span>
                   </p>
