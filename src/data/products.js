@@ -208,27 +208,6 @@ export const products = [
     },
     tags: ['专业级', '大容量', '5年质保'],
   },
-  // 机械硬盘 - 西数红盘
-  {
-    id: 'wd-red-plus-4t',
-    name: '红盘 Plus 4TB',
-    brand: '西部数据',
-    category: 'hdd',
-    price: '¥749',
-    image: '/products/wd-red-plus-4t.jpg',
-    shortDesc: 'NAS专用硬盘，CMR技术，180TB/年工作负载',
-    description: '西部数据红盘 Plus 系列采用 CMR 垂直磁记录技术，专为 NAS 优化。支持 7×24 小时运行，配备 NASware 3.0 固件技术，与主流 NAS 系统兼容。4TB 型号是家庭 NAS 的热门选择。',
-    specs: {
-      '容量': '4TB',
-      '转速': '5400 RPM',
-      '缓存': '64MB',
-      '接口': 'SATA 6Gb/s',
-      '记录技术': 'CMR（垂直记录）',
-      '年工作负载': '180TB',
-      '质保': '3年',
-    },
-    tags: ['NAS专用', 'CMR', 'NASware'],
-  },
   // SSD
   {
     id: 'samsung-990-pro-1t',

@@ -110,21 +110,27 @@ export default async function handler(req, res) {
   const languageInstruction = LANGUAGE_INSTRUCTIONS[req.body?.language] || LANGUAGE_INSTRUCTIONS.zh;
 
   try {
+    const requestBody = {
+      model,
+      messages: [
+        { role: 'system', content: `${SYSTEM_PROMPT}\n${languageInstruction}` },
+        ...messages,
+      ],
+      temperature: 0.35,
+      max_tokens: 800,
+    };
+    // K2.x 模型默认开启思考，客服场景要求快速简短回复，关闭思考降低延迟与成本
+    if (/^kimi-k2/.test(model)) {
+      requestBody.thinking = { type: 'disabled' };
+    }
+
     const response = await fetch(`${baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: 'system', content: `${SYSTEM_PROMPT}\n${languageInstruction}` },
-          ...messages,
-        ],
-        temperature: 0.35,
-        max_tokens: 800,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {

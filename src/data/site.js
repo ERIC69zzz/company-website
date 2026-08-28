@@ -32,7 +32,7 @@ export const productCategoryCards = [
     icon: HardDrive,
     title: '机械硬盘',
     category: 'hdd',
-    desc: '希捷酷狼、西数红盘等企业级NAS专用硬盘，7×24小时稳定运行。',
+    desc: '希捷酷狼、东芝等企业级NAS专用硬盘，7×24小时稳定运行。',
   },
   {
     icon: Database,

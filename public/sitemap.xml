@@ -21,6 +21,10 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.bjyzyes.com/privacy</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.bjyzyes.com/products/zspace-z4-pro</loc>
     <priority>0.5</priority>
   </url>
@@ -58,10 +62,6 @@
   </url>
   <url>
     <loc>https://www.bjyzyes.com/products/seagate-ironwolf-16t</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.bjyzyes.com/products/wd-red-plus-4t</loc>
     <priority>0.5</priority>
   </url>
   <url>

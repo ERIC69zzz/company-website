@@ -8,12 +8,12 @@ import ServicesSection from './components/ServicesSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
-import ChatWidget from './components/ChatWidget';
 import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import BrandPage from './pages/BrandPage';
 import ContactPage from './pages/ContactPage';
 import ConsultPage from './pages/ConsultPage';
+import PrivacyPage from './pages/PrivacyPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { LanguageProvider } from './i18n/LanguageContext';
 
@@ -65,11 +65,11 @@ export default function App() {
             <Route path="/brand" element={<BrandPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/consult" element={<ConsultPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
-          <ChatWidget />
-        </div>
+          </div>
       </BrowserRouter>
     </LanguageProvider>
   );

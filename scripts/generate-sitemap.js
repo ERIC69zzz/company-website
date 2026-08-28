@@ -18,6 +18,7 @@ const staticRoutes = [
   { path: '/consult', priority: '0.8' },
   { path: '/contact', priority: '0.7' },
   { path: '/brand', priority: '0.6' },
+  { path: '/privacy', priority: '0.3' },
 ];
 
 const escapeXml = (value) =>

@@ -5,7 +5,7 @@ import { useLanguage } from '../i18n/language';
 const linkTargets = [
   ['/products?category=hdd', '/products?category=ssd', '/products?category=nas', '/products?category=accessory'],
   ['/consult', '/consult', '/consult', '/consult'],
-  ['/brand', '/contact', null, null],
+  ['/brand', '/contact', '/contact', '/privacy'],
 ];
 
 export default function Footer() {

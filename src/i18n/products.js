@@ -50,11 +50,6 @@ const productCopy = {
       description: 'The Seagate IronWolf Pro 16TB is a professional NAS drive running at 7,200RPM with a 256MB cache. It is rated for 550TB per year, supports NAS systems with up to 24 bays, and includes a 5-year warranty plus 3 years of Rescue Data Recovery Services.',
       tags: ['Professional', 'High capacity', '5-year warranty'],
     },
-    'wd-red-plus-4t': {
-      name: 'WD Red Plus 4TB', shortDesc: 'NAS hard drive with CMR and a 180TB/year workload rating',
-      description: 'Western Digital Red Plus drives use CMR recording and are optimized for NAS. They support 24/7 operation and use NASware 3.0 firmware for compatibility with leading NAS platforms. The 4TB model is a popular choice for home NAS systems.',
-      tags: ['NAS optimized', 'CMR', 'NASware'],
-    },
     'samsung-990-pro-1t': {
       shortDesc: 'PCIe 4.0 NVMe SSD with 7,450MB/s reads, ideal for NAS caching',
       description: 'The Samsung 990 PRO is a flagship PCIe 4.0 NVMe SSD with sequential reads up to 7,450MB/s and writes up to 6,900MB/s. Samsung V-NAND and an in-house controller make it an excellent NAS cache drive for accelerating small-file workloads.',
@@ -132,11 +127,6 @@ const productCopy = {
       description: 'Seagate IronWolf Pro 16TBは7,200RPM、256MBキャッシュを備えたプロ向けNAS HDDです。年間550TBのワークロードと最大24ベイのNASに対応し、5年保証と3年間のRescueデータ復旧サービスが付属します。',
       tags: ['プロ向け', '大容量', '5年保証'],
     },
-    'wd-red-plus-4t': {
-      name: 'WD Red Plus 4TB', shortDesc: 'CMR方式、年間180TB対応のNAS向けHDD',
-      description: 'Western Digital Red PlusはCMR方式を採用し、NAS向けに最適化されたHDDです。24時間365日の稼働に対応し、NASware 3.0ファームウェアで主要NASとの互換性を確保。4TBモデルは家庭用NASの定番です。',
-      tags: ['NAS向け', 'CMR', 'NASware'],
-    },
     'samsung-990-pro-1t': {
       shortDesc: '最大7,450MB/s、NASキャッシュに適したPCIe 4.0 NVMe SSD',
       description: 'Samsung 990 PROは、最大7,450MB/sのシーケンシャル読み込みと6,900MB/sの書き込みに対応するPCIe 4.0 NVMe SSDです。V-NANDと自社製コントローラーにより、NASのSSDキャッシュとして小さなファイルの処理を高速化します。',
@@ -166,8 +156,8 @@ const productCopy = {
 };
 
 const brandNames = {
-  en: { 极空间: 'ZSpace', 绿联: 'UGREEN', 希捷: 'Seagate', 西部数据: 'Western Digital', 三星: 'Samsung', 英睿达: 'Crucial' },
-  ja: { 极空间: 'ZSpace', 绿联: 'UGREEN', 希捷: 'Seagate', 西部数据: 'Western Digital', 三星: 'Samsung', 英睿达: 'Crucial' },
+  en: { 极空间: 'ZSpace', 绿联: 'UGREEN', 希捷: 'Seagate', 东芝: 'Toshiba', 三星: 'Samsung', 英睿达: 'Crucial' },
+  ja: { 极空间: 'ZSpace', 绿联: 'UGREEN', 希捷: 'Seagate', 东芝: 'Toshiba', 三星: 'Samsung', 英睿达: 'Crucial' },
 };
 
 const specLabels = {

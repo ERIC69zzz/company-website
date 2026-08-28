@@ -90,7 +90,7 @@ export const translations = {
       ],
       partnerItems: [
         { name: '绿联科技', role: 'NAS 设备授权经销商' }, { name: '极空间', role: '全系产品授权代理' },
-        { name: '希捷', role: '酷狼系列企业级渠道' }, { name: '西部数据', role: '红盘系列核心渠道' },
+        { name: '希捷', role: '酷狼系列企业级渠道' }, { name: '东芝', role: 'NAS 硬盘授权渠道' },
       ],
     },
     contactPage: {
@@ -145,6 +145,77 @@ export const translations = {
         },
       },
     },
+    privacyPage: {
+      title: '隐私政策',
+      updatedLabel: '最近更新',
+      updated: '2026年8月28日',
+      intro: '北京友质科技有限公司（以下简称"我们"）尊重并保护访问者的个人信息。本政策说明我们在 bjyzyes.com 上收集哪些信息、如何使用，以及您享有的权利。',
+      sections: [
+        {
+          heading: '我们收集的信息',
+          paragraphs: ['我们仅在您主动提交咨询表单时收集信息。您不填写表单即可浏览本站全部内容。'],
+          items: [
+            '姓名：您在咨询表单中填写的称呼',
+            '联系电话：用于回访您的咨询',
+            '咨询类型：您从下拉列表中选择的类别',
+            '咨询内容：您填写的需求描述',
+          ],
+        },
+        {
+          heading: '我们不收集的信息',
+          paragraphs: ['为避免误解，以下内容我们明确不做：'],
+          items: [
+            '不使用 Cookie 进行跟踪，本站未接入任何第三方统计或广告代码',
+            '不收集您的身份证件、住址、银行卡或支付信息',
+            '不记录您在站内的浏览轨迹并用于画像',
+            '浏览器本地仅保存您选择的界面语言，该数据不会发送给我们',
+          ],
+        },
+        {
+          heading: '信息的使用方式',
+          paragraphs: [
+            '您提交的信息仅用于回应您的咨询——由我们的销售或技术人员与您联系，提供选型建议、方案或售后支持。',
+            '我们不会将您的信息用于与咨询无关的营销推送，也不会出售、出租或交换给任何第三方。',
+          ],
+        },
+        {
+          heading: '信息的存储与流转',
+          paragraphs: [
+            '表单提交后，内容会通过加密连接发送至我们内部的企业微信工作群，供负责同事查看并跟进。信息不写入独立的客户数据库。',
+            '本网站托管于 Vercel 平台，服务器位于中国境外。您提交的数据在传输过程中会经过该平台，全程使用 HTTPS 加密。',
+          ],
+        },
+        {
+          heading: '信息的保留期限',
+          paragraphs: [
+            '咨询记录保留在企业微信工作群中，我们会在咨询事项办结且无后续服务需求后清理相关记录，一般不超过 12 个月。',
+            '您可以随时联系我们要求提前删除。',
+          ],
+        },
+        {
+          heading: '您的权利',
+          paragraphs: ['根据《中华人民共和国个人信息保护法》，您对自己的个人信息享有以下权利：'],
+          items: [
+            '查阅：了解我们持有您哪些信息',
+            '更正：要求修正不准确的信息',
+            '删除：要求删除您的咨询记录',
+            '撤回同意：要求我们停止与您联系',
+          ],
+        },
+        {
+          heading: '未成年人',
+          paragraphs: ['本网站面向企业与成年个人客户。我们不会主动向未满 14 周岁的未成年人收集信息。如您是监护人并发现相关情况，请联系我们删除。'],
+        },
+        {
+          heading: '本政策的变更',
+          paragraphs: ['若本政策发生变更，我们会更新本页顶部的"最近更新"日期。建议您在提交咨询前查阅当前版本。'],
+        },
+      ],
+      contactHeading: '联系我们',
+      contactDesc: '如需行使上述权利，或对本政策有任何疑问，请通过以下方式联系我们：',
+      phoneLabel: '电话',
+      emailLabel: '邮箱',
+    },
     chat: {
       botName: 'KimiClaw 智能客服', welcome: '您好！我是友质科技的智能客服助手，很高兴为您服务。请问有什么可以帮您？',
       offline: '智能客服暂时不可用，我先按常见问题为您回复。也可以拨打 177-4358-8003 联系人工客服。',
@@ -152,7 +223,7 @@ export const translations = {
       unavailable: '抱歉，服务暂时不可用，请稍后再试。', online: 'AI 在线', fallback: '本地兜底', close: '关闭',
       inputLabel: '咨询问题', placeholder: '请输入您的问题...', send: '发送', hint: 'AI 客服可回答选型、方案、售后和联系方式问题', open: '打开客服',
       presetQA: [
-        { keywords: ['产品', '硬盘', 'nas', '买什么', '推荐'], answer: '我们主营机械硬盘（希捷酷狼、西数红盘等）、固态硬盘（NVMe/SATA SSD）以及 NAS 私有云（绿联、极空间全系产品）。请问您的使用场景是什么？家庭存储还是企业级方案？' },
+        { keywords: ['产品', '硬盘', 'nas', '买什么', '推荐'], answer: '我们主营机械硬盘（希捷酷狼、东芝等）、固态硬盘（NVMe/SATA SSD）以及 NAS 私有云（绿联、极空间全系产品）。请问您的使用场景是什么？家庭存储还是企业级方案？' },
         { keywords: ['价格', '多少钱', '报价', '询价'], answer: '我们的产品价格会根据市场波动和采购量有所调整。您可以留下联系方式，我们会安排专人为您提供最新报价，或者访问「产品中心」查看公开价格。' },
         { keywords: ['售后', '保修', '维修', '质保'], answer: '我们提供全生命周期售后服务，7×12小时响应。所有硬盘均享受官方质保，NAS 产品享受品牌官方保修和我们提供的上门技术支持。' },
         { keywords: ['地址', '在哪', '公司', '位置'], answer: '公司地址：北京市海淀区知春路113号银网中心8层808室。欢迎预约上门参观洽谈。' },
@@ -164,7 +235,7 @@ export const translations = {
     data: {
       categories: ['全部产品', 'NAS私有云', '机械硬盘', '固态硬盘', '存储配件'],
       categoryCards: [
-        { title: '机械硬盘', desc: '希捷酷狼、西数红盘等企业级NAS专用硬盘，7×24小时稳定运行。' },
+        { title: '机械硬盘', desc: '希捷酷狼、东芝等企业级NAS专用硬盘，7×24小时稳定运行。' },
         { title: '固态硬盘', desc: '高速NVMe与SATA SSD，满足NAS缓存加速与高性能存储需求。' },
         { title: 'NAS私有云', desc: '绿联、极空间全系产品，从双盘位到八盘位，搭载自研系统。' },
         { title: '存储配件', desc: '硬盘盒、扩展卡、RAID卡等周边配件，一站式配齐存储方案。' },
@@ -277,7 +348,7 @@ export const translations = {
       ],
       partnerItems: [
         { name: 'UGREEN', role: 'Authorized NAS Reseller' }, { name: 'ZSpace', role: 'Authorized Full-Line Partner' },
-        { name: 'Seagate', role: 'Enterprise IronWolf Channel' }, { name: 'Western Digital', role: 'Core WD Red Channel' },
+        { name: 'Seagate', role: 'Enterprise IronWolf Channel' }, { name: 'Toshiba', role: 'Authorized NAS Drive Channel' },
       ],
     },
     contactPage: {
@@ -332,6 +403,77 @@ export const translations = {
         },
       },
     },
+    privacyPage: {
+      title: 'Privacy Policy',
+      updatedLabel: 'Last updated',
+      updated: 'August 28, 2026',
+      intro: 'Beijing Youzhi Technology Co., Ltd. ("we") respects and protects the personal information of visitors. This policy explains what we collect on bjyzyes.com, how it is used, and the rights you have.',
+      sections: [
+        {
+          heading: 'Information we collect',
+          paragraphs: ['We only collect information when you actively submit the consultation form. You can browse the entire site without providing anything.'],
+          items: [
+            'Name: how you wish to be addressed',
+            'Phone number: used to follow up on your enquiry',
+            'Enquiry type: the category you select',
+            'Enquiry details: the requirements you describe',
+          ],
+        },
+        {
+          heading: 'What we do not collect',
+          paragraphs: ['To avoid any misunderstanding, we explicitly do not:'],
+          items: [
+            'Use tracking cookies — no third-party analytics or advertising code runs on this site',
+            'Collect ID documents, home addresses, bank cards or payment details',
+            'Record your browsing behaviour for profiling',
+            'Send your language preference anywhere — it stays in your browser only',
+          ],
+        },
+        {
+          heading: 'How we use it',
+          paragraphs: [
+            'Your submission is used solely to respond to your enquiry — our sales or technical staff contact you with product advice, a proposal, or after-sales support.',
+            'We do not use your details for unrelated marketing, and we never sell, rent or trade them to any third party.',
+          ],
+        },
+        {
+          heading: 'Storage and transfer',
+          paragraphs: [
+            'Submitted forms are delivered over an encrypted connection to our internal WeCom (Enterprise WeChat) work group, where the responsible colleague follows up. No separate customer database is maintained.',
+            'This site is hosted on Vercel, with servers located outside mainland China. Your submission passes through that platform in transit, encrypted with HTTPS throughout.',
+          ],
+        },
+        {
+          heading: 'Retention',
+          paragraphs: [
+            'Enquiry records remain in the WeCom work group. We clear them once the matter is closed and no further service is required, generally within 12 months.',
+            'You may contact us at any time to request earlier deletion.',
+          ],
+        },
+        {
+          heading: 'Your rights',
+          paragraphs: ['Under the Personal Information Protection Law of the People\'s Republic of China, you have the right to:'],
+          items: [
+            'Access: learn what information we hold about you',
+            'Correct: have inaccurate information fixed',
+            'Delete: have your enquiry record removed',
+            'Withdraw consent: ask us to stop contacting you',
+          ],
+        },
+        {
+          heading: 'Minors',
+          paragraphs: ['This site serves business and adult individual customers. We do not knowingly collect information from children under 14. Guardians who believe otherwise should contact us for removal.'],
+        },
+        {
+          heading: 'Changes to this policy',
+          paragraphs: ['If this policy changes, we will update the "Last updated" date at the top of this page. Please review the current version before submitting an enquiry.'],
+        },
+      ],
+      contactHeading: 'Contact us',
+      contactDesc: 'To exercise any of the rights above, or if you have questions about this policy, reach us at:',
+      phoneLabel: 'Phone',
+      emailLabel: 'Email',
+    },
     chat: {
       botName: 'KimiClaw AI Support', welcome: 'Hello! I’m Youzhi Technology’s AI support assistant. How can I help you today?',
       offline: 'AI support is temporarily unavailable, so I’ll answer from our common support topics. You can also call 177-4358-8003 for human assistance.',
@@ -339,7 +481,7 @@ export const translations = {
       unavailable: 'Sorry, the service is temporarily unavailable. Please try again later.', online: 'AI online', fallback: 'Local answers', close: 'Close',
       inputLabel: 'Consultation question', placeholder: 'Type your question...', send: 'Send', hint: 'Ask about product selection, solutions, support and contact details.', open: 'Open customer support',
       presetQA: [
-        { keywords: ['product', 'drive', 'hdd', 'ssd', 'nas', 'recommend'], answer: 'We supply NAS hard drives such as Seagate IronWolf and WD Red, NVMe/SATA SSDs, and private-cloud NAS systems from UGREEN and ZSpace. Is this for home storage or a business deployment?' },
+        { keywords: ['product', 'drive', 'hdd', 'ssd', 'nas', 'recommend'], answer: 'We supply NAS hard drives such as Seagate IronWolf and Toshiba, NVMe/SATA SSDs, and private-cloud NAS systems from UGREEN and ZSpace. Is this for home storage or a business deployment?' },
         { keywords: ['price', 'cost', 'quote'], answer: 'Prices vary with the market and order volume. Leave your contact details for a current quote, or visit the Product Center to see listed prices.' },
         { keywords: ['support', 'warranty', 'repair'], answer: 'We provide lifecycle support with a 7×12-hour response window. Drives include the manufacturer’s warranty, while NAS products include official brand coverage plus our onsite technical support.' },
         { keywords: ['address', 'location', 'office'], answer: 'Our office is Room 808, 8th Floor, Yinwang Center, 113 Zhichun Road, Haidian District, Beijing. Please make an appointment before visiting.' },
@@ -351,7 +493,7 @@ export const translations = {
     data: {
       categories: ['All Products', 'Private Cloud NAS', 'Hard Drives', 'Solid-State Drives', 'Accessories'],
       categoryCards: [
-        { title: 'Hard Drives', desc: 'Enterprise NAS drives including Seagate IronWolf and WD Red, designed for reliable 24/7 operation.' },
+        { title: 'Hard Drives', desc: 'Enterprise NAS drives including Seagate IronWolf and Toshiba, designed for reliable 24/7 operation.' },
         { title: 'Solid-State Drives', desc: 'High-speed NVMe and SATA SSDs for NAS caching and performance storage.' },
         { title: 'Private Cloud NAS', desc: 'UGREEN and ZSpace systems from two to eight bays, powered by purpose-built operating systems.' },
         { title: 'Storage Accessories', desc: 'Enclosures, expansion cards, RAID cards and related accessories for a complete storage setup.' },
@@ -464,7 +606,7 @@ export const translations = {
       ],
       partnerItems: [
         { name: 'UGREEN', role: 'NAS正規販売店' }, { name: 'ZSpace', role: '全製品正規代理店' },
-        { name: 'Seagate', role: 'IronWolf法人向けチャネル' }, { name: 'Western Digital', role: 'WD Red中核チャネル' },
+        { name: 'Seagate', role: 'IronWolf法人向けチャネル' }, { name: 'Toshiba', role: 'NAS向けHDD正規チャネル' },
       ],
     },
     contactPage: {
@@ -519,6 +661,77 @@ export const translations = {
         },
       },
     },
+    privacyPage: {
+      title: 'プライバシーポリシー',
+      updatedLabel: '最終更新',
+      updated: '2026年8月28日',
+      intro: '北京友質科技有限公司（以下「当社」）は、訪問者の個人情報を尊重し保護します。本ポリシーでは、bjyzyes.com で取得する情報、その利用方法、およびお客様の権利について説明します。',
+      sections: [
+        {
+          heading: '取得する情報',
+          paragraphs: ['お問い合わせフォームを送信された場合にのみ情報を取得します。フォームを送信せずにサイト全体をご覧いただけます。'],
+          items: [
+            'お名前：フォームにご記入いただいた呼称',
+            '電話番号：お問い合わせへの折り返しに使用',
+            'お問い合わせ種別：選択いただいたカテゴリ',
+            'お問い合わせ内容：ご記入いただいたご要望',
+          ],
+        },
+        {
+          heading: '取得しない情報',
+          paragraphs: ['誤解を避けるため、当社が行わないことを明記します：'],
+          items: [
+            'トラッキング Cookie の使用（第三者の解析・広告コードは一切導入していません）',
+            '身分証明書、住所、銀行口座、決済情報の取得',
+            '閲覧履歴の記録およびプロファイリングへの利用',
+            '言語設定はブラウザ内にのみ保存され、当社には送信されません',
+          ],
+        },
+        {
+          heading: '利用目的',
+          paragraphs: [
+            'ご提供いただいた情報は、お問い合わせへの回答のみに使用します。営業または技術担当者が、製品選定のご提案、構成案、アフターサポートについてご連絡します。',
+            '無関係なマーケティング目的では使用せず、第三者への販売・貸与・交換も一切行いません。',
+          ],
+        },
+        {
+          heading: '保存と移転',
+          paragraphs: [
+            '送信内容は暗号化された通信で社内の企業微信（WeCom）グループに送られ、担当者が対応します。独立した顧客データベースは保有していません。',
+            '本サイトは Vercel 上でホストされ、サーバーは中国本土外に所在します。送信データは通信経路上で同プラットフォームを経由し、全区間 HTTPS で暗号化されます。',
+          ],
+        },
+        {
+          heading: '保存期間',
+          paragraphs: [
+            'お問い合わせ記録は WeCom グループ内に保持され、対応完了かつ継続的なサービスが不要となった時点で削除します。通常 12 か月を超えません。',
+            'お客様のご請求により、それ以前に削除することも可能です。',
+          ],
+        },
+        {
+          heading: 'お客様の権利',
+          paragraphs: ['中華人民共和国個人情報保護法に基づき、お客様は以下の権利を有します：'],
+          items: [
+            '開示：当社が保有する情報の確認',
+            '訂正：不正確な情報の修正請求',
+            '削除：お問い合わせ記録の削除請求',
+            '同意の撤回：連絡の停止請求',
+          ],
+        },
+        {
+          heading: '未成年者について',
+          paragraphs: ['本サイトは法人および成人のお客様を対象としています。14歳未満の未成年者から意図的に情報を取得することはありません。保護者の方でお心当たりがある場合はご連絡ください。'],
+        },
+        {
+          heading: '本ポリシーの変更',
+          paragraphs: ['本ポリシーを変更する場合、ページ上部の「最終更新」日を更新します。お問い合わせの送信前に最新版をご確認ください。'],
+        },
+      ],
+      contactHeading: 'お問い合わせ',
+      contactDesc: '上記の権利の行使、または本ポリシーに関するご質問は、以下までご連絡ください：',
+      phoneLabel: '電話',
+      emailLabel: 'メール',
+    },
     chat: {
       botName: 'KimiClaw AIサポート', welcome: 'こんにちは。友質科技のAIサポートです。本日はどのようなご相談でしょうか？',
       offline: 'AIサポートは一時的に利用できません。よくあるご質問に基づいて回答します。担当者へのご相談は 177-4358-8003 へお電話ください。',
@@ -526,7 +739,7 @@ export const translations = {
       unavailable: '現在サービスをご利用いただけません。時間をおいて再度お試しください。', online: 'AIオンライン', fallback: 'ローカル回答', close: '閉じる',
       inputLabel: '相談内容', placeholder: 'ご質問を入力...', send: '送信', hint: '製品選定、構成、サポート、連絡先について回答します。', open: 'サポートを開く',
       presetQA: [
-        { keywords: ['製品', 'ドライブ', 'hdd', 'ssd', 'nas', 'おすすめ'], answer: 'Seagate IronWolfやWD RedなどのNAS向けHDD、NVMe/SATA SSD、UGREEN・ZSpaceのプライベートクラウドNASを取り扱っています。ご家庭用でしょうか、法人導入でしょうか？' },
+        { keywords: ['製品', 'ドライブ', 'hdd', 'ssd', 'nas', 'おすすめ'], answer: 'Seagate IronWolfや東芝などのNAS向けHDD、NVMe/SATA SSD、UGREEN・ZSpaceのプライベートクラウドNASを取り扱っています。ご家庭用でしょうか、法人導入でしょうか？' },
         { keywords: ['価格', '料金', '見積'], answer: '価格は市場状況と数量により変動します。最新のお見積りは連絡先をお残しいただくか、製品センターの掲載価格をご確認ください。' },
         { keywords: ['サポート', '保証', '修理'], answer: '製品ライフサイクル全体を支援し、7×12時間の対応体制を設けています。ドライブはメーカー保証、NASはメーカー保証に加えて当社の訪問技術支援をご利用いただけます。' },
         { keywords: ['住所', '場所', '会社'], answer: '所在地は北京市海淀区知春路113号 銀網センター8階808号室です。ご来訪の際は事前にご予約ください。' },
@@ -538,7 +751,7 @@ export const translations = {
     data: {
       categories: ['すべての製品', 'プライベートクラウドNAS', 'ハードディスク', 'SSD', '周辺機器'],
       categoryCards: [
-        { title: 'ハードディスク', desc: 'Seagate IronWolfやWD Redなど、24時間365日の安定稼働を想定した法人・NAS向けHDD。' },
+        { title: 'ハードディスク', desc: 'Seagate IronWolfや東芝など、24時間365日の安定稼働を想定した法人・NAS向けHDD。' },
         { title: 'SSD', desc: 'NASキャッシュや高速ストレージに適したNVMe・SATA SSD。' },
         { title: 'プライベートクラウドNAS', desc: '2ベイから8ベイまで、独自OSを搭載したUGREEN・ZSpace製品。' },
         { title: 'ストレージ周辺機器', desc: 'ドライブケース、拡張カード、RAIDカードなど、必要な周辺機器をまとめてご用意。' },

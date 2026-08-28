@@ -14,9 +14,9 @@ npm run dev
 复制 `.env.example` 到 `.env.local`，按需填写：
 
 - `WECOM_WEBHOOK_URL`：企业微信机器人 Webhook，用于接收咨询表单。
-- `MOONSHOT_API_KEY`：Kimi/Moonshot API Key，用于 AI 客服。
+- `MOONSHOT_API_KEY`：Kimi/Moonshot 开放平台（platform.moonshot.cn）的 API Key，用于 AI 客服。
 - `KIMI_BASE_URL`：Kimi OpenAI 兼容接口地址，默认 `https://api.moonshot.cn/v1`。
-- `KIMI_MODEL`：Kimi 模型 ID。如果要使用 Kimiclaw 或其它可用模型，填对应模型名。
+- `KIMI_MODEL`：Kimi 模型 ID，默认 `moonshot-v1-8k`。AI 客服推荐用 `kimi-k2.6`（K2.6）。注意：编程订阅（Kimi For Coding）侧的 `kimi-coding/k2p6` 标识不能用于开放平台，那里对应的模型 ID 是 `kimi-k2.6`。如果要使用 Kimiclaw 或其它可用模型，填开放平台模型列表里的对应模型名。
 - `ALLOWED_ORIGINS`：可选。`/api/*` 默认只放行与站点同源的请求（自定义域名和 Vercel 预览域名都自动生效），需要额外放行其它域名时在这里填，逗号分隔。
 
 ## 接口防护
