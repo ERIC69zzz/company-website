@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { MessageCircle, Phone, User, MessageSquare, CheckCircle2 } from 'lucide-react';
 import { company, initialConsultForm } from '../data/site';
-import ChatWidget from '../components/ChatWidget';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../i18n/language';
@@ -47,19 +46,6 @@ export default function ConsultPage() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <ScrollReveal>
             <div>
-              <div className="glass-card rounded-2xl p-4 border border-white/5 mb-6">
-                <div className="flex items-center gap-3 mb-4 px-2">
-                  <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-brand-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white">{copy.consultPage.aiTitle}</h3>
-                    <p className="text-xs text-zinc-500">{copy.consultPage.aiDesc}</p>
-                  </div>
-                </div>
-                <ChatWidget embedded />
-              </div>
-
               <div className="glass-card rounded-2xl p-8 border border-white/5 mb-6">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
