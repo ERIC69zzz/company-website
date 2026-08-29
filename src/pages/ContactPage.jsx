@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { company, contactCards } from '../data/site';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
@@ -88,7 +89,9 @@ export default function ContactPage() {
                 <div className="h-px bg-white/5" />
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-zinc-400">{copy.contactPage.wechat}</span>
-                  <span className="text-white font-medium">{copy.contactPage.qr}</span>
+                  <Link to="/consult" className="text-brand-400 hover:text-brand-300 font-medium transition-colors">
+                    {copy.contactPage.qr}
+                  </Link>
                 </div>
               </div>
             </div>

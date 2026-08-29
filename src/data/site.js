@@ -24,7 +24,6 @@ export const company = {
   addressDetail: '银网中心8层808室',
   businessDays: '周一至周五',
   businessHours: '09:00 - 18:00',
-  wechat: 'bjyzyes',
 };
 
 export const productCategoryCards = [

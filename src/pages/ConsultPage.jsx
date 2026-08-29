@@ -61,7 +61,7 @@ export default function ConsultPage() {
                 <div className="flex flex-col items-center py-4">
                   <WechatQr alt={copy.consultPage.wechatTitle} fallbackText={copy.consultPage.qr} />
                   <p className="text-sm text-zinc-400 text-center">
-                    {copy.consultPage.wechatSearch}<span className="text-white font-medium">{company.wechat}</span>
+                    {copy.consultPage.scanHint}
                   </p>
                   <p className="text-xs text-zinc-500 text-center mt-1">
                     {copy.consultPage.hours}{copy.data.businessDays} {company.businessHours}
