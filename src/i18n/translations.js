@@ -227,7 +227,7 @@ export const translations = {
         { keywords: ['价格', '多少钱', '报价', '询价'], answer: '我们的产品价格会根据市场波动和采购量有所调整。您可以留下联系方式，我们会安排专人为您提供最新报价，或者访问「产品中心」查看公开价格。' },
         { keywords: ['售后', '保修', '维修', '质保'], answer: '我们提供全生命周期售后服务，7×12小时响应。所有硬盘均享受官方质保，NAS 产品享受品牌官方保修和我们提供的上门技术支持。' },
         { keywords: ['地址', '在哪', '公司', '位置'], answer: '公司地址：北京市海淀区知春路113号银网中心8层808室。欢迎预约上门参观洽谈。' },
-        { keywords: ['电话', '联系', '怎么找你们'], answer: '您可以拨打我们的服务热线：133-0133-5226（周一至周五 9:00-18:00），或发送邮件至 contact@bjyzyes.com，我们会尽快回复您。' },
+        { keywords: ['电话', '联系', '怎么找你们'], answer: '您可以拨打我们的服务热线：133-0133-5226（周一至周五 9:00-18:00），或发送邮件至 nancy@bjyzyes.com，我们会尽快回复您。' },
         { keywords: ['上门', '部署', '安装', '调试'], answer: '我们提供北京地区专业技术人员上门安装调试服务，包括 NAS 组网、硬盘配置、数据迁移等。可在「立即咨询」页面提交需求。' },
         { keywords: ['方案', '定制', '架构'], answer: '我们可以根据您的数据规模、访问频率、预算等需求，量身定制硬盘选型与 NAS 架构方案。请描述一下您的具体需求（数据量、用户数、预算范围等）。' },
       ],
@@ -243,7 +243,7 @@ export const translations = {
       contactCards: [
         { title: '电话咨询', label: '联系电话', content: '133-0133-5226', desc: '周一至周五 9:00 - 18:00' },
         { title: '公司地址', label: '公司地址', content: '北京市海淀区知春路113号', desc: '银网中心8层808室' },
-        { title: '电子邮箱', label: '电子邮箱', content: 'contact@bjyzyes.com', desc: '24小时内回复' },
+        { title: '电子邮箱', label: '电子邮箱', content: 'nancy@bjyzyes.com', desc: '24小时内回复' },
         { title: '营业时间', label: '工作时间', content: '周一至周五', desc: '09:00 - 18:00' },
       ],
       services: [
@@ -485,7 +485,7 @@ export const translations = {
         { keywords: ['price', 'cost', 'quote'], answer: 'Prices vary with the market and order volume. Leave your contact details for a current quote, or visit the Product Center to see listed prices.' },
         { keywords: ['support', 'warranty', 'repair'], answer: 'We provide lifecycle support with a 7×12-hour response window. Drives include the manufacturer’s warranty, while NAS products include official brand coverage plus our onsite technical support.' },
         { keywords: ['address', 'location', 'office'], answer: 'Our office is Room 808, 8th Floor, Yinwang Center, 113 Zhichun Road, Haidian District, Beijing. Please make an appointment before visiting.' },
-        { keywords: ['phone', 'contact', 'email'], answer: 'Call 133-0133-5226 from Monday to Friday, 9:00–18:00, or email contact@bjyzyes.com. We will respond as soon as possible.' },
+        { keywords: ['phone', 'contact', 'email'], answer: 'Call 133-0133-5226 from Monday to Friday, 9:00–18:00, or email nancy@bjyzyes.com. We will respond as soon as possible.' },
         { keywords: ['onsite', 'deploy', 'install', 'setup'], answer: 'We offer professional onsite service in Beijing, including NAS networking, drive configuration and data migration. Submit your requirements on the Get Advice page.' },
         { keywords: ['solution', 'custom', 'architecture'], answer: 'We can design drive selection and NAS architecture around your data volume, access patterns and budget. Please tell us your expected capacity, user count and budget range.' },
       ],
@@ -501,7 +501,7 @@ export const translations = {
       contactCards: [
         { title: 'Phone Consultation', label: 'Phone', content: '133-0133-5226', desc: 'Mon–Fri, 9:00–18:00' },
         { title: 'Office Address', label: 'Address', content: '113 Zhichun Road, Haidian, Beijing', desc: 'Room 808, 8F, Yinwang Center' },
-        { title: 'Email', label: 'Email', content: 'contact@bjyzyes.com', desc: 'Replies within 24 hours' },
+        { title: 'Email', label: 'Email', content: 'nancy@bjyzyes.com', desc: 'Replies within 24 hours' },
         { title: 'Business Hours', label: 'Hours', content: 'Monday to Friday', desc: '09:00–18:00' },
       ],
       services: [
@@ -743,7 +743,7 @@ export const translations = {
         { keywords: ['価格', '料金', '見積'], answer: '価格は市場状況と数量により変動します。最新のお見積りは連絡先をお残しいただくか、製品センターの掲載価格をご確認ください。' },
         { keywords: ['サポート', '保証', '修理'], answer: '製品ライフサイクル全体を支援し、7×12時間の対応体制を設けています。ドライブはメーカー保証、NASはメーカー保証に加えて当社の訪問技術支援をご利用いただけます。' },
         { keywords: ['住所', '場所', '会社'], answer: '所在地は北京市海淀区知春路113号 銀網センター8階808号室です。ご来訪の際は事前にご予約ください。' },
-        { keywords: ['電話', '連絡', 'メール'], answer: '月曜から金曜の9:00〜18:00に 133-0133-5226 へお電話いただくか、contact@bjyzyes.com へメールをお送りください。' },
+        { keywords: ['電話', '連絡', 'メール'], answer: '月曜から金曜の9:00〜18:00に 133-0133-5226 へお電話いただくか、nancy@bjyzyes.com へメールをお送りください。' },
         { keywords: ['訪問', '導入', '設置', '設定'], answer: '北京市内でNASネットワーク、ドライブ設定、データ移行などの訪問導入を提供しています。「相談する」ページからご要望をお送りください。' },
         { keywords: ['構成', '提案', '設計'], answer: 'データ容量、アクセス頻度、ご予算に合わせてドライブ選定とNAS構成を設計します。想定容量、利用人数、ご予算をお知らせください。' },
       ],
@@ -759,7 +759,7 @@ export const translations = {
       contactCards: [
         { title: '電話相談', label: '電話番号', content: '133-0133-5226', desc: '月〜金 9:00〜18:00' },
         { title: '会社所在地', label: '所在地', content: '北京市海淀区知春路113号', desc: '銀網センター8階808号室' },
-        { title: 'メール', label: 'メール', content: 'contact@bjyzyes.com', desc: '24時間以内に返信' },
+        { title: 'メール', label: 'メール', content: 'nancy@bjyzyes.com', desc: '24時間以内に返信' },
         { title: '営業時間', label: '受付時間', content: '月曜日〜金曜日', desc: '09:00〜18:00' },
       ],
       services: [

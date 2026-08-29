@@ -18,7 +18,7 @@ export const company = {
   fullName: '北京友质科技有限公司',
   phone: '133-0133-5226',
   telHref: 'tel:13301335226',
-  email: 'contact@bjyzyes.com',
+  email: 'nancy@bjyzyes.com',
   supportEmail: 'support@bjyzyes.com',
   address: '北京市海淀区知春路113号',
   addressDetail: '银网中心8层808室',
