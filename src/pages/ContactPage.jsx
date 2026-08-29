@@ -1,4 +1,4 @@
-import { company, contactCards, dutyPhones } from '../data/site';
+import { company, contactCards } from '../data/site';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import { accentByIndex } from '../lib/accent';
@@ -71,19 +71,14 @@ export default function ContactPage() {
                 {copy.contactPage.emergencyDesc}
               </p>
               <div className="space-y-3">
-                <div className="flex items-start justify-between text-sm gap-4">
-                  <span className="text-zinc-400 shrink-0">{copy.contactPage.dutyPhone}</span>
-                  <span className="flex flex-col items-end gap-1">
-                    {dutyPhones.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className="text-white font-medium hover:text-brand-400 transition-colors"
-                      >
-                        {item.display}
-                      </a>
-                    ))}
-                  </span>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-zinc-400">{copy.contactPage.dutyPhone}</span>
+                  <a
+                    href={company.telHref}
+                    className="text-white font-medium hover:text-brand-400 transition-colors"
+                  >
+                    {company.phone}
+                  </a>
                 </div>
                 <div className="h-px bg-white/5" />
                 <div className="flex items-center justify-between text-sm">

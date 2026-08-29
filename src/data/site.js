@@ -16,8 +16,8 @@ import {
 export const company = {
   shortName: '友质科技',
   fullName: '北京友质科技有限公司',
-  phone: '177-4358-8003',
-  telHref: 'tel:17743588003',
+  phone: '133-0133-5226',
+  telHref: 'tel:13301335226',
   email: 'contact@bjyzyes.com',
   supportEmail: 'support@bjyzyes.com',
   address: '北京市海淀区知春路113号',
@@ -26,12 +26,6 @@ export const company = {
   businessHours: '09:00 - 18:00',
   wechat: 'bjyzyes',
 };
-
-// 售后紧急支持的值班电话。与主号分开，避免上次那样漏改。
-export const dutyPhones = [
-  { display: '139-1055-2844', href: 'tel:13910552844' },
-  { display: '133-0133-5226', href: 'tel:13301335226' },
-];
 
 export const productCategoryCards = [
   {
