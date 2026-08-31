@@ -49,15 +49,15 @@ function LanguageSwitcher({ compact = false }) {
         aria-expanded={open}
         aria-controls={menuId}
         aria-label={copy.language.label}
-        className={`group flex h-10 items-center rounded-xl border border-white/10 bg-dark-800/70 text-zinc-200 shadow-sm backdrop-blur-xl transition-all hover:border-brand-500/35 hover:bg-white/[0.08] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 ${compact ? 'gap-1.5 px-2' : 'gap-2 px-2.5'}`}
+        className={`group flex h-10 items-center rounded-xl border border-line bg-surface-2/70 text-ink-2 shadow-sm backdrop-blur-xl transition-all hover:border-brand-500/35 hover:bg-surface-3 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 ${compact ? 'gap-1.5 px-2' : 'gap-2 px-2.5'}`}
       >
-        <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-brand-500/15 bg-gradient-to-br from-brand-500/15 to-accent-500/10 text-brand-300 transition-colors group-hover:border-brand-500/30">
+        <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-brand-500/15 bg-gradient-to-br from-brand-500/15 to-accent-500/10 text-brand-700 transition-colors group-hover:border-brand-500/30">
           <Languages className="h-3.5 w-3.5" />
         </span>
         <span className={`text-xs font-semibold tracking-wide ${compact ? 'min-w-5 text-center' : 'min-w-12 text-left'}`}>
           {compact ? currentLanguage.shortLabel : currentLanguage.label}
         </span>
-        <ChevronDown className={`h-3.5 w-3.5 text-zinc-500 transition-transform duration-200 group-hover:text-zinc-300 ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`h-3.5 w-3.5 text-ink-3 transition-transform duration-200 group-hover:text-ink-2 ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
@@ -65,10 +65,10 @@ function LanguageSwitcher({ compact = false }) {
           id={menuId}
           role="menu"
           aria-label={copy.language.label}
-          className="absolute right-0 top-full z-[70] mt-2 w-44 overflow-hidden rounded-2xl border border-white/10 bg-dark-900/95 p-1.5 shadow-2xl shadow-black/50 backdrop-blur-2xl"
+          className="absolute right-0 top-full z-[70] mt-2 w-44 overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-2xl shadow-black/50 backdrop-blur-2xl"
           style={{ animation: 'chatFadeIn 0.18s ease-out' }}
         >
-          <div className="px-2.5 pb-1.5 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
+          <div className="px-2.5 pb-1.5 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-3">
             {copy.language.label}
           </div>
           {languageOptions.map((option) => {
@@ -82,20 +82,20 @@ function LanguageSwitcher({ compact = false }) {
                 onClick={() => selectLanguage(option.value)}
                 className={`flex w-full items-center gap-3 rounded-xl border px-2 py-2 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40 ${
                   active
-                    ? 'border-brand-500/20 bg-brand-500/10 text-white'
-                    : 'border-transparent text-zinc-400 hover:bg-white/[0.06] hover:text-white'
+                    ? 'border-brand-500/20 bg-brand-500/10 text-ink'
+                    : 'border-transparent text-ink-2 hover:bg-surface-2 hover:text-ink'
                 }`}
               >
                 <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[11px] font-bold ${
                   active
-                    ? 'bg-brand-500/20 text-brand-300'
-                    : 'bg-white/5 text-zinc-500'
+                    ? 'bg-brand-500/20 text-brand-700'
+                    : 'bg-surface-2 text-ink-3'
                 }`}>
                   {option.shortLabel}
                 </span>
                 <span className="flex-1 text-sm font-medium">{option.label}</span>
                 <span className={`flex h-5 w-5 items-center justify-center rounded-full transition-all ${
-                  active ? 'bg-accent-500/15 text-accent-400' : 'text-transparent'
+                  active ? 'bg-accent-500/15 text-accent-600' : 'text-transparent'
                 }`}>
                   <Check className="h-3.5 w-3.5" />
                 </span>
@@ -162,7 +162,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg' : 'bg-transparent'
+        scrolled ? 'chrome' : 'bg-surface/80 backdrop-blur-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -174,7 +174,7 @@ export default function Navbar() {
             className="flex items-center gap-2 group"
           >
             <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" alt={copy.nav.brand} />
-            <span className="text-lg font-bold text-white tracking-tight">
+            <span className="text-lg font-semibold text-ink tracking-tight">
               {copy.nav.brand}
             </span>
           </Link>
@@ -185,7 +185,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
-                className="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
+                className="px-4 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
               >
                 {item.label}
               </a>
@@ -193,7 +193,7 @@ export default function Navbar() {
             <a
               href="/consult"
               onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
-              className="ml-3 px-5 py-2 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-500 rounded-lg transition-colors shadow-lg shadow-brand-900/30"
+              className="ml-3 px-5 py-2 text-sm font-semibold text-white bg-brand-900 hover:bg-brand-800 rounded-lg transition-colors"
             >
               {copy.nav.consult}
             </a>
@@ -204,7 +204,7 @@ export default function Navbar() {
             <LanguageSwitcher compact />
             <button
               type="button"
-              className="p-2 text-zinc-300 hover:text-white"
+              className="p-2 text-ink-2 hover:text-ink"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? copy.nav.close : copy.nav.open}
               aria-expanded={mobileOpen}
@@ -217,14 +217,14 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div id="mobile-navigation" className="lg:hidden glass border-t border-white/5">
+        <div id="mobile-navigation" className="lg:hidden chrome">
           <div className="px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
-                className="block px-3 py-2.5 text-sm font-medium text-zinc-300 hover:text-brand-400 rounded-lg hover:bg-white/5 cursor-pointer"
+                className="block px-3 py-2.5 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 cursor-pointer"
               >
                 {item.label}
               </a>
@@ -232,7 +232,7 @@ export default function Navbar() {
             <a
               href="/consult"
               onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
-              className="block px-3 py-2.5 text-sm font-semibold text-white bg-brand-600 rounded-lg mt-2 cursor-pointer"
+              className="block px-3 py-2.5 text-sm font-semibold text-white bg-brand-900 rounded-lg mt-2 cursor-pointer"
             >
               {copy.nav.consult}
             </a>

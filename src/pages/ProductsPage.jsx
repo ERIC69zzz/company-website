@@ -11,24 +11,24 @@ function ProductCard({ product }) {
 
   return (
     <Link to={`/products/${product.id}`}>
-      <div className="group glass-card rounded-xl overflow-hidden h-full flex flex-col">
+      <div className="group panel panel-raised rounded-xl overflow-hidden h-full flex flex-col">
         <ProductImage
           product={product}
-          className="aspect-square bg-dark-800 relative overflow-hidden"
+          className="aspect-square bg-surface-2 relative overflow-hidden"
           imageClassName="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           showBrandBadge
         />
 
         <div className="p-3 flex flex-col flex-1">
-          <h3 className="text-sm font-bold text-white truncate mb-1 group-hover:text-brand-400 transition-colors">
+          <h3 className="text-sm font-bold text-ink truncate mb-1 group-hover:text-brand-600 transition-colors">
             {product.name}
           </h3>
-          <p className="text-xs text-zinc-500 line-clamp-2 mb-2 flex-1">
+          <p className="text-xs text-ink-3 line-clamp-2 mb-2 flex-1">
             {product.shortDesc}
           </p>
           <div className="flex items-center justify-between">
-            <span className="text-brand-400 font-bold text-sm">{product.price}</span>
-            <span className="text-xs text-zinc-600 group-hover:text-brand-500 transition-colors">
+            <span className="text-brand-600 font-bold text-sm">{product.price}</span>
+            <span className="text-xs text-ink-3 group-hover:text-brand-500 transition-colors">
               {copy.common.viewDetails}
             </span>
           </div>
@@ -66,7 +66,7 @@ export default function ProductsPage() {
       : localizedProducts.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20 pb-16">
+    <div className="min-h-screen bg-surface pt-20 pb-16">
       <PageHeader title={copy.productsPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -78,8 +78,8 @@ export default function ProductsPage() {
                 onClick={() => handleCategoryChange(cat.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeCategory === cat.id
-                    ? 'bg-brand-600 text-white shadow-lg shadow-brand-900/30'
-                    : 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white'
+                    ? 'bg-brand-900 text-white shadow-sm'
+                    : 'bg-surface-2 text-ink-2 hover:bg-surface-3 hover:text-ink'
                 }`}
               >
                 {cat.name}
@@ -97,7 +97,7 @@ export default function ProductsPage() {
         </div>
 
         {filteredProducts.length === 0 && (
-          <div className="text-center py-20 text-zinc-500">
+          <div className="text-center py-20 text-ink-3">
             {copy.productsPage.empty}
           </div>
         )}

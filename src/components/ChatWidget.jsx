@@ -113,7 +113,7 @@ export default function ChatWidget({ embedded = false }) {
   const panel = (
     <div
       className={`${embedded
-        ? 'h-[560px] rounded-2xl border border-white/5'
+        ? 'h-[560px] rounded-2xl border border-line'
         : 'fixed bottom-6 right-6 z-50 w-[90vw] max-w-[420px] h-[520px] max-h-[70vh] rounded-2xl shadow-2xl shadow-black/40'
       } overflow-hidden flex flex-col`}
       style={!embedded ? { animation: 'chatFadeIn 0.3s ease-out' } : undefined}
@@ -122,13 +122,13 @@ export default function ChatWidget({ embedded = false }) {
       <div className="flex items-center justify-between px-4 py-3 bg-brand-600 shrink-0">
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
-            <Bot className="w-5 h-5 text-white" />
+            <Bot className="w-5 h-5 text-ink" />
           </div>
           <div>
-            <div className="text-sm font-semibold text-white">
+            <div className="text-sm font-semibold text-ink">
               {copy.chat.botName}
             </div>
-            <div className="text-xs text-white/70 flex items-center gap-1">
+            <div className="text-xs text-ink/70 flex items-center gap-1">
               <span className={`w-1.5 h-1.5 rounded-full inline-block ${aiAvailable ? 'bg-accent-400' : 'bg-amber-300'}`} />
               {aiAvailable ? copy.chat.online : copy.chat.fallback}
             </div>
@@ -137,7 +137,7 @@ export default function ChatWidget({ embedded = false }) {
         {!embedded && (
           <button
             onClick={() => setIsOpen(false)}
-            className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+            className="p-1.5 text-ink/70 hover:text-ink hover:bg-surface-3 rounded-lg transition-colors"
             aria-label={copy.chat.close}
           >
             <X className="w-5 h-5" />
@@ -146,7 +146,7 @@ export default function ChatWidget({ embedded = false }) {
       </div>
 
       {/* 消息区域 */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-dark-800">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-surface-2">
         {messages.map((msg, index) => (
           <div
             key={`${msg.role}-${index}`}
@@ -156,20 +156,20 @@ export default function ChatWidget({ embedded = false }) {
               className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
                 msg.role === 'user'
                   ? 'bg-brand-600'
-                  : 'bg-dark-700 border border-white/10'
+                  : 'bg-surface-3 border border-line'
               }`}
             >
               {msg.role === 'user' ? (
-                <User className="w-4 h-4 text-white" />
+                <User className="w-4 h-4 text-ink" />
               ) : (
-                <Bot className="w-4 h-4 text-brand-400" />
+                <Bot className="w-4 h-4 text-brand-600" />
               )}
             </div>
             <div
               className={`max-w-[75%] whitespace-pre-wrap px-3.5 py-2.5 text-sm leading-relaxed rounded-2xl ${
                 msg.role === 'user'
                   ? 'bg-brand-600 text-white rounded-tr-sm'
-                  : 'bg-dark-700 text-zinc-200 border border-white/5 rounded-tl-sm'
+                  : 'bg-surface-3 text-ink-2 border border-line rounded-tl-sm'
               }`}
             >
               {msg.isWelcome ? copy.chat.welcome : msg.content}
@@ -179,11 +179,11 @@ export default function ChatWidget({ embedded = false }) {
 
         {loading && (
           <div className="flex gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center shrink-0">
-              <Bot className="w-4 h-4 text-brand-400" />
+            <div className="w-8 h-8 rounded-full bg-surface-3 border border-line flex items-center justify-center shrink-0">
+              <Bot className="w-4 h-4 text-brand-600" />
             </div>
-            <div className="bg-dark-700 border border-white/5 rounded-2xl rounded-tl-sm px-4 py-3">
-              <Loader2 className="w-4 h-4 text-brand-400 animate-spin" />
+            <div className="bg-surface-3 border border-line rounded-2xl rounded-tl-sm px-4 py-3">
+              <Loader2 className="w-4 h-4 text-brand-600 animate-spin" />
             </div>
           </div>
         )}
@@ -191,7 +191,7 @@ export default function ChatWidget({ embedded = false }) {
       </div>
 
       {/* 输入区域 */}
-      <div className="px-3 py-3 bg-dark-900 border-t border-white/5 shrink-0">
+      <div className="px-3 py-3 bg-surface hairline shrink-0">
         <div className="flex items-end gap-2">
           <textarea
             ref={inputRef}
@@ -201,18 +201,18 @@ export default function ChatWidget({ embedded = false }) {
             aria-label={copy.chat.inputLabel}
             placeholder={copy.chat.placeholder}
             rows={1}
-            className="flex-1 min-h-[40px] max-h-[100px] bg-dark-800 border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 resize-none focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/20 transition-all"
+            className="flex-1 min-h-[40px] max-h-[100px] bg-surface-2 border border-line rounded-xl px-3.5 py-2.5 text-sm text-ink placeholder-ink-3 resize-none focus:outline-none focus:border-brand-500/50 focus:ring-1 focus:ring-brand-500/20 transition-all"
           />
           <button
             onClick={handleSend}
             disabled={!inputValue.trim() || loading}
-            className="w-10 h-10 rounded-xl bg-brand-600 hover:bg-brand-500 disabled:bg-dark-700 disabled:text-zinc-500 text-white flex items-center justify-center transition-all shrink-0 active:scale-95"
+            className="w-10 h-10 rounded-xl bg-brand-900 hover:bg-brand-800 disabled:bg-surface-3 disabled:text-ink-3 text-white flex items-center justify-center transition-all shrink-0 active:scale-95"
             aria-label={copy.chat.send}
           >
             <Send className="w-4 h-4" />
           </button>
         </div>
-        <div className="mt-1.5 text-[10px] text-zinc-500 text-center">
+        <div className="mt-1.5 text-[10px] text-ink-3 text-center">
           {copy.chat.hint}
         </div>
       </div>
@@ -233,7 +233,7 @@ export default function ChatWidget({ embedded = false }) {
       {!isOpen && (
         <button
           onClick={handleOpen}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-900/40 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-900 hover:bg-brand-800 text-white shadow-lg shadow-brand-900/40 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
           aria-label={copy.chat.open}
         >
           <MessageCircle className="w-6 h-6" />

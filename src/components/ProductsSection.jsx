@@ -17,13 +17,13 @@ export default function ProductsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-medium mb-4">
               {copy.productsSection.badge}
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-4">
               {copy.productsSection.title}
             </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto">
+            <p className="text-ink-2 max-w-2xl mx-auto">
               {copy.productsSection.description}
             </p>
           </div>
@@ -36,14 +36,14 @@ export default function ProductsSection() {
                 to={`/products?category=${category.category}`}
                 className="block h-full group"
               >
-                <div className="glass-card rounded-2xl p-6 h-full flex flex-col transition-all duration-300 hover:bg-brand-900/20 hover:border-brand-700/50 hover:shadow-lg hover:shadow-brand-900/20">
-                  <div className="w-12 h-12 rounded-xl bg-brand-600/15 flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
-                    <category.icon className="w-6 h-6 text-brand-400" />
+                <div className="panel panel-raised rounded-2xl p-6 h-full flex flex-col transition-all duration-300 hover:bg-brand-900/20 hover:border-brand-700/50 hover:shadow-lg hover:shadow-brand-900/20">
+                  <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110">
+                    <category.icon className="w-6 h-6 text-brand-600" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-300 transition-colors">
+                  <h3 className="text-lg font-bold text-ink mb-2 group-hover:text-brand-700 transition-colors">
                     {category.title}
                   </h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed flex-1">
+                  <p className="text-sm text-ink-2 leading-relaxed flex-1">
                     {category.desc}
                   </p>
                 </div>
@@ -57,18 +57,18 @@ export default function ProductsSection() {
           <div className="mt-10">
             <Link
               to="/products"
-              className="group block glass-card rounded-2xl p-8 border border-white/5 hover:border-brand-700/50 transition-all hover:bg-brand-900/10"
+              className="group block panel panel-raised rounded-2xl p-8 border border-line hover:border-brand-700/50 transition-all hover:bg-brand-50"
             >
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-brand-600/15 flex items-center justify-center group-hover:bg-brand-600/25 transition-colors">
-                    <ExternalLink className="w-7 h-7 text-brand-400" />
+                  <div className="w-14 h-14 rounded-xl bg-brand-50 flex items-center justify-center group-hover:bg-brand-100 transition-colors">
+                    <ExternalLink className="w-7 h-7 text-brand-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-brand-300 transition-colors">
+                    <h3 className="text-lg font-bold text-ink group-hover:text-brand-700 transition-colors">
                       {copy.productsSection.explore}
                     </h3>
-                    <p className="text-sm text-zinc-400 mt-0.5">
+                    <p className="text-sm text-ink-2 mt-0.5">
                       {copy.productsSection.exploreDesc}
                     </p>
                   </div>

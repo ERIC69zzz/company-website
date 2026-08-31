@@ -48,52 +48,52 @@ export default function ConsultPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20 pb-16">
+    <div className="min-h-screen bg-surface pt-20 pb-16">
       <PageHeader title={copy.consultPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <ScrollReveal>
             <div>
-              <div className="glass-card rounded-2xl p-8 border border-white/5 mb-6">
+              <div className="panel panel-raised rounded-2xl p-8 border border-line mb-6">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-brand-400" />
+                  <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-brand-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white">{copy.consultPage.wechatTitle}</h3>
-                    <p className="text-xs text-zinc-500">{copy.consultPage.wechatDesc}</p>
+                    <h3 className="text-lg font-bold text-ink">{copy.consultPage.wechatTitle}</h3>
+                    <p className="text-xs text-ink-3">{copy.consultPage.wechatDesc}</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col items-center py-4">
                   <WechatQr alt={copy.consultPage.wechatTitle} fallbackText={copy.consultPage.qr} />
-                  <p className="text-sm text-zinc-400 text-center">
+                  <p className="text-sm text-ink-2 text-center">
                     {copy.consultPage.scanHint}
                   </p>
-                  <p className="text-xs text-zinc-500 text-center mt-1">
+                  <p className="text-xs text-ink-3 text-center mt-1">
                     {copy.consultPage.hours}{copy.data.businessDays} {company.businessHours}
                   </p>
                 </div>
 
-                <div className="h-px bg-white/5 my-6" />
+                <div className="h-px bg-surface-2 my-6" />
 
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-brand-400" />
+                  <Phone className="w-5 h-5 text-brand-600" />
                   <div>
-                    <div className="text-sm text-zinc-400">{copy.consultPage.call}</div>
-                    <a href={company.telHref} className="text-lg font-bold text-white hover:text-brand-400 transition-colors">
+                    <div className="text-sm text-ink-2">{copy.consultPage.call}</div>
+                    <a href={company.telHref} className="text-lg font-bold text-ink hover:text-brand-600 transition-colors">
                       {company.phone}
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-6 border border-white/5">
-                <h4 className="text-sm font-bold text-white mb-3">{copy.consultPage.scope}</h4>
+              <div className="panel panel-raised rounded-2xl p-6 border border-line">
+                <h4 className="text-sm font-bold text-ink mb-3">{copy.consultPage.scope}</h4>
                 <div className="grid grid-cols-2 gap-2">
                   {copy.data.consultationTopics.map((t) => (
-                    <div key={t} className="flex items-center gap-2 text-sm text-zinc-400">
+                    <div key={t} className="flex items-center gap-2 text-sm text-ink-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-400" />
                       {t}
                     </div>
@@ -104,24 +104,24 @@ export default function ConsultPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <div className="glass-card rounded-2xl p-8 border border-white/5">
-              <h3 className="text-lg font-bold text-white mb-2">{copy.consultPage.formTitle}</h3>
-              <p className="text-sm text-zinc-500 mb-6">
+            <div className="panel panel-raised rounded-2xl p-8 border border-line">
+              <h3 className="text-lg font-bold text-ink mb-2">{copy.consultPage.formTitle}</h3>
+              <p className="text-sm text-ink-3 mb-6">
                 {copy.consultPage.formDesc}
               </p>
 
               {submitted ? (
                 <div className="text-center py-12">
-                  <div className="w-16 h-16 rounded-full bg-accent-600/20 flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-accent-400" />
+                  <div className="w-16 h-16 rounded-full bg-accent-100 flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 className="w-8 h-8 text-accent-600" />
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">{copy.consultPage.successTitle}</h4>
-                  <p className="text-sm text-zinc-400">
+                  <h4 className="text-lg font-bold text-ink mb-2">{copy.consultPage.successTitle}</h4>
+                  <p className="text-sm text-ink-2">
                     {copy.consultPage.successDesc}
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm(initialConsultForm); }}
-                    className="mt-6 px-5 py-2 text-sm font-medium text-accent-300 bg-accent-900/40 border border-accent-800/40 rounded-lg hover:bg-accent-900/60 transition-colors"
+                    className="mt-6 px-5 py-2 text-sm font-medium text-accent-700 bg-accent-50 rounded-lg hover:bg-accent-100 transition-colors"
                   >
                     {copy.consultPage.continue}
                   </button>
@@ -141,9 +141,9 @@ export default function ConsultPage() {
                     className="absolute w-px h-px -m-px overflow-hidden opacity-0 pointer-events-none"
                   />
                   <div>
-                    <label htmlFor="consult-name" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.name}</label>
+                    <label htmlFor="consult-name" className="block text-sm text-ink-2 mb-1.5">{copy.consultPage.name}</label>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-3" />
                       <input
                         id="consult-name"
                         type="text"
@@ -151,15 +151,15 @@ export default function ConsultPage() {
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder={copy.consultPage.namePlaceholder}
-                        className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="consult-phone" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.phone}</label>
+                    <label htmlFor="consult-phone" className="block text-sm text-ink-2 mb-1.5">{copy.consultPage.phone}</label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-3" />
                       <input
                         id="consult-phone"
                         type="tel"
@@ -167,27 +167,27 @@ export default function ConsultPage() {
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         placeholder={copy.consultPage.phonePlaceholder}
-                        className="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="consult-type" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.type}</label>
+                    <label htmlFor="consult-type" className="block text-sm text-ink-2 mb-1.5">{copy.consultPage.type}</label>
                     <select
                       id="consult-type"
                       value={form.type}
                       onChange={(e) => setForm({ ...form, type: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
+                      className="w-full px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
                     >
                       {copy.data.consultationTypes.map((item) => (
-                        <option key={item.value} value={item.value} className="bg-dark-800">{item.label}</option>
+                        <option key={item.value} value={item.value} className="bg-surface-2">{item.label}</option>
                       ))}
                     </select>
                   </div>
 
                   <div>
-                    <label htmlFor="consult-content" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.content}</label>
+                    <label htmlFor="consult-content" className="block text-sm text-ink-2 mb-1.5">{copy.consultPage.content}</label>
                     <textarea
                       id="consult-content"
                       required
@@ -195,7 +195,7 @@ export default function ConsultPage() {
                       value={form.content}
                       onChange={(e) => setForm({ ...form, content: e.target.value })}
                       placeholder={copy.consultPage.contentPlaceholder}
-                      className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all resize-none"
+                      className="w-full px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all resize-none"
                     />
                   </div>
 
@@ -208,7 +208,7 @@ export default function ConsultPage() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full py-3 bg-brand-600 hover:bg-brand-500 disabled:bg-brand-800/50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
+                    className="w-full py-3 bg-brand-900 hover:bg-brand-800 disabled:bg-brand-800/50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
                   >
                     {submitting ? copy.consultPage.submitting : copy.consultPage.submit}
                   </button>

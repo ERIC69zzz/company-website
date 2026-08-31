@@ -41,17 +41,17 @@ export default function ScrollStory({ deviceTargetRef }) {
     return (
       <section className="relative py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">{s.title}</h2>
-          <p className="text-zinc-400 mb-12">{s.subtitle}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-3">{s.title}</h2>
+          <p className="text-ink-2 mb-12">{s.subtitle}</p>
           <div ref={deviceTargetRef} className="w-full max-w-sm mx-auto mb-12">
             <NasDevice activeRegion={REGIONS.all} litBays={4} />
           </div>
           <div className="grid sm:grid-cols-2 gap-8">
             {panels.map((p) => (
               <div key={p.title}>
-                <div className="text-xs font-medium text-brand-400 mb-2">{p.eyebrow}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{p.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{p.desc}</p>
+                <div className="text-xs font-medium text-brand-600 mb-2">{p.eyebrow}</div>
+                <h3 className="text-xl font-bold text-ink mb-2">{p.title}</h3>
+                <p className="text-sm text-ink-2 leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -100,8 +100,8 @@ export default function ScrollStory({ deviceTargetRef }) {
               transition: 'opacity .2s linear',
             }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">{s.title}</h2>
-            <p className="text-zinc-400 text-sm">{s.subtitle}</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-2">{s.title}</h2>
+            <p className="text-ink-2 text-sm">{s.subtitle}</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
@@ -136,13 +136,13 @@ export default function ScrollStory({ deviceTargetRef }) {
                       pointerEvents: opacity > 0.5 ? 'auto' : 'none',
                     }}
                   >
-                    <div className="text-xs font-medium tracking-wider text-brand-400 mb-3">
+                    <div className="text-xs font-medium tracking-wider text-brand-600 mb-3">
                       {p.eyebrow}
                     </div>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-ink mb-4 leading-tight">
                       {p.title}
                     </h3>
-                    <p className="text-zinc-400 leading-relaxed max-w-md">{p.desc}</p>
+                    <p className="text-ink-2 leading-relaxed max-w-md">{p.desc}</p>
                   </div>
                 );
               })}

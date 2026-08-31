@@ -22,7 +22,7 @@ function HomePage() {
 
   return (
     <>
-      <div className="relative overflow-x-clip bg-dark-900">
+      <div className="relative overflow-x-clip bg-surface">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-20" aria-hidden="true" />
         <HeroSection handoffTargetRef={nasHandoffTargetRef} />
         <ScrollStory deviceTargetRef={nasHandoffTargetRef} />
@@ -56,7 +56,7 @@ export default function App() {
     <LanguageProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="min-h-screen bg-dark-900 text-zinc-100">
+        <div className="min-h-screen bg-surface text-ink">
           <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />

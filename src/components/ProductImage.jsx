@@ -23,16 +23,16 @@ export default function ProductImage({
           onError={() => setImgError(true)}
         />
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-dark-800 to-dark-700 text-zinc-500 p-4 text-center">
-          <ImageOff className={`${fallbackIconClassName} text-zinc-600`} />
-          <span className="text-xs text-brand-300">{product.brand}</span>
-          <span className="text-sm font-medium text-zinc-300 mt-1">{product.name}</span>
-          <span className="text-[10px] text-zinc-600 mt-2">{copy.common.imagePending}</span>
+        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-dark-800 to-dark-700 text-ink-3 p-4 text-center">
+          <ImageOff className={`${fallbackIconClassName} text-ink-3`} />
+          <span className="text-xs text-brand-700">{product.brand}</span>
+          <span className="text-sm font-medium text-ink-2 mt-1">{product.name}</span>
+          <span className="text-[10px] text-ink-3 mt-2">{copy.common.imagePending}</span>
         </div>
       )}
 
       {showBrandBadge && (
-        <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-dark-900/80 backdrop-blur text-xs text-zinc-300 border border-white/5">
+        <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-surface/80 backdrop-blur text-xs text-ink-2 border border-line">
           {product.brand}
         </div>
       )}

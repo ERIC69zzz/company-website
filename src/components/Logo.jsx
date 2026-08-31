@@ -1,59 +1,24 @@
-import { useState } from 'react';
-
-// 公司标识的内联回退图形：橙绿双色圆环 + 深青色中心，
-// 与 logo 主色一致。当 public/logo.png 尚未放入或加载失败时使用，
-// 避免出现破图。
-export function LogoMark({ className = 'w-9 h-9', alt = '友质科技' }) {
+// 品牌标识。图形部分取自 public/logo-lockup.svg 的 symbol 图层，
+// 内联以便随主题着色、避免额外请求。
+// 橙 #FF6A00 上半 + 深蓝 #0D2340 下半，是品牌的固定配色，不随主题变化。
+export function LogoMark({ className = 'w-9 h-9' }) {
   return (
-    <svg
-      viewBox="0 0 48 48"
-      className={className}
-      role="img"
-      aria-label={alt}
-    >
-      <defs>
-        <linearGradient id="youzhi-orange" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stopColor="#ea580c" />
-          <stop offset="100%" stopColor="#fb923c" />
-        </linearGradient>
-        <linearGradient id="youzhi-green" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#78d052" />
-          <stop offset="100%" stopColor="#46a02b" />
-        </linearGradient>
-      </defs>
+    <svg viewBox="24 24 248 282" className={className} role="img" aria-label="友质科技">
+      <title>友质科技</title>
       <path
-        d="M9.5 30.76A16 16 0 1 1 38.5 30.76"
-        fill="none"
-        stroke="url(#youzhi-orange)"
-        strokeWidth="7"
-        strokeLinecap="round"
+        fill="#FF6A00"
+        fillRule="evenodd"
+        d="M 184.893 162.503 C 179.406 159.521 178.641 156.904 178.023 139 C 177.414 121.363 177.205 120.556 171.379 113.345 C 166.487 107.29 159.268 104 150.876 104 C 142.251 104 139.755 105.289 103.38 128.529 C 57.223 158.019 55.337 159.145 51.188 159.702 C 45.438 160.473 38.844 157.234 35.323 151.908 C 32.5 147.639 32.5 147.639 32.5 127.57 C 32.5 107.548 32.507 107.487 35.284 102.216 C 39.673 93.885 43.827 90.645 74.586 71.558 C 90.489 61.69 109.575 49.798 117 45.133 C 136.447 32.913 146.632 30.497 159.878 34.959 C 166.291 37.119 217.291 67.338 248.476 87.456 C 261.038 95.56 266.316 104.878 263.864 114.622 C 262.442 120.275 258.88 123.838 246.822 131.671 C 197.689 163.587 196.985 164.002 192.122 163.96 C 189.58 163.938 186.327 163.282 184.893 162.503 Z"
       />
       <path
-        d="M39.45 28.14A16 16 0 0 1 8.55 28.14"
-        fill="none"
-        stroke="url(#youzhi-green)"
-        strokeWidth="7"
-        strokeLinecap="round"
+        fill="#0D2340"
+        fillRule="evenodd"
+        d="M 132.975 297.679 C 129.937 296.429 123.412 292.975 118.475 290.004 C 96.841 276.981 42.289 242.603 40.155 240.648 C 33.183 234.262 30.274 222.809 33.486 214.398 C 35.068 210.255 36.293 209.104 45.375 203.232 C 50.944 199.632 62.98 191.818 72.122 185.867 C 81.264 179.917 90.025 174.561 91.592 173.965 C 96.15 172.232 103.606 172.586 107.24 174.708 C 113.317 178.257 114.631 181.512 115.3 194.674 C 115.631 201.178 116.386 208.157 116.979 210.182 C 121.464 225.51 140.021 234.542 154.116 228.257 C 156.527 227.182 165.25 221.886 173.5 216.488 C 218.419 187.096 236.435 175.919 240.572 174.878 C 248.692 172.833 256.756 175.969 261.135 182.874 C 264 187.392 264 187.392 264 206.536 C 264 225.681 264 225.681 261.03 231.625 C 259.396 234.894 256.808 238.759 255.28 240.213 C 251.357 243.945 168.662 294.866 162 297.652 C 154.236 300.899 140.831 300.912 132.975 297.679 Z"
       />
-      <circle cx="24" cy="24" r="7.5" fill="#10393d" />
-      <circle cx="24" cy="24" r="3.4" fill="#5cbf3c" />
     </svg>
   );
 }
 
-export default function Logo({ className = 'w-9 h-9', alt = '友质科技' }) {
-  const [failed, setFailed] = useState(false);
-
-  if (failed) {
-    return <LogoMark className={className} alt={alt} />;
-  }
-
-  return (
-    <img
-      src="/logo.png"
-      alt={alt}
-      className={`${className} object-contain`}
-      onError={() => setFailed(true)}
-    />
-  );
+export default function Logo({ className = 'w-9 h-9' }) {
+  return <LogoMark className={className} />;
 }

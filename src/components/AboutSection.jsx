@@ -16,53 +16,53 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <ScrollReveal>
             <div className="relative">
-              <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-8 space-y-6">
+              <div className="rounded-2xl border border-line bg-surface-2 p-8 space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-brand-600/15 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-brand-400" />
+                  <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center">
+                    <Award className="w-6 h-6 text-brand-600" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">{copy.about.authorized}</div>
-                    <div className="text-xs text-zinc-500">{copy.about.products}</div>
+                    <div className="text-sm font-semibold text-ink">{copy.about.authorized}</div>
+                    <div className="text-xs text-ink-3">{copy.about.products}</div>
                   </div>
                 </div>
-                <div className="h-px bg-white/5" />
+                <div className="h-px bg-surface-2" />
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">{copy.about.foundedLabel}</span>
-                    <span className="text-white font-medium">{copy.about.founded}</span>
+                    <span className="text-ink-2">{copy.about.foundedLabel}</span>
+                    <span className="text-ink font-medium">{copy.about.founded}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">{copy.about.locationLabel}</span>
-                    <span className="text-white font-medium">{copy.about.location}</span>
+                    <span className="text-ink-2">{copy.about.locationLabel}</span>
+                    <span className="text-ink font-medium">{copy.about.location}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">{copy.about.businessLabel}</span>
-                    <span className="text-white font-medium">{copy.about.business}</span>
+                    <span className="text-ink-2">{copy.about.businessLabel}</span>
+                    <span className="text-ink font-medium">{copy.about.business}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-zinc-400">{copy.about.coverageLabel}</span>
-                    <span className="text-white font-medium">{copy.about.coverage}</span>
+                    <span className="text-ink-2">{copy.about.coverageLabel}</span>
+                    <span className="text-ink font-medium">{copy.about.coverage}</span>
                   </div>
                 </div>
               </div>
-              <div className="absolute -z-10 -top-6 -left-6 w-48 h-48 bg-brand-600/15 rounded-full blur-[60px]" />
+              <div className="absolute -z-10 -top-6 -left-6 w-48 h-48 bg-brand-50 rounded-full blur-[60px]" />
               <div className="absolute -z-10 -bottom-6 -right-6 w-40 h-40 bg-accent-500/12 rounded-full blur-[50px]" />
             </div>
           </ScrollReveal>
 
           <div>
             <ScrollReveal>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-medium mb-4">
                 {copy.about.badge}
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-                {copy.about.titleStart} <span className="text-accent-400">·</span> {copy.about.titleEnd}
+              <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-6">
+                {copy.about.titleStart} <span className="text-accent-600">·</span> {copy.about.titleEnd}
               </h2>
-              <p className="text-zinc-400 leading-relaxed mb-6">
+              <p className="text-ink-2 leading-relaxed mb-6">
                 {copy.about.paragraph1}
               </p>
-              <p className="text-zinc-400 leading-relaxed mb-8">
+              <p className="text-ink-2 leading-relaxed mb-8">
                 {copy.about.paragraph2}
               </p>
             </ScrollReveal>
@@ -72,11 +72,11 @@ export default function AboutSection() {
                 {stats.map((stat, i) => (
                   <div
                     key={stat.label}
-                    className="rounded-xl border border-white/5 bg-white/[0.02] p-4 text-center"
+                    className="rounded-xl border border-line bg-surface-2 p-4 text-center"
                   >
                     <stat.icon className={`w-5 h-5 ${accentByIndex(i).icon} mx-auto mb-2`} />
-                    <div className="text-xl font-bold text-white mb-0.5">{stat.value}</div>
-                    <div className="text-xs text-zinc-500">{stat.label}</div>
+                    <div className="text-xl font-bold text-ink mb-0.5">{stat.value}</div>
+                    <div className="text-xs text-ink-3">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -85,7 +85,7 @@ export default function AboutSection() {
             <ScrollReveal delay={0.3}>
               <Link
                 to="/brand"
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-brand-900 hover:bg-brand-800 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/30"
               >
                 {copy.about.story}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

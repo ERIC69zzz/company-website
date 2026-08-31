@@ -128,7 +128,7 @@ export default function HeroSection({ handoffTargetRef }) {
         style={{ opacity: reduced ? 0.2 : Math.max(0, 0.2 - progress * 0.2) }}
       />
       <div
-        className="absolute top-[18%] left-[18%] w-80 h-80 sm:w-96 sm:h-96 bg-brand-600/20 rounded-full blur-[120px] will-change-transform"
+        className="absolute top-[18%] left-[18%] w-80 h-80 sm:w-96 sm:h-96 bg-brand-100 rounded-full blur-[120px] will-change-transform"
         style={{
           opacity: reduced ? 0.55 : 0.55 - deviceExit * 0.25,
           transform: `scale(${1 + deviceExit * 0.2})`,
@@ -153,14 +153,14 @@ export default function HeroSection({ handoffTargetRef }) {
             }}
           >
             <div
-              className="hero-reveal-up inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-6"
+              className="hero-reveal-up flex items-center gap-3 mb-7"
               style={{ '--hero-delay': '80ms' }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-400 hero-status-pulse" />
-              {copy.hero.badge}
+              <span className="h-px w-8 bg-accent-500" />
+              <span className="eyebrow">{copy.hero.badge}</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-ink mb-6">
               <span className="block overflow-hidden pb-1">
                 <span
                   className="hero-title-line inline-block"
@@ -181,7 +181,7 @@ export default function HeroSection({ handoffTargetRef }) {
             </h1>
 
             <p
-              className="hero-reveal-up text-base sm:text-lg text-zinc-400 leading-relaxed mb-8 max-w-xl"
+              className="hero-reveal-up text-base sm:text-lg text-ink-2 leading-relaxed mb-8 max-w-xl"
               style={{ '--hero-delay': '360ms' }}
             >
               {copy.hero.description}
@@ -193,33 +193,33 @@ export default function HeroSection({ handoffTargetRef }) {
             >
               <Link
                 to="/products"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-brand-900/40 hover:shadow-brand-900/60 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-900 hover:bg-brand-800 text-white font-semibold rounded-xl transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
               >
                 {copy.hero.products}
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <button
                 onClick={() => handleScroll('#contact')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-surface hover:bg-surface-2 text-ink font-semibold rounded-xl border border-line transition-all hover:-translate-y-0.5"
               >
                 {copy.hero.contact}
               </button>
             </div>
 
             <div
-              className="hero-reveal-up flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-zinc-500"
+              className="hero-reveal-up flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-ink-3"
               style={{ '--hero-delay': '560ms' }}
             >
               <div className="flex items-center gap-1.5">
-                <Shield className="w-4 h-4 text-brand-400" />
+                <Shield className="w-4 h-4 text-brand-600" />
                 <span>{copy.hero.safe}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Server className="w-4 h-4 text-brand-400" />
+                <Server className="w-4 h-4 text-accent-500" />
                 <span>{copy.hero.enterprise}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Zap className="w-4 h-4 text-brand-400" />
+                <Zap className="w-4 h-4 text-brand-600" />
                 <span>{copy.hero.response}</span>
               </div>
             </div>
@@ -243,29 +243,29 @@ export default function HeroSection({ handoffTargetRef }) {
               </div>
 
               <div className="hero-handoff-labels pointer-events-none absolute inset-0 z-30">
-              <div className="hero-float-card absolute left-0 top-[8%] hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-dark-800/75 px-4 py-3 shadow-xl shadow-black/25 backdrop-blur-xl">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600/20">
-                  <Server className="h-4 w-4 text-brand-400" />
+              <div className="hero-float-card absolute left-0 top-[8%] hidden sm:flex items-center gap-3 rounded-2xl border border-line bg-surface-2/75 px-4 py-3 shadow-xl shadow-black/25 backdrop-blur-xl">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-100">
+                  <Server className="h-4 w-4 text-brand-600" />
                 </span>
                 <span>
-                  <span className="block text-xs font-semibold text-white">{copy.hero.nas}</span>
-                  <span className="block text-[11px] text-zinc-500">{copy.hero.brands}</span>
+                  <span className="block text-xs font-semibold text-ink">{copy.hero.nas}</span>
+                  <span className="block text-[11px] text-ink-3">{copy.hero.brands}</span>
                 </span>
               </div>
 
-              <div className="hero-float-card hero-float-card-late absolute right-0 top-[17%] hidden sm:block rounded-2xl border border-white/10 bg-dark-800/75 px-4 py-3 shadow-xl shadow-black/25 backdrop-blur-xl">
-                <span className="block text-[11px] text-zinc-500">{copy.hero.total}</span>
-                <span className="mt-0.5 block text-xl font-bold text-white">32 TB</span>
+              <div className="hero-float-card hero-float-card-late absolute right-0 top-[17%] hidden sm:block rounded-2xl border border-line bg-surface-2/75 px-4 py-3 shadow-xl shadow-black/25 backdrop-blur-xl">
+                <span className="block text-[11px] text-ink-3">{copy.hero.total}</span>
+                <span className="mt-0.5 block text-xl font-bold text-ink">32 TB</span>
               </div>
 
-              <div className="hero-float-card hero-float-card-last absolute right-[4%] bottom-[9%] hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-dark-800/75 px-4 py-3 shadow-xl shadow-black/25 backdrop-blur-xl">
+              <div className="hero-float-card hero-float-card-last absolute right-[4%] bottom-[9%] hidden sm:flex items-center gap-3 rounded-2xl border border-line bg-surface-2/75 px-4 py-3 shadow-xl shadow-black/25 backdrop-blur-xl">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-40 hero-status-pulse" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent-400" />
                 </span>
                 <span>
-                  <span className="block text-[11px] text-zinc-500">{copy.hero.speed}</span>
-                  <span className="block text-sm font-semibold text-white">10 Gbps · {copy.hero.normal}</span>
+                  <span className="block text-[11px] text-ink-3">{copy.hero.speed}</span>
+                  <span className="block text-sm font-semibold text-ink">10 Gbps · {copy.hero.normal}</span>
                 </span>
               </div>
               </div>

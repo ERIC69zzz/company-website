@@ -22,20 +22,20 @@ export default function BrandPage() {
   }));
 
   return (
-    <div className="min-h-screen bg-dark-900 pt-20 pb-16">
+    <div className="min-h-screen bg-surface pt-20 pb-16">
       <PageHeader title={copy.brandPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* 品牌标语 */}
         <ScrollReveal>
           <div className="text-center py-16 lg:py-24">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-700/30 text-brand-300 text-xs font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-xs font-medium mb-6">
               {copy.brandPage.company}
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              {copy.brandPage.sloganStart} <span className="text-accent-400">·</span> {copy.brandPage.sloganEnd}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mb-6">
+              {copy.brandPage.sloganStart} <span className="text-accent-600">·</span> {copy.brandPage.sloganEnd}
             </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-ink-2 max-w-2xl mx-auto leading-relaxed">
               {copy.brandPage.intro}
             </p>
           </div>
@@ -45,16 +45,16 @@ export default function BrandPage() {
         <ScrollReveal>
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
-                <Newspaper className="w-5 h-5 text-brand-400" />
+              <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                <Newspaper className="w-5 h-5 text-brand-600" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">{copy.brandPage.zspaceNews}</h3>
-                <p className="text-xs text-zinc-500 mt-0.5">{copy.brandPage.newsSource}</p>
+                <h3 className="text-xl font-bold text-ink">{copy.brandPage.zspaceNews}</h3>
+                <p className="text-xs text-ink-3 mt-0.5">{copy.brandPage.newsSource}</p>
               </div>
             </div>
             {safeNews.length === 0 ? (
-              <div className="text-center py-12 text-zinc-500">
+              <div className="text-center py-12 text-ink-3">
                 {copy.brandPage.noNews}
               </div>
             ) : (
@@ -65,21 +65,21 @@ export default function BrandPage() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group glass-card rounded-2xl p-6 border border-white/5 hover:border-brand-700/30 transition-all hover:-translate-y-1"
+                    className="group panel panel-raised rounded-2xl p-6 border border-line hover:border-brand-200 transition-all hover:-translate-y-1"
                   >
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="px-2 py-0.5 text-xs font-medium text-brand-300 bg-brand-900/40 border border-brand-800/40 rounded-md">
+                      <span className="px-2 py-0.5 text-xs font-medium text-brand-700 bg-brand-50 rounded-md">
                         {item.media}
                       </span>
-                      <span className="text-xs text-zinc-500">{item.date}</span>
+                      <span className="text-xs text-ink-3">{item.date}</span>
                     </div>
-                    <h4 className="text-base font-bold text-white mb-3 leading-snug group-hover:text-brand-300 transition-colors">
+                    <h4 className="text-base font-bold text-ink mb-3 leading-snug group-hover:text-brand-700 transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-sm text-zinc-400 leading-relaxed line-clamp-3">
+                    <p className="text-sm text-ink-2 leading-relaxed line-clamp-3">
                       {item.desc}
                     </p>
-                    <div className="mt-4 flex items-center gap-1 text-xs text-zinc-500 group-hover:text-brand-400 transition-colors">
+                    <div className="mt-4 flex items-center gap-1 text-xs text-ink-3 group-hover:text-brand-600 transition-colors">
                       <ExternalLink className="w-3 h-3" />
                       {copy.brandPage.original}
                     </div>
@@ -94,27 +94,27 @@ export default function BrandPage() {
         <ScrollReveal>
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-brand-600/15 flex items-center justify-center">
-                <Building2 className="w-5 h-5 text-brand-400" />
+              <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                <Building2 className="w-5 h-5 text-brand-600" />
               </div>
-              <h3 className="text-xl font-bold text-white">{copy.brandPage.companyNews}</h3>
+              <h3 className="text-xl font-bold text-ink">{copy.brandPage.companyNews}</h3>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {news.map((item) => (
                 <div
                   key={item.id}
-                  className="glass-card rounded-2xl p-6 border border-white/5 hover:border-brand-700/30 transition-all hover:-translate-y-1"
+                  className="panel panel-raised rounded-2xl p-6 border border-line hover:border-brand-200 transition-all hover:-translate-y-1"
                 >
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="px-2 py-0.5 text-xs font-medium text-brand-300 bg-brand-900/40 border border-brand-800/40 rounded-md">
+                    <span className="px-2 py-0.5 text-xs font-medium text-brand-700 bg-brand-50 rounded-md">
                       {item.tag}
                     </span>
-                    <span className="text-xs text-zinc-500">{item.date}</span>
+                    <span className="text-xs text-ink-3">{item.date}</span>
                   </div>
-                  <h4 className="text-base font-bold text-white mb-3 leading-snug">
+                  <h4 className="text-base font-bold text-ink mb-3 leading-snug">
                     {item.title}
                   </h4>
-                  <p className="text-sm text-zinc-400 leading-relaxed">
+                  <p className="text-sm text-ink-2 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -127,27 +127,27 @@ export default function BrandPage() {
         <ScrollReveal>
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-accent-600/15 flex items-center justify-center">
-                <CalendarDays className="w-5 h-5 text-accent-400" />
+              <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
+                <CalendarDays className="w-5 h-5 text-accent-600" />
               </div>
-              <h3 className="text-xl font-bold text-white">{copy.brandPage.events}</h3>
+              <h3 className="text-xl font-bold text-ink">{copy.brandPage.events}</h3>
             </div>
             <div className="space-y-6">
               {events.map((event, i) => (
                 <div
                   key={i}
-                  className="flex flex-col sm:flex-row gap-4 sm:gap-8 glass-card rounded-2xl p-6 border border-white/5"
+                  className="flex flex-col sm:flex-row gap-4 sm:gap-8 panel panel-raised rounded-2xl p-6 border border-line"
                 >
                   <div className="sm:w-24 flex-shrink-0">
-                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-accent-900/40 border border-accent-800/40">
-                      <span className="text-sm font-bold text-accent-300">{event.year}</span>
+                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-lg bg-accent-50">
+                      <span className="text-sm font-bold text-accent-700">{event.year}</span>
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-base font-bold text-white mb-2">
+                    <h4 className="text-base font-bold text-ink mb-2">
                       {event.title}
                     </h4>
-                    <p className="text-sm text-zinc-400 leading-relaxed">
+                    <p className="text-sm text-ink-2 leading-relaxed">
                       {event.desc}
                     </p>
                   </div>
@@ -161,20 +161,20 @@ export default function BrandPage() {
         <ScrollReveal>
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-xl bg-accent-600/15 flex items-center justify-center">
-                <Handshake className="w-5 h-5 text-accent-400" />
+              <div className="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
+                <Handshake className="w-5 h-5 text-accent-600" />
               </div>
-              <h3 className="text-xl font-bold text-white">{copy.brandPage.partners}</h3>
+              <h3 className="text-xl font-bold text-ink">{copy.brandPage.partners}</h3>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {partners.map((p, i) => (
                 <div
                   key={i}
-                  className="glass-card rounded-2xl p-6 border border-white/5 text-center hover:border-brand-700/30 transition-all"
+                  className="panel panel-raised rounded-2xl p-6 border border-line text-center hover:border-brand-200 transition-all"
                 >
-                  <Trophy className="w-6 h-6 text-accent-400 mx-auto mb-3" />
-                  <div className="text-base font-bold text-white mb-1">{p.name}</div>
-                  <div className="text-sm text-zinc-500">{p.role}</div>
+                  <Trophy className="w-6 h-6 text-accent-600 mx-auto mb-3" />
+                  <div className="text-base font-bold text-ink mb-1">{p.name}</div>
+                  <div className="text-sm text-ink-3">{p.role}</div>
                 </div>
               ))}
             </div>

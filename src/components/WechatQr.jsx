@@ -9,8 +9,8 @@ export default function WechatQr({ alt, fallbackText, className = 'w-48 h-48' })
   return (
     <div className={`${className} rounded-xl bg-white flex items-center justify-center mb-4 overflow-hidden`}>
       {failed ? (
-        <div className="text-center text-zinc-400">
-          <MessageSquare className="w-12 h-12 mx-auto mb-2 text-zinc-300" />
+        <div className="text-center text-ink-2">
+          <MessageSquare className="w-12 h-12 mx-auto mb-2 text-ink-2" />
           <p className="text-xs">{fallbackText}</p>
         </div>
       ) : (
