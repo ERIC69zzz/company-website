@@ -36,6 +36,8 @@ test('英文产品文案不残留中文字符', () => {
   const visibleContent = englishProducts.map((product) => ({
     name: product.name,
     brand: product.brand,
+    // price 也会显示给访客：「询价」这类非数字占位必须翻译
+    price: product.price,
     shortDesc: product.shortDesc,
     description: product.description,
     tags: product.tags,

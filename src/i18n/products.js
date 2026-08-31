@@ -50,6 +50,36 @@ const productCopy = {
       description: 'The Seagate IronWolf Pro 16TB is a professional NAS drive running at 7,200RPM with a 256MB cache. It is rated for 550TB per year, supports NAS systems with up to 24 bays, and includes a 5-year warranty plus 3 years of Rescue Data Recovery Services.',
       tags: ['Professional', 'High capacity', '5-year warranty'],
     },
+    'seagate-ironwolf-18t': {
+      name: 'IronWolf Pro 18TB', shortDesc: 'High-capacity professional NAS drive with CMR and a 5-year warranty',
+      description: 'The Seagate IronWolf Pro 18TB belongs to the professional NAS drive line, running at 7,200RPM with CMR recording. Built for multi-bay NAS and 24/7 operation, it carries a 5-year warranty. Contact us to confirm detailed specifications and current pricing.',
+      tags: ['Professional', 'High capacity', '5-year warranty'],
+    },
+    'seagate-ironwolf-20t': {
+      name: 'IronWolf Pro 20TB', shortDesc: 'High-capacity professional NAS drive with CMR and a 5-year warranty',
+      description: 'The Seagate IronWolf Pro 20TB belongs to the professional NAS drive line, running at 7,200RPM with CMR recording. Built for multi-bay NAS and 24/7 operation, it carries a 5-year warranty. Contact us to confirm detailed specifications and current pricing.',
+      tags: ['Professional', 'High capacity', '5-year warranty'],
+    },
+    'seagate-ironwolf-22t': {
+      name: 'IronWolf Pro 22TB', shortDesc: 'High-capacity professional NAS drive with CMR and a 5-year warranty',
+      description: 'The Seagate IronWolf Pro 22TB belongs to the professional NAS drive line, running at 7,200RPM with CMR recording. Built for multi-bay NAS and 24/7 operation, it carries a 5-year warranty. Contact us to confirm detailed specifications and current pricing.',
+      tags: ['Professional', 'High capacity', '5-year warranty'],
+    },
+    'seagate-ironwolf-24t': {
+      name: 'IronWolf Pro 24TB', shortDesc: 'High-capacity professional NAS drive with CMR and a 5-year warranty',
+      description: 'The Seagate IronWolf Pro 24TB belongs to the professional NAS drive line, running at 7,200RPM with CMR recording. Built for multi-bay NAS and 24/7 operation, it carries a 5-year warranty. Contact us to confirm detailed specifications and current pricing.',
+      tags: ['Professional', 'High capacity', '5-year warranty'],
+    },
+    'seagate-ironwolf-32t': {
+      name: 'IronWolf Pro 32TB', shortDesc: 'Ultra-high-capacity professional NAS drive for dense storage',
+      description: 'The Seagate IronWolf Pro 32TB is the ultra-high-capacity model in the professional NAS drive line, aimed at video archives and surveillance storage. Contact us to confirm detailed specifications and current pricing.',
+      tags: ['Professional', 'Ultra capacity'],
+    },
+    'toshiba-n300': {
+      name: 'N300 NAS Hard Drive', shortDesc: 'Toshiba NAS drive, multiple capacities available',
+      description: 'The Toshiba N300 series is a dedicated hard drive for NAS and small servers, rated for 24/7 operation and suited to home media libraries and small-business file sharing. Several capacities are available — contact us to confirm capacity and pricing.',
+      tags: ['NAS-ready', 'Multiple capacities'],
+    },
     'samsung-990-pro-1t': {
       shortDesc: 'PCIe 4.0 NVMe SSD with 7,450MB/s reads, ideal for NAS caching',
       description: 'The Samsung 990 PRO is a flagship PCIe 4.0 NVMe SSD with sequential reads up to 7,450MB/s and writes up to 6,900MB/s. Samsung V-NAND and an in-house controller make it an excellent NAS cache drive for accelerating small-file workloads.',
@@ -127,6 +157,36 @@ const productCopy = {
       description: 'Seagate IronWolf Pro 16TBは7,200RPM、256MBキャッシュを備えたプロ向けNAS HDDです。年間550TBのワークロードと最大24ベイのNASに対応し、5年保証と3年間のRescueデータ復旧サービスが付属します。',
       tags: ['プロ向け', '大容量', '5年保証'],
     },
+    'seagate-ironwolf-18t': {
+      name: 'IronWolf Pro 18TB', shortDesc: 'CMR方式・5年保証の大容量プロ向けNAS HDD',
+      description: 'Seagate IronWolf Pro 18TBはプロ向けNAS HDDシリーズの製品で、7,200RPM、CMR記録方式を採用しています。マルチベイNASや24時間365日の連続運転を想定し、5年保証が付属します。詳細仕様と価格はお問い合わせください。',
+      tags: ['プロ向け', '大容量', '5年保証'],
+    },
+    'seagate-ironwolf-20t': {
+      name: 'IronWolf Pro 20TB', shortDesc: 'CMR方式・5年保証の大容量プロ向けNAS HDD',
+      description: 'Seagate IronWolf Pro 20TBはプロ向けNAS HDDシリーズの製品で、7,200RPM、CMR記録方式を採用しています。マルチベイNASや24時間365日の連続運転を想定し、5年保証が付属します。詳細仕様と価格はお問い合わせください。',
+      tags: ['プロ向け', '大容量', '5年保証'],
+    },
+    'seagate-ironwolf-22t': {
+      name: 'IronWolf Pro 22TB', shortDesc: 'CMR方式・5年保証の大容量プロ向けNAS HDD',
+      description: 'Seagate IronWolf Pro 22TBはプロ向けNAS HDDシリーズの製品で、7,200RPM、CMR記録方式を採用しています。マルチベイNASや24時間365日の連続運転を想定し、5年保証が付属します。詳細仕様と価格はお問い合わせください。',
+      tags: ['プロ向け', '大容量', '5年保証'],
+    },
+    'seagate-ironwolf-24t': {
+      name: 'IronWolf Pro 24TB', shortDesc: 'CMR方式・5年保証の大容量プロ向けNAS HDD',
+      description: 'Seagate IronWolf Pro 24TBはプロ向けNAS HDDシリーズの製品で、7,200RPM、CMR記録方式を採用しています。マルチベイNASや24時間365日の連続運転を想定し、5年保証が付属します。詳細仕様と価格はお問い合わせください。',
+      tags: ['プロ向け', '大容量', '5年保証'],
+    },
+    'seagate-ironwolf-32t': {
+      name: 'IronWolf Pro 32TB', shortDesc: '高密度ストレージ向けの超大容量プロ向けNAS HDD',
+      description: 'Seagate IronWolf Pro 32TBはプロ向けNAS HDDシリーズの超大容量モデルで、映像アーカイブや監視映像の保存を想定しています。詳細仕様と価格はお問い合わせください。',
+      tags: ['プロ向け', '超大容量'],
+    },
+    'toshiba-n300': {
+      name: 'N300 NAS ハードディスク', shortDesc: '東芝のNAS向けHDD、複数容量から選択可能',
+      description: '東芝N300シリーズはNASや小規模サーバー向けの専用HDDで、24時間365日の連続運転に対応し、家庭のメディアライブラリや中小企業のファイル共有に適しています。複数の容量をご用意しています。容量と価格はお問い合わせください。',
+      tags: ['NAS対応', '複数容量'],
+    },
     'samsung-990-pro-1t': {
       shortDesc: '最大7,450MB/s、NASキャッシュに適したPCIe 4.0 NVMe SSD',
       description: 'Samsung 990 PROは、最大7,450MB/sのシーケンシャル読み込みと6,900MB/sの書き込みに対応するPCIe 4.0 NVMe SSDです。V-NANDと自社製コントローラーにより、NASのSSDキャッシュとして小さなファイルの処理を高速化します。',
@@ -155,6 +215,12 @@ const productCopy = {
   },
 };
 
+// 非数字的价格占位（如「询价」）需要翻译，否则会原样显示给外语访客
+const priceLabels = {
+  en: { '询价': 'Contact us' },
+  ja: { '询价': 'お問い合わせ' },
+};
+
 const brandNames = {
   en: { 极空间: 'ZSpace', 绿联: 'UGREEN', 希捷: 'Seagate', 东芝: 'Toshiba', 三星: 'Samsung', 英睿达: 'Crucial' },
   ja: { 极空间: 'ZSpace', 绿联: 'UGREEN', 希捷: 'Seagate', 东芝: 'Toshiba', 三星: 'Samsung', 英睿达: 'Crucial' },
@@ -168,6 +234,7 @@ const specLabels = {
     顺序写入: 'Sequential write', 颗粒: 'NAND', 适用硬盘: 'Compatible drives', 传输速度: 'Transfer speed',
     供电: 'Power', 材质: 'Material', 支持协议: 'Protocols', 支持规格: 'Form factors', 支持RAID: 'RAID support',
     主控: 'Controller', 支持系统: 'OS support', USB: 'USB', HDMI: 'HDMI',
+    系列: 'Series', 适用: 'Designed for',
   },
   ja: {
     处理器: 'プロセッサ', 内存: 'メモリ', 盘位: 'ドライブベイ', 网口: 'ネットワーク', 最大容量: '最大容量',
@@ -176,11 +243,13 @@ const specLabels = {
     顺序写入: 'シーケンシャル書き込み', 颗粒: 'NAND', 适用硬盘: '対応ドライブ', 传输速度: '転送速度',
     供电: '電源', 材质: '素材', 支持协议: '対応方式', 支持规格: '対応サイズ', 支持RAID: 'RAID対応',
     主控: 'コントローラー', 支持系统: '対応OS', USB: 'USB', HDMI: 'HDMI',
+    系列: 'シリーズ', 适用: '用途',
   },
 };
 
 const specValues = {
   en: {
+    'NAS / 小型服务器': 'NAS / small servers',
     '4GB / 8GB DDR5': '4GB / 8GB DDR5', 'ARM 四核 1.7GHz': 'Quad-core ARM 1.7GHz', '瑞芯微 RK3568 四核 2.0GHz': 'Quad-core Rockchip RK3568 2.0GHz',
     '4盘位（2.5/3.5英寸）': '4 bays (2.5 / 3.5 in)', '2盘位（2.5/3.5英寸）': '2 bays (2.5 / 3.5 in)',
     '双 M.2 2280': 'Dual M.2 2280', '内置电池 / SD卡槽': 'Built-in battery / SD card slot',
@@ -192,6 +261,7 @@ const specValues = {
     '免工具安装': 'Tool-free installation', '即插即用，免驱': 'Plug and play, no driver required',
   },
   ja: {
+    'NAS / 小型服务器': 'NAS / 小規模サーバー',
     '4GB / 8GB DDR5': '4GB / 8GB DDR5', 'ARM 四核 1.7GHz': 'ARM クアッドコア 1.7GHz', '瑞芯微 RK3568 四核 2.0GHz': 'Rockchip RK3568 クアッドコア 2.0GHz',
     '4盘位（2.5/3.5英寸）': '4ベイ（2.5 / 3.5インチ）', '2盘位（2.5/3.5英寸）': '2ベイ（2.5 / 3.5インチ）',
     '双 M.2 2280': 'M.2 2280 × 2', '内置电池 / SD卡槽': '内蔵バッテリー / SDカードスロット',
@@ -220,6 +290,7 @@ export function localizeProducts(products, language) {
       ...product,
       ...localized,
       brand: brandNames[language]?.[product.brand] || product.brand,
+      price: priceLabels[language]?.[product.price] || product.price,
       specs,
     };
   });
