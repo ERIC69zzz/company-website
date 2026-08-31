@@ -1,0 +1,75 @@
+name: 部署到阿里云 ECS
+
+# Vercel（bjyzyes.com）由平台自身的 Git 集成自动部署，不在这里处理。
+# 本 workflow 只负责阿里云 ECS 上的 youzhiyes.com。
+# 两者由同一次 push 触发，保持内容同步。
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - 'deploy/README.md'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ecs
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # 服务器和 secrets 就绪前不执行，避免每次 push 都因缺凭据而失败。
+    # 准备好后到 Settings → Secrets and variables → Actions → Variables
+    # 新增仓库变量 ECS_ENABLED=true 即可开启。
+    if: vars.ECS_ENABLED == 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 代码检查与测试
+        run: |
+          npm run lint
+          npm test
+
+      # 关键：用 youzhiyes.com 构建，产出的 canonical / og / sitemap / robots
+      # 都指向自身域名，而不是 Vercel 那份的 bjyzyes.com
+      - name: 构建（youzhiyes.com）
+        env:
+          SITE_URL: https://www.youzhiyes.com
+        run: npm run build
+
+      - name: 校验构建产物指向正确域名
+        run: |
+          grep -q 'canonical" href="https://www.youzhiyes.com/"' dist/index.html
+          grep -q 'https://www.youzhiyes.com/sitemap.xml' dist/robots.txt
+          echo "✅ 产物域名正确"
+
+      - name: 配置 SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ECS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.ECS_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: 同步静态文件与 API
+        run: |
+          rsync -az --delete -e "ssh -i ~/.ssh/id_ed25519" \
+            dist/ "${{ secrets.ECS_USER }}@${{ secrets.ECS_HOST }}:/opt/youzhi/dist/"
+          rsync -az --delete -e "ssh -i ~/.ssh/id_ed25519" \
+            api/ "${{ secrets.ECS_USER }}@${{ secrets.ECS_HOST }}:/opt/youzhi/api/"
+          rsync -az -e "ssh -i ~/.ssh/id_ed25519" \
+            deploy/server.js "${{ secrets.ECS_USER }}@${{ secrets.ECS_HOST }}:/opt/youzhi/server.js"
+
+      - name: 重启 API 服务并健康检查
+        run: |
+          ssh -i ~/.ssh/id_ed25519 "${{ secrets.ECS_USER }}@${{ secrets.ECS_HOST }}" \
+            'sudo systemctl restart youzhi-api && sleep 2 && curl -fsS http://127.0.0.1:3001/api/health'
+          echo "✅ API 服务健康"

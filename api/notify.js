@@ -79,7 +79,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         msgtype: 'markdown',
         markdown: {
-          content: `**新咨询通知**\n\n> **姓名：**${name}\n> **电话：**${phone}\n> **类型：**${type}\n> **内容：**${content}\n\n---\n来自：bjyzyes.com 官网`,
+          content: `**新咨询通知**\n\n> **姓名：**${name}\n> **电话：**${phone}\n> **类型：**${type}\n> **内容：**${content}\n\n---\n来自：${req.headers.host || '官网'}`,
         },
       }),
     });

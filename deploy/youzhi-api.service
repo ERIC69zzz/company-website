@@ -1,0 +1,25 @@
+# /etc/systemd/system/youzhi-api.service
+[Unit]
+Description=Youzhi website API (notify)
+After=network.target
+
+[Service]
+Type=simple
+User=youzhi
+WorkingDirectory=/opt/youzhi
+ExecStart=/usr/bin/node /opt/youzhi/server.js
+Restart=always
+RestartSec=3
+
+# 环境变量放独立文件，避免密钥进入 systemd 单元和 git
+EnvironmentFile=/etc/youzhi/api.env
+
+# 基础加固：服务只需读自己的目录和发外部请求
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/youzhi
+
+[Install]
+WantedBy=multi-user.target

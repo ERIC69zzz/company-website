@@ -149,7 +149,7 @@ export const translations = {
       title: '隐私政策',
       updatedLabel: '最近更新',
       updated: '2026年8月28日',
-      intro: '北京友质科技有限公司（以下简称"我们"）尊重并保护访问者的个人信息。本政策说明我们在 bjyzyes.com 上收集哪些信息、如何使用，以及您享有的权利。',
+      intro: '北京友质科技有限公司（以下简称"我们"）尊重并保护访问者的个人信息。本政策说明我们在本网站上收集哪些信息、如何使用，以及您享有的权利。',
       sections: [
         {
           heading: '我们收集的信息',
@@ -407,7 +407,7 @@ export const translations = {
       title: 'Privacy Policy',
       updatedLabel: 'Last updated',
       updated: 'August 28, 2026',
-      intro: 'Beijing Youzhi Technology Co., Ltd. ("we") respects and protects the personal information of visitors. This policy explains what we collect on bjyzyes.com, how it is used, and the rights you have.',
+      intro: 'Beijing Youzhi Technology Co., Ltd. ("we") respects and protects the personal information of visitors. This policy explains what we collect on this website, how it is used, and the rights you have.',
       sections: [
         {
           heading: 'Information we collect',
@@ -665,7 +665,7 @@ export const translations = {
       title: 'プライバシーポリシー',
       updatedLabel: '最終更新',
       updated: '2026年8月28日',
-      intro: '北京友質科技有限公司（以下「当社」）は、訪問者の個人情報を尊重し保護します。本ポリシーでは、bjyzyes.com で取得する情報、その利用方法、およびお客様の権利について説明します。',
+      intro: '北京友質科技有限公司（以下「当社」）は、訪問者の個人情報を尊重し保護します。本ポリシーでは、当サイトで取得する情報、その利用方法、およびお客様の権利について説明します。',
       sections: [
         {
           heading: '取得する情報',

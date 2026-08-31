@@ -1,4 +1,6 @@
-// 从路由和产品数据生成 sitemap.xml，避免新增产品后忘记同步。
+// 生成 sitemap.xml 与 robots.txt。
+// 两者都含绝对域名，必须随构建时的 SITE_URL 变化，
+// 否则双域名部署时其中一份会指向另一个站点。
 // 由 package.json 的 prebuild 钩子在每次构建前自动执行。
 import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
@@ -6,7 +8,8 @@ import { dirname, join } from 'path';
 import { products } from '../src/data/products.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUTPUT_FILE = join(__dirname, '..', 'public', 'sitemap.xml');
+const SITEMAP_FILE = join(__dirname, '..', 'public', 'sitemap.xml');
+const ROBOTS_FILE = join(__dirname, '..', 'public', 'robots.txt');
 
 const SITE_URL = (process.env.SITE_URL || 'https://www.bjyzyes.com').replace(/\/+$/, '');
 
@@ -53,5 +56,16 @@ const xml = [
   '',
 ].join('\n');
 
-writeFileSync(OUTPUT_FILE, xml, 'utf-8');
-console.log(`✅ 已生成 sitemap.xml，共 ${urls.length} 条 URL`);
+writeFileSync(SITEMAP_FILE, xml, 'utf-8');
+
+const robots = [
+  'User-agent: *',
+  'Allow: /',
+  '',
+  `Sitemap: ${SITE_URL}/sitemap.xml`,
+  '',
+].join('\n');
+
+writeFileSync(ROBOTS_FILE, robots, 'utf-8');
+
+console.log(`✅ 已生成 sitemap.xml（${urls.length} 条 URL）与 robots.txt，站点地址 ${SITE_URL}`);
