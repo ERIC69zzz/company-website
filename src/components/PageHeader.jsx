@@ -10,8 +10,10 @@ export default function PageHeader({
 }) {
   const { copy } = useLanguage();
 
+  // 吸附位置要让开固定导航栏的高度（h-16 / lg:h-20），
+  // 否则滚动时会滑到导航栏下面被盖住。
   return (
-    <div className="glass sticky top-0 z-40 border-b border-white/5">
+    <div className="glass sticky top-16 lg:top-20 z-40 border-b border-white/5">
       <div className={`${maxWidth} mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between`}>
         <Link
           to={backTo}
