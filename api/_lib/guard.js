@@ -30,7 +30,7 @@ const makeRoomForBucket = (now) => {
   if (oldestKey) buckets.delete(oldestKey);
 };
 
-const getClientIp = (req) => {
+export const getClientIp = (req) => {
   const forwarded = req.headers['x-forwarded-for'];
   if (typeof forwarded === 'string' && forwarded) {
     return forwarded.split(',')[0].trim();

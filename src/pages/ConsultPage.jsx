@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MessageCircle, Phone, User, CheckCircle2 } from 'lucide-react';
 import { company, initialConsultForm } from '../data/site';
 import WechatQr from '../components/WechatQr';
@@ -12,6 +12,14 @@ export default function ConsultPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [form, setForm] = useState(initialConsultForm);
+  // 蜜罐字段与渲染时刻，用于识别自动化提交，对真人无感
+  const [fax, setFax] = useState('');
+  // 在 effect 里取时间，避免 render 期间调用非纯函数。
+  // 初值 0 会让服务端的耗时检查放行，属于安全的失败方向。
+  const renderedAt = useRef(0);
+  useEffect(() => {
+    renderedAt.current = Date.now();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +30,7 @@ export default function ConsultPage() {
       const res = await fetch('/api/notify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, language }),
+        body: JSON.stringify({ ...form, language, fax, renderedAt: renderedAt.current }),
       });
 
       const data = await res.json();
@@ -120,6 +128,18 @@ export default function ConsultPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* 蜜罐：视觉隐藏但不用 display:none，真人看不到也 Tab 不到。
+                      autocomplete="off" 防止密码管理器误填。 */}
+                  <input
+                    type="text"
+                    name="fax"
+                    value={fax}
+                    onChange={(e) => setFax(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute w-px h-px -m-px overflow-hidden opacity-0 pointer-events-none"
+                  />
                   <div>
                     <label htmlFor="consult-name" className="block text-sm text-zinc-400 mb-1.5">{copy.consultPage.name}</label>
                     <div className="relative">
