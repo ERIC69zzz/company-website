@@ -35,7 +35,7 @@ export default function ContactSection() {
             {localizedCards.map((item, i) => (
               <div
                 key={item.title}
-                className={`panel panel-raised ${accentByIndex(i).card} rounded-2xl p-6 border border-line text-center ${accentByIndex(i).hover} transition-all`}
+                className={`${accentByIndex(i).card} rounded-2xl p-6 border border-line text-center ${accentByIndex(i).hover} transition-all`}
               >
                 <div className={`w-12 h-12 rounded-xl ${accentByIndex(i).iconBox} flex items-center justify-center mx-auto mb-4`}>
                   <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />
