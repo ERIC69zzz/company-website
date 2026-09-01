@@ -18,6 +18,7 @@ const SITE_URL = (process.env.SITE_URL || 'https://www.bjyzyes.com').replace(/\/
 const staticRoutes = [
   { path: '/', priority: '1.0' },
   { path: '/products', priority: '0.9' },
+  { path: '/enterprise', priority: '0.9' },
   { path: '/consult', priority: '0.8' },
   { path: '/contact', priority: '0.7' },
   { path: '/brand', priority: '0.6' },

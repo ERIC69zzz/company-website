@@ -2,6 +2,7 @@ import { useState, useEffect, useId, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Check, ChevronDown, Languages, Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import BrandWordmark from './BrandWordmark';
 import { languageOptions, useLanguage } from '../i18n/language';
 
 function LanguageSwitcher({ compact = false }) {
@@ -108,16 +109,18 @@ function LanguageSwitcher({ compact = false }) {
   );
 }
 
-export default function Navbar() {
+export default function Navbar({ sticky = false, brandTargetRef, introActive = false }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { copy } = useLanguage();
+  const brandName = '友质科技';
   const isHome = location.pathname === '/';
   const navItems = [
     { label: copy.nav.home, href: '#home', type: 'anchor' },
-    { label: copy.nav.products, href: '/products', type: 'route' },
+    { label: copy.business.personalNav, href: '/products', type: 'route' },
+    { label: copy.business.enterpriseNav, href: '/enterprise', type: 'route' },
     { label: copy.nav.solutions, href: '#services', type: 'anchor' },
     { label: copy.nav.brandWorld, href: '/brand', type: 'route' },
     { label: copy.nav.contact, href: '/contact', type: 'route' },
@@ -161,7 +164,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      inert={introActive}
+      className={`${brandTargetRef ? 'home-entry__nav' : ''} ${sticky ? 'sticky' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'chrome' : 'bg-surface/80 backdrop-blur-md'
       }`}
     >
@@ -171,21 +175,28 @@ export default function Navbar() {
             to="/"
             onClick={handleLogoClick}
             aria-label={copy.nav.home}
-            className="flex items-center gap-2 group"
+            className={`brand-lockup text-lg group${brandTargetRef ? ' home-entry__lockup' : ''}`}
           >
-            <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" alt={copy.nav.brand} />
-            <span className="text-lg font-semibold text-ink tracking-tight">
-              {copy.nav.brand}
+            <span className="brand-lockup__logo">
+              <Logo className="block h-full w-full" />
+            </span>
+            <span
+              ref={brandTargetRef}
+              aria-label={brandName}
+              lang="zh-CN"
+            >
+              <BrandWordmark name={brandName} />
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
-                className="px-4 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
+                aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
+                className="px-3 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
               >
                 {item.label}
               </a>
@@ -200,7 +211,7 @@ export default function Navbar() {
             <LanguageSwitcher />
           </div>
 
-          <div className="lg:hidden flex items-center gap-1.5">
+          <div className="xl:hidden flex items-center gap-1.5">
             <LanguageSwitcher compact />
             <button
               type="button"
@@ -217,7 +228,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div id="mobile-navigation" className="lg:hidden chrome">
+        <div id="mobile-navigation" className="xl:hidden chrome">
           <div className="px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <a

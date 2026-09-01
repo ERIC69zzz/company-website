@@ -1,17 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { MessageCircle, Phone, User, CheckCircle2 } from 'lucide-react';
 import { company, initialConsultForm } from '../data/site';
 import WechatQr from '../components/WechatQr';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../i18n/language';
+import { getEnterpriseInquiry } from '../data/enterprise';
 
 export default function ConsultPage() {
   const { language, copy } = useLanguage();
+  const [searchParams] = useSearchParams();
+  const enterpriseInquiry = getEnterpriseInquiry(searchParams, copy.business.enterprise.inquiryTemplate);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
-  const [form, setForm] = useState(initialConsultForm);
+  const [form, setForm] = useState(() => ({ ...initialConsultForm, ...enterpriseInquiry }));
   // 蜜罐字段与渲染时刻，用于识别自动化提交，对真人无感
   const [fax, setFax] = useState('');
   // 在 effect 里取时间，避免 render 期间调用非纯函数。
@@ -105,6 +109,9 @@ export default function ConsultPage() {
 
           <ScrollReveal delay={0.1}>
             <div className="panel panel-raised rounded-2xl p-8 border border-line">
+              {enterpriseInquiry && (
+                <p className="text-xs font-medium text-brand-700 mb-4">{copy.business.enterprise.consultContext}</p>
+              )}
               <h3 className="text-lg font-bold text-ink mb-2">{copy.consultPage.formTitle}</h3>
               <p className="text-sm text-ink-3 mb-6">
                 {copy.consultPage.formDesc}
@@ -120,7 +127,7 @@ export default function ConsultPage() {
                     {copy.consultPage.successDesc}
                   </p>
                   <button
-                    onClick={() => { setSubmitted(false); setForm(initialConsultForm); }}
+                    onClick={() => { setSubmitted(false); setForm({ ...initialConsultForm, ...enterpriseInquiry }); }}
                     className="mt-6 px-5 py-2 text-sm font-medium text-accent-700 bg-accent-50 rounded-lg hover:bg-accent-100 transition-colors"
                   >
                     {copy.consultPage.continue}

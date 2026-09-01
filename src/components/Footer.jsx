@@ -17,6 +17,7 @@ export default function Footer() {
       href: linkTargets[groupIndex][itemIndex],
     })),
   }));
+  links[0].items.push({ label: copy.business.enterpriseNav, href: '/enterprise' });
 
   return (
     <footer className="relative hairline bg-surface">

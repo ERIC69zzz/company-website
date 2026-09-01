@@ -1,3 +1,5 @@
+import { businessCopy } from './business.js';
+
 const consultationValues = [
   '产品咨询',
   '方案定制',
@@ -9,6 +11,7 @@ const consultationValues = [
 
 export const translations = {
   zh: {
+    business: businessCopy.zh,
     meta: {
       title: '北京友质科技有限公司 - 硬盘与NAS私有云存储专家',
       description: '北京友质科技有限公司 - 专注硬盘与NAS私有云存储解决方案，成立于2010年，为您提供企业级数据存储产品与服务。',
@@ -259,6 +262,7 @@ export const translations = {
   },
 
   en: {
+    business: businessCopy.en,
     meta: {
       title: 'Beijing Youzhi Technology - HDD, SSD & Private Cloud NAS',
       description: 'Enterprise storage products and services from Beijing Youzhi Technology, specializing in HDDs, SSDs and private-cloud NAS solutions since 2010.',
@@ -517,6 +521,7 @@ export const translations = {
   },
 
   ja: {
+    business: businessCopy.ja,
     meta: {
       title: '北京友質科技有限公司 - HDD・SSD・プライベートクラウドNAS',
       description: '2010年創業。HDD、SSD、プライベートクラウドNASを中心に、法人向けデータストレージ製品とサービスを提供します。',

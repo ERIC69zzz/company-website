@@ -17,7 +17,7 @@ const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 // 缓动，让镜头在每个阶段停顿、切换时加速，接近 Apple 的节奏
 const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
-export default function ScrollStory({ deviceTargetRef }) {
+export default function ScrollStory() {
   const { copy } = useLanguage();
   const sectionRef = useRef(null);
   const progress = useScrollProgress(sectionRef);
@@ -43,7 +43,7 @@ export default function ScrollStory({ deviceTargetRef }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-ink mb-3">{s.title}</h2>
           <p className="text-ink-2 mb-12">{s.subtitle}</p>
-          <div ref={deviceTargetRef} className="w-full max-w-sm mx-auto mb-12">
+          <div className="w-full max-w-sm mx-auto mb-12">
             <NasDevice activeRegion={REGIONS.all} litBays={4} />
           </div>
           <div className="grid sm:grid-cols-2 gap-8">
@@ -96,7 +96,7 @@ export default function ScrollStory({ deviceTargetRef }) {
           <div
             className="absolute z-30 inset-x-0 -top-24 lg:-top-16 text-center px-4"
             style={{
-              opacity: `calc(var(--nas-handoff-title-opacity, 0) * ${clamp01(1 - progress * 6)})`,
+              opacity: clamp01(1 - progress * 6),
               transition: 'opacity .2s linear',
             }}
           >
@@ -107,14 +107,12 @@ export default function ScrollStory({ deviceTargetRef }) {
           <div className="grid lg:grid-cols-2 gap-4 lg:gap-8 items-center">
             {/* 设备舞台 */}
             <div
-              ref={deviceTargetRef}
-              className="nas-handoff-target relative aspect-[4/3] max-w-[260px] sm:max-w-sm lg:max-w-lg mx-auto w-full"
+              className="relative aspect-[4/3] max-w-[260px] sm:max-w-sm lg:max-w-lg mx-auto w-full"
             >
               <div
                 className="absolute inset-0 will-change-transform drop-shadow-[0_35px_45px_rgba(0,0,0,0.48)]"
                 style={{
                   transform: `scale(${scale}) translate(${x}%, ${y}%)`,
-                  opacity: 'var(--nas-handoff-opacity, 0)',
                 }}
               >
                 <NasDevice activeRegion={active.region} litBays={active.litBays} />
