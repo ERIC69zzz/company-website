@@ -2,9 +2,9 @@ export const businessCopy = {
   zh: {
     personalNav: '个人选购', enterpriseNav: '企业级存储',
     home: {
-      eyebrow: '存储产品 · 选型与配置', title: '硬盘、固态与 NAS 私有云',
+      title: '硬盘、固态与 NAS 私有云',
       description: '从日常备份到企业部署，为每一份数据选择合适的存储。',
-      personal: '个人与家庭', personalHint: '按产品选购，按需求配置',
+      personal: '个人与家庭',
       categories: {
         hdd: { title: '机械硬盘', detail: '大容量存储 · 文件备份' },
         ssd: { title: '固态硬盘', detail: '电脑升级 · 高速读写' },
@@ -74,9 +74,9 @@ export const businessCopy = {
   en: {
     personalNav: 'Personal storage', enterpriseNav: 'Enterprise',
     home: {
-      eyebrow: 'STORAGE · SELECTION & SETUP', title: 'Hard drives, SSDs & private cloud NAS',
+      title: 'Hard drives, SSDs & private cloud NAS',
       description: 'Find the right storage for everyday backups and business deployments.',
-      personal: 'Personal & home', personalHint: 'Explore products. Find your fit.',
+      personal: 'Personal & home',
       categories: {
         hdd: { title: 'Hard drives', detail: 'More capacity · File backups' },
         ssd: { title: 'Solid state drives', detail: 'PC upgrades · Fast access' },
@@ -146,9 +146,9 @@ export const businessCopy = {
   ja: {
     personalNav: '個人向け製品', enterpriseNav: '法人向けストレージ',
     home: {
-      eyebrow: 'ストレージ製品 · 選定と構成', title: 'HDD・SSD・プライベートクラウドNAS',
+      title: 'HDD・SSD・プライベートクラウドNAS',
       description: '日々のバックアップから法人導入まで、用途に合ったストレージを。',
-      personal: '個人・ご家庭向け', personalHint: '製品から探す、用途に合わせて選ぶ',
+      personal: '個人・ご家庭向け',
       categories: {
         hdd: { title: 'ハードディスク', detail: '大容量保存 · バックアップ' },
         ssd: { title: 'SSD', detail: 'PCの増強 · 高速アクセス' },

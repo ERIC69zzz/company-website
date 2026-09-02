@@ -17,14 +17,12 @@ export default function StorefrontSection() {
     <section id="products" className="storefront" aria-labelledby="storefront-title">
       <div className="storefront__inner">
         <header className="storefront__heading">
-          <p className="storefront__eyebrow">{s.eyebrow}</p>
           <h1 id="storefront-title">{s.title}</h1>
           <p className="storefront__description">{s.description}</p>
         </header>
 
         <div className="storefront__group-label">
           <h2>{s.personal}</h2>
-          <p>{s.personalHint}</p>
         </div>
         <div className="storefront__products">
           {categories.map(({ id, label }) => (
