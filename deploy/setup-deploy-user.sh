@@ -28,11 +28,13 @@ echo "$PUBKEY" > "/home/$DEPLOY_USER/.ssh/authorized_keys"
 chmod 600 "/home/$DEPLOY_USER/.ssh/authorized_keys"
 chown "$DEPLOY_USER:$DEPLOY_USER" "/home/$DEPLOY_USER/.ssh/authorized_keys"
 
-echo "==> 授予应用目录写权限"
-# 让 deploy 与运行服务的 youzhi 用户同组，目录设 setgid 保证新文件继承组
+echo "==> 授予应用目录所有权"
+# deploy 必须拥有目录本身：rsync 要设置目录时间戳，
+# 仅有组写权限是不够的（会报 failed to set times / Operation not permitted）。
+# 属组保留 youzhi，让运行服务的用户与 nginx 仍可读取。
 usermod -aG youzhi "$DEPLOY_USER"
-chown -R youzhi:youzhi "$APP_DIR"
-chmod -R g+w "$APP_DIR"
+chown -R "$DEPLOY_USER:youzhi" "$APP_DIR"
+chmod -R u+rwX,g+rX,o+rX "$APP_DIR"
 find "$APP_DIR" -type d -exec chmod g+s {} \;
 
 echo "==> 只允许重启这一个服务，不给其它 sudo 权限"

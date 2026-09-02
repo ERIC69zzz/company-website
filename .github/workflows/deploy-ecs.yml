@@ -61,11 +61,11 @@ jobs:
 
       - name: 同步静态文件与 API
         run: |
-          rsync -az --delete -e "ssh -i ~/.ssh/id_ed25519" \
+          rsync -az --omit-dir-times --delete -e "ssh -i ~/.ssh/id_ed25519" \
             dist/ "${{ secrets.ECS_USER }}@${{ secrets.ECS_HOST }}:/opt/youzhi/dist/"
-          rsync -az --delete -e "ssh -i ~/.ssh/id_ed25519" \
+          rsync -az --omit-dir-times --delete -e "ssh -i ~/.ssh/id_ed25519" \
             api/ "${{ secrets.ECS_USER }}@${{ secrets.ECS_HOST }}:/opt/youzhi/api/"
-          rsync -az -e "ssh -i ~/.ssh/id_ed25519" \
+          rsync -az --omit-dir-times -e "ssh -i ~/.ssh/id_ed25519" \
             deploy/server.js "${{ secrets.ECS_USER }}@${{ secrets.ECS_HOST }}:/opt/youzhi/server.js"
 
       - name: 重启 API 服务并健康检查
