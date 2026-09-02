@@ -201,6 +201,23 @@ body {
   animation: brand-lockup-reveal 1600ms cubic-bezier(0.33, 0, 0.2, 1) 900ms both;
 }
 
+/* 窄屏不画描边层。
+   字标在手机上只有 ~41px，而 -webkit-text-stroke 的 clamp 会撞到 0.6px 下限，
+   相对字号比桌面粗近一倍；叠加 iOS Safari 对描边的光栅化方式，
+   「友质科技」这种笔画密集的汉字会糊成一团（实机 Safari 已复现）。
+   去掉描边后由填充字标独自完成遮罩显现，观感完整且不依赖描边渲染差异。 */
+@media (max-width: 640px) {
+  .brand-intro__contour {
+    display: none;
+  }
+
+  .brand-intro__reveal {
+    /* 没有轮廓打头阵，填充层不再需要等待，提前开始并缩短时长 */
+    animation-delay: 200ms;
+    animation-duration: 1300ms;
+  }
+}
+
 @keyframes brand-wordmark-outline {
   0% { clip-path: inset(0 100% 0 0); opacity: 0; }
   23% { clip-path: inset(0 0 0 0); opacity: 0.9; }
