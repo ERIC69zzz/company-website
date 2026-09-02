@@ -34,7 +34,18 @@ sudo nano /etc/youzhi/api.env
 
 填入 `WECOM_WEBHOOK_URL`，值与 Vercel 环境变量里的相同。
 
-### 3. 配置 GitHub Secrets
+### 3. 创建部署账号
+
+在服务器上执行，传入你本机生成的 SSH 公钥：
+
+```bash
+sudo bash setup-deploy-user.sh "ssh-ed25519 AAAA... you@mac"
+```
+
+该账号只能写 `/opt/youzhi` 与重启 `youzhi-api`，不具备其它权限。
+不用 root 做 CI 部署，凭据泄露时损失可控。
+
+### 4. 配置 GitHub Secrets
 
 仓库 Settings → Secrets and variables → Actions：
 
@@ -47,7 +58,7 @@ sudo nano /etc/youzhi/api.env
 再到同页的 **Variables** 标签新增仓库变量 `ECS_ENABLED` = `true`，
 部署 workflow 才会真正执行。在此之前它会自动跳过，不会因缺凭据而失败。
 
-### 4. 等备案通过后启用站点
+### 5. 等备案通过后启用站点
 
 **备案审核期间不要做这一步** —— 域名指向境内服务器并可访问会导致备案被驳回。
 
