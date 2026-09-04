@@ -195,7 +195,7 @@
 .scenario-selector__heading > p { margin-top: 16px; color: var(--color-ink-2); font-size: 14px; line-height: 1.8; }
 
 .scenario-selector__tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; }
-.scenario-selector__tabs button { position: relative; min-width: 0; min-height: 76px; padding: 20px 12px; background: transparent; color: var(--color-ink-2); text-align: center; font-size: clamp(18px, 1.8vw, 23px); font-weight: 500; line-height: 1.5; text-wrap: balance; transition: color 220ms ease; }
+.scenario-selector__tabs button { position: relative; min-width: 0; min-height: 84px; padding: 22px 12px; background: transparent; color: var(--color-ink-2); text-align: center; font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; line-height: 1.5; text-wrap: balance; transition: color 220ms ease; }
 .scenario-selector__tabs button + button::before { content: ''; position: absolute; left: 0; top: 18%; width: 1px; height: 64%; background: var(--color-line-strong); pointer-events: none; }
 .scenario-selector__tabs button::after { content: ''; position: absolute; left: 50%; bottom: 0; width: 36px; height: 2px; background: var(--color-accent-500); opacity: 0; transform: translateX(-50%) scaleX(.4); transition: opacity 220ms ease, transform 220ms ease; }
 .scenario-selector__tabs button:hover,
@@ -205,12 +205,13 @@
 
 .scenario-selector__panel { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 60px; min-height: 350px; margin-top: 24px; }
 .scenario-selector__copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding-block: 24px; animation: scenario-content-in 380ms cubic-bezier(.2,.7,.3,1) both; }
-.scenario-selector__copy h3 { max-width: 540px; color: var(--color-ink); font-size: clamp(25px, 2.4vw, 34px); font-weight: 500; line-height: 1.5; letter-spacing: -.025em; text-wrap: balance; }
-.scenario-selector__summary { max-width: 510px; margin-top: 18px; color: var(--color-ink-2); font-size: 14px; line-height: 1.9; }
-.scenario-selector__recommendations { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 24px; font-size: 12px; line-height: 1.8; }
+.scenario-selector__copy h3 { max-width: 540px; color: var(--color-ink); font-size: clamp(28px, 2.7vw, 38px); font-weight: 500; line-height: 1.5; letter-spacing: -.025em; text-wrap: balance; }
+.scenario-selector__summary { max-width: 510px; margin-top: 18px; color: var(--color-ink-2); font-size: 16px; line-height: 1.9; }
+.scenario-selector__recommendations { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 24px; font-size: 14px; line-height: 1.8; }
 .scenario-selector__recommendations > span { color: var(--color-ink-2); }
 .scenario-selector__recommendations strong { color: var(--color-brand-800); font-weight: 500; }
-.scenario-selector__copy > .storage-text-link { margin-top: 28px; }
+.scenario-selector__copy > .storage-text-link { min-height: 44px; margin-top: 28px; padding-block: 6px; gap: 12px; font-size: 19px; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 7px; }
+.scenario-selector__copy > .storage-text-link svg { width: 22px; height: 22px; }
 
 .scenario-selector__visual { display: flex; align-items: center; justify-content: center; min-width: 0; animation: scenario-content-in 420ms cubic-bezier(.2,.7,.3,1) both; }
 .scenario-selector__visual > svg { width: min(100%, 360px); height: 300px; filter: drop-shadow(0 16px 18px rgba(13,35,64,.08)); }
@@ -296,6 +297,12 @@
   .storefront__actions { padding-block: 16px 20px; }
   .storefront__enterprise { padding-block: 18px; }
   .storefront__enterprise-visual { height: 92px; }
+  .scenario-selector { padding-block: 64px; }
+  .scenario-selector__heading { margin-bottom: 28px; }
+  .scenario-selector__panel { margin-top: 20px; }
+  .scenario-selector__copy { padding-block: 16px; }
+  .scenario-selector__recommendations { margin-top: 20px; }
+  .scenario-selector__copy > .storage-text-link { margin-top: 20px; }
 }
 
 @media (max-width: 900px) {
@@ -358,13 +365,14 @@
   .scenario-selector__heading { margin-bottom: 25px; }
   .scenario-selector__heading h2 { font-size: 29px; }
   .scenario-selector__heading > p { font-size: 12px; }
-  .scenario-selector__tabs button { min-height: 62px; padding: 12px 3px; font-size: clamp(14px, 3.7vw, 16px); }
+  .scenario-selector__tabs button { min-height: 68px; padding: 14px 3px; font-size: clamp(16px, 4.4vw, 19px); }
   .scenario-selector__panel { grid-template-columns: 1fr; min-height: 0; margin-top: 30px; gap: 24px; }
   .scenario-selector__copy { padding: 0; }
-  .scenario-selector__copy h3 { font-size: 25px; }
-  .scenario-selector__summary { font-size: 13px; }
+  .scenario-selector__copy h3 { font-size: 28px; }
+  .scenario-selector__summary { font-size: 15px; }
   .scenario-selector__recommendations { margin-top: 20px; }
-  .scenario-selector__copy > .storage-text-link { margin-top: 24px; }
+  .scenario-selector__copy > .storage-text-link { margin-top: 24px; font-size: 17px; }
+  .scenario-selector__copy > .storage-text-link svg { width: 20px; height: 20px; }
   .scenario-selector__visual > svg { height: 220px; }
   .storage-services { scroll-margin-top: 64px; padding: 52px 18px 58px; }
   .storage-services__inner { gap: 26px; }
