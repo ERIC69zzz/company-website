@@ -1,13 +1,14 @@
-import { useState, useEffect, useId, useRef } from 'react';
+import { useCallback, useState, useEffect, useId, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Check, ChevronDown, Languages, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import BrandWordmark from './BrandWordmark';
 import { languageOptions, useLanguage } from '../i18n/language';
 
-function LanguageSwitcher({ compact = false }) {
+// open / onOpenChange 由 Navbar 托管：语言菜单和移动端导航必须互斥，
+// 否则语言浮层会盖住展开的导航项，且点击被浮层吃掉，导航项按不动。
+function LanguageSwitcher({ compact = false, open, onOpenChange }) {
   const { language, setLanguage, copy } = useLanguage();
-  const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
   const triggerRef = useRef(null);
   const menuId = useId();
@@ -17,11 +18,11 @@ function LanguageSwitcher({ compact = false }) {
     if (!open) return undefined;
 
     const handlePointerDown = (event) => {
-      if (!containerRef.current?.contains(event.target)) setOpen(false);
+      if (!containerRef.current?.contains(event.target)) onOpenChange(false);
     };
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
-        setOpen(false);
+        onOpenChange(false);
         triggerRef.current?.focus();
       }
     };
@@ -32,11 +33,11 @@ function LanguageSwitcher({ compact = false }) {
       document.removeEventListener('pointerdown', handlePointerDown);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [open]);
+  }, [open, onOpenChange]);
 
   const selectLanguage = (value) => {
     setLanguage(value);
-    setOpen(false);
+    onOpenChange(false);
     triggerRef.current?.focus();
   };
 
@@ -45,7 +46,7 @@ function LanguageSwitcher({ compact = false }) {
       <button
         ref={triggerRef}
         type="button"
-        onClick={() => setOpen((current) => !current)}
+        onClick={() => onOpenChange(!open)}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={menuId}
@@ -111,7 +112,13 @@ function LanguageSwitcher({ compact = false }) {
 
 export default function Navbar({ sticky = false, brandTargetRef, introActive = false }) {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  // 顶栏同时只允许展开一个浮层。桌面端和移动端的语言开关各有自己的标识，
+  // 这样被 display:none 隐藏的那一个不会跟着打开、抢走外部点击的判定。
+  const [openPanel, setOpenPanel] = useState(null);
+  const mobileOpen = openPanel === 'nav';
+  const closePanels = useCallback(() => setOpenPanel(null), []);
+  const toggleLanguage = useCallback((next) => setOpenPanel(next ? 'language' : null), []);
+  const toggleCompactLanguage = useCallback((next) => setOpenPanel(next ? 'language-compact' : null), []);
   const location = useLocation();
   const navigate = useNavigate();
   const { copy } = useLanguage();
@@ -134,7 +141,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
 
   const handleNavClick = (e, item) => {
     e.preventDefault();
-    setMobileOpen(false);
+    closePanels();
 
     if (item.type === 'route') {
       navigate(item.href);
@@ -151,7 +158,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    setMobileOpen(false);
+    closePanels();
 
     const isCanonicalHome = isHome && !location.search && !location.hash;
     if (isCanonicalHome) {
@@ -208,15 +215,19 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             >
               {copy.nav.consult}
             </a>
-            <LanguageSwitcher />
+            <LanguageSwitcher open={openPanel === 'language'} onOpenChange={toggleLanguage} />
           </div>
 
           <div className="xl:hidden flex items-center gap-1.5">
-            <LanguageSwitcher compact />
+            <LanguageSwitcher
+              compact
+              open={openPanel === 'language-compact'}
+              onOpenChange={toggleCompactLanguage}
+            />
             <button
               type="button"
               className="p-2 text-ink-2 hover:text-ink"
-              onClick={() => setMobileOpen(!mobileOpen)}
+              onClick={() => setOpenPanel(mobileOpen ? null : 'nav')}
               aria-label={mobileOpen ? copy.nav.close : copy.nav.open}
               aria-expanded={mobileOpen}
               aria-controls="mobile-navigation"
