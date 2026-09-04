@@ -250,7 +250,10 @@
 .storage-services__link:hover .storage-services__arrow { transform: translateX(4px); }
 .storage-services a:focus-visible { outline: 2px solid var(--color-brand-500); outline-offset: 5px; }
 
-.enterprise-page { padding-top: 80px; }
+/* 让开固定导航栏。导航栏在 lg(1024px) 以下是 h-16，以上才是 h-20，
+   基准取 64px、大屏再加到 80px，否则中间尺寸会露出一条 16px 的白缝。 */
+.enterprise-page { padding-top: 64px; }
+@media (min-width: 1024px) { .enterprise-page { padding-top: 80px; } }
 .enterprise-container { max-width: 1160px; padding: 0 24px; margin: 0 auto; }
 .enterprise-hero { background: var(--color-brand-900); color: white; }
 .enterprise-hero__layout { display: grid; grid-template-columns: 1.45fr 1fr; align-items: center; gap: 40px; padding-block: 80px; }
@@ -345,7 +348,6 @@
   .storefront__enterprise h2 { font-size: 23px; margin: 10px 0 8px; }
   .storefront__enterprise-description { font-size: 11px; max-width: 255px; }
   .storefront__enterprise-link { justify-content: space-between; font-size: 12px; padding-top: 14px; border-top: 1px solid #38506d; }
-  .enterprise-page { padding-top: 64px; }
   .enterprise-container { padding-inline: 20px; }
   .enterprise-hero__layout { grid-template-columns: 1fr; gap: 24px; padding-block: 42px; }
   .enterprise-hero h1 { font-size: 35px; }

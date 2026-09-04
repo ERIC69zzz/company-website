@@ -23,7 +23,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-surface pt-20 pb-16">
+    <div className="min-h-screen bg-surface pt-16 lg:pt-20 pb-16">
       <PageHeader
         backTo="/products"
         backLabel={copy.common.backProducts}
