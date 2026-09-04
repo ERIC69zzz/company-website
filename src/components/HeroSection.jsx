@@ -68,6 +68,12 @@ export default function HeroSection({ brandTargetRef, onDock, onComplete }) {
         dockingAnimation.effect.setKeyframes(getDockKeyframes());
       });
     };
+    // 标签页切到后台后浏览器会冻结动画，入场动画的 finished 不再 resolve，
+    // 开场就停在原地、首页内容一直是 inert + 透明的白屏。没被看到的开场
+    // 不值得等，直接按已播放收尾；回到前台时看到的是正常首页。
+    const onVisibilityChange = () => {
+      if (document.hidden) finish();
+    };
     const onKeyDown = event => {
       if (!['Tab', 'Escape', ' ', 'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End'].includes(event.key)) return;
       if (event.key === 'Tab') {
@@ -83,10 +89,13 @@ export default function HeroSection({ brandTargetRef, onDock, onComplete }) {
     window.addEventListener('touchmove', finish, { passive: true });
     window.addEventListener('resize', onResize);
     window.addEventListener('keydown', onKeyDown);
+    document.addEventListener('visibilitychange', onVisibilityChange);
     motionPreference.addEventListener('change', finish);
 
     // 等实际入场动画全部完成后稍作停留，避免时长调整后提前移位。
-    if (!intro.getAnimations || !intro.animate || motionPreference.matches) {
+    // document.hidden 要在这里单独判一次：在后台标签页里打开时不会有
+    // visibilitychange 事件，只靠监听器接不住这种情况。
+    if (!intro.getAnimations || !intro.animate || motionPreference.matches || document.hidden) {
       pauseTimer = setTimeout(finish, 0);
     } else {
       const entranceAnimations = intro.getAnimations({ subtree: true });
@@ -104,6 +113,7 @@ export default function HeroSection({ brandTargetRef, onDock, onComplete }) {
       window.removeEventListener('touchmove', finish);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       motionPreference.removeEventListener('change', finish);
     };
   }, [brandTargetRef, onDock, onComplete]);
