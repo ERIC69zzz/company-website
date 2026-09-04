@@ -23,19 +23,17 @@ export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState(getInitialLanguage);
   const copy = translations[language];
 
+  // title、description、canonical 与 og 由 DocumentMeta 统一维护：
+  // 它们要跟着路由变，而 Provider 在 Router 外面，拿不到当前路由。
   useEffect(() => {
     document.documentElement.lang = HTML_LANGS[language];
-    document.title = copy.meta.title;
-
-    const description = document.querySelector('meta[name="description"]');
-    if (description) description.setAttribute('content', copy.meta.description);
 
     try {
       window.localStorage.setItem(STORAGE_KEY, language);
     } catch {
       // 语言状态仍保留在当前会话中。
     }
-  }, [copy, language]);
+  }, [language]);
 
   const value = useMemo(
     () => ({ language, setLanguage, copy }),

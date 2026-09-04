@@ -16,4 +16,7 @@ const siteUrlPlugin = () => ({
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), siteUrlPlugin()],
+  // 路由切换时要重写 canonical 与 og:url，运行时也得知道自身域名。
+  // 取自同一个 SITE_URL，不用 location.origin —— 预览域名会把 canonical 指错。
+  define: { __SITE_URL__: JSON.stringify(SITE_URL) },
 })

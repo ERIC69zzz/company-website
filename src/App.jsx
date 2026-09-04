@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import DocumentMeta from './components/DocumentMeta';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import ScenarioSection from './components/ScenarioSection';
@@ -109,6 +110,7 @@ export default function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
+        <DocumentMeta />
         <BrandIntroVisitTracker />
         <ScrollToTop />
         <div className="min-h-screen bg-surface text-ink">
