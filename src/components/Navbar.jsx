@@ -196,14 +196,14 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             </span>
           </Link>
 
-          <div className="hidden xl:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
                 aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
-                className="px-3 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
+                className="px-2 xl:px-3 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
               >
                 {item.label}
               </a>
@@ -211,14 +211,14 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             <a
               href="/consult"
               onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
-              className="ml-3 px-5 py-2 text-sm font-semibold text-white bg-brand-900 hover:bg-brand-800 rounded-lg transition-colors"
+              className="ml-1 xl:ml-3 px-3 xl:px-5 py-2 text-sm font-semibold text-white bg-brand-900 hover:bg-brand-800 rounded-lg transition-colors"
             >
               {copy.nav.consult}
             </a>
             <LanguageSwitcher open={openPanel === 'language'} onOpenChange={toggleLanguage} />
           </div>
 
-          <div className="xl:hidden flex items-center gap-1.5">
+          <div className="lg:hidden flex items-center gap-1.5">
             <LanguageSwitcher
               compact
               open={openPanel === 'language-compact'}
@@ -239,7 +239,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
       </div>
 
       {mobileOpen && (
-        <div id="mobile-navigation" className="xl:hidden chrome">
+        <div id="mobile-navigation" className="lg:hidden chrome">
           <div className="px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <a

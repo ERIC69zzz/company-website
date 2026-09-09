@@ -46,3 +46,23 @@ test('英文产品文案不残留中文字符', () => {
 
   assert.doesNotMatch(JSON.stringify(visibleContent), /\p{Script=Han}/u);
 });
+
+test('中英日公司介绍包含完整的企业档案与能力内容', () => {
+  for (const language of ['zh', 'en', 'ja']) {
+    const copy = translations[language];
+    const profile = copy.brandPage.profile;
+
+    assert.equal(copy.nav.brandWorld, copy.brandPage.title);
+    assert.equal(profile.paragraphs.length, 2);
+    assert.equal(profile.metrics.length, 4);
+    assert.equal(profile.facts.length, 4);
+    assert.equal(profile.capabilities.length, 4);
+    assert.equal(profile.industries.length, 5);
+    assert.ok(profile.cta);
+
+    for (const item of [...profile.metrics, ...profile.facts, ...profile.capabilities]) {
+      assert.ok(item.label || item.title);
+      assert.ok(item.value || item.description);
+    }
+  }
+});

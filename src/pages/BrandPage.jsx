@@ -1,4 +1,5 @@
 import { Newspaper, Handshake, CalendarDays, Trophy, ExternalLink, Building2 } from 'lucide-react';
+import CompanyProfileSection from '../components/CompanyProfileSection';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import zspaceNews from '../data/zspace-news.json';
@@ -40,6 +41,8 @@ export default function BrandPage() {
             </p>
           </div>
         </ScrollReveal>
+
+        <CompanyProfileSection />
 
         {/* 极空间动态 */}
         <ScrollReveal>
