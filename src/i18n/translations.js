@@ -69,9 +69,17 @@ export const translations = {
       copyright: '北京友质科技有限公司 版权所有', slogan: '友聚四海 · 质服五洲',
       groups: [
         { title: '产品', items: ['机械硬盘', '固态硬盘', 'NAS私有云', '存储配件'] },
-        { title: '服务', items: ['方案定制', '上门部署', '售后维保', '云迁移'] },
+        { title: '服务', items: ['方案定制', '上门部署', '售后支持', '数据迁移'] },
         { title: '公司', items: ['关于我们', '联系方式', '营业时间', '隐私政策'] },
       ],
+    },
+    // 四个服务入口带进咨询表单的来源说明与需求描述模板。
+    // 格式与企业询价模板一致：一句来意，后面几行待填的关键信息。
+    consultTopics: {
+      solution: { context: '服务咨询 · 方案定制', template: '我想做一套存储方案。\n用途 / 使用人数：\n数据量 / 增长预期：\n预算范围：' },
+      onsite: { context: '服务咨询 · 上门部署', template: '我需要上门安装部署。\n地址 / 期望时间：\n设备型号 / 数量：\n现有网络环境：' },
+      support: { context: '服务咨询 · 售后支持', template: '我需要售后支持。\n设备型号 / 购买时间：\n遇到的问题：\n已尝试的处理：' },
+      migration: { context: '服务咨询 · 数据迁移', template: '我需要做数据迁移。\n数据来源（云 / 旧设备）：\n数据量 / 文件类型：\n可接受的停机时间：' },
     },
     productsPage: { title: '产品中心', empty: '该分类下暂无产品' },
     productDetail: { phone: '电话咨询', online: '在线咨询', specs: '规格参数' },
@@ -285,8 +293,8 @@ export const translations = {
         { title: '营业时间', label: '工作时间', content: '周一至周五', desc: '09:00 - 18:00' },
       ],
       services: [
-        { title: '方案选型', desc: '结合容量、用途和预算，确认硬盘型号与 NAS 配置。' },
-        { title: '安装部署', desc: '北京地区提供上门安装，协助完成设备、网络及权限设置。' },
+        { title: '方案定制', desc: '结合容量、用途和预算，确认硬盘型号与 NAS 配置。' },
+        { title: '上门部署', desc: '北京地区提供上门安装，协助完成设备、网络及权限设置。' },
         { title: '售后支持', desc: '提供使用答疑、故障排查与质保协助，让后续使用更省心。' },
         { title: '数据迁移', desc: '梳理迁移需求，协助将公有云数据转入私有 NAS 环境。' },
       ],
@@ -355,9 +363,15 @@ export const translations = {
       copyright: 'Beijing Youzhi Technology Co., Ltd. All rights reserved.', slogan: 'Friends Worldwide · Quality Everywhere',
       groups: [
         { title: 'Products', items: ['Hard Drives', 'Solid-State Drives', 'Private Cloud NAS', 'Accessories'] },
-        { title: 'Services', items: ['Solution Design', 'Onsite Deployment', 'Support & Maintenance', 'Cloud Migration'] },
+        { title: 'Services', items: ['Solution Design', 'Onsite Deployment', 'After-Sales Support', 'Data Migration'] },
         { title: 'Company', items: ['About Us', 'Contact Details', 'Business Hours', 'Privacy Policy'] },
       ],
+    },
+    consultTopics: {
+      solution: { context: 'Service inquiry · Solution Design', template: 'I would like to plan a storage solution.\nUse case / number of users:\nData volume / expected growth:\nBudget range:' },
+      onsite: { context: 'Service inquiry · Onsite Deployment', template: 'I need onsite installation and setup.\nAddress / preferred date:\nDevice model / quantity:\nExisting network environment:' },
+      support: { context: 'Service inquiry · After-Sales Support', template: 'I need after-sales support.\nDevice model / purchase date:\nIssue encountered:\nWhat I have already tried:' },
+      migration: { context: 'Service inquiry · Data Migration', template: 'I need help migrating data.\nSource (cloud / existing device):\nData volume / file types:\nAcceptable downtime:' },
     },
     productsPage: { title: 'Product Center', empty: 'No products are available in this category.' },
     productDetail: { phone: 'Call Us', online: 'Online Consultation', specs: 'Specifications' },
@@ -579,9 +593,9 @@ export const translations = {
         { title: 'Business Hours', label: 'Hours', content: 'Monday to Friday', desc: '09:00–18:00' },
       ],
       services: [
-        { title: 'Product Selection', desc: 'Choose drives and NAS configurations to suit your capacity, workload and budget.' },
-        { title: 'Installation & Setup', desc: 'Onsite installation in Beijing, with help setting up devices, networking and access.' },
-        { title: 'Ongoing Support', desc: 'Get help with everyday use, troubleshooting and warranty assistance.' },
+        { title: 'Solution Design', desc: 'Choose drives and NAS configurations to suit your capacity, workload and budget.' },
+        { title: 'Onsite Deployment', desc: 'Onsite installation in Beijing, with help setting up devices, networking and access.' },
+        { title: 'After-Sales Support', desc: 'Get help with everyday use, troubleshooting and warranty assistance.' },
         { title: 'Data Migration', desc: 'Plan and move your public-cloud data into a private NAS environment.' },
       ],
       consultationTopics: ['Product Selection', 'Solution Design', 'After-Sales Support', 'Pricing', 'Onsite Deployment', 'Data Recovery'],
@@ -649,9 +663,15 @@ export const translations = {
       copyright: '北京友質科技有限公司 All rights reserved.', slogan: '世界に友情を · 五大陸に品質を',
       groups: [
         { title: '製品', items: ['ハードディスク', 'SSD', 'プライベートクラウドNAS', '周辺機器'] },
-        { title: 'サービス', items: ['構成設計', '訪問導入', '保守サポート', 'クラウド移行'] },
+        { title: 'サービス', items: ['構成設計', '訪問導入', 'アフターサポート', 'データ移行'] },
         { title: '会社情報', items: ['私たちについて', '連絡先', '営業時間', 'プライバシーポリシー'] },
       ],
+    },
+    consultTopics: {
+      solution: { context: 'サービス相談 · 構成設計', template: 'ストレージ構成の設計について相談したいです。\n用途 / 利用人数：\nデータ量 / 増加見込み：\nご予算：' },
+      onsite: { context: 'サービス相談 · 訪問導入', template: '訪問での設置・設定を希望します。\n住所 / 希望日時：\n機器の型番 / 台数：\n現在のネットワーク環境：' },
+      support: { context: 'サービス相談 · アフターサポート', template: 'アフターサポートを希望します。\n機器の型番 / 購入時期：\n発生している問題：\n試した対処：' },
+      migration: { context: 'サービス相談 · データ移行', template: 'データ移行について相談したいです。\n移行元（クラウド / 既存機器）：\nデータ量 / ファイル種別：\n許容できる停止時間：' },
     },
     productsPage: { title: '製品センター', empty: 'このカテゴリーには現在製品がありません。' },
     productDetail: { phone: '電話で相談', online: 'オンライン相談', specs: '製品仕様' },
@@ -873,8 +893,8 @@ export const translations = {
         { title: '営業時間', label: '受付時間', content: '月曜日〜金曜日', desc: '09:00〜18:00' },
       ],
       services: [
-        { title: '製品選定', desc: '容量・用途・予算に合わせて、ドライブと NAS の構成をご提案します。' },
-        { title: '設置・設定', desc: '北京市内での訪問設置に加え、機器・ネットワーク・アクセス権の設定を支援します。' },
+        { title: '構成設計', desc: '容量・用途・予算に合わせて、ドライブと NAS の構成をご提案します。' },
+        { title: '訪問導入', desc: '北京市内での訪問設置に加え、機器・ネットワーク・アクセス権の設定を支援します。' },
         { title: 'アフターサポート', desc: '操作のご相談、トラブルの確認、保証手続きまでサポートします。' },
         { title: 'データ移行', desc: '移行要件を整理し、パブリッククラウドからプライベート NAS への移行を支援します。' },
       ],

@@ -33,11 +33,14 @@ export default function ContactPage() {
         </ScrollReveal>
 
         <ScrollReveal>
+          {/* 卡片带 id 供页脚「营业时间」等锚点直达；
+              scroll-mt 让开固定导航栏与吸附的返回栏，否则会定位到它们下面。 */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {localizedCards.map((item, i) => (
               <div
                 key={item.label}
-                className={`${accentByIndex(i).card} rounded-2xl p-6 border border-line text-center ${accentByIndex(i).hover} transition-all`}
+                id={item.anchor}
+                className={`${accentByIndex(i).card} scroll-mt-32 lg:scroll-mt-36 rounded-2xl p-6 border border-line text-center ${accentByIndex(i).hover} transition-all`}
               >
                 <div className={`w-12 h-12 rounded-xl ${accentByIndex(i).iconBox} flex items-center justify-center mx-auto mb-4`}>
                   <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />

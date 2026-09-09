@@ -11,11 +11,5 @@ export function enterpriseInquiryUrl(series) {
   return `/consult?${params}`;
 }
 
-export function getEnterpriseInquiry(searchParams, template) {
-  if (searchParams.get('topic') !== 'enterprise') return null;
-  const series = enterpriseSeries.find((item) => item.id === searchParams.get('series'));
-  return {
-    type: '方案定制',
-    content: template.replace('{series}', series ? `Exascend ${series.id} ` : ''),
-  };
-}
+// 预填逻辑已并入 data/consult.js 的 getConsultPrefill，
+// 企业询价只是其中一个主题，与四个服务入口共用同一条通路。

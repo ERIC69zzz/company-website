@@ -56,6 +56,7 @@ export const productCategoryCards = [
 export const contactCards = [
   {
     icon: Phone,
+    anchor: 'phone',
     title: '电话咨询',
     label: '联系电话',
     content: company.phone,
@@ -64,6 +65,7 @@ export const contactCards = [
   },
   {
     icon: MapPin,
+    anchor: 'address',
     title: '公司地址',
     label: '公司地址',
     content: company.address,
@@ -72,6 +74,7 @@ export const contactCards = [
   },
   {
     icon: Mail,
+    anchor: 'email',
     title: '电子邮箱',
     label: '电子邮箱',
     content: company.email,
@@ -80,6 +83,7 @@ export const contactCards = [
   },
   {
     icon: Clock,
+    anchor: 'hours',
     title: '营业时间',
     label: '工作时间',
     content: company.businessDays,

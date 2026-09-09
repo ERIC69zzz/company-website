@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
+import { consultUrl } from '../data/consult';
 import Logo from './Logo';
 import { useLanguage } from '../i18n/language';
 
 const linkTargets = [
   ['/products?category=hdd', '/products?category=ssd', '/products?category=nas', '/products?category=accessory'],
-  ['/consult', '/consult', '/consult', '/consult'],
-  ['/brand', '/contact', '/contact', '/privacy'],
+  // 与 copy.data.services 同序：四个服务各带自己的主题进咨询表单，
+  // 而不是四个不同文案落到同一个空表单。
+  [consultUrl('solution'), consultUrl('onsite'), consultUrl('support'), consultUrl('migration')],
+  ['/brand', '/contact', '/contact#hours', '/privacy'],
 ];
 
 export default function Footer() {
