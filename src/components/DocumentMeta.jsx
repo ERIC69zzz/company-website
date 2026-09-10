@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { findEnterpriseProduct } from '../data/enterprise';
 import { products } from '../data/products';
 import { useLanguage } from '../i18n/language';
 import { localizeProducts } from '../i18n/products';
@@ -26,6 +27,19 @@ function routeMeta(pathname, copy, language) {
   }
 
   const site = copy.nav.brand;
+
+  // 企业级整机详情
+  if (pathname.startsWith('/enterprise/')) {
+    const product = findEnterpriseProduct(pathname.slice('/enterprise/'.length));
+    const text = product ? copy.business.enterprise.products[product.id] : null;
+    if (product && text) {
+      return {
+        title: `${text.brand} ${product.name} - ${site}`,
+        description: text.summary,
+      };
+    }
+  }
+
   const productId = pathname.startsWith('/products/') ? pathname.slice('/products/'.length) : null;
 
   if (productId) {

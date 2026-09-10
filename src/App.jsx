@@ -15,6 +15,7 @@ import { hasPlayedBrandIntro, markBrandIntroPlayed } from './utils/brandIntroSes
 // 首页随主包一起加载（它是着陆页），其余路由按需拉取自己的 chunk。
 const ProductsPage = lazy(() => import('./pages/ProductsPage'));
 const EnterprisePage = lazy(() => import('./pages/EnterprisePage'));
+const EnterpriseProductPage = lazy(() => import('./pages/EnterpriseProductPage'));
 const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
 const BrandPage = lazy(() => import('./pages/BrandPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
@@ -122,6 +123,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/enterprise" element={<EnterprisePage />} />
+              <Route path="/enterprise/:id" element={<EnterpriseProductPage />} />
               <Route path="/products/:id" element={<ProductDetailPage />} />
               <Route path="/brand" element={<BrandPage />} />
               <Route path="/contact" element={<ContactPage />} />

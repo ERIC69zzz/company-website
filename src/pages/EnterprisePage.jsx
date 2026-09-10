@@ -1,7 +1,7 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/language';
-import { enterpriseInquiryUrl, enterpriseSeries } from '../data/enterprise';
+import { enterpriseInquiryUrl, enterpriseProducts, enterpriseSeries } from '../data/enterprise';
 import PageHeader from '../components/PageHeader';
 import StorageVisual from '../components/StorageVisual';
 
@@ -29,6 +29,36 @@ export default function EnterprisePage() {
             <StorageVisual kind="enterprise" />
             <p>{e.partner}</p>
           </div>
+        </div>
+      </section>
+
+      <section id="enterprise-products" className="enterprise-container enterprise-series" aria-labelledby="enterprise-products-title">
+        <h2 id="enterprise-products-title">{e.productsTitle}</h2>
+        <p className="enterprise-series__intro">{e.productsIntro}</p>
+        <div className="product-card-grid">
+          {enterpriseProducts.map((product) => {
+            const text = e.products[product.id];
+            return (
+              <Link key={product.id} to={`/enterprise/${product.id}`} className="product-card">
+                <span className="product-card__media">
+                  <img
+                    src={product.images[0]}
+                    alt={`${text.brand} ${product.name}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span className="product-card__body">
+                  <span className="product-card__brand">{text.brand} · {product.series}</span>
+                  <span className="product-card__name">{product.name}</span>
+                  <span className="product-card__tagline">{text.tagline}</span>
+                  <span className="product-card__more">
+                    {e.productDetailLabel}<ArrowRight aria-hidden="true" />
+                  </span>
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
