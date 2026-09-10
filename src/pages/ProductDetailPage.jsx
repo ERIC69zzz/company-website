@@ -1,18 +1,19 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Phone } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
+import { Link, useParams } from 'react-router-dom';
 import { products } from '../data/products';
 import { company } from '../data/site';
 import PageHeader from '../components/PageHeader';
 import ProductGallery from '../components/ProductGallery';
 import ProductImage from '../components/ProductImage';
-import ScrollReveal from '../components/ScrollReveal';
 import NotFoundPage from './NotFoundPage';
 import { useLanguage } from '../i18n/language';
 import { localizeProducts } from '../i18n/products';
 
+// 版式与企业整机详情页（EnterpriseProductPage）一致：
+// 上半屏大图与要点，往下依次是关键特性、规格参数、产品说明、咨询。
+// 关键特性是可选的 —— 产品只填了规格时整段跳过，便于先录规格后补亮点。
 export default function ProductDetailPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { language, copy } = useLanguage();
   const originalProduct = products.find((p) => p.id === id);
   const product = originalProduct
@@ -23,6 +24,8 @@ export default function ProductDetailPage() {
     return <NotFoundPage />;
   }
 
+  const highlights = product.highlights || [];
+
   return (
     <div className="min-h-screen bg-surface pt-16 lg:pt-20 pb-16">
       <PageHeader
@@ -31,94 +34,103 @@ export default function ProductDetailPage() {
         maxWidth="max-w-5xl"
       />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <ScrollReveal>
-            {/* 有两张以上大图就换成可左右滑动的图廊；
-                只有封面一张时沿用 ProductImage，它带缺图占位不会破图。 */}
-            {product.images?.length > 1 ? (
-              <ProductGallery
-                images={product.images}
-                alt={`${product.brand} ${product.name}`}
-              />
-            ) : (
-              <ProductImage
-                product={product}
-                className="aspect-square rounded-2xl bg-surface-2 border border-line overflow-hidden flex items-center justify-center"
-                fallbackIconClassName="w-16 h-16 mb-4"
-                loading="eager"
-              />
+      <section className="product-detail__top" aria-labelledby="product-title">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 product-detail__layout">
+          {/* 有两张以上大图就换成可左右滑动的图廊；
+              只有封面一张时沿用 ProductImage，它带缺图占位不会破图。 */}
+          {product.images?.length > 1 ? (
+            <ProductGallery
+              images={product.images}
+              alt={`${product.brand} ${product.name}`}
+            />
+          ) : (
+            <ProductImage
+              product={product}
+              className="aspect-square rounded-2xl bg-surface-2 border border-line overflow-hidden flex items-center justify-center"
+              fallbackIconClassName="w-16 h-16 mb-4"
+              loading="eager"
+            />
+          )}
+
+          <div className="product-detail__intro">
+            <p className="enterprise-eyebrow">{product.brand}</p>
+            <h1 id="product-title">{product.name}</h1>
+            <p className="product-detail__tagline">{product.shortDesc}</p>
+            <p className="product-detail__price">{product.price}</p>
+
+            <div className="product-detail__tags">
+              {product.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+
+            <div className="product-detail__actions">
+              <a href={company.telHref} className="storage-button">
+                <Phone aria-hidden="true" />
+                {copy.productDetail.phone}
+              </a>
+              <Link to="/consult" className="storage-text-link">
+                {copy.productDetail.online}<ArrowRight aria-hidden="true" />
+              </Link>
+            </div>
+
+            {product.images?.length === 1 && (
+              <p className="product-detail__note">{copy.common.gallery.single}</p>
             )}
-          </ScrollReveal>
-
-          <div className="flex flex-col">
-            <ScrollReveal>
-              <div className="mb-6">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-brand-50 text-brand-700 text-xs font-medium mb-3">
-                  {product.brand}
-                </div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-ink mb-3">
-                  {product.name}
-                </h1>
-                <p className="text-ink-2 leading-relaxed mb-4">
-                  {product.description}
-                </p>
-                <div className="text-2xl font-bold text-brand-600 mb-6">
-                  {product.price}
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {product.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 rounded-full bg-surface-2 border border-line text-xs text-ink-2"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href={company.telHref}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-brand-900 hover:bg-brand-800 text-white font-semibold rounded-xl transition-all"
-                  >
-                    <Phone className="w-4 h-4" />
-                    {copy.productDetail.phone}
-                  </a>
-                  <button
-                    onClick={() => navigate('/consult')}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-surface-2 hover:bg-surface-3 text-ink font-semibold rounded-xl border border-line transition-all"
-                  >
-                    <ShoppingCart className="w-4 h-4" />
-                    {copy.productDetail.online}
-                  </button>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <div className="mt-auto">
-                <h2 className="text-lg font-bold text-ink mb-4">{copy.productDetail.specs}</h2>
-                <div className="rounded-xl border border-line bg-surface-2 overflow-hidden">
-                  {Object.entries(product.specs).map(([key, value], i, arr) => (
-                    <div
-                      key={key}
-                      className={`flex items-center justify-between px-4 py-3 ${
-                        i !== arr.length - 1 ? 'border-b border-line' : ''
-                      }`}
-                    >
-                      <span className="text-sm text-ink-3">{key}</span>
-                      <span className="text-sm text-ink font-medium text-right">
-                        {value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
           </div>
         </div>
+      </section>
+
+      {highlights.length > 0 && (
+        <section
+          className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 product-detail__section"
+          aria-labelledby="product-highlights"
+        >
+          <h2 id="product-highlights">{copy.productDetail.highlights}</h2>
+          <div className="product-detail__highlights">
+            {highlights.map((item) => (
+              <article key={item.title} className="product-detail__highlight">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section
+        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 product-detail__section"
+        aria-labelledby="product-specs"
+      >
+        <h2 id="product-specs">{copy.productDetail.specs}</h2>
+        <dl className="product-detail__specs">
+          {Object.entries(product.specs).map(([key, value]) => (
+            <div key={key}>
+              <dt>{key}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section
+        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 product-detail__section"
+        aria-labelledby="product-description"
+      >
+        <h2 id="product-description">{copy.productDetail.about}</h2>
+        <p className="product-detail__description">{product.description}</p>
+      </section>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="enterprise-cta" aria-labelledby="product-cta">
+          <div>
+            <h2 id="product-cta">{copy.productDetail.ctaTitle}</h2>
+            <p>{copy.productDetail.ctaDesc}</p>
+          </div>
+          <Link to="/consult" className="storage-button">
+            {copy.productDetail.online}<ArrowRight aria-hidden="true" />
+          </Link>
+        </section>
       </div>
     </div>
   );

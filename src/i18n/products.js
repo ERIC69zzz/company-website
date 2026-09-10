@@ -26,6 +26,12 @@ const productCopy = {
       shortDesc: 'Entry-level 2-bay home NAS with a quad-core RK3568 and support for 32TB per drive',
       description: 'The ZSpace Q2C is an entry-level two-bay private cloud for the home. A quad-core Rockchip RK3568 pairs with 2GB of DDR4 memory, and a 1Tops NPU drives face and scene recognition in the photo library. Its two 3.5-inch bays take drives up to 32TB each, and the in-house ZDR storage scheme balances capacity against redundancy. The single-piece moulded chassis uses a floating drive tray with silicone dampers and a 7015 temperature-controlled fan, and it can stand upright or lie flat. It handles phone and computer backups, WeChat attachment backup, Apple Time Machine, and BT/PT downloads.',
       tags: ['2 bays', 'Easy entry', 'AI photo library'],
+      highlights: [
+        { title: 'Quiet enough for a bedroom', desc: 'A floating drive tray with oversized silicone dampers, a straight-through cooling duct and smart temperature control keep it quiet enough not to disturb work or sleep.' },
+        { title: 'A photo library that sorts itself', desc: 'A 1Tops NPU sorts photos by face, scene, time and place, with smart search, duplicate filtering and a map view.' },
+        { title: 'Two-bay redundancy', desc: 'Two 3.5-inch bays take up to 32TB each, and the in-house ZDR storage scheme balances capacity against safety so a single drive failure costs no data.' },
+        { title: 'Tool-free assembly', desc: 'A reinforced drive bay and silicone retention straps let you fit drives without tools, in a single-piece moulded chassis that stands or lies flat.' },
+      ],
     },
   },
   ja: {
@@ -33,6 +39,12 @@ const productCopy = {
       shortDesc: 'RK3568クアッドコア搭載、1台最大32TB対応のエントリー向け2ベイ家庭用NAS',
       description: 'ZSpace Q2C は家庭向けのエントリークラス2ベイプライベートクラウドです。Rockchip RK3568クアッドコアと2GB DDR4メモリを搭載し、1TopsのNPUがアルバムの人物・シーン認識を支えます。3.5インチベイ2基は1台最大32TBに対応し、独自のZDRストレージ方式で容量と冗長性を両立します。一体成形の筐体はフローティング式ドライブトレイとシリコンダンパーを採用し、7015スマート温度制御ファンを搭載。縦置き・横置きのどちらにも対応します。スマートフォンやPCのバックアップ、WeChat添付のバックアップ、Apple Time Machine、BT/PTダウンロードに対応します。',
       tags: ['2ベイ', '入門機', 'AIアルバム'],
+      highlights: [
+        { title: '寝室に置いても静か', desc: 'フローティング式ドライブトレイと大型シリコンダンパー、直通式の冷却風路とスマート温度制御により、仕事も睡眠も妨げない静音動作。' },
+        { title: '自動で整理するAIアルバム', desc: '1TopsのNPUが人物・シーン・時間・場所で自動分類。スマート検索、重複写真の除外、マップ表示にも対応します。' },
+        { title: '2ベイの冗長構成', desc: '3.5インチベイ2基は1台最大32TB。独自のZDRストレージ方式が容量と安全性を両立し、1台故障してもデータを失いません。' },
+        { title: '工具不要で組み込み', desc: '補強されたドライブベイとシリコン固定ベルトで工具なしに装着可能。一体成形の筐体は縦置き・横置きに対応します。' },
+      ],
     },
   },
 };

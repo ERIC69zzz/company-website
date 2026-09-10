@@ -43,6 +43,8 @@ test('英文产品文案不残留中文字符', () => {
     description: product.description,
     tags: product.tags,
     specs: product.specs,
+    // 亮点是整个数组被覆盖，漏译时中文会整段漏到英文页
+    highlights: product.highlights,
   }));
 
   assert.doesNotMatch(JSON.stringify(visibleContent), /\p{Script=Han}/u);

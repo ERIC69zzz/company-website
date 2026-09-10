@@ -78,7 +78,11 @@ export const translations = {
       migration: { context: '服务咨询 · 数据迁移', template: '我需要做数据迁移。\n数据来源（云 / 旧设备）：\n数据量 / 文件类型：\n可接受的停机时间：' },
     },
     productsPage: { title: '产品中心', empty: '该分类下暂无产品' },
-    productDetail: { phone: '电话咨询', online: '在线咨询', specs: '规格参数' },
+    productDetail: {
+      phone: '电话咨询', online: '在线咨询', specs: '规格参数',
+      highlights: '关键特性', about: '产品说明',
+      ctaTitle: '需要帮你确认选型？', ctaDesc: '说清用途、数据量与预算，我们给出具体的硬盘与配置建议。',
+    },
     brandPage: {
       title: '关于我们', company: '北京友质科技有限公司', sloganStart: '友聚四海', sloganEnd: '质服五洲',
       intro: '始于2010年，友质科技扎根北京海淀，以技术研发为基础，为全国客户提供数据存储产品、解决方案与工程服务。',
@@ -344,7 +348,11 @@ export const translations = {
       migration: { context: 'Service inquiry · Data Migration', template: 'I need help migrating data.\nSource (cloud / existing device):\nData volume / file types:\nAcceptable downtime:' },
     },
     productsPage: { title: 'Product Center', empty: 'No products are available in this category.' },
-    productDetail: { phone: 'Call Us', online: 'Online Consultation', specs: 'Specifications' },
+    productDetail: {
+      phone: 'Call Us', online: 'Online Consultation', specs: 'Specifications',
+      highlights: 'Key features', about: 'About this product',
+      ctaTitle: 'Want help choosing?', ctaDesc: 'Tell us the use case, data volume and budget, and we will recommend specific drives and a configuration.',
+    },
     brandPage: {
       title: 'About Us', company: 'Beijing Youzhi Technology Co., Ltd.', sloganStart: 'Friends Worldwide', sloganEnd: 'Quality Everywhere',
       intro: 'Founded in 2010 and rooted in Haidian, Beijing, Youzhi Technology combines technology R&D with data-storage products, solutions and engineering services for customers across China.',
@@ -621,7 +629,11 @@ export const translations = {
       migration: { context: 'サービス相談 · データ移行', template: 'データ移行について相談したいです。\n移行元（クラウド / 既存機器）：\nデータ量 / ファイル種別：\n許容できる停止時間：' },
     },
     productsPage: { title: '製品センター', empty: 'このカテゴリーには現在製品がありません。' },
-    productDetail: { phone: '電話で相談', online: 'オンライン相談', specs: '製品仕様' },
+    productDetail: {
+      phone: '電話で相談', online: 'オンライン相談', specs: '製品仕様',
+      highlights: '主な特徴', about: '製品について',
+      ctaTitle: '構成選定のお手伝いが必要ですか？', ctaDesc: '用途、データ量、ご予算をお知らせいただければ、具体的なドライブと構成をご提案します。',
+    },
     brandPage: {
       title: '会社情報', company: '北京友質科技有限公司', sloganStart: '世界に友情を', sloganEnd: '五大陸に品質を',
       intro: '2010年創業。北京・海淀を拠点に、技術開発とデータストレージ製品、ソリューション、エンジニアリングサービスを中国全土のお客様へ提供しています。',
