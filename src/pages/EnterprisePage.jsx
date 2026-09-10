@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/language';
 import { enterpriseInquiryUrl, enterpriseSeries } from '../data/enterprise';
+import PageHeader from '../components/PageHeader';
 import StorageVisual from '../components/StorageVisual';
 
 export default function EnterprisePage() {
@@ -10,6 +11,9 @@ export default function EnterprisePage() {
 
   return (
     <main className="enterprise-page">
+      {/* 深色版返回栏，接进深蓝 hero；容器用页面自己的栅格，
+          让返回链接与 hero 正文左对齐。 */}
+      <PageHeader tone="dark" container="enterprise-container" />
       <section className="enterprise-hero" aria-labelledby="enterprise-title">
         <div className="enterprise-container enterprise-hero__layout">
           <div>

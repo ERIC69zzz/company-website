@@ -306,6 +306,16 @@ body {
   border-bottom: 1px solid var(--color-line);
 }
 
+/* 深色版顶栏，压在深蓝 hero 之上时用（企业页）。
+   底色取 logo 深蓝 #0d2340，与 --color-brand-900 一致，
+   白条压深色版面会形成硬接缝。 */
+.chrome-dark {
+  background: rgba(13, 35, 64, 0.82);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
 /* ===== 装饰 ===== */
 
 /* 浅色网格，非常克制 */

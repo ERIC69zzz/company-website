@@ -260,10 +260,10 @@ export const translations = {
     data: {
       categories: ['全部产品', 'NAS私有云', '机械硬盘', '固态硬盘', '存储配件'],
       contactCards: [
-        { title: '电话咨询', label: '联系电话', content: '133-0133-5226', desc: '周一至周五 9:00 - 18:00' },
-        { title: '公司地址', label: '公司地址', content: '北京市海淀区知春路113号', desc: '银网中心8层808室' },
-        { title: '电子邮箱', label: '电子邮箱', content: 'nancy@bjyzyes.com', desc: '24小时内回复' },
-        { title: '营业时间', label: '工作时间', content: '周一至周五', desc: '09:00 - 18:00' },
+        { label: '联系电话', content: '133-0133-5226', desc: '周一至周五 9:00 - 18:00' },
+        { label: '公司地址', content: '北京市海淀区知春路113号', desc: '银网中心8层808室' },
+        { label: '电子邮箱', content: 'nancy@bjyzyes.com', desc: '24小时内回复' },
+        { label: '营业时间', content: '周一至周五', desc: '09:00 - 18:00' },
       ],
       services: [
         { title: '方案定制', desc: '结合容量、用途和预算，确认硬盘型号与 NAS 配置。' },
@@ -533,10 +533,10 @@ export const translations = {
     data: {
       categories: ['All Products', 'Private Cloud NAS', 'Hard Drives', 'Solid-State Drives', 'Accessories'],
       contactCards: [
-        { title: 'Phone Consultation', label: 'Phone', content: '133-0133-5226', desc: 'Mon–Fri, 9:00–18:00' },
-        { title: 'Office Address', label: 'Address', content: '113 Zhichun Road, Haidian, Beijing', desc: 'Room 808, 8F, Yinwang Center' },
-        { title: 'Email', label: 'Email', content: 'nancy@bjyzyes.com', desc: 'Replies within 24 hours' },
-        { title: 'Business Hours', label: 'Hours', content: 'Monday to Friday', desc: '09:00–18:00' },
+        { label: 'Phone', content: '133-0133-5226', desc: 'Mon–Fri, 9:00–18:00' },
+        { label: 'Address', content: '113 Zhichun Road, Haidian, Beijing', desc: 'Room 808, 8F, Yinwang Center' },
+        { label: 'Email', content: 'nancy@bjyzyes.com', desc: 'Replies within 24 hours' },
+        { label: 'Business Hours', content: 'Monday to Friday', desc: '09:00–18:00' },
       ],
       services: [
         { title: 'Solution Design', desc: 'Choose drives and NAS configurations to suit your capacity, workload and budget.' },
@@ -806,10 +806,10 @@ export const translations = {
     data: {
       categories: ['すべての製品', 'プライベートクラウドNAS', 'ハードディスク', 'SSD', '周辺機器'],
       contactCards: [
-        { title: '電話相談', label: '電話番号', content: '133-0133-5226', desc: '月〜金 9:00〜18:00' },
-        { title: '会社所在地', label: '所在地', content: '北京市海淀区知春路113号', desc: '銀網センター8階808号室' },
-        { title: 'メール', label: 'メール', content: 'nancy@bjyzyes.com', desc: '24時間以内に返信' },
-        { title: '営業時間', label: '受付時間', content: '月曜日〜金曜日', desc: '09:00〜18:00' },
+        { label: '電話番号', content: '133-0133-5226', desc: '月〜金 9:00〜18:00' },
+        { label: '所在地', content: '北京市海淀区知春路113号', desc: '銀網センター8階808号室' },
+        { label: 'メール', content: 'nancy@bjyzyes.com', desc: '24時間以内に返信' },
+        { label: '営業時間', content: '月曜日〜金曜日', desc: '09:00〜18:00' },
       ],
       services: [
         { title: '構成設計', desc: '容量・用途・予算に合わせて、ドライブと NAS の構成をご提案します。' },

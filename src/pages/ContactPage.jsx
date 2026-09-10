@@ -10,7 +10,6 @@ export default function ContactPage() {
   const localizedCards = contactCards.map((item, index) => ({
     ...item,
     ...copy.data.contactCards[index],
-    value: copy.data.contactCards[index].content,
   }));
 
   return (
@@ -46,7 +45,7 @@ export default function ContactPage() {
                   <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />
                 </div>
                 <div className="text-sm text-ink-3 mb-1">{item.label}</div>
-                <div className="text-base font-bold text-ink mb-1">{item.value}</div>
+                <div className="text-base font-bold text-ink mb-1">{item.content}</div>
                 <div className="text-xs text-ink-3">{item.desc}</div>
               </div>
             ))}
