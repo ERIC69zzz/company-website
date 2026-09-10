@@ -62,11 +62,6 @@ export const businessCopy = {
       productDetailLabel: '查看详情',
       productSpecTitle: '硬件核心参数',
       productHighlightTitle: '关键特性',
-      productGalleryLabel: '产品图片',
-      productPrevImage: '上一张',
-      productNextImage: '下一张',
-      productImageOf: '第 {current} / {total} 张',
-      productSingleImage: '暂只有一张产品图',
       products: {
         'zspace-p8-plus': {
           brand: '极空间',
@@ -172,11 +167,6 @@ export const businessCopy = {
       productDetailLabel: 'View details',
       productSpecTitle: 'Hardware specifications',
       productHighlightTitle: 'Key features',
-      productGalleryLabel: 'Product images',
-      productPrevImage: 'Previous image',
-      productNextImage: 'Next image',
-      productImageOf: 'Image {current} of {total}',
-      productSingleImage: 'Only one product image so far',
       products: {
         'zspace-p8-plus': {
           brand: 'ZSpace',
@@ -282,11 +272,6 @@ export const businessCopy = {
       productDetailLabel: '詳細を見る',
       productSpecTitle: 'ハードウェア仕様',
       productHighlightTitle: '主な特徴',
-      productGalleryLabel: '製品画像',
-      productPrevImage: '前の画像',
-      productNextImage: '次の画像',
-      productImageOf: '{total} 枚中 {current} 枚目',
-      productSingleImage: '現在、製品画像は1枚のみです',
       products: {
         'zspace-p8-plus': {
           brand: 'ZSpace',

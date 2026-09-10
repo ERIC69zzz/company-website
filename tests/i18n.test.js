@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { products } from '../src/data/products.js';
 import { localizeProducts } from '../src/i18n/products.js';
 import { translations } from '../src/i18n/translations.js';
@@ -63,5 +65,24 @@ test('中英日公司介绍包含完整的企业档案与能力内容', () => {
       assert.ok(item.label || item.title);
       assert.ok(item.value || item.description);
     }
+  }
+});
+
+const publicDir = fileURLToPath(new URL('../public', import.meta.url));
+
+test('产品目录里引用的图片都真实存在，图廊不重复', () => {
+  for (const product of products) {
+    // 封面缺图时页面会回退成占位块，不算错，但路径写法要规范
+    assert.match(product.image, /^\/products\/.+\.(jpg|png|webp)$/, `${product.id} 封面路径不规范`);
+
+    if (!product.images) continue;
+
+    // 图廊没有缺图回退，文件名打错会直接留下破图
+    for (const src of product.images) {
+      assert.match(src, /^\/products\/.+\.(jpg|png|webp)$/, `${product.id} 图廊路径不规范：${src}`);
+      assert.ok(existsSync(`${publicDir}${src}`), `${product.id} 图廊引用了不存在的图片：${src}`);
+    }
+    assert.equal(new Set(product.images).size, product.images.length, `${product.id} 图廊有重复图片`);
+    assert.equal(product.images[0], product.image, `${product.id} 图廊第一张应与封面一致`);
   }
 });

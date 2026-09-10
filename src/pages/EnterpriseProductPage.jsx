@@ -16,13 +16,6 @@ export default function EnterpriseProductPage() {
 
   if (!product || !text) return <NotFoundPage />;
 
-  const galleryCopy = {
-    galleryLabel: e.productGalleryLabel,
-    prevImage: e.productPrevImage,
-    nextImage: e.productNextImage,
-    imageOf: e.productImageOf,
-  };
-
   return (
     <main className="enterprise-page">
       <PageHeader
@@ -35,11 +28,7 @@ export default function EnterpriseProductPage() {
       {/* 上半屏：大图 + 型号与要点。往下滚是完整详情，与商品页的习惯一致 */}
       <section className="product-detail__top" aria-labelledby="product-title">
         <div className="enterprise-container product-detail__layout">
-          <ProductGallery
-            images={product.images}
-            alt={`${text.brand} ${product.name}`}
-            copy={galleryCopy}
-          />
+          <ProductGallery images={product.images} alt={`${text.brand} ${product.name}`} />
 
           <div className="product-detail__intro">
             <p className="enterprise-eyebrow">{text.brand} · {product.series}</p>
@@ -57,7 +46,7 @@ export default function EnterpriseProductPage() {
             </div>
 
             {product.images.length === 1 && (
-              <p className="product-detail__note">{e.productSingleImage}</p>
+              <p className="product-detail__note">{copy.common.gallery.single}</p>
             )}
           </div>
         </div>

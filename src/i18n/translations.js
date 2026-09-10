@@ -24,6 +24,7 @@ export const translations = {
     },
     common: {
       backHome: '返回首页', backProducts: '返回产品列表', viewDetails: '查看详情 →',
+      gallery: { label: '产品图片', prev: '上一张', next: '下一张', imageOf: '第 {current} / {total} 张', single: '暂只有一张产品图' },
       imagePending: '图片待更新', phoneLabel: '电话',
     },
     hero: {
@@ -291,6 +292,7 @@ export const translations = {
     },
     common: {
       backHome: 'Back to home', backProducts: 'Back to products', viewDetails: 'View details →',
+      gallery: { label: 'Product images', prev: 'Previous image', next: 'Next image', imageOf: 'Image {current} of {total}', single: 'Only one product image so far' },
       imagePending: 'Image coming soon', phoneLabel: 'Phone',
     },
     hero: {
@@ -567,6 +569,7 @@ export const translations = {
     },
     common: {
       backHome: 'ホームへ戻る', backProducts: '製品一覧へ戻る', viewDetails: '詳細を見る →',
+      gallery: { label: '製品画像', prev: '前の画像', next: '次の画像', imageOf: '{total} 枚中 {current} 枚目', single: '現在、製品画像は1枚のみです' },
       imagePending: '画像は準備中です', phoneLabel: '電話',
     },
     hero: {

@@ -3,6 +3,7 @@ import { ShoppingCart, Phone } from 'lucide-react';
 import { products } from '../data/products';
 import { company } from '../data/site';
 import PageHeader from '../components/PageHeader';
+import ProductGallery from '../components/ProductGallery';
 import ProductImage from '../components/ProductImage';
 import ScrollReveal from '../components/ScrollReveal';
 import NotFoundPage from './NotFoundPage';
@@ -33,12 +34,21 @@ export default function ProductDetailPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <ScrollReveal>
-            <ProductImage
-              product={product}
-              className="aspect-square rounded-2xl bg-surface-2 border border-line overflow-hidden flex items-center justify-center"
-              fallbackIconClassName="w-16 h-16 mb-4"
-              loading="eager"
-            />
+            {/* 有两张以上大图就换成可左右滑动的图廊；
+                只有封面一张时沿用 ProductImage，它带缺图占位不会破图。 */}
+            {product.images?.length > 1 ? (
+              <ProductGallery
+                images={product.images}
+                alt={`${product.brand} ${product.name}`}
+              />
+            ) : (
+              <ProductImage
+                product={product}
+                className="aspect-square rounded-2xl bg-surface-2 border border-line overflow-hidden flex items-center justify-center"
+                fallbackIconClassName="w-16 h-16 mb-4"
+                loading="eager"
+              />
+            )}
           </ScrollReveal>
 
           <div className="flex flex-col">

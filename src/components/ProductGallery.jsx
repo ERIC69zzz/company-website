@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../i18n/language';
 
 // 大图轮播。滑动交给 CSS scroll-snap 而不是手写 touch 事件：
 // 触摸的惯性、回弹、触控板横向滚动都由浏览器负责，行为和原生一致。
 // 只有一张图时不渲染任何控件，退化成一张静态大图。
-export default function ProductGallery({ images, alt, copy }) {
+export default function ProductGallery({ images, alt }) {
+  const { copy } = useLanguage();
+  const text = copy.common.gallery;
   const trackRef = useRef(null);
   const [index, setIndex] = useState(0);
   const multiple = images.length > 1;
@@ -44,7 +47,7 @@ export default function ProductGallery({ images, alt, copy }) {
         // 多图时可聚焦，方向键即可翻页
         tabIndex={multiple ? 0 : undefined}
         role={multiple ? 'group' : undefined}
-        aria-label={multiple ? copy.galleryLabel : undefined}
+        aria-label={multiple ? text.label : undefined}
         onKeyDown={multiple ? onKeyDown : undefined}
       >
         {images.map((src, i) => (
@@ -66,7 +69,7 @@ export default function ProductGallery({ images, alt, copy }) {
             className="gallery__arrow gallery__arrow--prev"
             onClick={() => scrollTo(index - 1)}
             disabled={index === 0}
-            aria-label={copy.prevImage}
+            aria-label={text.prev}
           >
             <ChevronLeft aria-hidden="true" />
           </button>
@@ -75,7 +78,7 @@ export default function ProductGallery({ images, alt, copy }) {
             className="gallery__arrow gallery__arrow--next"
             onClick={() => scrollTo(index + 1)}
             disabled={index === images.length - 1}
-            aria-label={copy.nextImage}
+            aria-label={text.next}
           >
             <ChevronRight aria-hidden="true" />
           </button>
@@ -88,7 +91,7 @@ export default function ProductGallery({ images, alt, copy }) {
                 className={`gallery__dot${i === index ? ' is-active' : ''}`}
                 onClick={() => scrollTo(i)}
                 aria-current={i === index}
-                aria-label={copy.imageOf
+                aria-label={text.imageOf
                   .replace('{current}', String(i + 1))
                   .replace('{total}', String(images.length))}
               />
@@ -97,7 +100,7 @@ export default function ProductGallery({ images, alt, copy }) {
 
           {/* 张数变化通过这里播报，不用把整块图片区域包进 live region */}
           <p className="gallery__counter" aria-live="polite">
-            {copy.imageOf
+            {text.imageOf
               .replace('{current}', String(index + 1))
               .replace('{total}', String(images.length))}
           </p>

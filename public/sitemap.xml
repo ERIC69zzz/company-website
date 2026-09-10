@@ -32,4 +32,8 @@
     <loc>https://www.bjyzyes.com/enterprise/zspace-p8-plus</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.bjyzyes.com/products/zspace-q2c</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>
