@@ -35,9 +35,10 @@ npm run dev
 
 ## SEO 文件
 
-`public/robots.txt` 是静态文件；`public/sitemap.xml` 由 `scripts/generate-sitemap.js`
-从 `src/data/products.js` 自动生成，已挂在 `prebuild` 钩子上，每次 `npm run build`
-（含 Vercel 部署）都会重新生成，新增产品无需手动同步。
+`public/sitemap.xml` 与 `public/robots.txt` 都由 `scripts/generate-seo.js` 生成
+（sitemap 的产品条目取自 `src/data/products.js`），已挂在 `prebuild` 钩子上，
+每次 `npm run build`（含 Vercel 部署）都会重新生成，新增产品无需手动同步。
+两个文件都含绝对域名，所以必须随构建生成，不能当静态文件手工维护。
 
 站点域名默认取 `https://www.bjyzyes.com`，可用 `SITE_URL` 环境变量覆盖。
 

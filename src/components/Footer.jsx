@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <Logo className="w-8 h-8" alt={copy.footer.fullName} />
+              <Logo className="w-8 h-8" label={null} />
               <span className="text-base font-bold text-ink">{copy.footer.fullName}</span>
             </div>
             <p className="text-sm text-ink-3 leading-relaxed max-w-sm mb-6">

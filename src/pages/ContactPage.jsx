@@ -84,12 +84,17 @@ export default function ContactPage() {
                     {company.phone}
                   </a>
                 </div>
-                <div className="h-px bg-surface-2" />
+                <div className="h-px bg-line" />
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-ink-2">{copy.contactPage.ticketEmail}</span>
-                  <span className="text-ink font-medium">{company.supportEmail}</span>
+                  <a
+                    href={`mailto:${company.supportEmail}`}
+                    className="text-ink font-medium hover:text-brand-600 transition-colors"
+                  >
+                    {company.supportEmail}
+                  </a>
                 </div>
-                <div className="h-px bg-surface-2" />
+                <div className="h-px bg-line" />
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-ink-2">{copy.contactPage.wechat}</span>
                   <Link to="/consult" className="text-brand-600 hover:text-brand-700 font-medium transition-colors">

@@ -81,7 +81,7 @@ export default function ConsultPage() {
                   </p>
                 </div>
 
-                <div className="h-px bg-surface-2 my-6" />
+                <div className="h-px bg-line my-6" />
 
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-brand-600" />
