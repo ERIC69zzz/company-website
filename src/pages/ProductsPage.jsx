@@ -76,7 +76,7 @@ export default function ProductsPage() {
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`min-h-11 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeCategory === cat.id
                     ? 'bg-brand-900 text-white shadow-sm'
                     : 'bg-surface-2 text-ink-2 hover:bg-surface-3 hover:text-ink'

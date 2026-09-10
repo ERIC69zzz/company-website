@@ -43,18 +43,18 @@ export default function Footer() {
           {links.map((group) => (
             <div key={group.title}>
               <div className="text-sm font-semibold text-ink mb-4">{group.title}</div>
-              <ul className="space-y-2.5">
+              <ul className="space-y-0 sm:space-y-2.5">
                 {group.items.map((item) => (
                   <li key={item.label}>
                     {item.href ? (
                       <Link
                         to={item.href}
-                        className="text-sm text-ink-3 hover:text-brand-600 transition-colors cursor-pointer"
+                        className="flex min-h-11 items-center text-sm text-ink-3 hover:text-brand-600 transition-colors cursor-pointer sm:min-h-0"
                       >
                         {item.label}
                       </Link>
                     ) : (
-                      <span className="text-sm text-ink-3 cursor-default">
+                      <span className="flex min-h-11 items-center text-sm text-ink-3 cursor-default sm:min-h-0">
                         {item.label}
                       </span>
                     )}

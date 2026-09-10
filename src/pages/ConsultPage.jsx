@@ -159,7 +159,7 @@ export default function ConsultPage() {
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder={copy.consultPage.namePlaceholder}
-                        className="w-full pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export default function ConsultPage() {
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         placeholder={copy.consultPage.phonePlaceholder}
-                        className="w-full pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
@@ -186,7 +186,7 @@ export default function ConsultPage() {
                       id="consult-type"
                       value={form.type}
                       onChange={(e) => setForm({ ...form, type: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
+                      className="w-full min-h-11 px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
                     >
                       {copy.data.consultationTypes.map((item) => (
                         <option key={item.value} value={item.value} className="bg-surface-2">{item.label}</option>

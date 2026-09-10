@@ -25,7 +25,7 @@ export default function PageHeader({
       <div className={`${containerClass} h-14 flex items-center justify-between`}>
         <Link
           to={backTo}
-          className={`flex items-center gap-2 text-sm transition-colors ${
+          className={`flex min-h-11 items-center gap-2 text-sm transition-colors ${
             dark ? 'text-white/70 hover:text-white' : 'text-ink-2 hover:text-ink'
           }`}
         >

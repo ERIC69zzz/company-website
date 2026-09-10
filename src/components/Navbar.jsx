@@ -51,7 +51,7 @@ function LanguageSwitcher({ compact = false, open, onOpenChange }) {
         aria-expanded={open}
         aria-controls={menuId}
         aria-label={copy.language.label}
-        className={`group flex h-10 items-center rounded-xl border border-line bg-surface-2/70 text-ink-2 shadow-sm backdrop-blur-xl transition-all hover:border-brand-500/35 hover:bg-surface-3 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 ${compact ? 'gap-1.5 px-2' : 'gap-2 px-2.5'}`}
+        className={`group flex h-11 items-center rounded-xl border border-line bg-surface-2/70 text-ink-2 shadow-sm backdrop-blur-xl transition-all hover:border-brand-500/35 hover:bg-surface-3 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 ${compact ? 'gap-1.5 px-2' : 'gap-2 px-2.5'}`}
       >
         <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-brand-500/15 bg-gradient-to-br from-brand-500/15 to-accent-500/10 text-brand-700 transition-colors group-hover:border-brand-500/30">
           <Languages className="h-3.5 w-3.5" />
@@ -226,7 +226,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             />
             <button
               type="button"
-              className="p-2 text-ink-2 hover:text-ink"
+              className="p-2.5 text-ink-2 hover:text-ink"
               onClick={() => setOpenPanel(mobileOpen ? null : 'nav')}
               aria-label={mobileOpen ? copy.nav.close : copy.nav.open}
               aria-expanded={mobileOpen}
