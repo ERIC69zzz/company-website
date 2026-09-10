@@ -182,7 +182,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             to="/"
             onClick={handleLogoClick}
             aria-label={copy.nav.home}
-            className={`brand-lockup text-lg group${brandTargetRef ? ' home-entry__lockup' : ''}`}
+            className={`brand-lockup shrink-0 text-lg group${brandTargetRef ? ' home-entry__lockup' : ''}`}
           >
             <span className="brand-lockup__logo">
               <Logo className="block h-full w-full" />
@@ -203,7 +203,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
                 aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
-                className="px-2 xl:px-3 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
+                className="px-1.5 xl:px-3 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
               >
                 {item.label}
               </a>

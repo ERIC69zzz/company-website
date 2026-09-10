@@ -88,9 +88,10 @@ export default function ProductsPage() {
           </div>
         </ScrollReveal>
 
+        {/* 错峰延迟封顶：21 张卡片按 i * 0.05 递增会让最后一张等满一秒 */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {filteredProducts.map((product, i) => (
-            <ScrollReveal key={product.id} delay={i * 0.05}>
+            <ScrollReveal key={product.id} delay={Math.min(i, 6) * 0.05}>
               <ProductCard product={product} />
             </ScrollReveal>
           ))}

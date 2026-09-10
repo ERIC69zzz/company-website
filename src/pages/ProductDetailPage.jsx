@@ -37,6 +37,7 @@ export default function ProductDetailPage() {
               product={product}
               className="aspect-square rounded-2xl bg-surface-2 border border-line overflow-hidden flex items-center justify-center"
               fallbackIconClassName="w-16 h-16 mb-4"
+              loading="eager"
             />
           </ScrollReveal>
 

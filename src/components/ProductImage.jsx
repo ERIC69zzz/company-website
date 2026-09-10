@@ -8,6 +8,8 @@ export default function ProductImage({
   imageClassName = 'w-full h-full object-cover',
   fallbackIconClassName = 'w-10 h-10 mb-2',
   showBrandBadge = false,
+  // 列表页一次渲染 21 张，默认懒加载；详情页首屏那张传 'eager'
+  loading = 'lazy',
 }) {
   const [imgError, setImgError] = useState(false);
   const { copy } = useLanguage();
@@ -20,6 +22,8 @@ export default function ProductImage({
           src={product.image}
           alt={product.name}
           className={imageClassName}
+          loading={loading}
+          decoding="async"
           onError={() => setImgError(true)}
         />
       ) : (

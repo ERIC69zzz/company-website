@@ -105,7 +105,7 @@ export default function CompanyProfileSection() {
               <div className="text-xs font-medium text-ink-3">{profile.industriesLabel}</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {profile.industries.map((industry) => (
-                  <span key={industry} className="rounded-full border border-line-strong bg-white px-3 py-1.5 text-xs font-medium text-ink-2">
+                  <span key={industry} className="rounded-full border border-line-strong bg-surface px-3 py-1.5 text-xs font-medium text-ink-2">
                     {industry}
                   </span>
                 ))}
@@ -113,7 +113,7 @@ export default function CompanyProfileSection() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center bg-white p-7 sm:p-9 lg:p-10">
+          <div className="flex flex-col justify-center bg-surface p-7 sm:p-9 lg:p-10">
             <div className="text-xs font-semibold tracking-[0.16em] text-accent-700">{profile.visionLabel}</div>
             <h3 className="mt-3 text-2xl font-semibold leading-snug text-brand-900">{profile.visionTitle}</h3>
             <p className="mt-4 text-sm leading-7 text-ink-2">{profile.visionDescription}</p>

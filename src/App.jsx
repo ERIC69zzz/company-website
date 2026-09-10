@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import DocumentMeta from './components/DocumentMeta';
 import Navbar from './components/Navbar';
@@ -9,16 +9,18 @@ import ServicesSection from './components/ServicesSection';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
-import ProductsPage from './pages/ProductsPage';
-import EnterprisePage from './pages/EnterprisePage';
-import ProductDetailPage from './pages/ProductDetailPage';
-import BrandPage from './pages/BrandPage';
-import ContactPage from './pages/ContactPage';
-import ConsultPage from './pages/ConsultPage';
-import PrivacyPage from './pages/PrivacyPage';
-import NotFoundPage from './pages/NotFoundPage';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { hasPlayedBrandIntro, markBrandIntroPlayed } from './utils/brandIntroSession';
+
+// 首页随主包一起加载（它是着陆页），其余路由按需拉取自己的 chunk。
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const EnterprisePage = lazy(() => import('./pages/EnterprisePage'));
+const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
+const BrandPage = lazy(() => import('./pages/BrandPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const ConsultPage = lazy(() => import('./pages/ConsultPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function HomePage() {
   const { hash } = useLocation();
@@ -115,19 +117,21 @@ export default function App() {
         <ScrollToTop />
         <div className="min-h-screen bg-surface text-ink">
           <PageNavigation />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/enterprise" element={<EnterprisePage />} />
-            <Route path="/products/:id" element={<ProductDetailPage />} />
-            <Route path="/brand" element={<BrandPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/consult" element={<ConsultRoute />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+          <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/enterprise" element={<EnterprisePage />} />
+              <Route path="/products/:id" element={<ProductDetailPage />} />
+              <Route path="/brand" element={<BrandPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/consult" element={<ConsultRoute />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
           <Footer />
-          </div>
+        </div>
       </BrowserRouter>
     </LanguageProvider>
   );

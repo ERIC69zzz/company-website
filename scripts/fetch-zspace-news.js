@@ -59,7 +59,6 @@ async function fetchNews() {
         url: safeUrl(item.url),
         media: safeText(item.from_media, 50),
         date: safeText(item.createdAt, 30).split('T')[0] || '',
-        image: safeUrl(item.pic),
       }))
       // 丢弃标题或链接不合法的条目，避免官网出现空链接卡片
       .filter((item) => item.title && item.url);

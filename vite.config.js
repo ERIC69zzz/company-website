@@ -19,4 +19,16 @@ export default defineConfig({
   // 路由切换时要重写 canonical 与 og:url，运行时也得知道自身域名。
   // 取自同一个 SITE_URL，不用 location.origin —— 预览域名会把 canonical 指错。
   define: { __SITE_URL__: JSON.stringify(SITE_URL) },
+  build: {
+    rollupOptions: {
+      output: {
+        // 框架单独成块：它几乎不变，发版后浏览器可以继续用缓存里的那一份。
+        // rolldown 只接受函数形式的 manualChunks，不能用对象。
+        manualChunks: (id) =>
+          /node_modules\/(react|react-dom|react-router|react-router-dom|scheduler)\//.test(id)
+            ? 'vendor'
+            : undefined,
+      },
+    },
+  },
 })

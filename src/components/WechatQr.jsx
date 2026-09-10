@@ -18,6 +18,7 @@ export default function WechatQr({ alt, fallbackText, className = 'w-48 h-48' })
           src="/wechat-qr.png"
           alt={alt}
           className="w-full h-full object-contain"
+          decoding="async"
           onError={() => setFailed(true)}
         />
       )}

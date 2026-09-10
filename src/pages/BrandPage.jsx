@@ -136,9 +136,9 @@ export default function BrandPage() {
               <h3 className="text-xl font-bold text-ink">{copy.brandPage.events}</h3>
             </div>
             <div className="space-y-6">
-              {events.map((event, i) => (
+              {events.map((event) => (
                 <div
-                  key={i}
+                  key={event.title}
                   className="flex flex-col sm:flex-row gap-4 sm:gap-8 panel panel-raised rounded-2xl p-6 border border-line"
                 >
                   <div className="sm:w-24 flex-shrink-0">
@@ -170,9 +170,9 @@ export default function BrandPage() {
               <h3 className="text-xl font-bold text-ink">{copy.brandPage.partners}</h3>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {partners.map((p, i) => (
+              {partners.map((p) => (
                 <div
-                  key={i}
+                  key={p.name}
                   className="panel panel-raised rounded-2xl p-6 border border-line text-center hover:border-brand-200 transition-all"
                 >
                   <Trophy className="w-6 h-6 text-accent-600 mx-auto mb-3" />
