@@ -8,7 +8,6 @@ test('中文、英文和日文均包含完整的核心列表', () => {
   for (const language of ['zh', 'en', 'ja']) {
     const copy = translations[language];
     assert.equal(copy.data.categories.length, 5);
-    assert.equal(copy.data.categoryCards.length, 4);
     assert.equal(copy.data.services.length, 4);
     assert.equal(copy.data.contactCards.length, 4);
     assert.equal(copy.data.consultationTypes.length, 6);

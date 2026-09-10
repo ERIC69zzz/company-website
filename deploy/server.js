@@ -17,12 +17,17 @@ const MAX_BODY_BYTES = 16 * 1024;
 const readJsonBody = (req) =>
   new Promise((resolve, reject) => {
     let size = 0;
+    let stopped = false;
     const chunks = [];
     req.on('data', (chunk) => {
+      if (stopped) return;
       size += chunk.length;
       if (size > MAX_BODY_BYTES) {
+        // 这里不能直接 destroy：连接一断，下面的 413 就发不出去，
+        // 客户端只会看到连接被重置。先停止收数据，等响应写完再断开。
+        stopped = true;
+        req.pause();
         reject(new Error('payload too large'));
-        req.destroy();
         return;
       }
       chunks.push(chunk);
@@ -70,6 +75,9 @@ const server = createServer(async (req, res) => {
     req.body = await readJsonBody(req);
   } catch (err) {
     const tooLarge = err.message === 'payload too large';
+    // 剩余的请求体不再读取，等响应确实写出去之后再断开连接。
+    res.setHeader('Connection', 'close');
+    res.on('finish', () => req.destroy());
     return res.status(tooLarge ? 413 : 400).json({
       error: tooLarge ? 'Payload too large' : 'Invalid JSON',
     });

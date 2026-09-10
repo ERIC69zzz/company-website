@@ -1,14 +1,10 @@
 import {
   Clock,
   Cloud,
-  Database,
-  HardDrive,
   HeadphonesIcon,
-  Layers,
   Mail,
   MapPin,
   Phone,
-  Server,
   Settings,
   Wrench,
 } from 'lucide-react';
@@ -25,33 +21,6 @@ export const company = {
   businessDays: '周一至周五',
   businessHours: '09:00 - 18:00',
 };
-
-export const productCategoryCards = [
-  {
-    icon: HardDrive,
-    title: '机械硬盘',
-    category: 'hdd',
-    desc: '希捷酷狼、东芝等企业级NAS专用硬盘，7×24小时稳定运行。',
-  },
-  {
-    icon: Database,
-    title: '固态硬盘',
-    category: 'ssd',
-    desc: '高速NVMe与SATA SSD，满足NAS缓存加速与高性能存储需求。',
-  },
-  {
-    icon: Server,
-    title: 'NAS私有云',
-    category: 'nas',
-    desc: '绿联、极空间全系产品，从双盘位到八盘位，搭载自研系统。',
-  },
-  {
-    icon: Layers,
-    title: '存储配件',
-    category: 'accessory',
-    desc: '硬盘盒、扩展卡、RAID卡等周边配件，一站式配齐存储方案。',
-  },
-];
 
 export const contactCards = [
   {

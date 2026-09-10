@@ -18,7 +18,7 @@ export const translations = {
     },
     language: { label: '选择语言' },
     nav: {
-      brand: '友质科技', home: '首页', products: '产品中心', solutions: '解决方案',
+      brand: '友质科技', home: '首页', solutions: '解决方案',
       brandWorld: '关于我们', contact: '联系我们', consult: '立即咨询',
       open: '打开导航菜单', close: '关闭导航菜单',
     },
@@ -33,11 +33,6 @@ export const translations = {
       nas: 'NAS 私有云', brands: '绿联 / 极空间 · 在线', running: '运行中', total: '总容量',
       speed: '传输速度', network: '万兆网口', diskStatus: '硬盘状态', normal: '全部正常',
       bay1: '盘位 1', bay2: '盘位 2',
-    },
-    productsSection: {
-      badge: '核心产品', title: '全品类存储产品',
-      description: '代理绿联、极空间等一线品牌，覆盖从个人家庭到企业级的全场景数据存储需求',
-      explore: '探索全部产品', exploreDesc: '浏览完整产品目录、详细参数与实时报价', go: '前往产品中心',
     },
     servicesSection: {
       badge: '存储服务', title: '从选型到使用，\n每一步都有支持。',
@@ -262,30 +257,8 @@ export const translations = {
       phoneLabel: '电话',
       emailLabel: '邮箱',
     },
-    chat: {
-      botName: 'KimiClaw 智能客服', welcome: '您好！我是友质科技的智能客服助手，很高兴为您服务。请问有什么可以帮您？',
-      offline: '智能客服暂时不可用，我先按常见问题为您回复。也可以拨打 133-0133-5226 联系人工客服。',
-      unknown: '抱歉，我暂时无法理解这个问题。您可以拨打服务热线 133-0133-5226 联系人工客服，或在「立即咨询」页面提交详细需求，我们会尽快与您联系。',
-      unavailable: '抱歉，服务暂时不可用，请稍后再试。', online: 'AI 在线', fallback: '本地兜底', close: '关闭',
-      inputLabel: '咨询问题', placeholder: '请输入您的问题...', send: '发送', hint: 'AI 客服可回答选型、方案、售后和联系方式问题', open: '打开客服',
-      presetQA: [
-        { keywords: ['产品', '硬盘', 'nas', '买什么', '推荐'], answer: '我们主营机械硬盘（希捷酷狼、东芝等）、固态硬盘（NVMe/SATA SSD）以及 NAS 私有云（绿联、极空间全系产品）。请问您的使用场景是什么？家庭存储还是企业级方案？' },
-        { keywords: ['价格', '多少钱', '报价', '询价'], answer: '我们的产品价格会根据市场波动和采购量有所调整。您可以留下联系方式，我们会安排专人为您提供最新报价，或者访问「产品中心」查看公开价格。' },
-        { keywords: ['售后', '保修', '维修', '质保'], answer: '我们提供全生命周期售后服务，7×12小时响应。所有硬盘均享受官方质保，NAS 产品享受品牌官方保修和我们提供的上门技术支持。' },
-        { keywords: ['地址', '在哪', '公司', '位置'], answer: '公司地址：北京市海淀区知春路113号银网中心8层808室。欢迎预约上门参观洽谈。' },
-        { keywords: ['电话', '联系', '怎么找你们'], answer: '您可以拨打我们的服务热线：133-0133-5226（周一至周五 9:00-18:00），或发送邮件至 nancy@bjyzyes.com，我们会尽快回复您。' },
-        { keywords: ['上门', '部署', '安装', '调试'], answer: '我们提供北京地区专业技术人员上门安装调试服务，包括 NAS 组网、硬盘配置、数据迁移等。可在「立即咨询」页面提交需求。' },
-        { keywords: ['方案', '定制', '架构'], answer: '我们可以根据您的数据规模、访问频率、预算等需求，量身定制硬盘选型与 NAS 架构方案。请描述一下您的具体需求（数据量、用户数、预算范围等）。' },
-      ],
-    },
     data: {
       categories: ['全部产品', 'NAS私有云', '机械硬盘', '固态硬盘', '存储配件'],
-      categoryCards: [
-        { title: '机械硬盘', desc: '希捷酷狼、东芝等企业级NAS专用硬盘，7×24小时稳定运行。' },
-        { title: '固态硬盘', desc: '高速NVMe与SATA SSD，满足NAS缓存加速与高性能存储需求。' },
-        { title: 'NAS私有云', desc: '绿联、极空间全系产品，从双盘位到八盘位，搭载自研系统。' },
-        { title: '存储配件', desc: '硬盘盒、扩展卡、RAID卡等周边配件，一站式配齐存储方案。' },
-      ],
       contactCards: [
         { title: '电话咨询', label: '联系电话', content: '133-0133-5226', desc: '周一至周五 9:00 - 18:00' },
         { title: '公司地址', label: '公司地址', content: '北京市海淀区知春路113号', desc: '银网中心8层808室' },
@@ -312,7 +285,7 @@ export const translations = {
     },
     language: { label: 'Select language' },
     nav: {
-      brand: 'Youzhi Tech', home: 'Home', products: 'Products', solutions: 'Solutions',
+      brand: 'Youzhi Tech', home: 'Home', solutions: 'Solutions',
       brandWorld: 'About Us', contact: 'Contact', consult: 'Get Advice',
       open: 'Open navigation menu', close: 'Close navigation menu',
     },
@@ -327,11 +300,6 @@ export const translations = {
       nas: 'Private Cloud NAS', brands: 'UGREEN / ZSpace · Online', running: 'Running', total: 'Total capacity',
       speed: 'Transfer speed', network: '10GbE', diskStatus: 'Drive status', normal: 'All healthy',
       bay1: 'Bay 1', bay2: 'Bay 2',
-    },
-    productsSection: {
-      badge: 'Core Products', title: 'Storage for Every Scenario',
-      description: 'Authorized solutions from leading brands including UGREEN and ZSpace, for home users through enterprise teams.',
-      explore: 'Explore All Products', exploreDesc: 'Browse our full catalog, detailed specifications and current listed prices.', go: 'Product Center',
     },
     servicesSection: {
       badge: 'Storage Services', title: 'Storage support,\nfrom start to finish.',
@@ -562,30 +530,8 @@ export const translations = {
       phoneLabel: 'Phone',
       emailLabel: 'Email',
     },
-    chat: {
-      botName: 'KimiClaw AI Support', welcome: 'Hello! I’m Youzhi Technology’s AI support assistant. How can I help you today?',
-      offline: 'AI support is temporarily unavailable, so I’ll answer from our common support topics. You can also call 133-0133-5226 for human assistance.',
-      unknown: 'Sorry, I could not match that question. Call 133-0133-5226 for human assistance, or submit your requirements on the “Get Advice” page and we will contact you soon.',
-      unavailable: 'Sorry, the service is temporarily unavailable. Please try again later.', online: 'AI online', fallback: 'Local answers', close: 'Close',
-      inputLabel: 'Consultation question', placeholder: 'Type your question...', send: 'Send', hint: 'Ask about product selection, solutions, support and contact details.', open: 'Open customer support',
-      presetQA: [
-        { keywords: ['product', 'drive', 'hdd', 'ssd', 'nas', 'recommend'], answer: 'We supply NAS hard drives such as Seagate IronWolf and Toshiba, NVMe/SATA SSDs, and private-cloud NAS systems from UGREEN and ZSpace. Is this for home storage or a business deployment?' },
-        { keywords: ['price', 'cost', 'quote'], answer: 'Prices vary with the market and order volume. Leave your contact details for a current quote, or visit the Product Center to see listed prices.' },
-        { keywords: ['support', 'warranty', 'repair'], answer: 'We provide lifecycle support with a 7×12-hour response window. Drives include the manufacturer’s warranty, while NAS products include official brand coverage plus our onsite technical support.' },
-        { keywords: ['address', 'location', 'office'], answer: 'Our office is Room 808, 8th Floor, Yinwang Center, 113 Zhichun Road, Haidian District, Beijing. Please make an appointment before visiting.' },
-        { keywords: ['phone', 'contact', 'email'], answer: 'Call 133-0133-5226 from Monday to Friday, 9:00–18:00, or email nancy@bjyzyes.com. We will respond as soon as possible.' },
-        { keywords: ['onsite', 'deploy', 'install', 'setup'], answer: 'We offer professional onsite service in Beijing, including NAS networking, drive configuration and data migration. Submit your requirements on the Get Advice page.' },
-        { keywords: ['solution', 'custom', 'architecture'], answer: 'We can design drive selection and NAS architecture around your data volume, access patterns and budget. Please tell us your expected capacity, user count and budget range.' },
-      ],
-    },
     data: {
       categories: ['All Products', 'Private Cloud NAS', 'Hard Drives', 'Solid-State Drives', 'Accessories'],
-      categoryCards: [
-        { title: 'Hard Drives', desc: 'Enterprise NAS drives including Seagate IronWolf and Toshiba, designed for reliable 24/7 operation.' },
-        { title: 'Solid-State Drives', desc: 'High-speed NVMe and SATA SSDs for NAS caching and performance storage.' },
-        { title: 'Private Cloud NAS', desc: 'UGREEN and ZSpace systems from two to eight bays, powered by purpose-built operating systems.' },
-        { title: 'Storage Accessories', desc: 'Enclosures, expansion cards, RAID cards and related accessories for a complete storage setup.' },
-      ],
       contactCards: [
         { title: 'Phone Consultation', label: 'Phone', content: '133-0133-5226', desc: 'Mon–Fri, 9:00–18:00' },
         { title: 'Office Address', label: 'Address', content: '113 Zhichun Road, Haidian, Beijing', desc: 'Room 808, 8F, Yinwang Center' },
@@ -612,7 +558,7 @@ export const translations = {
     },
     language: { label: '言語を選択' },
     nav: {
-      brand: '友質科技', home: 'ホーム', products: '製品', solutions: 'ソリューション',
+      brand: '友質科技', home: 'ホーム', solutions: 'ソリューション',
       brandWorld: '会社情報', contact: 'お問い合わせ', consult: '相談する',
       open: 'ナビゲーションを開く', close: 'ナビゲーションを閉じる',
     },
@@ -627,11 +573,6 @@ export const translations = {
       nas: 'プライベートクラウドNAS', brands: 'UGREEN / ZSpace · オンライン', running: '稼働中', total: '総容量',
       speed: '転送速度', network: '10GbE', diskStatus: 'ドライブ状態', normal: 'すべて正常',
       bay1: 'ベイ 1', bay2: 'ベイ 2',
-    },
-    productsSection: {
-      badge: '主要製品', title: '幅広いストレージ製品',
-      description: 'UGREEN、ZSpaceなど主要ブランドの正規製品で、家庭用から法人用途まで幅広く対応します。',
-      explore: 'すべての製品を見る', exploreDesc: '製品一覧、詳細仕様、掲載価格をご確認いただけます。', go: '製品センターへ',
     },
     servicesSection: {
       badge: 'ストレージサービス', title: '製品選びから運用まで、\n一歩ずつサポート。',
@@ -862,30 +803,8 @@ export const translations = {
       phoneLabel: '電話',
       emailLabel: 'メール',
     },
-    chat: {
-      botName: 'KimiClaw AIサポート', welcome: 'こんにちは。友質科技のAIサポートです。本日はどのようなご相談でしょうか？',
-      offline: 'AIサポートは一時的に利用できません。よくあるご質問に基づいて回答します。担当者へのご相談は 133-0133-5226 へお電話ください。',
-      unknown: '申し訳ありませんが、ご質問に合う回答が見つかりませんでした。133-0133-5226 へお電話いただくか、「相談する」ページから詳しい内容をお送りください。',
-      unavailable: '現在サービスをご利用いただけません。時間をおいて再度お試しください。', online: 'AIオンライン', fallback: 'ローカル回答', close: '閉じる',
-      inputLabel: '相談内容', placeholder: 'ご質問を入力...', send: '送信', hint: '製品選定、構成、サポート、連絡先について回答します。', open: 'サポートを開く',
-      presetQA: [
-        { keywords: ['製品', 'ドライブ', 'hdd', 'ssd', 'nas', 'おすすめ'], answer: 'Seagate IronWolfや東芝などのNAS向けHDD、NVMe/SATA SSD、UGREEN・ZSpaceのプライベートクラウドNASを取り扱っています。ご家庭用でしょうか、法人導入でしょうか？' },
-        { keywords: ['価格', '料金', '見積'], answer: '価格は市場状況と数量により変動します。最新のお見積りは連絡先をお残しいただくか、製品センターの掲載価格をご確認ください。' },
-        { keywords: ['サポート', '保証', '修理'], answer: '製品ライフサイクル全体を支援し、7×12時間の対応体制を設けています。ドライブはメーカー保証、NASはメーカー保証に加えて当社の訪問技術支援をご利用いただけます。' },
-        { keywords: ['住所', '場所', '会社'], answer: '所在地は北京市海淀区知春路113号 銀網センター8階808号室です。ご来訪の際は事前にご予約ください。' },
-        { keywords: ['電話', '連絡', 'メール'], answer: '月曜から金曜の9:00〜18:00に 133-0133-5226 へお電話いただくか、nancy@bjyzyes.com へメールをお送りください。' },
-        { keywords: ['訪問', '導入', '設置', '設定'], answer: '北京市内でNASネットワーク、ドライブ設定、データ移行などの訪問導入を提供しています。「相談する」ページからご要望をお送りください。' },
-        { keywords: ['構成', '提案', '設計'], answer: 'データ容量、アクセス頻度、ご予算に合わせてドライブ選定とNAS構成を設計します。想定容量、利用人数、ご予算をお知らせください。' },
-      ],
-    },
     data: {
       categories: ['すべての製品', 'プライベートクラウドNAS', 'ハードディスク', 'SSD', '周辺機器'],
-      categoryCards: [
-        { title: 'ハードディスク', desc: 'Seagate IronWolfや東芝など、24時間365日の安定稼働を想定した法人・NAS向けHDD。' },
-        { title: 'SSD', desc: 'NASキャッシュや高速ストレージに適したNVMe・SATA SSD。' },
-        { title: 'プライベートクラウドNAS', desc: '2ベイから8ベイまで、独自OSを搭載したUGREEN・ZSpace製品。' },
-        { title: 'ストレージ周辺機器', desc: 'ドライブケース、拡張カード、RAIDカードなど、必要な周辺機器をまとめてご用意。' },
-      ],
       contactCards: [
         { title: '電話相談', label: '電話番号', content: '133-0133-5226', desc: '月〜金 9:00〜18:00' },
         { title: '会社所在地', label: '所在地', content: '北京市海淀区知春路113号', desc: '銀網センター8階808号室' },

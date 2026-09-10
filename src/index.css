@@ -264,14 +264,6 @@ body {
   color: var(--color-accent-500);
 }
 
-.eyebrow-muted {
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: var(--color-ink-3);
-}
-
 /* 大标题偏细，靠字号和留白撑，不靠字重 */
 .display {
   font-weight: 300;
@@ -301,12 +293,6 @@ body {
   transform: translateY(-3px);
 }
 
-/* 极浅的分区底色 */
-.panel-tint {
-  background: var(--color-surface-2);
-  border-radius: 1rem;
-}
-
 /* 发丝线，1px 但视觉更轻 */
 .hairline {
   border-top: 1px solid var(--color-line);
@@ -322,15 +308,6 @@ body {
 
 /* ===== 装饰 ===== */
 
-/* 蓝色渐隐光晕，替代深色主题里的彩色光斑 */
-.glow-blue {
-  background: radial-gradient(closest-side, rgba(46, 127, 212, 0.16), transparent);
-}
-
-.glow-orange {
-  background: radial-gradient(closest-side, rgba(255, 106, 0, 0.12), transparent);
-}
-
 /* 浅色网格，非常克制 */
 .bg-grid {
   background-image:
@@ -339,28 +316,7 @@ body {
   background-size: 64px 64px;
 }
 
-/* 标题渐变：偏亮偏冷的蓝，靠近底特律那种界面蓝而非沉稳的企业蓝 */
-.text-gradient {
-  background: linear-gradient(115deg, #1c62b0 0%, #2e9fe0 48%, #5ac8f5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.45; }
-  50% { opacity: 0.8; }
-}
-
-.animate-float { animation: float 7s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 5s ease-in-out infinite; }
-
-@keyframes chatFadeIn {
+@keyframes menuFadeIn {
   from { opacity: 0; transform: translateY(20px) scale(0.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }

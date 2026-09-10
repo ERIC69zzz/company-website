@@ -68,7 +68,7 @@ function LanguageSwitcher({ compact = false, open, onOpenChange }) {
           role="menu"
           aria-label={copy.language.label}
           className="absolute right-0 top-full z-[70] mt-2 w-44 overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-2xl shadow-black/50 backdrop-blur-2xl"
-          style={{ animation: 'chatFadeIn 0.18s ease-out' }}
+          style={{ animation: 'menuFadeIn 0.18s ease-out' }}
         >
           <div className="px-2.5 pb-1.5 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-3">
             {copy.language.label}
