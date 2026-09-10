@@ -66,7 +66,7 @@ export default function ConsultPage() {
                     <MessageCircle className="w-5 h-5 text-brand-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-ink">{copy.consultPage.wechatTitle}</h3>
+                    <h2 className="text-lg font-bold text-ink">{copy.consultPage.wechatTitle}</h2>
                     <p className="text-xs text-ink-3">{copy.consultPage.wechatDesc}</p>
                   </div>
                 </div>
@@ -95,7 +95,7 @@ export default function ConsultPage() {
               </div>
 
               <div className="panel panel-raised rounded-2xl p-6 border border-line">
-                <h4 className="text-sm font-bold text-ink mb-3">{copy.consultPage.scope}</h4>
+                <h2 className="text-sm font-bold text-ink mb-3">{copy.consultPage.scope}</h2>
                 <div className="grid grid-cols-2 gap-2">
                   {copy.data.consultationTopics.map((t) => (
                     <div key={t} className="flex items-center gap-2 text-sm text-ink-2">
@@ -113,7 +113,7 @@ export default function ConsultPage() {
               {prefillContext && (
                 <p className="text-xs font-medium text-brand-700 mb-4">{prefillContext}</p>
               )}
-              <h3 className="text-lg font-bold text-ink mb-2">{copy.consultPage.formTitle}</h3>
+              <h2 className="text-lg font-bold text-ink mb-2">{copy.consultPage.formTitle}</h2>
               <p className="text-sm text-ink-3 mb-6">
                 {copy.consultPage.formDesc}
               </p>
@@ -123,7 +123,7 @@ export default function ConsultPage() {
                   <div className="w-16 h-16 rounded-full bg-accent-100 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-8 h-8 text-accent-600" />
                   </div>
-                  <h4 className="text-lg font-bold text-ink mb-2">{copy.consultPage.successTitle}</h4>
+                  <h3 className="text-lg font-bold text-ink mb-2">{copy.consultPage.successTitle}</h3>
                   <p className="text-sm text-ink-2">
                     {copy.consultPage.successDesc}
                   </p>

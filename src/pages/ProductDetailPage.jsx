@@ -88,7 +88,7 @@ export default function ProductDetailPage() {
 
             <ScrollReveal delay={0.2}>
               <div className="mt-auto">
-                <h3 className="text-lg font-bold text-ink mb-4">{copy.productDetail.specs}</h3>
+                <h2 className="text-lg font-bold text-ink mb-4">{copy.productDetail.specs}</h2>
                 <div className="rounded-xl border border-line bg-surface-2 overflow-hidden">
                   {Object.entries(product.specs).map(([key, value], i, arr) => (
                     <div

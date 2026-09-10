@@ -20,9 +20,9 @@ function ProductCard({ product }) {
         />
 
         <div className="p-3 flex flex-col flex-1">
-          <h3 className="text-sm font-bold text-ink truncate mb-1 group-hover:text-brand-600 transition-colors">
+          <h2 className="text-sm font-bold text-ink truncate mb-1 group-hover:text-brand-600 transition-colors">
             {product.name}
-          </h3>
+          </h2>
           <p className="text-xs text-ink-3 line-clamp-2 mb-2 flex-1">
             {product.shortDesc}
           </p>
