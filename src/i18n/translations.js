@@ -391,6 +391,9 @@ export const translations = {
         118: { title: 'ZSpace and VidHub Build a New Secure, Cross-Platform Media Experience', desc: 'ZSpace and VidHub announced a strategic partnership focused on cross-platform media playback. Their integration aims to combine secure storage with smooth playback across devices for a more seamless home media experience.' },
         117: { title: 'ZSpace and NetEase Popcorn Expand the Private-Cloud Media Ecosystem', desc: 'ZSpace has partnered with NetEase Popcorn on an integrated media solution that combines secure storage with playback across devices, aiming to deliver a smarter, simpler and safer digital entertainment experience.' },
         116: { title: 'VSTECS and ZSpace Begin a New Private-Cloud Partnership', desc: 'The companies will collaborate on product promotion, channel growth, market operations and customer service, using their complementary capabilities to broaden private-cloud coverage and improve the user experience.' },
+        115: { title: 'ZSpace Brings Its Private Cloud to Changan and Deepal Vehicles', desc: 'ZSpace has entered a deep partnership with Deepal Automobile, bringing its in-car private-cloud client to the Deepal infotainment platform. The company is also expanding support to more Changan Automobile models.' },
+        114: { title: 'ZSpace P8+ Arrives with a Full Silicon Upgrade for Business Data', desc: 'The P8+ enterprise storage solution is now available. More than a refresh, it signals ZSpace’s continued investment in the business market and its intent to answer new demands through sustained engineering work.' },
+        113: { title: 'ZSpace Launches AI-Driven NAS Products for Every Scenario', desc: 'ZSpace introduced three strategic products forming a storage line-up that spans mobile creation, desktop compute and the connected home.' },
       },
       news: [
         { title: 'Youzhi Technology Named a Core UGREEN NAS Reseller for North China', desc: 'Youzhi Technology formally partnered with UGREEN as a core authorized reseller of DXP-series NAS products in North China, strengthening pre-sales guidance and after-sales support.', tag: 'Partnership' },
@@ -664,6 +667,9 @@ export const translations = {
         118: { title: 'ZSpaceとVidHub、安全な保存とマルチデバイス再生を統合', desc: 'ZSpaceとVidHubはクロスプラットフォーム再生を中心とする戦略提携を発表しました。安全なストレージと各種端末での滑らかな再生を連携し、家庭のメディア体験をよりシームレスにします。' },
         117: { title: 'ZSpaceとNetEase Popcorn、プライベートクラウド映像体験を強化', desc: '両社は安全なストレージと全端末での再生を統合する映像ソリューションで提携しました。よりスマートで簡単、安全なデジタルエンターテインメント体験を目指します。' },
         116: { title: 'VSTECSとZSpace、プライベートクラウド分野で提携', desc: '製品プロモーション、販売チャネル、市場運営、カスタマーサービスで協力し、双方の強みを生かしてプライベートクラウドの普及と利用体験の向上を図ります。' },
+        115: { title: 'ZSpaceのプライベートクラウド、長安汽車とDeepalの車載環境へ', desc: 'ZSpaceはDeepal Automobileと深い協業関係を結び、車載向けプライベートクラウドをDeepalのインフォテインメント基盤に提供開始しました。長安汽車についても対応車種を拡大しています。' },
+        114: { title: 'ZSpace P8+、チップを一新し企業データ保護を強化', desc: '法人向けストレージ「P8+」が登場しました。単なる刷新ではなく、法人市場への継続投資と、技術開発で新たな要求に応えていく姿勢を示す製品です。' },
+        113: { title: 'ZSpace、全シーン対応のAIスマートストレージNASを発表', desc: 'ZSpaceは3つの戦略製品を発表し、モバイル制作からデスクトップの演算処理、スマートホームまでをカバーするストレージ体系を構築しました。' },
       },
       news: [
         { title: '友質科技、華北地域のUGREEN NAS中核正規販売店に', desc: 'UGREENと正式契約し、華北地域におけるDXPシリーズNASの中核正規販売店となりました。購入前の相談から導入後のサポートまで、体制をさらに強化します。', tag: '提携' },
