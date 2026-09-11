@@ -88,3 +88,24 @@ test('产品目录里引用的图片都真实存在，图廊不重复', () => {
     assert.equal(product.images[0], product.image, `${product.id} 图廊第一张应与封面一致`);
   }
 });
+
+test('含中文的规格取值在英日两版都有对应翻译，不会原样漏出中文', () => {
+  const han = /\p{Script=Han}/u;
+  const zh = localizeProducts(products, 'zh');
+  const en = localizeProducts(products, 'en');
+  const ja = localizeProducts(products, 'ja');
+
+  zh.forEach((product, i) => {
+    const keys = Object.keys(product.specs);
+    keys.forEach((key, k) => {
+      const original = product.specs[key];
+      // 纯型号、接口这类本来就不含中文的取值不需要翻译
+      if (!han.test(original)) return;
+
+      const english = Object.values(en[i].specs)[k];
+      const japanese = Object.values(ja[i].specs)[k];
+      assert.notEqual(english, original, `${product.id} 的「${key}」缺英文翻译：${original}`);
+      assert.notEqual(japanese, original, `${product.id} 的「${key}」缺日文翻译：${original}`);
+    });
+  });
+});
