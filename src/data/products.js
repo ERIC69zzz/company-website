@@ -88,42 +88,4 @@ export const products = [
       { title: 'AI 推理不出设备', desc: '官方内置 DeepSeek R1 7B 本地部署，一键安装；相册的人像、文字与自然语言搜索全部本地完成。' },
     ],
   },
-  {
-    id: 'zspace-q2c',
-    name: 'Q2C',
-    brand: '极空间',
-    category: 'nas',
-    // 官网未标价，先走「询价」；要显示价格就换成 '¥1,399' 这类字面量
-    price: '询价',
-    image: '/products/zspace-q2c.jpg',
-    images: [
-      '/products/zspace-q2c.jpg',
-      '/products/zspace-q2c-front-left.jpg',
-      '/products/zspace-q2c-front-right.jpg',
-      '/products/zspace-q2c-rear.jpg',
-    ],
-    shortDesc: '2 盘位入门家用 NAS，RK3568 四核处理器，单盘最高 32TB',
-    description: '极空间 Q2C 是面向家庭的入门级双盘位私有云。瑞芯微 RK3568 四核处理器搭配 2GB DDR4 内存，另有 1Tops NPU 支撑相册的人像与场景识别。两个 3.5 英寸盘位单盘最高支持 32TB，配合自研 ZDR 存储方案在容量与冗余之间取舍。机身为一体化注塑结构，采用悬浮式硬盘架与硅胶减震阀，配 7015 智能温控风扇，可立可卧摆放。支持手机与电脑备份、微信附件备份、苹果时光机，以及 BT/PT 多协议下载。',
-    // 规格取自极空间官网「小身材 大能量」参数表（zspace.cn/q2c/）
-    specs: {
-      '处理器': '瑞芯微 RK3568 · Cortex-A55 四核 2.0GHz',
-      '核显': 'ARM Mali G52',
-      'NPU': 'Neural Networks 1Tops',
-      '内存': '2GB DDR4',
-      '系统存储': 'eMMC 16GB · V5.1',
-      '盘位': '2 盘位 · 3.5 英寸 · 单盘最高 32TB',
-      '接口': 'SATA3 6Gbps × 2',
-      '网口': '1GbE × 1',
-      'USB': 'USB 3.0 × 1 / USB 2.0 × 1',
-      '风扇': '7015 智能温控风扇 × 1',
-      '电源': '12V · 5.5×2.5mm',
-    },
-    tags: ['2盘位', '入门首选', 'AI 相册'],
-    highlights: [
-      { title: '摆卧室也不吵', desc: '悬浮式硬盘架配超大硅胶减震阀，掣风散热引擎 V2.0 直通式风道加智能温控，低噪运行不干扰办公与睡眠。' },
-      { title: 'AI 相册会整理', desc: '1Tops NPU 支撑按人像、场景、时间与地点自动归类，支持智能搜索与重复照片筛除，还有地图模式。' },
-      { title: '双盘位冗余', desc: '两个 3.5 英寸盘位单盘最高 32TB，自研 ZDR 存储方案在容量与安全之间取舍，坏一块盘数据不丢。' },
-      { title: '全快拆安装', desc: '硬盘仓深度加固、硅胶弹性链固定，免工具即可装盘，一体化注塑机身可立可卧摆放。' },
-    ],
-  },
 ];
