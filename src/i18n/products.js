@@ -22,6 +22,17 @@
 // };
 const productCopy = {
   en: {
+    'zspace-z425': {
+      shortDesc: 'Core Ultra 4-bay NAS with dual Thunderbolt 4, 10GbE, and room to run a 14B model locally',
+      description: 'The ZSpace Z425 is a flagship four-bay private cloud on the Intel Core Ultra platform, offered in two configurations: the standard model pairs a Core Ultra 225H at 4.9GHz with 16GB of DDR5, while the Lite edition uses a Core Ultra 125H at 4.5GHz with 8GB — both keep one memory slot free for expansion. Storage spans two SATA3 bays plus two SATA3/U.2-compatible bays, alongside four M.2 NVMe 2280 slots (three on PCIe 4.0 ×4, one on PCIe 3.0 ×4). Networking combines a 10GbE and a 1GbE port, and two Thunderbolt 4 ports supply 40Gbps for an external GPU enclosure — NVIDIA 4090 or 5090 class cards included — or a direct Thunderbolt bridge. Three fans work in concert, two on the CPU plus a system fan with ducting tuned for SSDs. An Intel AI Boost NPU lets DeepSeek R1 14B run locally, so inference never leaves the device.',
+      tags: ['Core Ultra', 'Dual Thunderbolt 4', '10GbE'],
+      highlights: [
+        { title: 'Dual Thunderbolt 4 for an external GPU', desc: 'Two Thunderbolt 4 ports provide 40Gbps, enough for an external GPU enclosure running NVIDIA 4090 or 5090 class cards, or a direct Thunderbolt bridge.' },
+        { title: 'Four bays plus four M.2 slots', desc: 'Two SATA3 bays and two SATA3/U.2-compatible bays, with four further M.2 NVMe slots — three of them on PCIe 4.0 ×4.' },
+        { title: '10GbE and 1GbE', desc: 'One port of each, so they can serve separate subnets, or the 10GbE link can carry high-bitrate video and source footage.' },
+        { title: 'A 14B model, on the box', desc: 'An Intel AI Boost NPU supports one-step deployment of DeepSeek R1 14B; inference and retrieval both run on the device rather than in the cloud.' },
+      ],
+    },
     'zspace-z4-pro-plus': {
       shortDesc: '4-bay NAS on the Twin Lake platform, with two M.2 slots and dual 2.5GbE',
       description: 'The ZSpace Z4 Pro+ is a four-bay private cloud for homes and studios, offered in two configurations: the standard model runs an Intel N150 at 3.60GHz, while the performance model steps up to an Intel Core 3 N355 at 3.90GHz with 16GB of memory as standard. Four SATA3 bays take 2.5 and 3.5-inch drives up to 32TB each, and two M.2 NVMe 2280 slots (up to 8TB each) can serve as cache or an all-flash pool, with single-drive, ZDR, RAID1 and RAID5 modes available. Cooling combines temperature-controlled twin fans with a silent heat-pipe sink and a phase-change pad, while a soft mount between drives and chassis plus silicone isolation at several points damp vibration. The aircraft-grade aluminium body has a magnetic front cover and a removable dust filter for easy upkeep. Dual 2.5GbE ports, HDMI 2.0b and eSATA round out the connections, and DeepSeek R1 7B can be deployed locally.',
@@ -46,6 +57,17 @@ const productCopy = {
     },
   },
   ja: {
+    'zspace-z425': {
+      shortDesc: 'Core Ultra搭載の4ベイNAS。Thunderbolt 4×2と10GbEを備え、14Bモデルをローカル実行可能',
+      description: 'ZSpace Z425 はIntel Core Ultraプラットフォームを採用したフラッグシップ4ベイ・プライベートクラウドで、2つの構成があります。標準版はCore Ultra 225H（4.9GHz）とDDR5 16GB、軽量版（轻享版）はCore Ultra 125H（4.5GHz）と8GBの構成で、いずれも増設用スロットを1基残しています。ストレージはSATA3ベイ2基とSATA3 / U.2対応ベイ2基に加え、M.2 NVMe 2280スロット4基（うち3基はPCIe 4.0 ×4、1基はPCIe 3.0 ×4）を搭載。ネットワークは10GbEと1GbEを各1ポート、Thunderbolt 4を2ポート備え、40Gbpsの帯域で外付けGPUボックス（NVIDIA 4090 / 5090クラス対応）やThunderboltブリッジ直結に対応します。冷却はCPUファン2基とシステムファンの3基が連動し、SSD向けに風路を最適化。Intel AI Boost NPUにより DeepSeek R1 14B をローカル実行でき、推論が機器の外に出ることはありません。',
+      tags: ['Core Ultra', 'Thunderbolt 4×2', '10GbE'],
+      highlights: [
+        { title: 'Thunderbolt 4×2で外付けGPUに対応', desc: 'Thunderbolt 4を2ポート搭載し40Gbpsの帯域を確保。NVIDIA 4090 / 5090クラスを搭載した外付けGPUボックスやThunderboltブリッジ直結に対応します。' },
+        { title: '4ベイ＋M.2スロット4基', desc: 'SATA3ベイ2基とSATA3 / U.2対応ベイ2基に加え、M.2 NVMeスロットを4基搭載。うち3基はPCIe 4.0 ×4接続です。' },
+        { title: '10GbEと1GbE', desc: '各1ポートを搭載。別セグメントへの接続にも、10GbE側で高ビットレートの映像や素材の読み出しにも使えます。' },
+        { title: '14Bモデルを本体で実行', desc: 'Intel AI Boost NPUにより DeepSeek R1 14B をワンステップで展開。推論も検索もクラウドではなく本体で処理します。' },
+      ],
+    },
     'zspace-z4-pro-plus': {
       shortDesc: 'Twin Lakeプラットフォーム採用の4ベイNAS。M.2スロット2基と2.5GbE×2を搭載',
       description: 'ZSpace Z4 Pro+ は家庭やスタジオ向けの4ベイ・プライベートクラウドで、2つの構成が用意されています。標準版はIntel N150（3.60GHz）、性能版はIntel Core 3 N355（3.90GHz）にメモリ16GBを標準搭載します。SATA3ベイ4基は2.5および3.5インチドライブに対応し1台最大32TB、さらにM.2 NVMe 2280スロット2基（1枚最大8TB）をキャッシュまたはオールフラッシュプールとして利用できます。ストレージは単一ドライブ、ZDR、RAID1、RAID5に対応。冷却はスマート温度制御のツインファンに静音ヒートパイプシンクと相変化パッドを組み合わせ、ドライブと筐体はソフトマウントのうえ複数箇所をシリコンで隔離して振動の伝わりを抑えます。航空機グレードのアルミ筐体はマグネット式フロントカバーと着脱可能なダストフィルターを備え、日常の手入れが容易です。2.5GbEポート2基、HDMI 2.0b、eSATAを備え、DeepSeek R1 7B のローカル展開にも対応します。',
@@ -93,7 +115,7 @@ const specLabels = {
     主控: 'Controller', 支持系统: 'OS support', USB: 'USB', HDMI: 'HDMI',
     系列: 'Series', 适用: 'Designed for',
     核显: 'Graphics', NPU: 'NPU', 系统存储: 'System storage', 风扇: 'Fan', 电源: 'Power adapter',
-    'M.2': 'M.2', 存储模式: 'Storage modes', eSATA: 'eSATA',
+    'M.2': 'M.2', 存储模式: 'Storage modes', eSATA: 'eSATA', UPS: 'UPS',
   },
   ja: {
     处理器: 'プロセッサ', 内存: 'メモリ', 盘位: 'ドライブベイ', 网口: 'ネットワーク', 最大容量: '最大容量',
@@ -104,12 +126,25 @@ const specLabels = {
     主控: 'コントローラー', 支持系统: '対応OS', USB: 'USB', HDMI: 'HDMI',
     系列: 'シリーズ', 适用: '用途',
     核显: '内蔵GPU', NPU: 'NPU', 系统存储: 'システム領域', 风扇: 'ファン', 电源: '電源アダプター',
-    'M.2': 'M.2', 存储模式: 'ストレージ構成', eSATA: 'eSATA',
+    'M.2': 'M.2', 存储模式: 'ストレージ構成', eSATA: 'eSATA', UPS: 'UPS',
   },
 };
 
 const specValues = {
   en: {
+    '标准版 Intel 酷睿 Ultra 225H 4.9GHz 14 核 / 轻享版 Ultra 125H 4.5GHz 14 核': 'Standard: Intel Core Ultra 225H 4.9GHz 14-core / Lite: Core Ultra 125H 4.5GHz 14-core',
+    '标准版 Intel Arc 130T 2.2GHz 7 核 / 轻享版 Intel Arc graphics 2.2GHz 7 核': 'Standard: Intel Arc 130T 2.2GHz 7-core / Lite: Intel Arc graphics 2.2GHz 7-core',
+    'Intel AI Boost': 'Intel AI Boost',
+    'DDR5 · 标准版预装 16GB / 轻享版预装 8GB · 另留一条可扩展插槽': 'DDR5 · 16GB preinstalled (8GB on Lite) · one expansion slot free',
+    'eMMC 32GB · V5.1': 'eMMC 32GB · V5.1',
+    'SATA3 × 2 + SATA3 / U.2 兼容 × 2': 'SATA3 × 2 + SATA3 / U.2-compatible × 2',
+    'NVMe 2280 × 4（PCIe 4.0 ×4 三个 + PCIe 3.0 ×4 一个）': 'NVMe 2280 × 4 (three on PCIe 4.0 ×4, one on PCIe 3.0 ×4)',
+    'SATA2.0 × 1': 'SATA2.0 × 1',
+    '10GbE RJ-45 × 1 + 1GbE RJ-45 × 1': '10GbE RJ-45 × 1 + 1GbE RJ-45 × 1',
+    '雷电 4 × 2 · USB-A 3.2 Gen2 × 1': 'Thunderbolt 4 × 2 · USB-A 3.2 Gen2 × 1',
+    'HDMI 2.1 × 1 · 4K@60Hz': 'HDMI 2.1 × 1 · 4K@60Hz',
+    '专用接口 × 1（轻享版的 UPS 电源需单独购买）': 'Dedicated port × 1 (the UPS unit is sold separately for the Lite edition)',
+    '19V / 7.9A · 接口 5521': '19V / 7.9A · 5521 connector',
     '标准版 Intel N150 3.60GHz / 性能版 Intel 酷睿 3 N355 3.90GHz': 'Standard: Intel N150 3.60GHz / Performance: Intel Core 3 N355 3.90GHz',
     '标准版 Intel Graphics 1.0GHz 24U / 性能版 1.35GHz 32U': 'Standard: Intel Graphics 1.0GHz 24U / Performance: 1.35GHz 32U',
     'DDR5-4800 · 8GB 或 16GB（性能版 16GB）· 支持更换': 'DDR5-4800 · 8GB or 16GB (16GB on the performance model) · replaceable',
@@ -145,7 +180,6 @@ const specValues = {
     'Intel N150 · 四核 3.6GHz': 'Intel N150 · quad-core 3.6GHz',
     'Intel UHD Graphics · 24 执行单元': 'Intel UHD Graphics · 24 execution units',
     '8GB DDR4 · 可升级至 16GB': '8GB DDR4 · upgradable to 16GB',
-    'eMMC 32GB · V5.1': 'eMMC 32GB · V5.1',
     'SATA / U.2 × 2 · 单盘最高 8TB': 'SATA / U.2 × 2 · up to 8TB per drive',
     'NVMe 8GT/s × 2': 'NVMe 8GT/s × 2',
     '2.5GbE RJ-45 × 1': '2.5GbE RJ-45 × 1',
@@ -154,6 +188,19 @@ const specValues = {
     'ZDR / RAID1 · 支持读写缓存': 'ZDR / RAID1 · read-write cache supported',
   },
   ja: {
+    '标准版 Intel 酷睿 Ultra 225H 4.9GHz 14 核 / 轻享版 Ultra 125H 4.5GHz 14 核': '標準版: Intel Core Ultra 225H 4.9GHz 14コア / 軽量版: Core Ultra 125H 4.5GHz 14コア',
+    '标准版 Intel Arc 130T 2.2GHz 7 核 / 轻享版 Intel Arc graphics 2.2GHz 7 核': '標準版: Intel Arc 130T 2.2GHz 7コア / 軽量版: Intel Arc graphics 2.2GHz 7コア',
+    'Intel AI Boost': 'Intel AI Boost',
+    'DDR5 · 标准版预装 16GB / 轻享版预装 8GB · 另留一条可扩展插槽': 'DDR5 · 出荷時16GB（軽量版は8GB）· 増設スロット1基空き',
+    'eMMC 32GB · V5.1': 'eMMC 32GB · V5.1',
+    'SATA3 × 2 + SATA3 / U.2 兼容 × 2': 'SATA3 × 2 + SATA3 / U.2対応 × 2',
+    'NVMe 2280 × 4（PCIe 4.0 ×4 三个 + PCIe 3.0 ×4 一个）': 'NVMe 2280 × 4（PCIe 4.0 ×4 が3基、PCIe 3.0 ×4 が1基）',
+    'SATA2.0 × 1': 'SATA2.0 × 1',
+    '10GbE RJ-45 × 1 + 1GbE RJ-45 × 1': '10GbE RJ-45 × 1 + 1GbE RJ-45 × 1',
+    '雷电 4 × 2 · USB-A 3.2 Gen2 × 1': 'Thunderbolt 4 × 2 · USB-A 3.2 Gen2 × 1',
+    'HDMI 2.1 × 1 · 4K@60Hz': 'HDMI 2.1 × 1 · 4K@60Hz',
+    '专用接口 × 1（轻享版的 UPS 电源需单独购买）': '専用ポート × 1（軽量版のUPS本体は別売）',
+    '19V / 7.9A · 接口 5521': '19V / 7.9A · 5521コネクタ',
     '标准版 Intel N150 3.60GHz / 性能版 Intel 酷睿 3 N355 3.90GHz': '標準版: Intel N150 3.60GHz / 性能版: Intel Core 3 N355 3.90GHz',
     '标准版 Intel Graphics 1.0GHz 24U / 性能版 1.35GHz 32U': '標準版: Intel Graphics 1.0GHz 24U / 性能版: 1.35GHz 32U',
     'DDR5-4800 · 8GB 或 16GB（性能版 16GB）· 支持更换': 'DDR5-4800 · 8GB または 16GB（性能版は16GB）· 交換可',
@@ -189,7 +236,6 @@ const specValues = {
     'Intel N150 · 四核 3.6GHz': 'Intel N150 · クアッドコア 3.6GHz',
     'Intel UHD Graphics · 24 执行单元': 'Intel UHD Graphics · 24実行ユニット',
     '8GB DDR4 · 可升级至 16GB': '8GB DDR4 · 16GBまで増設可',
-    'eMMC 32GB · V5.1': 'eMMC 32GB · V5.1',
     'SATA / U.2 × 2 · 单盘最高 8TB': 'SATA / U.2 × 2 · 1台最大8TB',
     'NVMe 8GT/s × 2': 'NVMe 8GT/s × 2',
     '2.5GbE RJ-45 × 1': '2.5GbE RJ-45 × 1',

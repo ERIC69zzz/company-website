@@ -52,6 +52,46 @@ export const categories = [
 // 键用同一个 id —— 缺译时会回落到中文原文。
 export const products = [
   {
+    id: 'zspace-z425',
+    name: 'Z425',
+    brand: '极空间',
+    category: 'nas',
+    price: '询价',
+    // 工作区的图是轻享版实机，两个版本同机身，用正面左视图兼作封面
+    image: '/products/zspace-z425-lite-front-left.jpg',
+    images: [
+      '/products/zspace-z425-lite-front-left.jpg',
+      '/products/zspace-z425-lite-front-right.jpg',
+      '/products/zspace-z425-lite-rear.jpg',
+    ],
+    shortDesc: '酷睿 Ultra 平台四盘位 NAS，双雷电 4 与万兆网口，可本地跑 14B 模型',
+    description: '极空间 Z425 是搭载 Intel 酷睿 Ultra 平台的四盘位旗舰私有云，分标准版与轻享版两个配置：标准版为 Core Ultra 225H 4.9GHz 并预装 16GB DDR5，轻享版为 Core Ultra 125H 4.5GHz 预装 8GB，两版均保留一条可扩展内存插槽。存储侧有两个 SATA3 盘位与两个 SATA3/U.2 兼容盘位，另配四个 M.2 NVMe 2280 位（三个 PCIe 4.0 ×4、一个 PCIe 3.0 ×4）。网络为万兆与千兆双口，两个雷电 4 接口提供 40Gbps 带宽，可外接显卡坞使用英伟达 4090、5090 等算力卡，也可做雷电网桥直连。散热为三风扇智能联动，双 CPU 风扇加系统风扇并针对 SSD 优化风道。内置 Intel AI Boost NPU，官方支持本地部署 DeepSeek R1 14B 模型，推理全程不出设备。',
+    // 规格取自极空间官网 Z425 页尾「硬件参数表」（zspace.cn/z425/），
+    // 该表用 [轻享版] 标注两个版本的差异项，此处照此分段写明。
+    specs: {
+      '处理器': '标准版 Intel 酷睿 Ultra 225H 4.9GHz 14 核 / 轻享版 Ultra 125H 4.5GHz 14 核',
+      '核显': '标准版 Intel Arc 130T 2.2GHz 7 核 / 轻享版 Intel Arc graphics 2.2GHz 7 核',
+      'NPU': 'Intel AI Boost',
+      '内存': 'DDR5 · 标准版预装 16GB / 轻享版预装 8GB · 另留一条可扩展插槽',
+      '系统存储': 'eMMC 32GB · V5.1',
+      '盘位': 'SATA3 × 2 + SATA3 / U.2 兼容 × 2',
+      'M.2': 'NVMe 2280 × 4（PCIe 4.0 ×4 三个 + PCIe 3.0 ×4 一个）',
+      'eSATA': 'SATA2.0 × 1',
+      '网口': '10GbE RJ-45 × 1 + 1GbE RJ-45 × 1',
+      'USB': '雷电 4 × 2 · USB-A 3.2 Gen2 × 1',
+      'HDMI': 'HDMI 2.1 × 1 · 4K@60Hz',
+      'UPS': '专用接口 × 1（轻享版的 UPS 电源需单独购买）',
+      '电源': '19V / 7.9A · 接口 5521',
+    },
+    tags: ['酷睿 Ultra', '双雷电 4', '万兆网口'],
+    highlights: [
+      { title: '双雷电 4 可扩显卡', desc: '两个雷电 4 提供 40Gbps 带宽，可外接显卡坞使用英伟达 4090、5090 等算力卡，也能做雷电网桥一线直连。' },
+      { title: '四盘位加四个 M.2', desc: '两个 SATA3 盘位与两个 SATA3/U.2 兼容盘位，另有四个 M.2 NVMe 位，其中三个走 PCIe 4.0 ×4。' },
+      { title: '万兆加千兆双网口', desc: '10GbE 与 1GbE 各一口，可分别接入不同网段，或用万兆口承载高码率影视与素材调取。' },
+      { title: '本地跑 14B 模型', desc: '内置 Intel AI Boost NPU，官方支持一键部署 DeepSeek R1 14B，推理与检索全部在设备内完成，不上云。' },
+    ],
+  },
+  {
     // 官网注明 Z4Pro+ 与 Z4ProPlus 是同一型号，系统里两种写法都会出现
     id: 'zspace-z4-pro-plus',
     name: 'Z4 Pro+',
