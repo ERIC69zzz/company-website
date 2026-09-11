@@ -52,6 +52,47 @@ export const categories = [
 // 键用同一个 id —— 缺译时会回落到中文原文。
 export const products = [
   {
+    // 官网注明 Z4Pro+ 与 Z4ProPlus 是同一型号，系统里两种写法都会出现
+    id: 'zspace-z4-pro-plus',
+    name: 'Z4 Pro+',
+    brand: '极空间',
+    category: 'nas',
+    price: '询价',
+    // 工作区没有 zspace-z4-pro-plus.jpg，用正面左视图兼作封面
+    image: '/products/zspace-z4-pro-plus-front-left.jpg',
+    images: [
+      '/products/zspace-z4-pro-plus-front-left.jpg',
+      '/products/zspace-z4-pro-plus-front-right.jpg',
+      '/products/zspace-z4-pro-plus-rear.jpg',
+    ],
+    shortDesc: '4 盘位 NAS，Twin Lake 平台，另有两个 M.2 与双 2.5G 网口',
+    description: '极空间 Z4 Pro+ 是四盘位家用与工作室级私有云，分标准版与性能版两个配置：标准版为 Intel N150 3.60GHz，性能版为 Intel 酷睿 3 N355 3.90GHz 并标配 16GB 内存。四个 SATA3 盘位兼容 2.5 与 3.5 英寸硬盘、单盘最高 32TB，另有两个 M.2 NVMe 2280 位（单条最高 8TB）可做缓存或全闪存储池，存储模式支持单盘、ZDR、RAID1 与 RAID5。散热采用智能温控双风扇配静音热管散热器与相变散热片，硬盘与机身之间软连接并多处硅胶隔离以抑制震动传导。机身为航空级铝材，磁吸前盖与可拆卸防尘网便于日常维护。双 2.5GbE 网口、HDMI 2.0b 与 eSATA 扩展接口齐备，并可本地部署 DeepSeek R1 7B 模型。',
+    // 规格取自极空间官网 Z4Pro+ 页尾参数表（zspace.cn/z4pro+/）。
+    // 两个配置版本的差异写在同一行，以「性能版」标注区分。
+    specs: {
+      '处理器': '标准版 Intel N150 3.60GHz / 性能版 Intel 酷睿 3 N355 3.90GHz',
+      '核显': '标准版 Intel Graphics 1.0GHz 24U / 性能版 1.35GHz 32U',
+      '内存': 'DDR5-4800 · 8GB 或 16GB（性能版 16GB）· 支持更换',
+      '系统存储': 'eMMC 32GB · V5.1 HS400',
+      '盘位': 'SATA3 × 4 · 兼容 2.5/3.5 英寸 · 单盘最高 32TB',
+      'M.2': 'NVMe 2280 × 2 · 单条最高 8TB',
+      'eSATA': 'SATA2 3Gbps × 1',
+      '网口': '2.5GbE RJ-45 × 2',
+      'USB': 'Type-C 3.2 Gen2 × 1 / Type-A 3.2 Gen2 × 1 / Type-A 2.0 × 1',
+      'HDMI': 'HDMI 2.0b',
+      '存储模式': '单盘 / ZDR / RAID1 / RAID5',
+      '风扇': '机身 14025 + CPU 7010 · 均为智能温控',
+      '电源': '12V / 8A · 接口 5.5×2.5mm',
+    },
+    tags: ['4盘位', '双2.5G网口', '双M.2'],
+    highlights: [
+      { title: '四盘位加双 M.2', desc: '四个 SATA3 盘位单盘最高 32TB，兼容 2.5 与 3.5 英寸；另有两个 M.2 NVMe 位单条最高 8TB，可做缓存加速或全闪存储池。' },
+      { title: '两个配置可选', desc: '标准版 Intel N150 3.60GHz，性能版换 酷睿 3 N355 3.90GHz 并标配 16GB DDR5，按算力需求选。' },
+      { title: '双 2.5G 网口', desc: '两个 2.5GbE RJ-45，可做链路聚合或分别接入不同网段，另配 eSATA 与 HDMI 2.0b 扩展。' },
+      { title: '冰川架构散热', desc: '智能温控双风扇配静音热管散热器与相变散热片；硬盘与机身软连接、多处硅胶隔离，抑制震动传导。' },
+    ],
+  },
+  {
     id: 'zspace-z2-ultra',
     name: 'Z2 Ultra',
     brand: '极空间',

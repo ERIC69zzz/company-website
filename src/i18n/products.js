@@ -22,6 +22,17 @@
 // };
 const productCopy = {
   en: {
+    'zspace-z4-pro-plus': {
+      shortDesc: '4-bay NAS on the Twin Lake platform, with two M.2 slots and dual 2.5GbE',
+      description: 'The ZSpace Z4 Pro+ is a four-bay private cloud for homes and studios, offered in two configurations: the standard model runs an Intel N150 at 3.60GHz, while the performance model steps up to an Intel Core 3 N355 at 3.90GHz with 16GB of memory as standard. Four SATA3 bays take 2.5 and 3.5-inch drives up to 32TB each, and two M.2 NVMe 2280 slots (up to 8TB each) can serve as cache or an all-flash pool, with single-drive, ZDR, RAID1 and RAID5 modes available. Cooling combines temperature-controlled twin fans with a silent heat-pipe sink and a phase-change pad, while a soft mount between drives and chassis plus silicone isolation at several points damp vibration. The aircraft-grade aluminium body has a magnetic front cover and a removable dust filter for easy upkeep. Dual 2.5GbE ports, HDMI 2.0b and eSATA round out the connections, and DeepSeek R1 7B can be deployed locally.',
+      tags: ['4 bays', 'Dual 2.5GbE', 'Two M.2 slots'],
+      highlights: [
+        { title: 'Four bays plus two M.2 slots', desc: 'Four SATA3 bays take 2.5 or 3.5-inch drives up to 32TB each, and two M.2 NVMe slots hold up to 8TB apiece for cache acceleration or an all-flash pool.' },
+        { title: 'Two configurations', desc: 'The standard model runs an Intel N150 at 3.60GHz; the performance model moves to a Core 3 N355 at 3.90GHz with 16GB of DDR5 as standard.' },
+        { title: 'Dual 2.5GbE', desc: 'Two 2.5GbE RJ-45 ports for link aggregation or separate subnets, alongside eSATA and HDMI 2.0b for expansion.' },
+        { title: 'Glacier cooling architecture', desc: 'Temperature-controlled twin fans with a silent heat-pipe sink and a phase-change pad; drives are soft-mounted and isolated with silicone at several points to damp vibration.' },
+      ],
+    },
     'zspace-z2-ultra': {
       shortDesc: 'All-flash 2-bay NAS with a quad-core Intel N150 and memory upgradable to 16GB',
       description: 'The ZSpace Z2 Ultra is an all-flash private cloud for enthusiast homes and one-person studios. A latest-generation Intel N150 runs four cores at 3.6GHz alongside UHD graphics with 24 execution units, and the 8GB of DDR4 can be upgraded to 16GB — enough headroom for Docker containers and virtual machines together. The two main bays take SATA or U.2 solid-state drives up to 8TB each, with two further M.2 NVMe slots available for cache acceleration, and storage can be configured as ZDR or RAID1. A straight-through cooling duct and floating drive tray keep it cool and quiet. HDMI 2.1 drives a TV at 4K@60Hz, and DeepSeek R1 7B can be deployed locally so inference never leaves the device.',
@@ -35,6 +46,17 @@ const productCopy = {
     },
   },
   ja: {
+    'zspace-z4-pro-plus': {
+      shortDesc: 'Twin Lakeプラットフォーム採用の4ベイNAS。M.2スロット2基と2.5GbE×2を搭載',
+      description: 'ZSpace Z4 Pro+ は家庭やスタジオ向けの4ベイ・プライベートクラウドで、2つの構成が用意されています。標準版はIntel N150（3.60GHz）、性能版はIntel Core 3 N355（3.90GHz）にメモリ16GBを標準搭載します。SATA3ベイ4基は2.5および3.5インチドライブに対応し1台最大32TB、さらにM.2 NVMe 2280スロット2基（1枚最大8TB）をキャッシュまたはオールフラッシュプールとして利用できます。ストレージは単一ドライブ、ZDR、RAID1、RAID5に対応。冷却はスマート温度制御のツインファンに静音ヒートパイプシンクと相変化パッドを組み合わせ、ドライブと筐体はソフトマウントのうえ複数箇所をシリコンで隔離して振動の伝わりを抑えます。航空機グレードのアルミ筐体はマグネット式フロントカバーと着脱可能なダストフィルターを備え、日常の手入れが容易です。2.5GbEポート2基、HDMI 2.0b、eSATAを備え、DeepSeek R1 7B のローカル展開にも対応します。',
+      tags: ['4ベイ', '2.5GbE×2', 'M.2×2'],
+      highlights: [
+        { title: '4ベイ＋M.2スロット2基', desc: 'SATA3ベイ4基は2.5 / 3.5インチに対応し1台最大32TB。M.2 NVMeスロット2基は1枚最大8TBで、キャッシュ高速化やオールフラッシュプールに使えます。' },
+        { title: '2つの構成から選べる', desc: '標準版はIntel N150（3.60GHz）、性能版はCore 3 N355（3.90GHz）にDDR5 16GBを標準搭載します。' },
+        { title: '2.5GbEを2ポート', desc: '2.5GbE RJ-45を2基搭載し、リンクアグリゲーションや別セグメントへの接続が可能。eSATAとHDMI 2.0bも備えます。' },
+        { title: 'グレイシア冷却構造', desc: 'スマート温度制御のツインファンに静音ヒートパイプシンクと相変化パッドを併用。ドライブはソフトマウントと複数箇所のシリコン隔離で振動を抑えます。' },
+      ],
+    },
     'zspace-z2-ultra': {
       shortDesc: 'Intel N150クアッドコア搭載、メモリ16GBまで増設可能なオールフラッシュ2ベイNAS',
       description: 'ZSpace Z2 Ultra は、こだわりの家庭や個人スタジオ向けのオールフラッシュ・プライベートクラウドです。最新世代のIntel N150は4コア3.6GHzで動作し、24実行ユニットのUHDグラフィックスを内蔵。8GBのDDR4は16GBまで増設でき、Dockerコンテナと仮想マシンを同時に動かす余裕があります。メインの2ベイはSATAまたはU.2のSSDに対応し1台最大8TB、さらにM.2 NVMeスロット2基をキャッシュ高速化に利用できます。ストレージはZDRまたはRAID1で構成可能。直通式の冷却風路とフローティング式ドライブトレイにより、冷却と静音を両立します。HDMI 2.1は4K@60Hzでのテレビ接続に対応し、DeepSeek R1 7B をローカル展開すれば推論が機器の外に出ることはありません。',
@@ -71,7 +93,7 @@ const specLabels = {
     主控: 'Controller', 支持系统: 'OS support', USB: 'USB', HDMI: 'HDMI',
     系列: 'Series', 适用: 'Designed for',
     核显: 'Graphics', NPU: 'NPU', 系统存储: 'System storage', 风扇: 'Fan', 电源: 'Power adapter',
-    'M.2': 'M.2', 存储模式: 'Storage modes',
+    'M.2': 'M.2', 存储模式: 'Storage modes', eSATA: 'eSATA',
   },
   ja: {
     处理器: 'プロセッサ', 内存: 'メモリ', 盘位: 'ドライブベイ', 网口: 'ネットワーク', 最大容量: '最大容量',
@@ -82,12 +104,25 @@ const specLabels = {
     主控: 'コントローラー', 支持系统: '対応OS', USB: 'USB', HDMI: 'HDMI',
     系列: 'シリーズ', 适用: '用途',
     核显: '内蔵GPU', NPU: 'NPU', 系统存储: 'システム領域', 风扇: 'ファン', 电源: '電源アダプター',
-    'M.2': 'M.2', 存储模式: 'ストレージ構成',
+    'M.2': 'M.2', 存储模式: 'ストレージ構成', eSATA: 'eSATA',
   },
 };
 
 const specValues = {
   en: {
+    '标准版 Intel N150 3.60GHz / 性能版 Intel 酷睿 3 N355 3.90GHz': 'Standard: Intel N150 3.60GHz / Performance: Intel Core 3 N355 3.90GHz',
+    '标准版 Intel Graphics 1.0GHz 24U / 性能版 1.35GHz 32U': 'Standard: Intel Graphics 1.0GHz 24U / Performance: 1.35GHz 32U',
+    'DDR5-4800 · 8GB 或 16GB（性能版 16GB）· 支持更换': 'DDR5-4800 · 8GB or 16GB (16GB on the performance model) · replaceable',
+    'eMMC 32GB · V5.1 HS400': 'eMMC 32GB · V5.1 HS400',
+    'SATA3 × 4 · 兼容 2.5/3.5 英寸 · 单盘最高 32TB': 'SATA3 × 4 · 2.5 / 3.5-inch · up to 32TB per drive',
+    'NVMe 2280 × 2 · 单条最高 8TB': 'NVMe 2280 × 2 · up to 8TB each',
+    'SATA2 3Gbps × 1': 'SATA2 3Gbps × 1',
+    '2.5GbE RJ-45 × 2': '2.5GbE RJ-45 × 2',
+    'Type-C 3.2 Gen2 × 1 / Type-A 3.2 Gen2 × 1 / Type-A 2.0 × 1': 'Type-C 3.2 Gen2 × 1 / Type-A 3.2 Gen2 × 1 / Type-A 2.0 × 1',
+    'HDMI 2.0b': 'HDMI 2.0b',
+    '单盘 / ZDR / RAID1 / RAID5': 'Single drive / ZDR / RAID1 / RAID5',
+    '机身 14025 + CPU 7010 · 均为智能温控': 'Chassis 14025 + CPU 7010 · both temperature-controlled',
+    '12V / 8A · 接口 5.5×2.5mm': '12V / 8A · 5.5×2.5mm connector',
     'NAS / 小型服务器': 'NAS / small servers',
     '4GB / 8GB DDR5': '4GB / 8GB DDR5', 'ARM 四核 1.7GHz': 'Quad-core ARM 1.7GHz', '瑞芯微 RK3568 四核 2.0GHz': 'Quad-core Rockchip RK3568 2.0GHz',
     '4盘位（2.5/3.5英寸）': '4 bays (2.5 / 3.5 in)', '2盘位（2.5/3.5英寸）': '2 bays (2.5 / 3.5 in)',
@@ -119,6 +154,19 @@ const specValues = {
     'ZDR / RAID1 · 支持读写缓存': 'ZDR / RAID1 · read-write cache supported',
   },
   ja: {
+    '标准版 Intel N150 3.60GHz / 性能版 Intel 酷睿 3 N355 3.90GHz': '標準版: Intel N150 3.60GHz / 性能版: Intel Core 3 N355 3.90GHz',
+    '标准版 Intel Graphics 1.0GHz 24U / 性能版 1.35GHz 32U': '標準版: Intel Graphics 1.0GHz 24U / 性能版: 1.35GHz 32U',
+    'DDR5-4800 · 8GB 或 16GB（性能版 16GB）· 支持更换': 'DDR5-4800 · 8GB または 16GB（性能版は16GB）· 交換可',
+    'eMMC 32GB · V5.1 HS400': 'eMMC 32GB · V5.1 HS400',
+    'SATA3 × 4 · 兼容 2.5/3.5 英寸 · 单盘最高 32TB': 'SATA3 × 4 · 2.5 / 3.5インチ対応 · 1台最大32TB',
+    'NVMe 2280 × 2 · 单条最高 8TB': 'NVMe 2280 × 2 · 1枚最大8TB',
+    'SATA2 3Gbps × 1': 'SATA2 3Gbps × 1',
+    '2.5GbE RJ-45 × 2': '2.5GbE RJ-45 × 2',
+    'Type-C 3.2 Gen2 × 1 / Type-A 3.2 Gen2 × 1 / Type-A 2.0 × 1': 'Type-C 3.2 Gen2 × 1 / Type-A 3.2 Gen2 × 1 / Type-A 2.0 × 1',
+    'HDMI 2.0b': 'HDMI 2.0b',
+    '单盘 / ZDR / RAID1 / RAID5': '単一ドライブ / ZDR / RAID1 / RAID5',
+    '机身 14025 + CPU 7010 · 均为智能温控': '筐体 14025 + CPU 7010 · いずれもスマート温度制御',
+    '12V / 8A · 接口 5.5×2.5mm': '12V / 8A · コネクタ 5.5×2.5mm',
     'NAS / 小型服务器': 'NAS / 小規模サーバー',
     '4GB / 8GB DDR5': '4GB / 8GB DDR5', 'ARM 四核 1.7GHz': 'ARM クアッドコア 1.7GHz', '瑞芯微 RK3568 四核 2.0GHz': 'Rockchip RK3568 クアッドコア 2.0GHz',
     '4盘位（2.5/3.5英寸）': '4ベイ（2.5 / 3.5インチ）', '2盘位（2.5/3.5英寸）': '2ベイ（2.5 / 3.5インチ）',
