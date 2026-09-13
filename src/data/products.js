@@ -55,6 +55,46 @@ export const categories = [
 // 键用同一个 id —— 缺译时会回落到中文原文。
 export const products = [
   {
+    id: 'ugreen-dxp4800-plus',
+    name: 'DXP4800 Plus',
+    brand: '绿联',
+    category: 'nas',
+    // 绿联美国官网标 $729.99，与国内渠道价无关，仍走「询价」
+    price: '询价',
+    image: '/products/ugreen-dxp4800-plus-front-left.jpg',
+    images: [
+      '/products/ugreen-dxp4800-plus-front-left.jpg',
+      '/products/ugreen-dxp4800-plus-front-right.jpg',
+      '/products/ugreen-dxp4800-plus-rear.jpg',
+    ],
+    shortDesc: '四盘位 NAS，奔腾金牌 8505，万兆加 2.5G 双网口，内存可扩至 64GB',
+    description: '绿联 NASync DXP4800 Plus 是面向内容创作者与小型工作室的四盘位私有云。处理器为第 12 代 Intel 奔腾金牌 8505，5 核 6 线程、最高 4.4GHz，配 8GB DDR5 内存并支持 On-Die ECC，可扩展至 64GB，同时跑 Docker 与虚拟机也有余量；系统装在独立的 128GB SSD 上。四个 SATA 盘位单盘最高 32TB，另有两个 M.2 NVMe 位单条最高 8TB，整机最大 144TB，存储模式覆盖 JBOD、Basic 与 RAID 0/1/5/6/10。网络为万兆与 2.5G 双网口，前面板提供 10Gbps 的 USB-C 与 USB-A 各一个，并配 SD 3.0 读卡器，相机素材可以直接插卡导入。系统为绿联 UGOS Pro，出厂不含硬盘。',
+    // 规格取自绿联官方 NAS 站 DXP4800 Plus 产品页的规格列表（ai.ugreen.com）。
+    // 容量以官网为准写 144TB（4×32TB + 2×8TB）；第三方摘要里出现的 136TB 与官网不符。
+    specs: {
+      '处理器': 'Intel 奔腾金牌 8505 · 5 核 6 线程 · 最高 4.4GHz',
+      '内存': '8GB DDR5 · 支持 On-Die ECC · 最大可扩展至 64GB',
+      '系统存储': 'SSD 128GB',
+      '盘位': 'SATA × 4 · 单盘最高 32TB',
+      'M.2': 'NVMe × 2 · 单条最高 8TB · 整机最大 144TB',
+      '存储模式': 'JBOD / Basic / RAID 0 / 1 / 5 / 6 / 10',
+      '网口': '10GbE × 1 + 2.5GbE × 1',
+      'USB': '前置 USB-C 10Gbps × 1 + USB-A 10Gbps × 1 · 后置 USB-A 5Gbps × 1 + USB 2.0 × 2',
+      '读卡器': 'SD 3.0',
+      'HDMI': '4K',
+      '系统': 'UGOS Pro',
+      '功耗': '42.36W（读写）/ 18.12W（硬盘休眠）',
+      '尺寸': '约 257 × 178 × 178 mm',
+    },
+    tags: ['4盘位', '万兆网口', '内存可扩64GB'],
+    highlights: [
+      { title: '万兆加 2.5G 双网口', desc: '一个 10GbE 与一个 2.5GbE，万兆口理论传输可达 1250MB/s，大体积视频素材拷进拷出不再排队。' },
+      { title: '四盘位加双 M.2', desc: '四个 SATA 盘位单盘最高 32TB，另有两个 M.2 NVMe 位单条最高 8TB，整机最大 144TB。' },
+      { title: '内存可扩到 64GB', desc: '出厂 8GB DDR5 并支持 On-Die ECC，最大可扩到 64GB；系统装在独立 SSD 上，不占数据盘位。' },
+      { title: '前置 10Gbps 与 SD 读卡器', desc: '前面板 USB-C 与 USB-A 均为 10Gbps，另有 SD 3.0 读卡器，相机存储卡插上就能导入。' },
+    ],
+  },
+  {
     id: 'ugreen-dh4300-plus',
     name: 'DH4300 Plus',
     brand: '绿联',

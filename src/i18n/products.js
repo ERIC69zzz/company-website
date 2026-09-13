@@ -22,6 +22,17 @@
 // };
 const productCopy = {
   en: {
+    'ugreen-dxp4800-plus': {
+      shortDesc: '4-bay NAS with a Pentium Gold 8505, 10GbE plus 2.5GbE, and memory expandable to 64GB',
+      description: 'The UGREEN NASync DXP4800 Plus is a four-bay private cloud for content creators and small studios. A 12th-generation Intel Pentium Gold 8505 runs five cores and six threads up to 4.4GHz, paired with 8GB of DDR5 that supports On-Die ECC and expands to 64GB — room enough to run Docker and virtual machines side by side — while the operating system lives on its own 128GB SSD. Four SATA bays take drives up to 32TB each and two M.2 NVMe slots hold up to 8TB apiece, for a maximum of 144TB, with JBOD, Basic and RAID 0/1/5/6/10 available. Networking pairs a 10GbE port with a 2.5GbE port, and the front panel adds 10Gbps USB-C and USB-A ports plus an SD 3.0 card reader, so camera footage can come straight off the card. It runs UGREEN\u2019s UGOS Pro and ships without drives.',
+      tags: ['4 bays', '10GbE', 'Up to 64GB RAM'],
+      highlights: [
+        { title: '10GbE plus 2.5GbE', desc: 'One 10GbE and one 2.5GbE port; the 10GbE link can reach 1250MB/s, so large video projects move in and out without queuing.' },
+        { title: 'Four bays plus two M.2 slots', desc: 'Four SATA bays take drives up to 32TB each and two M.2 NVMe slots hold up to 8TB apiece, for 144TB in total.' },
+        { title: 'Memory that grows to 64GB', desc: 'Ships with 8GB of DDR5 supporting On-Die ECC and expands to 64GB; the OS sits on a separate SSD, leaving every data bay free.' },
+        { title: 'Front 10Gbps ports and an SD reader', desc: 'Both front USB-C and USB-A ports run at 10Gbps, and an SD 3.0 reader lets you import straight from a camera card.' },
+      ],
+    },
     'ugreen-dh4300-plus': {
       shortDesc: 'Entry-level 4-bay NAS on a low-power ARM octa-core platform, up to 128TB, with RAID 5/6',
       description: 'The UGREEN NASync DH4300 Plus is an entry-level four-bay private cloud aimed at household photo and media backup. A Rockchip A76+A55 octa-core ARM platform pairs with 8GB of LPDDR4X memory and a 32GB eMMC system drive, drawing about 22.89W under drive access and dropping to 7.23W when the drives sleep — comfortable for leaving powered on around the clock. Its four SATA bays take 2.5 and 3.5-inch drives up to 32TB each, 128TB in total, with JBOD, Basic and RAID 0/1/5/6/10 all available. It runs UGREEN\u2019s own UGOS Pro, with 6 TOPS on tap for photo recognition and search, and HDMI output at 4K 60Hz for a direct connection to a TV. The chassis measures 155 × 155 × 215.7mm and ships without drives.',
@@ -68,6 +79,17 @@ const productCopy = {
     },
   },
   ja: {
+    'ugreen-dxp4800-plus': {
+      shortDesc: 'Pentium Gold 8505搭載の4ベイNAS。10GbE＋2.5GbE、メモリは64GBまで増設可能',
+      description: 'UGREEN NASync DXP4800 Plus は、コンテンツ制作者や小規模スタジオ向けの4ベイ・プライベートクラウドです。第12世代Intel Pentium Gold 8505は5コア6スレッド・最大4.4GHzで動作し、On-Die ECC対応のDDR5 8GBを64GBまで増設できるため、Dockerと仮想マシンを並行して動かす余裕があります。OSは専用の128GB SSDに格納されます。SATAベイ4基は1台最大32TB、M.2 NVMeスロット2基は1枚最大8TBで、合計最大144TB。JBOD、Basic、RAID 0/1/5/6/10 に対応します。ネットワークは10GbEと2.5GbEを各1ポート、前面には10GbpsのUSB-CとUSB-A、SD 3.0カードリーダーを備え、カメラのカードから直接取り込めます。OSはUGREENのUGOS Pro、ドライブは別売です。',
+      tags: ['4ベイ', '10GbE', 'メモリ64GBまで'],
+      highlights: [
+        { title: '10GbE＋2.5GbE', desc: '10GbEと2.5GbEを各1ポート搭載。10GbE側は最大1250MB/sで、大容量の映像素材も待たずに出し入れできます。' },
+        { title: '4ベイ＋M.2スロット2基', desc: 'SATAベイ4基は1台最大32TB、M.2 NVMeスロット2基は1枚最大8TBで、合計144TBまで。' },
+        { title: 'メモリは64GBまで増設', desc: '出荷時はOn-Die ECC対応のDDR5 8GB、最大64GBまで増設可能。OSは専用SSDに入るため、データ用ベイを占有しません。' },
+        { title: '前面10GbpsポートとSDリーダー', desc: '前面のUSB-CとUSB-Aはいずれも10Gbps。SD 3.0カードリーダーでカメラのカードから直接取り込めます。' },
+      ],
+    },
     'ugreen-dh4300-plus': {
       shortDesc: '低消費電力のARMオクタコア搭載エントリー4ベイNAS。最大128TB、RAID 5/6対応',
       description: 'UGREEN NASync DH4300 Plus は、家庭の写真や映像のバックアップに向けたエントリークラスの4ベイ・プライベートクラウドです。Rockchip A76+A55のARMオクタコアに8GB LPDDR4Xメモリと32GB eMMCのシステム領域を組み合わせ、ドライブ動作時の消費電力は約22.89W、ドライブ休止時は7.23Wまで下がるため、常時通電での運用に向いています。SATAベイ4基は2.5および3.5インチドライブに対応し1台最大32TB、合計128TBまで。JBOD、Basic、RAID 0/1/5/6/10 に対応します。OSはUGREEN独自のUGOS Proで、6 TOPSの演算性能を写真認識と検索に利用でき、HDMIは4K 60Hz出力でテレビに直結できます。本体サイズは155 × 155 × 215.7mm、ドライブは別売です。',
@@ -137,7 +159,7 @@ const specLabels = {
     主控: 'Controller', 支持系统: 'OS support', USB: 'USB', HDMI: 'HDMI',
     系列: 'Series', 适用: 'Designed for',
     核显: 'Graphics', NPU: 'NPU', 系统存储: 'System storage', 风扇: 'Fan', 电源: 'Power adapter',
-    'M.2': 'M.2', 存储模式: 'Storage modes', eSATA: 'eSATA', UPS: 'UPS', 系统: 'Operating system', 功耗: 'Power draw', 尺寸: 'Dimensions', AI算力: 'AI performance',
+    'M.2': 'M.2', 存储模式: 'Storage modes', eSATA: 'eSATA', UPS: 'UPS', 系统: 'Operating system', 功耗: 'Power draw', 尺寸: 'Dimensions', AI算力: 'AI performance', 读卡器: 'SD card reader',
   },
   ja: {
     处理器: 'プロセッサ', 内存: 'メモリ', 盘位: 'ドライブベイ', 网口: 'ネットワーク', 最大容量: '最大容量',
@@ -148,12 +170,23 @@ const specLabels = {
     主控: 'コントローラー', 支持系统: '対応OS', USB: 'USB', HDMI: 'HDMI',
     系列: 'シリーズ', 适用: '用途',
     核显: '内蔵GPU', NPU: 'NPU', 系统存储: 'システム領域', 风扇: 'ファン', 电源: '電源アダプター',
-    'M.2': 'M.2', 存储模式: 'ストレージ構成', eSATA: 'eSATA', UPS: 'UPS', 系统: 'OS', 功耗: '消費電力', 尺寸: '本体サイズ', AI算力: 'AI性能',
+    'M.2': 'M.2', 存储模式: 'ストレージ構成', eSATA: 'eSATA', UPS: 'UPS', 系统: 'OS', 功耗: '消費電力', 尺寸: '本体サイズ', AI算力: 'AI性能', 读卡器: 'SDカードリーダー',
   },
 };
 
 const specValues = {
   en: {
+    'Intel 奔腾金牌 8505 · 5 核 6 线程 · 最高 4.4GHz': 'Intel Pentium Gold 8505 · 5 cores / 6 threads · up to 4.4GHz',
+    '8GB DDR5 · 支持 On-Die ECC · 最大可扩展至 64GB': '8GB DDR5 · On-Die ECC supported · expandable to 64GB',
+    'SSD 128GB': 'SSD 128GB',
+    'SATA × 4 · 单盘最高 32TB': 'SATA × 4 · up to 32TB per drive',
+    'NVMe × 2 · 单条最高 8TB · 整机最大 144TB': 'NVMe × 2 · up to 8TB each · 144TB total',
+    '10GbE × 1 + 2.5GbE × 1': '10GbE × 1 + 2.5GbE × 1',
+    '前置 USB-C 10Gbps × 1 + USB-A 10Gbps × 1 · 后置 USB-A 5Gbps × 1 + USB 2.0 × 2': 'Front: USB-C 10Gbps × 1 + USB-A 10Gbps × 1 · Rear: USB-A 5Gbps × 1 + USB 2.0 × 2',
+    'SD 3.0': 'SD 3.0',
+    '4K': '4K',
+    '42.36W（读写）/ 18.12W（硬盘休眠）': '42.36W (drive access) / 18.12W (drives asleep)',
+    '约 257 × 178 × 178 mm': 'Approx. 257 × 178 × 178 mm',
     '瑞芯微 A76+A55 · ARM 八核 · 2.0GHz': 'Rockchip A76+A55 · ARM octa-core · 2.0GHz',
     '6 TOPS': '6 TOPS',
     '8GB LPDDR4X（板载，不可扩展）': '8GB LPDDR4X (soldered, not expandable)',
@@ -223,6 +256,17 @@ const specValues = {
     'ZDR / RAID1 · 支持读写缓存': 'ZDR / RAID1 · read-write cache supported',
   },
   ja: {
+    'Intel 奔腾金牌 8505 · 5 核 6 线程 · 最高 4.4GHz': 'Intel Pentium Gold 8505 · 5コア6スレッド · 最大4.4GHz',
+    '8GB DDR5 · 支持 On-Die ECC · 最大可扩展至 64GB': '8GB DDR5 · On-Die ECC対応 · 最大64GBまで増設可',
+    'SSD 128GB': 'SSD 128GB',
+    'SATA × 4 · 单盘最高 32TB': 'SATA × 4 · 1台最大32TB',
+    'NVMe × 2 · 单条最高 8TB · 整机最大 144TB': 'NVMe × 2 · 1枚最大8TB · 合計最大144TB',
+    '10GbE × 1 + 2.5GbE × 1': '10GbE × 1 + 2.5GbE × 1',
+    '前置 USB-C 10Gbps × 1 + USB-A 10Gbps × 1 · 后置 USB-A 5Gbps × 1 + USB 2.0 × 2': '前面: USB-C 10Gbps × 1 + USB-A 10Gbps × 1 · 背面: USB-A 5Gbps × 1 + USB 2.0 × 2',
+    'SD 3.0': 'SD 3.0',
+    '4K': '4K',
+    '42.36W（读写）/ 18.12W（硬盘休眠）': '42.36W（ドライブ動作時）/ 18.12W（休止時）',
+    '约 257 × 178 × 178 mm': '約 257 × 178 × 178 mm',
     '瑞芯微 A76+A55 · ARM 八核 · 2.0GHz': 'Rockchip A76+A55 · ARM オクタコア · 2.0GHz',
     '6 TOPS': '6 TOPS',
     '8GB LPDDR4X（板载，不可扩展）': '8GB LPDDR4X（オンボード・増設不可）',
