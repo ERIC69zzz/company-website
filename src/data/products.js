@@ -28,6 +28,9 @@ export const categories = [
 //   tags        详情页的标签，2-3 个
 //   highlights  可选。详情页「关键特性」区块，每条 { title, desc }；
 //               省略时整段跳过，可以先只录规格、之后再补
+//   buyUrl      可选。京东店铺对应商品页，必须是 https 链接。
+//               填了详情页主按钮变成「立即购买」并新标签页打开；
+//               不填则保持「电话咨询」——不会留下点不出结果的购买按钮
 //
 // export const products = [
 //   {
@@ -139,11 +142,11 @@ export const products = [
     category: 'nas',
     // 官网未标价，先走「询价」
     price: '询价',
-    // 工作区没有 zspace-z2-ultra.jpg，用正面左视图兼作封面
-    image: '/products/zspace-z2-ultra-front-left.jpg',
+    // 工作区没有 zspace-z2-ultra.jpg，用正面右视图兼作封面
+    image: '/products/zspace-z2-ultra-front-right.jpg',
     images: [
-      '/products/zspace-z2-ultra-front-left.jpg',
       '/products/zspace-z2-ultra-front-right.jpg',
+      '/products/zspace-z2-ultra-front-left.jpg',
       '/products/zspace-z2-ultra-rear.jpg',
     ],
     shortDesc: '全闪双盘位 NAS，Intel N150 四核，内存可升级至 16GB',

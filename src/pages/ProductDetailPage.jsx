@@ -1,4 +1,4 @@
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight, ExternalLink, Phone, ShoppingCart } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { products } from '../data/products';
 import { company } from '../data/site';
@@ -64,15 +64,35 @@ export default function ProductDetailPage() {
               ))}
             </div>
 
+            {/* 有京东链接就把「立即购买」作为主按钮，没有的回落到电话咨询 ——
+                留一个点不出结果的购买按钮比没有购买按钮更糟。 */}
             <div className="product-detail__actions">
-              <a href={company.telHref} className="storage-button">
-                <Phone aria-hidden="true" />
-                {copy.productDetail.phone}
-              </a>
+              {product.buyUrl ? (
+                <a
+                  href={product.buyUrl}
+                  className="storage-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${copy.productDetail.buy}（${copy.productDetail.buyHint}）`}
+                >
+                  <ShoppingCart aria-hidden="true" />
+                  {copy.productDetail.buy}
+                  <ExternalLink aria-hidden="true" />
+                </a>
+              ) : (
+                <a href={company.telHref} className="storage-button">
+                  <Phone aria-hidden="true" />
+                  {copy.productDetail.phone}
+                </a>
+              )}
               <Link to="/consult" className="storage-text-link">
                 {copy.productDetail.online}<ArrowRight aria-hidden="true" />
               </Link>
             </div>
+
+            {product.buyUrl && (
+              <p className="product-detail__note">{copy.productDetail.buyHint}</p>
+            )}
 
             {product.images?.length === 1 && (
               <p className="product-detail__note">{copy.common.gallery.single}</p>

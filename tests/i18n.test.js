@@ -109,3 +109,14 @@ test('含中文的规格取值在英日两版都有对应翻译，不会原样�
     });
   });
 });
+
+test('购买链接必须是 https 外链，不能是站内路径或危险协议', () => {
+  for (const product of products) {
+    if (!product.buyUrl) continue;
+
+    // 详情页会把它渲染成 target=_blank 的外链，写错协议会变成可点击的隐患
+    const url = new URL(product.buyUrl);
+    assert.equal(url.protocol, 'https:', `${product.id} 的 buyUrl 不是 https：${product.buyUrl}`);
+    assert.ok(url.host, `${product.id} 的 buyUrl 缺少域名`);
+  }
+});

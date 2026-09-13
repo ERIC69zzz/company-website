@@ -81,6 +81,7 @@ export const translations = {
     productDetail: {
       phone: '电话咨询', online: '在线咨询', specs: '规格参数',
       highlights: '关键特性', about: '产品说明',
+      buy: '立即购买', buyHint: '跳转京东自营店铺',
       ctaTitle: '需要帮你确认选型？', ctaDesc: '说清用途、数据量与预算，我们给出具体的硬盘与配置建议。',
     },
     brandPage: {
@@ -351,6 +352,7 @@ export const translations = {
     productDetail: {
       phone: 'Call Us', online: 'Online Consultation', specs: 'Specifications',
       highlights: 'Key features', about: 'About this product',
+      buy: 'Buy now', buyHint: 'Opens our JD.com store in a new tab',
       ctaTitle: 'Want help choosing?', ctaDesc: 'Tell us the use case, data volume and budget, and we will recommend specific drives and a configuration.',
     },
     brandPage: {
@@ -632,6 +634,7 @@ export const translations = {
     productDetail: {
       phone: '電話で相談', online: 'オンライン相談', specs: '製品仕様',
       highlights: '主な特徴', about: '製品について',
+      buy: '購入する', buyHint: 'JD.comの当店ページを新しいタブで開きます',
       ctaTitle: '構成選定のお手伝いが必要ですか？', ctaDesc: '用途、データ量、ご予算をお知らせいただければ、具体的なドライブと構成をご提案します。',
     },
     brandPage: {
