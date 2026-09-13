@@ -55,6 +55,46 @@ export const categories = [
 // 键用同一个 id —— 缺译时会回落到中文原文。
 export const products = [
   {
+    id: 'ugreen-dh4300-plus',
+    name: 'DH4300 Plus',
+    brand: '绿联',
+    category: 'nas',
+    // 绿联美国官网标 $439.99，与国内渠道价无关，这里仍走「询价」
+    price: '询价',
+    image: '/products/ugreen-dh4300-plus-front-left.jpg',
+    images: [
+      '/products/ugreen-dh4300-plus-front-left.jpg',
+      '/products/ugreen-dh4300-plus-front-right.jpg',
+      '/products/ugreen-dh4300-plus-rear.jpg',
+    ],
+    shortDesc: '四盘位入门 NAS，ARM 八核低功耗平台，最大 128TB，支持 RAID 5/6',
+    description: '绿联 NASync DH4300 Plus 是一台面向家庭照片与影音备份的四盘位入门私有云。处理器为瑞芯微 A76+A55 八核 ARM 平台，配 8GB LPDDR4X 内存与 32GB eMMC 系统盘，整机读写功耗约 22.89W、硬盘休眠时降至 7.23W，适合长期通电运行。四个 SATA 盘位兼容 2.5 与 3.5 英寸硬盘，单盘最高 32TB、整机最大 128TB，存储模式覆盖 JBOD、Basic 与 RAID 0/1/5/6/10。系统为绿联自研 UGOS Pro，内置 6 TOPS 算力用于相册识别与检索，HDMI 支持 4K 60Hz 直连电视。机身尺寸 155 × 155 × 215.7mm，出厂不含硬盘。',
+    // 规格取自绿联官网 DH4300 Plus 产品页的规格对比表（ai.ugreen.com）。
+    // 注意：该页规格表两处均写 2.0GHz，第三方评测普遍写 2.4GHz，此处以官方为准。
+    specs: {
+      '处理器': '瑞芯微 A76+A55 · ARM 八核 · 2.0GHz',
+      'AI算力': '6 TOPS',
+      '内存': '8GB LPDDR4X（板载，不可扩展）',
+      '系统存储': 'eMMC 32GB',
+      '盘位': 'SATA × 4 · 兼容 2.5/3.5 英寸 · 单盘最高 32TB · 整机最大 128TB',
+      'M.2': '无',
+      '存储模式': 'JBOD / Basic / RAID 0 / 1 / 5 / 6 / 10',
+      '网口': '2.5GbE × 1',
+      'USB': 'USB-A 5Gbps × 2 · USB-C 5Gbps × 1',
+      'HDMI': '4K 60Hz',
+      '系统': 'UGOS Pro',
+      '功耗': '22.89W（读写）/ 7.23W（硬盘休眠）',
+      '尺寸': '155 × 155 × 215.7 mm',
+    },
+    tags: ['4盘位', '低功耗', 'RAID 5/6'],
+    highlights: [
+      { title: '四盘位最大 128TB', desc: '四个 SATA 盘位兼容 2.5 与 3.5 英寸硬盘，单盘最高 32TB；出厂不含硬盘，可按需逐块加装。' },
+      { title: 'RAID 模式齐全', desc: '支持 JBOD、Basic 与 RAID 0/1/5/6/10，入门机型里少见地把 RAID 5 与 6 都给全了。' },
+      { title: '低功耗长通电', desc: 'ARM 八核平台读写时约 22.89W，硬盘休眠降至 7.23W，适合 7×24 小时不关机的家庭备份场景。' },
+      { title: '相册识别与 4K 直连', desc: '内置 6 TOPS 算力供 UGOS Pro 做照片识别与检索，HDMI 支持 4K 60Hz，可直接接电视播放。' },
+    ],
+  },
+  {
     id: 'zspace-z425',
     name: 'Z425',
     brand: '极空间',

@@ -22,6 +22,17 @@
 // };
 const productCopy = {
   en: {
+    'ugreen-dh4300-plus': {
+      shortDesc: 'Entry-level 4-bay NAS on a low-power ARM octa-core platform, up to 128TB, with RAID 5/6',
+      description: 'The UGREEN NASync DH4300 Plus is an entry-level four-bay private cloud aimed at household photo and media backup. A Rockchip A76+A55 octa-core ARM platform pairs with 8GB of LPDDR4X memory and a 32GB eMMC system drive, drawing about 22.89W under drive access and dropping to 7.23W when the drives sleep — comfortable for leaving powered on around the clock. Its four SATA bays take 2.5 and 3.5-inch drives up to 32TB each, 128TB in total, with JBOD, Basic and RAID 0/1/5/6/10 all available. It runs UGREEN\u2019s own UGOS Pro, with 6 TOPS on tap for photo recognition and search, and HDMI output at 4K 60Hz for a direct connection to a TV. The chassis measures 155 × 155 × 215.7mm and ships without drives.',
+      tags: ['4 bays', 'Low power', 'RAID 5/6'],
+      highlights: [
+        { title: 'Four bays, up to 128TB', desc: 'Four SATA bays take 2.5 or 3.5-inch drives up to 32TB each. It ships diskless, so drives can be added one at a time.' },
+        { title: 'A full set of RAID modes', desc: 'JBOD, Basic and RAID 0/1/5/6/10 — an unusually complete list for an entry-level unit, RAID 5 and 6 included.' },
+        { title: 'Low draw, always on', desc: 'The ARM octa-core platform draws about 22.89W under drive access and 7.23W with drives asleep, suited to a backup box that never gets switched off.' },
+        { title: 'Photo recognition and 4K out', desc: '6 TOPS backs photo recognition and search in UGOS Pro, and HDMI runs at 4K 60Hz for playback straight to a television.' },
+      ],
+    },
     'zspace-z425': {
       shortDesc: 'Core Ultra 4-bay NAS with dual Thunderbolt 4, 10GbE, and room to run a 14B model locally',
       description: 'The ZSpace Z425 is a flagship four-bay private cloud on the Intel Core Ultra platform, offered in two configurations: the standard model pairs a Core Ultra 225H at 4.9GHz with 16GB of DDR5, while the Lite edition uses a Core Ultra 125H at 4.5GHz with 8GB — both keep one memory slot free for expansion. Storage spans two SATA3 bays plus two SATA3/U.2-compatible bays, alongside four M.2 NVMe 2280 slots (three on PCIe 4.0 ×4, one on PCIe 3.0 ×4). Networking combines a 10GbE and a 1GbE port, and two Thunderbolt 4 ports supply 40Gbps for an external GPU enclosure — NVIDIA 4090 or 5090 class cards included — or a direct Thunderbolt bridge. Three fans work in concert, two on the CPU plus a system fan with ducting tuned for SSDs. An Intel AI Boost NPU lets DeepSeek R1 14B run locally, so inference never leaves the device.',
@@ -57,6 +68,17 @@ const productCopy = {
     },
   },
   ja: {
+    'ugreen-dh4300-plus': {
+      shortDesc: '低消費電力のARMオクタコア搭載エントリー4ベイNAS。最大128TB、RAID 5/6対応',
+      description: 'UGREEN NASync DH4300 Plus は、家庭の写真や映像のバックアップに向けたエントリークラスの4ベイ・プライベートクラウドです。Rockchip A76+A55のARMオクタコアに8GB LPDDR4Xメモリと32GB eMMCのシステム領域を組み合わせ、ドライブ動作時の消費電力は約22.89W、ドライブ休止時は7.23Wまで下がるため、常時通電での運用に向いています。SATAベイ4基は2.5および3.5インチドライブに対応し1台最大32TB、合計128TBまで。JBOD、Basic、RAID 0/1/5/6/10 に対応します。OSはUGREEN独自のUGOS Proで、6 TOPSの演算性能を写真認識と検索に利用でき、HDMIは4K 60Hz出力でテレビに直結できます。本体サイズは155 × 155 × 215.7mm、ドライブは別売です。',
+      tags: ['4ベイ', '低消費電力', 'RAID 5/6'],
+      highlights: [
+        { title: '4ベイ・最大128TB', desc: 'SATAベイ4基は2.5 / 3.5インチに対応し1台最大32TB。ドライブは別売のため、必要に応じて1台ずつ追加できます。' },
+        { title: 'RAIDモードが一通り揃う', desc: 'JBOD、Basic、RAID 0/1/5/6/10 に対応。エントリー機としてはRAID 5と6まで揃うのは珍しい構成です。' },
+        { title: '低消費電力で常時稼働', desc: 'ARMオクタコアはドライブ動作時で約22.89W、休止時は7.23W。電源を落とさない運用に適しています。' },
+        { title: '写真認識と4K出力', desc: '6 TOPSの演算性能がUGOS Proの写真認識・検索を支え、HDMIは4K 60Hz出力でテレビに直接再生できます。' },
+      ],
+    },
     'zspace-z425': {
       shortDesc: 'Core Ultra搭載の4ベイNAS。Thunderbolt 4×2と10GbEを備え、14Bモデルをローカル実行可能',
       description: 'ZSpace Z425 はIntel Core Ultraプラットフォームを採用したフラッグシップ4ベイ・プライベートクラウドで、2つの構成があります。標準版はCore Ultra 225H（4.9GHz）とDDR5 16GB、軽量版（轻享版）はCore Ultra 125H（4.5GHz）と8GBの構成で、いずれも増設用スロットを1基残しています。ストレージはSATA3ベイ2基とSATA3 / U.2対応ベイ2基に加え、M.2 NVMe 2280スロット4基（うち3基はPCIe 4.0 ×4、1基はPCIe 3.0 ×4）を搭載。ネットワークは10GbEと1GbEを各1ポート、Thunderbolt 4を2ポート備え、40Gbpsの帯域で外付けGPUボックス（NVIDIA 4090 / 5090クラス対応）やThunderboltブリッジ直結に対応します。冷却はCPUファン2基とシステムファンの3基が連動し、SSD向けに風路を最適化。Intel AI Boost NPUにより DeepSeek R1 14B をローカル実行でき、推論が機器の外に出ることはありません。',
@@ -115,7 +137,7 @@ const specLabels = {
     主控: 'Controller', 支持系统: 'OS support', USB: 'USB', HDMI: 'HDMI',
     系列: 'Series', 适用: 'Designed for',
     核显: 'Graphics', NPU: 'NPU', 系统存储: 'System storage', 风扇: 'Fan', 电源: 'Power adapter',
-    'M.2': 'M.2', 存储模式: 'Storage modes', eSATA: 'eSATA', UPS: 'UPS',
+    'M.2': 'M.2', 存储模式: 'Storage modes', eSATA: 'eSATA', UPS: 'UPS', 系统: 'Operating system', 功耗: 'Power draw', 尺寸: 'Dimensions', AI算力: 'AI performance',
   },
   ja: {
     处理器: 'プロセッサ', 内存: 'メモリ', 盘位: 'ドライブベイ', 网口: 'ネットワーク', 最大容量: '最大容量',
@@ -126,12 +148,25 @@ const specLabels = {
     主控: 'コントローラー', 支持系统: '対応OS', USB: 'USB', HDMI: 'HDMI',
     系列: 'シリーズ', 适用: '用途',
     核显: '内蔵GPU', NPU: 'NPU', 系统存储: 'システム領域', 风扇: 'ファン', 电源: '電源アダプター',
-    'M.2': 'M.2', 存储模式: 'ストレージ構成', eSATA: 'eSATA', UPS: 'UPS',
+    'M.2': 'M.2', 存储模式: 'ストレージ構成', eSATA: 'eSATA', UPS: 'UPS', 系统: 'OS', 功耗: '消費電力', 尺寸: '本体サイズ', AI算力: 'AI性能',
   },
 };
 
 const specValues = {
   en: {
+    '瑞芯微 A76+A55 · ARM 八核 · 2.0GHz': 'Rockchip A76+A55 · ARM octa-core · 2.0GHz',
+    '6 TOPS': '6 TOPS',
+    '8GB LPDDR4X（板载，不可扩展）': '8GB LPDDR4X (soldered, not expandable)',
+    'eMMC 32GB': 'eMMC 32GB',
+    'SATA × 4 · 兼容 2.5/3.5 英寸 · 单盘最高 32TB · 整机最大 128TB': 'SATA × 4 · 2.5 / 3.5-inch · up to 32TB per drive · 128TB total',
+    '无': 'None',
+    'JBOD / Basic / RAID 0 / 1 / 5 / 6 / 10': 'JBOD / Basic / RAID 0 / 1 / 5 / 6 / 10',
+    '2.5GbE × 1': '2.5GbE × 1',
+    'USB-A 5Gbps × 2 · USB-C 5Gbps × 1': 'USB-A 5Gbps × 2 · USB-C 5Gbps × 1',
+    '4K 60Hz': '4K 60Hz',
+    'UGOS Pro': 'UGOS Pro',
+    '22.89W（读写）/ 7.23W（硬盘休眠）': '22.89W (drive access) / 7.23W (drives asleep)',
+    '155 × 155 × 215.7 mm': '155 × 155 × 215.7 mm',
     '标准版 Intel 酷睿 Ultra 225H 4.9GHz 14 核 / 轻享版 Ultra 125H 4.5GHz 14 核': 'Standard: Intel Core Ultra 225H 4.9GHz 14-core / Lite: Core Ultra 125H 4.5GHz 14-core',
     '标准版 Intel Arc 130T 2.2GHz 7 核 / 轻享版 Intel Arc graphics 2.2GHz 7 核': 'Standard: Intel Arc 130T 2.2GHz 7-core / Lite: Intel Arc graphics 2.2GHz 7-core',
     'Intel AI Boost': 'Intel AI Boost',
@@ -188,6 +223,19 @@ const specValues = {
     'ZDR / RAID1 · 支持读写缓存': 'ZDR / RAID1 · read-write cache supported',
   },
   ja: {
+    '瑞芯微 A76+A55 · ARM 八核 · 2.0GHz': 'Rockchip A76+A55 · ARM オクタコア · 2.0GHz',
+    '6 TOPS': '6 TOPS',
+    '8GB LPDDR4X（板载，不可扩展）': '8GB LPDDR4X（オンボード・増設不可）',
+    'eMMC 32GB': 'eMMC 32GB',
+    'SATA × 4 · 兼容 2.5/3.5 英寸 · 单盘最高 32TB · 整机最大 128TB': 'SATA × 4 · 2.5 / 3.5インチ対応 · 1台最大32TB · 合計128TB',
+    '无': 'なし',
+    'JBOD / Basic / RAID 0 / 1 / 5 / 6 / 10': 'JBOD / Basic / RAID 0 / 1 / 5 / 6 / 10',
+    '2.5GbE × 1': '2.5GbE × 1',
+    'USB-A 5Gbps × 2 · USB-C 5Gbps × 1': 'USB-A 5Gbps × 2 · USB-C 5Gbps × 1',
+    '4K 60Hz': '4K 60Hz',
+    'UGOS Pro': 'UGOS Pro',
+    '22.89W（读写）/ 7.23W（硬盘休眠）': '22.89W（ドライブ動作時）/ 7.23W（休止時）',
+    '155 × 155 × 215.7 mm': '155 × 155 × 215.7 mm',
     '标准版 Intel 酷睿 Ultra 225H 4.9GHz 14 核 / 轻享版 Ultra 125H 4.5GHz 14 核': '標準版: Intel Core Ultra 225H 4.9GHz 14コア / 軽量版: Core Ultra 125H 4.5GHz 14コア',
     '标准版 Intel Arc 130T 2.2GHz 7 核 / 轻享版 Intel Arc graphics 2.2GHz 7 核': '標準版: Intel Arc 130T 2.2GHz 7コア / 軽量版: Intel Arc graphics 2.2GHz 7コア',
     'Intel AI Boost': 'Intel AI Boost',
