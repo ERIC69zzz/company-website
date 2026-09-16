@@ -14,7 +14,7 @@ cd "$(dirname "$0")"
 
 DOMAIN=youzhiyes.com
 WWW=www.youzhiyes.com
-EMAIL=nancy@bjyzyes.com
+EMAIL=nancy@youzhiyes.com
 
 echo "==> 检查域名是否已解析到本机"
 SERVER_IP=$(curl -fsS --max-time 10 https://api.ipify.org || echo "")
