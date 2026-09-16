@@ -43,14 +43,14 @@ export const translations = {
     about: {
       authorized: '国家高新技术企业 · 瞪羚企业', products: '技术研发 · 数据存储 · 工程服务',
       foundedLabel: '成立时间', founded: '2010年8月', locationLabel: '所在地区', location: '北京海淀',
-      businessLabel: '主营业务', business: '科技与数据存储服务', coverageLabel: '服务范围', coverage: '全国服务 · 多地布局',
+      businessLabel: '主营业务', business: '科技与数据存储服务', coverageLabel: '服务范围', coverage: '全球服务 · 多地布局',
       badge: '关于友质', titleStart: '友聚四海', titleEnd: '质服五洲',
       paragraph1: '北京友质科技有限公司成立于2010年8月，扎根北京海淀，已从技术服务与产品销售逐步发展为多元化综合方案提供商。',
       paragraph2: '公司以专业团队连接技术研发、市场运营与存储服务，为政府、教育、测绘、医疗及企业客户提供稳定的产品、技术支持和售后服务。',
       story: '了解友质科技',
       stats: [
         { value: '2010', label: '成立于北京' }, { value: '8项', label: '专利' },
-        { value: '29项', label: '著作权' }, { value: '全国', label: '服务覆盖' },
+        { value: '29项', label: '著作权' }, { value: '全球', label: '服务覆盖' },
       ],
     },
     contactSection: {
@@ -86,17 +86,17 @@ export const translations = {
     },
     brandPage: {
       title: '关于我们', company: '北京友质科技有限公司', sloganStart: '友聚四海', sloganEnd: '质服五洲',
-      intro: '始于2010年，友质科技扎根北京海淀，以技术研发为基础，为全国客户提供数据存储产品、解决方案与工程服务。',
+      intro: '始于2010年，友质科技扎根北京海淀，以技术研发为基础，为全国及海外客户提供数据存储产品、解决方案与工程服务。',
       profile: {
         eyebrow: 'COMPANY PROFILE',
-        title: '以技术为根，以服务连接全国',
+        title: '以技术为根，以服务连接全球',
         paragraphs: [
           '北京友质科技有限公司成立于2010年8月，注册于北京市海淀区中关村软件园，是国家高新技术企业、瞪羚企业。公司注册资本3000万元人民币，凭借多年行业经验稳健发展。',
           '自成立以来，公司秉持“友聚四海，质服五洲”的经营理念，从早期的技术服务与产品销售，逐步升级为多元化综合方案提供商。核心团队汇聚技术研发、市场运营与存储服务等多领域专业人才。',
         ],
         metrics: [
           { value: '2010', label: '成立年份' }, { value: '8项', label: '专利' },
-          { value: '29项', label: '著作权' }, { value: '全国', label: '业务覆盖' },
+          { value: '29项', label: '著作权' }, { value: '全球', label: '业务覆盖' },
         ],
         dossierTitle: '企业档案',
         facts: [
@@ -112,7 +112,7 @@ export const translations = {
           { title: '技术研发与创新', description: '以技术创新推动产品与服务持续提升，为多元化综合方案提供专业能力支撑。' },
           { title: '数据存储产品', description: '围绕客户的存储需求，与希捷、极空间、绿联等知名品牌保持核心合作关系。' },
           { title: '专业存储服务', description: '由技术研发、市场运营与存储服务团队协同，为客户提供专业支持和完善的售后服务。' },
-          { title: '全国服务网络', description: '业务面向全国，并在江苏、四川、湖南多地设立分支机构，提升项目响应与服务效率。' },
+          { title: '服务网络', description: '业务覆盖全国并延伸至海外市场，并在江苏、四川、湖南多地设立分支机构，提升项目响应与服务效率。' },
         ],
         reachTitle: '服务多行业客户',
         reachDescription: '业务涵盖政府、教育、测绘、医疗、企业等多个行业。公司凭借稳定的产品质量、专业的技术支持和完善的售后服务，持续赢得客户认可。',
@@ -143,7 +143,7 @@ export const translations = {
     contactPage: {
       title: '联系我们', badge: '联系方式', heading: '期待与您的沟通',
       intro: '无论您是产品咨询、方案定制还是售后问题，我们随时为您提供专业支持',
-      serviceTitle: '上门服务范围', serviceDesc: '我们在北京本地提供专业技术人员上门安装调试服务，覆盖朝阳区、海淀区、东城区、西城区、丰台区等主要区域。外地客户支持远程指导与全国发货。',
+      serviceTitle: '上门服务范围', serviceDesc: '我们在北京本地提供专业技术人员上门安装调试服务，覆盖朝阳区、海淀区、东城区、西城区、丰台区等主要区域。外地及海外客户支持远程指导与发货。',
       services: ['NAS 系统安装与初始化', '硬盘 RAID 组态配置', '网络环境调试', '数据迁移与备份方案'],
       emergencyTitle: '紧急联系方式', emergencyDesc: '如遇紧急数据恢复或设备故障，可通过以下方式优先联系：',
       dutyPhone: '技术值班电话', ticketEmail: '售后工单邮箱', wechat: '企业微信客服', qr: '前往咨询页扫码',
@@ -316,14 +316,14 @@ export const translations = {
     about: {
       authorized: 'National High-Tech Enterprise · Gazelle Enterprise', products: 'Technology R&D · Data Storage · Engineering Services',
       foundedLabel: 'Founded', founded: 'August 2010', locationLabel: 'Location', location: 'Haidian, Beijing',
-      businessLabel: 'Core business', business: 'Technology & storage services', coverageLabel: 'Coverage', coverage: 'Nationwide service network',
+      businessLabel: 'Core business', business: 'Technology & storage services', coverageLabel: 'Coverage', coverage: 'Worldwide service network',
       badge: 'About Youzhi', titleStart: 'Friends Worldwide', titleEnd: 'Quality Everywhere',
       paragraph1: 'Founded in August 2010 and rooted in Haidian, Beijing, Youzhi Technology has grown from technical services and product sales into a diversified provider of integrated solutions.',
       paragraph2: 'Our specialists connect technology R&D, market operations and storage services to provide dependable products, technical support and after-sales service for public-sector, education, surveying, healthcare and business customers.',
       story: 'Learn About Youzhi',
       stats: [
         { value: '2010', label: 'Founded in Beijing' }, { value: '8', label: 'Patents' },
-        { value: '29', label: 'Copyrights' }, { value: 'China', label: 'Service Coverage' },
+        { value: '29', label: 'Copyrights' }, { value: 'Global', label: 'Service Coverage' },
       ],
     },
     contactSection: {
@@ -357,7 +357,7 @@ export const translations = {
     },
     brandPage: {
       title: 'About Us', company: 'Beijing Youzhi Technology Co., Ltd.', sloganStart: 'Friends Worldwide', sloganEnd: 'Quality Everywhere',
-      intro: 'Founded in 2010 and rooted in Haidian, Beijing, Youzhi Technology combines technology R&D with data-storage products, solutions and engineering services for customers across China.',
+      intro: 'Founded in 2010 and rooted in Haidian, Beijing, Youzhi Technology combines technology R&D with data-storage products, solutions and engineering services for customers in China and overseas.',
       profile: {
         eyebrow: 'COMPANY PROFILE',
         title: 'Built on technology. Connected through service.',
@@ -367,7 +367,7 @@ export const translations = {
         ],
         metrics: [
           { value: '2010', label: 'Year founded' }, { value: '8', label: 'Patents' },
-          { value: '29', label: 'Copyrights' }, { value: 'China', label: 'Nationwide coverage' },
+          { value: '29', label: 'Copyrights' }, { value: 'Global', label: 'Business coverage' },
         ],
         dossierTitle: 'Company Facts',
         facts: [
@@ -383,7 +383,7 @@ export const translations = {
           { title: 'Technology & Innovation', description: 'We use technology innovation to improve our products and services and provide professional support for integrated solutions.' },
           { title: 'Data-Storage Products', description: 'We address customer storage needs through core partnerships with Seagate, ZSpace, UGREEN and other established brands.' },
           { title: 'Professional Storage Services', description: 'Our technology R&D, market operations and storage-service teams work together to provide professional support and dependable after-sales service.' },
-          { title: 'Nationwide Network', description: 'We serve customers across China, with branches in Jiangsu, Sichuan and Hunan to strengthen response and service efficiency.' },
+          { title: 'Service Network', description: 'We serve customers across China and in overseas markets, with branches in Jiangsu, Sichuan and Hunan to strengthen response and service efficiency.' },
         ],
         reachTitle: 'Serving customers across industries',
         reachDescription: 'Our services reach public-sector, education, surveying, healthcare and business customers. Stable products, professional technical support and dependable after-sales service continue to earn broad customer recognition.',
@@ -425,7 +425,7 @@ export const translations = {
     contactPage: {
       title: 'Contact Us', badge: 'Contact Details', heading: 'Let’s Talk',
       intro: 'For product questions, custom solutions or after-sales support, our team is ready to help.',
-      serviceTitle: 'Onsite Service Area', serviceDesc: 'We provide professional onsite installation and setup across major Beijing districts, including Chaoyang, Haidian, Dongcheng, Xicheng and Fengtai. Customers elsewhere can use remote guidance and nationwide shipping.',
+      serviceTitle: 'Onsite Service Area', serviceDesc: 'We provide professional onsite installation and setup across major Beijing districts, including Chaoyang, Haidian, Dongcheng, Xicheng and Fengtai. Customers elsewhere in China or overseas can use remote guidance and shipping.',
       services: ['NAS installation and initialization', 'Drive and RAID configuration', 'Network setup and tuning', 'Data migration and backup planning'],
       emergencyTitle: 'Urgent Support', emergencyDesc: 'For urgent data-recovery needs or equipment failures, contact us through one of these priority channels:',
       dutyPhone: 'Technical duty phone', ticketEmail: 'Support ticket email', wechat: 'WeCom support', qr: 'Scan on the consultation page',
@@ -598,14 +598,14 @@ export const translations = {
     about: {
       authorized: '国家ハイテク企業 · ガゼル企業', products: '技術開発 · データストレージ · エンジニアリングサービス',
       foundedLabel: '設立', founded: '2010年8月', locationLabel: '所在地', location: '北京市海淀区',
-      businessLabel: '主な事業', business: 'テクノロジー・ストレージサービス', coverageLabel: '対応地域', coverage: '中国全土 · 複数地域に展開',
+      businessLabel: '主な事業', business: 'テクノロジー・ストレージサービス', coverageLabel: '対応地域', coverage: '世界各国 · 複数地域に展開',
       badge: '友質科技について', titleStart: '世界に友情を', titleEnd: '五大陸に品質を',
       paragraph1: '北京友質科技有限公司は2010年8月に設立され、北京・海淀を拠点に、技術サービスと製品販売から多角的な総合ソリューション企業へと発展してきました。',
       paragraph2: '技術開発、市場運営、ストレージサービスの専門チームが、公共、教育、測量、医療、企業のお客様に安定した製品、技術支援、アフターサービスをお届けします。',
       story: '友質科技について詳しく見る',
       stats: [
         { value: '2010', label: '北京で設立' }, { value: '8件', label: '特許' },
-        { value: '29件', label: '著作権' }, { value: '中国全土', label: 'サービス範囲' },
+        { value: '29件', label: '著作権' }, { value: '世界各国', label: 'サービス範囲' },
       ],
     },
     contactSection: {
@@ -639,17 +639,17 @@ export const translations = {
     },
     brandPage: {
       title: '会社情報', company: '北京友質科技有限公司', sloganStart: '世界に友情を', sloganEnd: '五大陸に品質を',
-      intro: '2010年創業。北京・海淀を拠点に、技術開発とデータストレージ製品、ソリューション、エンジニアリングサービスを中国全土のお客様へ提供しています。',
+      intro: '2010年創業。北京・海淀を拠点に、技術開発とデータストレージ製品、ソリューション、エンジニアリングサービスを中国全土および海外のお客様へ提供しています。',
       profile: {
         eyebrow: 'COMPANY PROFILE',
-        title: '技術を基盤に、サービスを全国へ',
+        title: '技術を基盤に、サービスを世界へ',
         paragraphs: [
           '北京友質科技有限公司は2010年8月に設立され、北京市海淀区の中関村ソフトウェアパークに登記しています。国家ハイテク企業およびガゼル企業として認定され、登録資本金は3,000万元です。長年の業界経験を生かし、着実な成長を続けています。',
           '創業以来、「世界に友情を、五大陸に品質を」という理念のもと、技術サービスと製品販売から多角的な総合ソリューション企業へと発展してきました。技術開発、市場運営、ストレージサービスの専門人材が事業を支えています。',
         ],
         metrics: [
           { value: '2010', label: '設立年' }, { value: '8件', label: '特許' },
-          { value: '29件', label: '著作権' }, { value: '中国全土', label: '事業範囲' },
+          { value: '29件', label: '著作権' }, { value: '世界各国', label: '事業範囲' },
         ],
         dossierTitle: '企業概要',
         facts: [
@@ -665,7 +665,7 @@ export const translations = {
           { title: '技術開発と革新', description: '技術革新を通じて製品とサービスを継続的に向上させ、総合ソリューションを専門的に支えます。' },
           { title: 'データストレージ製品', description: 'お客様のストレージニーズに応え、Seagate、ZSpace、UGREENなどの著名ブランドと中核的なパートナーシップを築いています。' },
           { title: '専門ストレージサービス', description: '技術開発、市場運営、ストレージサービスの各チームが連携し、専門的な支援と充実したアフターサービスを提供します。' },
-          { title: '全国サービスネットワーク', description: '中国全土のお客様に対応し、江蘇、四川、湖南に支社を設けて、迅速な対応とサービス効率の向上を図っています。' },
+          { title: 'サービスネットワーク', description: '中国全土および海外のお客様に対応し、江蘇、四川、湖南に支社を設けて、迅速な対応とサービス効率の向上を図っています。' },
         ],
         reachTitle: '幅広い業界のお客様へ',
         reachDescription: '公共、教育、測量、医療、企業など、幅広い業界のお客様にサービスを提供しています。安定した製品品質、専門的な技術支援、充実したアフターサービスが高く評価されています。',
@@ -707,7 +707,7 @@ export const translations = {
     contactPage: {
       title: 'お問い合わせ', badge: '連絡先', heading: 'お気軽にご相談ください',
       intro: '製品選定、個別構成、アフターサポートまで、専門スタッフがお手伝いします。',
-      serviceTitle: '訪問サービス対応地域', serviceDesc: '北京市内の朝陽区、海淀区、東城区、西城区、豊台区などで、専門スタッフによる訪問設置・設定を提供しています。その他の地域には遠隔支援と中国全土への発送で対応します。',
+      serviceTitle: '訪問サービス対応地域', serviceDesc: '北京市内の朝陽区、海淀区、東城区、西城区、豊台区などで、専門スタッフによる訪問設置・設定を提供しています。その他の地域や海外には遠隔支援と発送で対応します。',
       services: ['NASの設置と初期設定', 'ドライブとRAIDの構成', 'ネットワークの設定・調整', 'データ移行とバックアップ設計'],
       emergencyTitle: '緊急サポート', emergencyDesc: '緊急のデータ復旧や機器障害は、以下の優先窓口へご連絡ください。',
       dutyPhone: '技術当番電話', ticketEmail: 'サポート受付メール', wechat: '企業WeChatサポート', qr: '相談ページでQRコードを読み取り',
