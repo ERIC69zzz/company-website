@@ -12,6 +12,10 @@ import {
 export const company = {
   shortName: '友质科技',
   fullName: '北京友质科技有限公司',
+  // 工信部备案号。境内网站须在首页底部展示并链到 beian.miit.gov.cn。
+  // 放在数据层而不是翻译层：它是法定标识，三种语言下都原样显示，
+  // 而翻译层的英文文案有「不得含汉字」的测试约束。
+  icp: '京ICP备2026060391号-1',
   phone: '133-0133-5226',
   telHref: 'tel:13301335226',
   email: 'nancy@bjyzyes.com',
