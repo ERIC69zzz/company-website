@@ -1,14 +1,10 @@
 import {
   Clock,
   Cloud,
-  Database,
-  HardDrive,
   HeadphonesIcon,
-  Layers,
   Mail,
   MapPin,
   Phone,
-  Server,
   Settings,
   Wrench,
 } from 'lucide-react';
@@ -26,66 +22,13 @@ export const company = {
   businessHours: '09:00 - 18:00',
 };
 
-export const productCategoryCards = [
-  {
-    icon: HardDrive,
-    title: '机械硬盘',
-    category: 'hdd',
-    desc: '希捷酷狼、东芝等企业级NAS专用硬盘，7×24小时稳定运行。',
-  },
-  {
-    icon: Database,
-    title: '固态硬盘',
-    category: 'ssd',
-    desc: '高速NVMe与SATA SSD，满足NAS缓存加速与高性能存储需求。',
-  },
-  {
-    icon: Server,
-    title: 'NAS私有云',
-    category: 'nas',
-    desc: '绿联、极空间全系产品，从双盘位到八盘位，搭载自研系统。',
-  },
-  {
-    icon: Layers,
-    title: '存储配件',
-    category: 'accessory',
-    desc: '硬盘盒、扩展卡、RAID卡等周边配件，一站式配齐存储方案。',
-  },
-];
-
 export const contactCards = [
-  {
-    icon: Phone,
-    title: '电话咨询',
-    label: '联系电话',
-    content: company.phone,
-    value: company.phone,
-    desc: '工作日 9:00 - 18:00',
-  },
-  {
-    icon: MapPin,
-    title: '公司地址',
-    label: '公司地址',
-    content: company.address,
-    value: company.address,
-    desc: company.addressDetail,
-  },
-  {
-    icon: Mail,
-    title: '电子邮箱',
-    label: '电子邮箱',
-    content: company.email,
-    value: company.email,
-    desc: '24小时内回复',
-  },
-  {
-    icon: Clock,
-    title: '营业时间',
-    label: '工作时间',
-    content: company.businessDays,
-    value: `${company.businessDays} 9:00 - 18:00`,
-    desc: company.businessHours,
-  },
+  // 只放翻译层不提供的东西：图标与锚点。文案一律来自
+  // translations.js 的 data.contactCards，写在这里不会生效。
+  { icon: Phone, anchor: 'phone' },
+  { icon: MapPin, anchor: 'address' },
+  { icon: Mail, anchor: 'email' },
+  { icon: Clock, anchor: 'hours' },
 ];
 
 export const services = [

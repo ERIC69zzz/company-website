@@ -10,11 +10,10 @@ export default function ContactPage() {
   const localizedCards = contactCards.map((item, index) => ({
     ...item,
     ...copy.data.contactCards[index],
-    value: copy.data.contactCards[index].content,
   }));
 
   return (
-    <div className="min-h-screen bg-surface pt-20 pb-16">
+    <div className="min-h-screen bg-surface pt-16 lg:pt-20 pb-16">
       <PageHeader title={copy.contactPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -33,17 +32,20 @@ export default function ContactPage() {
         </ScrollReveal>
 
         <ScrollReveal>
+          {/* 卡片带 id 供页脚「营业时间」等锚点直达；
+              scroll-mt 让开固定导航栏与吸附的返回栏，否则会定位到它们下面。 */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {localizedCards.map((item, i) => (
               <div
                 key={item.label}
-                className={`${accentByIndex(i).card} rounded-2xl p-6 border border-line text-center ${accentByIndex(i).hover} transition-all`}
+                id={item.anchor}
+                className={`${accentByIndex(i).card} scroll-mt-32 lg:scroll-mt-36 rounded-2xl p-6 border border-line text-center ${accentByIndex(i).hover} transition-all`}
               >
                 <div className={`w-12 h-12 rounded-xl ${accentByIndex(i).iconBox} flex items-center justify-center mx-auto mb-4`}>
                   <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />
                 </div>
                 <div className="text-sm text-ink-3 mb-1">{item.label}</div>
-                <div className="text-base font-bold text-ink mb-1">{item.value}</div>
+                <div className="text-base font-bold text-ink mb-1">{item.content}</div>
                 <div className="text-xs text-ink-3">{item.desc}</div>
               </div>
             ))}
@@ -81,12 +83,17 @@ export default function ContactPage() {
                     {company.phone}
                   </a>
                 </div>
-                <div className="h-px bg-surface-2" />
+                <div className="h-px bg-line" />
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-ink-2">{copy.contactPage.ticketEmail}</span>
-                  <span className="text-ink font-medium">{company.supportEmail}</span>
+                  <a
+                    href={`mailto:${company.supportEmail}`}
+                    className="text-ink font-medium hover:text-brand-600 transition-colors"
+                  >
+                    {company.supportEmail}
+                  </a>
                 </div>
-                <div className="h-px bg-surface-2" />
+                <div className="h-px bg-line" />
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-ink-2">{copy.contactPage.wechat}</span>
                   <Link to="/consult" className="text-brand-600 hover:text-brand-700 font-medium transition-colors">

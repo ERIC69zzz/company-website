@@ -1,8 +1,15 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/language';
+import { consultUrl } from '../data/consult';
 
-const serviceOrder = [0, 1, 3, 2];
+// 展示顺序，以及每项在 copy.data.services 里的下标和带进咨询表单的主题。
+const serviceEntries = [
+  { index: 0, topic: 'solution' },
+  { index: 1, topic: 'onsite' },
+  { index: 3, topic: 'migration' },
+  { index: 2, topic: 'support' },
+];
 
 export default function ServicesSection() {
   const { copy } = useLanguage();
@@ -22,11 +29,11 @@ export default function ServicesSection() {
         </header>
 
         <ol className="storage-services__list" role="list">
-          {serviceOrder.map((serviceIndex, index) => {
+          {serviceEntries.map(({ index: serviceIndex, topic }, index) => {
             const service = copy.data.services[serviceIndex];
             return (
-              <li key={serviceIndex} className="storage-services__item">
-                <Link to="/consult" className="storage-services__link">
+              <li key={topic} className="storage-services__item">
+                <Link to={consultUrl(topic)} className="storage-services__link">
                   <span className="storage-services__number" aria-hidden="true">
                     {String(index + 1).padStart(2, '0')}
                   </span>

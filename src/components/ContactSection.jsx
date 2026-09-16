@@ -34,13 +34,13 @@ export default function ContactSection() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {localizedCards.map((item, i) => (
               <div
-                key={item.title}
+                key={item.label}
                 className={`${accentByIndex(i).card} rounded-2xl p-6 border border-line text-center ${accentByIndex(i).hover} transition-all`}
               >
                 <div className={`w-12 h-12 rounded-xl ${accentByIndex(i).iconBox} flex items-center justify-center mx-auto mb-4`}>
                   <item.icon className={`w-6 h-6 ${accentByIndex(i).icon}`} />
                 </div>
-                <div className="text-sm text-ink-3 mb-1">{item.title}</div>
+                <div className="text-sm text-ink-3 mb-1">{item.label}</div>
                 <div className="text-base font-bold text-ink mb-1">{item.content}</div>
                 <div className="text-xs text-ink-3">{item.desc}</div>
               </div>

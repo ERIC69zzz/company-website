@@ -26,7 +26,7 @@ export default function AboutSection() {
                     <div className="text-xs text-ink-3">{copy.about.products}</div>
                   </div>
                 </div>
-                <div className="h-px bg-surface-2" />
+                <div className="h-px bg-line" />
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-ink-2">{copy.about.foundedLabel}</span>

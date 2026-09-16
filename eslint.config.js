@@ -14,7 +14,8 @@ export default defineConfig([
       reactRefresh.configs.vite,
     ],
     languageOptions: {
-      globals: globals.browser,
+      // __SITE_URL__ 由 vite.config.js 的 define 在构建时替换成字面量
+      globals: { ...globals.browser, __SITE_URL__: 'readonly' },
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },

@@ -5,6 +5,7 @@
 import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { enterpriseProducts } from '../src/data/enterprise.js';
 import { products } from '../src/data/products.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -36,6 +37,10 @@ const escapeXml = (value) =>
 
 const urls = [
   ...staticRoutes,
+  ...enterpriseProducts.map((product) => ({
+    path: `/enterprise/${product.id}`,
+    priority: '0.7',
+  })),
   ...products.map((product) => ({
     path: `/products/${product.id}`,
     priority: '0.5',

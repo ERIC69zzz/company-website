@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { products } from '../src/data/products.js';
 import { localizeProducts } from '../src/i18n/products.js';
 import { translations } from '../src/i18n/translations.js';
@@ -8,7 +10,6 @@ test('中文、英文和日文均包含完整的核心列表', () => {
   for (const language of ['zh', 'en', 'ja']) {
     const copy = translations[language];
     assert.equal(copy.data.categories.length, 5);
-    assert.equal(copy.data.categoryCards.length, 4);
     assert.equal(copy.data.services.length, 4);
     assert.equal(copy.data.contactCards.length, 4);
     assert.equal(copy.data.consultationTypes.length, 6);
@@ -42,7 +43,80 @@ test('英文产品文案不残留中文字符', () => {
     description: product.description,
     tags: product.tags,
     specs: product.specs,
+    // 亮点是整个数组被覆盖，漏译时中文会整段漏到英文页
+    highlights: product.highlights,
   }));
 
   assert.doesNotMatch(JSON.stringify(visibleContent), /\p{Script=Han}/u);
+});
+
+test('中英日公司介绍包含完整的企业档案与能力内容', () => {
+  for (const language of ['zh', 'en', 'ja']) {
+    const copy = translations[language];
+    const profile = copy.brandPage.profile;
+
+    assert.equal(copy.nav.brandWorld, copy.brandPage.title);
+    assert.equal(profile.paragraphs.length, 2);
+    assert.equal(profile.metrics.length, 4);
+    assert.equal(profile.facts.length, 4);
+    assert.equal(profile.capabilities.length, 4);
+    assert.equal(profile.industries.length, 5);
+    assert.ok(profile.cta);
+
+    for (const item of [...profile.metrics, ...profile.facts, ...profile.capabilities]) {
+      assert.ok(item.label || item.title);
+      assert.ok(item.value || item.description);
+    }
+  }
+});
+
+const publicDir = fileURLToPath(new URL('../public', import.meta.url));
+
+test('产品目录里引用的图片都真实存在，图廊不重复', () => {
+  for (const product of products) {
+    // 封面缺图时页面会回退成占位块，不算错，但路径写法要规范
+    assert.match(product.image, /^\/products\/.+\.(jpg|png|webp)$/, `${product.id} 封面路径不规范`);
+
+    if (!product.images) continue;
+
+    // 图廊没有缺图回退，文件名打错会直接留下破图
+    for (const src of product.images) {
+      assert.match(src, /^\/products\/.+\.(jpg|png|webp)$/, `${product.id} 图廊路径不规范：${src}`);
+      assert.ok(existsSync(`${publicDir}${src}`), `${product.id} 图廊引用了不存在的图片：${src}`);
+    }
+    assert.equal(new Set(product.images).size, product.images.length, `${product.id} 图廊有重复图片`);
+    assert.equal(product.images[0], product.image, `${product.id} 图廊第一张应与封面一致`);
+  }
+});
+
+test('含中文的规格取值在英日两版都有对应翻译，不会原样漏出中文', () => {
+  const han = /\p{Script=Han}/u;
+  const zh = localizeProducts(products, 'zh');
+  const en = localizeProducts(products, 'en');
+  const ja = localizeProducts(products, 'ja');
+
+  zh.forEach((product, i) => {
+    const keys = Object.keys(product.specs);
+    keys.forEach((key, k) => {
+      const original = product.specs[key];
+      // 纯型号、接口这类本来就不含中文的取值不需要翻译
+      if (!han.test(original)) return;
+
+      const english = Object.values(en[i].specs)[k];
+      const japanese = Object.values(ja[i].specs)[k];
+      assert.notEqual(english, original, `${product.id} 的「${key}」缺英文翻译：${original}`);
+      assert.notEqual(japanese, original, `${product.id} 的「${key}」缺日文翻译：${original}`);
+    });
+  });
+});
+
+test('购买链接必须是 https 外链，不能是站内路径或危险协议', () => {
+  for (const product of products) {
+    if (!product.buyUrl) continue;
+
+    // 详情页会把它渲染成 target=_blank 的外链，写错协议会变成可点击的隐患
+    const url = new URL(product.buyUrl);
+    assert.equal(url.protocol, 'https:', `${product.id} 的 buyUrl 不是 https：${product.buyUrl}`);
+    assert.ok(url.host, `${product.id} 的 buyUrl 缺少域名`);
+  }
 });

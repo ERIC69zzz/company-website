@@ -1,10 +1,21 @@
 // 品牌标识。图形部分取自 public/logo-lockup.svg 的 symbol 图层，
 // 内联以便随主题着色、避免额外请求。
 // 橙 #FF6A00 上半 + 深蓝 #0D2340 下半，是品牌的固定配色，不随主题变化。
-export function LogoMark({ className = 'w-9 h-9' }) {
+// label 传 null 表示纯装饰：旁边已经有品牌名文字时，再给图形一个无障碍名
+// 会让读屏软件把公司名连念两遍。其余情况用 label 作为无障碍名，可随语言变化。
+export function LogoMark({ className = 'w-9 h-9', label = '友质科技' }) {
+  const decorative = label === null;
+
   return (
-    <svg viewBox="24 24 248 282" className={className} role="img" aria-label="友质科技">
-      <title>友质科技</title>
+    <svg
+      viewBox="24 24 248 282"
+      className={className}
+      role={decorative ? undefined : 'img'}
+      aria-hidden={decorative ? 'true' : undefined}
+      aria-label={decorative ? undefined : label}
+      focusable="false"
+    >
+      {!decorative && <title>{label}</title>}
       <path
         fill="#FF6A00"
         fillRule="evenodd"
@@ -19,6 +30,6 @@ export function LogoMark({ className = 'w-9 h-9' }) {
   );
 }
 
-export default function Logo({ className = 'w-9 h-9' }) {
-  return <LogoMark className={className} />;
+export default function Logo({ className = 'w-9 h-9', label }) {
+  return <LogoMark className={className} label={label} />;
 }

@@ -8,6 +8,8 @@ export default function ProductImage({
   imageClassName = 'w-full h-full object-cover',
   fallbackIconClassName = 'w-10 h-10 mb-2',
   showBrandBadge = false,
+  // 列表页一次渲染 21 张，默认懒加载；详情页首屏那张传 'eager'
+  loading = 'lazy',
 }) {
   const [imgError, setImgError] = useState(false);
   const { copy } = useLanguage();
@@ -20,10 +22,12 @@ export default function ProductImage({
           src={product.image}
           alt={product.name}
           className={imageClassName}
+          loading={loading}
+          decoding="async"
           onError={() => setImgError(true)}
         />
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-dark-800 to-dark-700 text-ink-3 p-4 text-center">
+        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-surface-2 to-surface-3 text-ink-3 p-4 text-center">
           <ImageOff className={`${fallbackIconClassName} text-ink-3`} />
           <span className="text-xs text-brand-700">{product.brand}</span>
           <span className="text-sm font-medium text-ink-2 mt-1">{product.name}</span>

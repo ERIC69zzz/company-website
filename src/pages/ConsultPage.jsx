@@ -6,16 +6,17 @@ import WechatQr from '../components/WechatQr';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../i18n/language';
-import { getEnterpriseInquiry } from '../data/enterprise';
+import { consultErrorMessage, getConsultContext, getConsultPrefill } from '../data/consult';
 
 export default function ConsultPage() {
   const { language, copy } = useLanguage();
   const [searchParams] = useSearchParams();
-  const enterpriseInquiry = getEnterpriseInquiry(searchParams, copy.business.enterprise.inquiryTemplate);
+  const prefill = getConsultPrefill(searchParams, copy);
+  const prefillContext = getConsultContext(searchParams, copy);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
-  const [form, setForm] = useState(() => ({ ...initialConsultForm, ...enterpriseInquiry }));
+  const [form, setForm] = useState(() => ({ ...initialConsultForm, ...prefill }));
   // 蜜罐字段与渲染时刻，用于识别自动化提交，对真人无感
   const [fax, setFax] = useState('');
   // 在 effect 里取时间，避免 render 期间调用非纯函数。
@@ -37,22 +38,25 @@ export default function ConsultPage() {
         body: JSON.stringify({ ...form, language, fax, renderedAt: renderedAt.current }),
       });
 
-      const data = await res.json();
+      // 返回的不是 JSON（例如网关的 HTML 错误页）时，别让解析异常冒到界面上
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        throw new Error(data.error || copy.consultPage.submitError);
+        setError(consultErrorMessage(res.status, data, copy.consultPage.submitError));
+        return;
       }
 
       setSubmitted(true);
-    } catch (err) {
-      setError(err.message);
+    } catch {
+      // 断网、超时走这里，同样不把原始报错显示给客户
+      setError(copy.consultPage.submitError);
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-surface pt-20 pb-16">
+    <div className="min-h-screen bg-surface pt-16 lg:pt-20 pb-16">
       <PageHeader title={copy.consultPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -65,7 +69,7 @@ export default function ConsultPage() {
                     <MessageCircle className="w-5 h-5 text-brand-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-ink">{copy.consultPage.wechatTitle}</h3>
+                    <h2 className="text-lg font-bold text-ink">{copy.consultPage.wechatTitle}</h2>
                     <p className="text-xs text-ink-3">{copy.consultPage.wechatDesc}</p>
                   </div>
                 </div>
@@ -80,7 +84,7 @@ export default function ConsultPage() {
                   </p>
                 </div>
 
-                <div className="h-px bg-surface-2 my-6" />
+                <div className="h-px bg-line my-6" />
 
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-brand-600" />
@@ -94,7 +98,7 @@ export default function ConsultPage() {
               </div>
 
               <div className="panel panel-raised rounded-2xl p-6 border border-line">
-                <h4 className="text-sm font-bold text-ink mb-3">{copy.consultPage.scope}</h4>
+                <h2 className="text-sm font-bold text-ink mb-3">{copy.consultPage.scope}</h2>
                 <div className="grid grid-cols-2 gap-2">
                   {copy.data.consultationTopics.map((t) => (
                     <div key={t} className="flex items-center gap-2 text-sm text-ink-2">
@@ -109,10 +113,10 @@ export default function ConsultPage() {
 
           <ScrollReveal delay={0.1}>
             <div className="panel panel-raised rounded-2xl p-8 border border-line">
-              {enterpriseInquiry && (
-                <p className="text-xs font-medium text-brand-700 mb-4">{copy.business.enterprise.consultContext}</p>
+              {prefillContext && (
+                <p className="text-xs font-medium text-brand-700 mb-4">{prefillContext}</p>
               )}
-              <h3 className="text-lg font-bold text-ink mb-2">{copy.consultPage.formTitle}</h3>
+              <h2 className="text-lg font-bold text-ink mb-2">{copy.consultPage.formTitle}</h2>
               <p className="text-sm text-ink-3 mb-6">
                 {copy.consultPage.formDesc}
               </p>
@@ -122,12 +126,12 @@ export default function ConsultPage() {
                   <div className="w-16 h-16 rounded-full bg-accent-100 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-8 h-8 text-accent-600" />
                   </div>
-                  <h4 className="text-lg font-bold text-ink mb-2">{copy.consultPage.successTitle}</h4>
+                  <h3 className="text-lg font-bold text-ink mb-2">{copy.consultPage.successTitle}</h3>
                   <p className="text-sm text-ink-2">
                     {copy.consultPage.successDesc}
                   </p>
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ ...initialConsultForm, ...enterpriseInquiry }); }}
+                    onClick={() => { setSubmitted(false); setForm({ ...initialConsultForm, ...prefill }); }}
                     className="mt-6 px-5 py-2 text-sm font-medium text-accent-700 bg-accent-50 rounded-lg hover:bg-accent-100 transition-colors"
                   >
                     {copy.consultPage.continue}
@@ -158,7 +162,7 @@ export default function ConsultPage() {
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder={copy.consultPage.namePlaceholder}
-                        className="w-full pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
@@ -174,7 +178,7 @@ export default function ConsultPage() {
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         placeholder={copy.consultPage.phonePlaceholder}
-                        className="w-full pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
@@ -185,7 +189,7 @@ export default function ConsultPage() {
                       id="consult-type"
                       value={form.type}
                       onChange={(e) => setForm({ ...form, type: e.target.value })}
-                      className="w-full px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
+                      className="w-full min-h-11 px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
                     >
                       {copy.data.consultationTypes.map((item) => (
                         <option key={item.value} value={item.value} className="bg-surface-2">{item.label}</option>

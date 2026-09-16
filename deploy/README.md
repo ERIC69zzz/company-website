@@ -62,7 +62,11 @@ sudo bash setup-deploy-user.sh "ssh-ed25519 AAAA... you@mac"
 
 **备案审核期间不要做这一步** —— 域名指向境内服务器并可访问会导致备案被驳回。
 
-备案通过、DNS 的 A 记录指向服务器之后：
+备案通过后按顺序做：
+
+1. 阿里云控制台 → 云解析 DNS，给 `youzhiyes.com` 加两条 A 记录（主机记录 `@` 和 `www`），指向服务器公网 IP；
+2. ECS **安全组**入方向放行 TCP 80、443 —— 服务器里 ufw 放行了还不够，安全组是外面另一道门，80 不通证书会申请失败；
+3. 把本目录最新版重新传到服务器（CI 只同步 `dist/`、`api/`、`server.js`，不同步这里的脚本和 nginx 配置），然后执行：
 
 ```bash
 sudo bash enable-site.sh

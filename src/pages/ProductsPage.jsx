@@ -20,9 +20,9 @@ function ProductCard({ product }) {
         />
 
         <div className="p-3 flex flex-col flex-1">
-          <h3 className="text-sm font-bold text-ink truncate mb-1 group-hover:text-brand-600 transition-colors">
+          <h2 className="text-sm font-bold text-ink truncate mb-1 group-hover:text-brand-600 transition-colors">
             {product.name}
-          </h3>
+          </h2>
           <p className="text-xs text-ink-3 line-clamp-2 mb-2 flex-1">
             {product.shortDesc}
           </p>
@@ -66,7 +66,7 @@ export default function ProductsPage() {
       : localizedProducts.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-surface pt-20 pb-16">
+    <div className="min-h-screen bg-surface pt-16 lg:pt-20 pb-16">
       <PageHeader title={copy.productsPage.title} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -76,7 +76,7 @@ export default function ProductsPage() {
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`min-h-11 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeCategory === cat.id
                     ? 'bg-brand-900 text-white shadow-sm'
                     : 'bg-surface-2 text-ink-2 hover:bg-surface-3 hover:text-ink'
@@ -88,9 +88,10 @@ export default function ProductsPage() {
           </div>
         </ScrollReveal>
 
+        {/* 错峰延迟封顶：21 张卡片按 i * 0.05 递增会让最后一张等满一秒 */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {filteredProducts.map((product, i) => (
-            <ScrollReveal key={product.id} delay={i * 0.05}>
+            <ScrollReveal key={product.id} delay={Math.min(i, 6) * 0.05}>
               <ProductCard product={product} />
             </ScrollReveal>
           ))}

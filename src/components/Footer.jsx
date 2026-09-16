@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
+import { consultUrl } from '../data/consult';
 import Logo from './Logo';
 import { useLanguage } from '../i18n/language';
 
 const linkTargets = [
   ['/products?category=hdd', '/products?category=ssd', '/products?category=nas', '/products?category=accessory'],
-  ['/consult', '/consult', '/consult', '/consult'],
-  ['/brand', '/contact', '/contact', '/privacy'],
+  // 与 copy.data.services 同序：四个服务各带自己的主题进咨询表单，
+  // 而不是四个不同文案落到同一个空表单。
+  [consultUrl('solution'), consultUrl('onsite'), consultUrl('support'), consultUrl('migration')],
+  ['/brand', '/contact', '/contact#hours', '/privacy'],
 ];
 
 export default function Footer() {
@@ -25,7 +28,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <Logo className="w-8 h-8" alt={copy.footer.fullName} />
+              <Logo className="w-8 h-8" label={null} />
               <span className="text-base font-bold text-ink">{copy.footer.fullName}</span>
             </div>
             <p className="text-sm text-ink-3 leading-relaxed max-w-sm mb-6">
@@ -40,18 +43,18 @@ export default function Footer() {
           {links.map((group) => (
             <div key={group.title}>
               <div className="text-sm font-semibold text-ink mb-4">{group.title}</div>
-              <ul className="space-y-2.5">
+              <ul className="space-y-0 sm:space-y-2.5">
                 {group.items.map((item) => (
                   <li key={item.label}>
                     {item.href ? (
                       <Link
                         to={item.href}
-                        className="text-sm text-ink-3 hover:text-brand-600 transition-colors cursor-pointer"
+                        className="flex min-h-11 items-center text-sm text-ink-3 hover:text-brand-600 transition-colors cursor-pointer sm:min-h-0"
                       >
                         {item.label}
                       </Link>
                     ) : (
-                      <span className="text-sm text-ink-3 cursor-default">
+                      <span className="flex min-h-11 items-center text-sm text-ink-3 cursor-default sm:min-h-0">
                         {item.label}
                       </span>
                     )}
