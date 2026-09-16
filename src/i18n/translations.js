@@ -268,7 +268,7 @@ export const translations = {
       contactCards: [
         { label: '联系电话', content: '133-0133-5226', desc: '周一至周五 9:00 - 18:00' },
         { label: '公司地址', content: '北京市海淀区知春路113号', desc: '银网中心8层808室' },
-        { label: '电子邮箱', content: 'nancy@bjyzyes.com', desc: '24小时内回复' },
+        { label: '电子邮箱', content: 'nancy@youzhiyes.com', desc: '24小时内回复' },
         { label: '营业时间', content: '周一至周五', desc: '09:00 - 18:00' },
       ],
       services: [
@@ -550,7 +550,7 @@ export const translations = {
       contactCards: [
         { label: 'Phone', content: '133-0133-5226', desc: 'Mon–Fri, 9:00–18:00' },
         { label: 'Address', content: '113 Zhichun Road, Haidian, Beijing', desc: 'Room 808, 8F, Yinwang Center' },
-        { label: 'Email', content: 'nancy@bjyzyes.com', desc: 'Replies within 24 hours' },
+        { label: 'Email', content: 'nancy@youzhiyes.com', desc: 'Replies within 24 hours' },
         { label: 'Business Hours', content: 'Monday to Friday', desc: '09:00–18:00' },
       ],
       services: [
@@ -832,7 +832,7 @@ export const translations = {
       contactCards: [
         { label: '電話番号', content: '133-0133-5226', desc: '月〜金 9:00〜18:00' },
         { label: '所在地', content: '北京市海淀区知春路113号', desc: '銀網センター8階808号室' },
-        { label: 'メール', content: 'nancy@bjyzyes.com', desc: '24時間以内に返信' },
+        { label: 'メール', content: 'nancy@youzhiyes.com', desc: '24時間以内に返信' },
         { label: '営業時間', content: '月曜日〜金曜日', desc: '09:00〜18:00' },
       ],
       services: [
