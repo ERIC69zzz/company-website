@@ -6,7 +6,7 @@ import WechatQr from '../components/WechatQr';
 import PageHeader from '../components/PageHeader';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../i18n/language';
-import { getConsultContext, getConsultPrefill } from '../data/consult';
+import { consultErrorMessage, getConsultContext, getConsultPrefill } from '../data/consult';
 
 export default function ConsultPage() {
   const { language, copy } = useLanguage();
@@ -38,15 +38,18 @@ export default function ConsultPage() {
         body: JSON.stringify({ ...form, language, fax, renderedAt: renderedAt.current }),
       });
 
-      const data = await res.json();
+      // 返回的不是 JSON（例如网关的 HTML 错误页）时，别让解析异常冒到界面上
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        throw new Error(data.error || copy.consultPage.submitError);
+        setError(consultErrorMessage(res.status, data, copy.consultPage.submitError));
+        return;
       }
 
       setSubmitted(true);
-    } catch (err) {
-      setError(err.message);
+    } catch {
+      // 断网、超时走这里，同样不把原始报错显示给客户
+      setError(copy.consultPage.submitError);
     } finally {
       setSubmitting(false);
     }

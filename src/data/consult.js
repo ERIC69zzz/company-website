@@ -46,3 +46,14 @@ export function getConsultContext(searchParams, copy) {
   if (topic === 'enterprise') return copy.business.enterprise.consultContext;
   return consultTopics[topic] ? copy.consultTopics[topic].context : null;
 }
+
+// 提交失败时给客户看的文案。
+// 400 是服务端按语言返回的表单校验提示（姓名没填、手机号格式不对），可以直接显示；
+// 其它状态的文案是给我们自己看的 —— 限流提示只有中文，500 系列是英文技术信息，
+// 一律回落到本地文案，否则客户会在页面上看到 "Webhook not configured" 这种东西。
+export function consultErrorMessage(status, data, fallback) {
+  if (status === 400 && typeof data?.error === 'string' && data.error) {
+    return data.error;
+  }
+  return fallback;
+}
