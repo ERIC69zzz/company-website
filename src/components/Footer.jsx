@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { consultUrl } from '../data/consult';
+import { company } from '../data/site';
 import Logo from './Logo';
 import { useLanguage } from '../i18n/language';
 
@@ -66,8 +67,17 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 hairline flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-ink-3">
-            © {new Date().getFullYear()} {copy.footer.copyright}
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-xs text-ink-3">
+            <span>© {new Date().getFullYear()} {copy.footer.copyright}</span>
+            {/* 备案号必须链到工信部查询页，否则等于没挂 */}
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand-600 transition-colors"
+            >
+              {company.icp}
+            </a>
           </div>
           <div className="text-xs text-ink-3">
             {copy.footer.slogan}
