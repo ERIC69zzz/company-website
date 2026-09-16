@@ -108,6 +108,18 @@ export default async function handler(req, res) {
       return json(res, 500, { error: 'Webhook failed' });
     }
 
+    // 企业微信把业务错误放在 200 响应体里：key 失效、机器人被删、超出发送
+    // 频率限制，都是 HTTP 200 + errcode != 0。只看状态码会把这些当成成功，
+    // 客户看到「提交成功」而群里什么都没有，线索就静默丢了。
+    // 响应体解析不出来也按失败处理：宁可让客户重试一次（可能多出一条重复
+    // 消息），也不要在其实没送达时告诉他已经收到。
+    const result = await response.json().catch(() => null);
+
+    if (!result || result.errcode !== 0) {
+      console.error('WeCom webhook rejected:', result?.errcode, result?.errmsg);
+      return json(res, 500, { error: 'Webhook rejected' });
+    }
+
     return json(res, 200, { success: true });
   } catch (err) {
     console.error('Notify failed:', err);
