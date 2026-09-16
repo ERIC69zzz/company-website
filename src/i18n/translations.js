@@ -91,7 +91,7 @@ export const translations = {
         eyebrow: 'COMPANY PROFILE',
         title: '以技术为根，以服务连接全国',
         paragraphs: [
-          '北京友质科技有限公司成立于2010年8月，注册于北京市海淀区中关村软件园，是国家高新技术企业、瞪羚企业。公司注册资本3000万元人民币，实缴资本全额到位，凭借多年行业经验稳健发展。',
+          '北京友质科技有限公司成立于2010年8月，注册于北京市海淀区中关村软件园，是国家高新技术企业、瞪羚企业。公司注册资本3000万元人民币，凭借多年行业经验稳健发展。',
           '自成立以来，公司秉持“友聚四海，质服五洲”的经营理念，从早期的技术服务与产品销售，逐步升级为多元化综合方案提供商。核心团队汇聚技术研发、市场运营与存储服务等多领域专业人才。',
         ],
         metrics: [
@@ -102,7 +102,7 @@ export const translations = {
         facts: [
           { label: '成立时间', value: '2010年8月' },
           { label: '注册所在地', value: '北京市海淀区中关村软件园' },
-          { label: '注册资本', value: '3000万元人民币 · 实缴到位' },
+          { label: '注册资本', value: '3000万元人民币' },
           { label: '企业资质', value: '国家高新技术企业 · 瞪羚企业' },
         ],
         capabilitiesLabel: 'CORE CAPABILITIES',
@@ -362,7 +362,7 @@ export const translations = {
         eyebrow: 'COMPANY PROFILE',
         title: 'Built on technology. Connected through service.',
         paragraphs: [
-          'Beijing Youzhi Technology Co., Ltd. was founded in August 2010 and registered in Zhongguancun Software Park, Haidian District, Beijing. Recognized as a National High-Tech Enterprise and a Gazelle Enterprise, the company has registered capital of RMB 30 million, fully paid in, and continues to develop steadily through years of industry experience.',
+          'Beijing Youzhi Technology Co., Ltd. was founded in August 2010 and registered in Zhongguancun Software Park, Haidian District, Beijing. Recognized as a National High-Tech Enterprise and a Gazelle Enterprise, the company has registered capital of RMB 30 million and continues to develop steadily through years of industry experience.',
           'Since its founding, the company has followed the principle “Friends Worldwide, Quality Everywhere,” growing from technical services and product sales into a diversified provider of integrated solutions. Our team brings together specialists in technology R&D, market operations and storage services.',
         ],
         metrics: [
@@ -373,7 +373,7 @@ export const translations = {
         facts: [
           { label: 'Founded', value: 'August 2010' },
           { label: 'Registered location', value: 'Zhongguancun Software Park, Haidian, Beijing' },
-          { label: 'Registered capital', value: 'RMB 30 million · Fully paid' },
+          { label: 'Registered capital', value: 'RMB 30 million' },
           { label: 'Qualifications', value: 'National High-Tech Enterprise · Gazelle Enterprise' },
         ],
         capabilitiesLabel: 'CORE CAPABILITIES',
@@ -644,7 +644,7 @@ export const translations = {
         eyebrow: 'COMPANY PROFILE',
         title: '技術を基盤に、サービスを全国へ',
         paragraphs: [
-          '北京友質科技有限公司は2010年8月に設立され、北京市海淀区の中関村ソフトウェアパークに登記しています。国家ハイテク企業およびガゼル企業として認定され、登録資本金3,000万元は全額払い込み済みです。長年の業界経験を生かし、着実な成長を続けています。',
+          '北京友質科技有限公司は2010年8月に設立され、北京市海淀区の中関村ソフトウェアパークに登記しています。国家ハイテク企業およびガゼル企業として認定され、登録資本金は3,000万元です。長年の業界経験を生かし、着実な成長を続けています。',
           '創業以来、「世界に友情を、五大陸に品質を」という理念のもと、技術サービスと製品販売から多角的な総合ソリューション企業へと発展してきました。技術開発、市場運営、ストレージサービスの専門人材が事業を支えています。',
         ],
         metrics: [
@@ -655,7 +655,7 @@ export const translations = {
         facts: [
           { label: '設立', value: '2010年8月' },
           { label: '登記所在地', value: '北京市海淀区 中関村ソフトウェアパーク' },
-          { label: '登録資本金', value: '3,000万元 · 全額払込済み' },
+          { label: '登録資本金', value: '3,000万元' },
           { label: '企業認定', value: '国家ハイテク企業 · ガゼル企業' },
         ],
         capabilitiesLabel: 'CORE CAPABILITIES',
