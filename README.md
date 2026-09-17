@@ -38,6 +38,10 @@ npm run dev
 
 站点域名默认取 `https://www.bjyzyes.com`，可用 `SITE_URL` 环境变量覆盖。
 
+## 品牌生产资料
+
+`brand-kit/` 包含新版 Logo 的矢量母版、黑白/反白版本、比例与颜色校样表、商标申请候选图以及实体标志施工需求单。运行 `npm run brand:build` 可从网站当前 Logo 重新生成派生文件。
+
 ## 常用命令
 
 ```bash
