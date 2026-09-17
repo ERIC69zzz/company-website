@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+  <title>友质科技品牌色校样表</title>
+  <rect width="1400" height="760" fill="#FFFFFF"/>
+  <g font-family="Arial, 'PingFang SC', sans-serif">
+    <text x="70" y="70" font-size="34" font-weight="700" fill="#20211F">品牌色校样表</text>
+    <text x="70" y="108" font-size="18" fill="#606060">屏幕色值已确定；Pantone、RAL 与油漆色号必须通过实体色板确认。</text>
+    <g transform="translate(70 160)">
+      <rect width="600" height="210" rx="18" fill="#FF6A00"/>
+      <text x="28" y="150" font-size="30" font-weight="700" fill="#FFFFFF">品牌橙</text>
+      <text x="28" y="184" font-size="18" fill="#FFFFFF">HEX #FF6A00 · RGB 255 / 106 / 0</text>
+    </g>
+    <g transform="translate(730 160)">
+      <rect width="600" height="210" rx="18" fill="#0D2340"/>
+      <text x="28" y="150" font-size="30" font-weight="700" fill="#FFFFFF">品牌深蓝</text>
+      <text x="28" y="184" font-size="18" fill="#FFFFFF">HEX #0D2340 · RGB 13 / 35 / 64</text>
+    </g>
+    <g transform="translate(70 430)">
+      <rect width="390" height="150" rx="18" fill="#20211F"/>
+      <text x="24" y="96" font-size="24" font-weight="700" fill="#FFFFFF">近黑 #20211F</text>
+      <text x="24" y="126" font-size="16" fill="#FFFFFF">RGB 32 / 33 / 31</text>
+    </g>
+    <g transform="translate(505 430)">
+      <rect width="390" height="150" rx="18" fill="#606060"/>
+      <text x="24" y="96" font-size="24" font-weight="700" fill="#FFFFFF">灰 #606060</text>
+      <text x="24" y="126" font-size="16" fill="#FFFFFF">RGB 96 / 96 / 96</text>
+    </g>
+    <g transform="translate(940 430)">
+      <rect width="390" height="150" rx="18" fill="#D6D6D6"/>
+      <text x="24" y="96" font-size="24" font-weight="700" fill="#20211F">分隔线 #D6D6D6</text>
+      <text x="24" y="126" font-size="16" fill="#20211F">RGB 214 / 214 / 214</text>
+    </g>
+    <text x="70" y="660" font-size="17" fill="#606060">印刷 CMYK 为名义换算值，不可代替 ICC 转换；实体制作以经签字确认的 100 × 100 mm 喷涂/材料色板为准。</text>
+  </g>
+</svg>
