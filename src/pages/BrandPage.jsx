@@ -13,14 +13,16 @@ const newsDates = ['2025-04-15', '2025-03-20', '2025-01-10'];
 const eventYears = ['2025', '2024', '2023'];
 
 export default function BrandPage() {
-  const { copy } = useLanguage();
+  const { language, copy } = useLanguage();
   const news = copy.brandPage.news.map((item, index) => ({ ...item, id: index + 1, date: newsDates[index] }));
   const events = copy.brandPage.eventItems.map((item, index) => ({ ...item, year: eventYears[index] }));
   const partners = copy.brandPage.partnerItems;
-  const localizedExternalNews = safeNews.map((item) => ({
-    ...item,
-    ...(copy.brandPage.externalNews?.[item.id] || {}),
-  }));
+  // 新闻每周自动同步进来，译文要人工补。英日版只展示已有译文的条目，
+  // 否则最新一条总是以中文原文出现在英文/日文页面的第一格。
+  const externalNewsCopy = copy.brandPage.externalNews || {};
+  const localizedExternalNews = safeNews
+    .filter((item) => language === 'zh' || externalNewsCopy[item.id])
+    .map((item) => ({ ...item, ...(externalNewsCopy[item.id] || {}) }));
 
   return (
     <div className="min-h-screen bg-surface pt-16 lg:pt-20 pb-16">
@@ -56,7 +58,7 @@ export default function BrandPage() {
                 <p className="text-xs text-ink-3 mt-0.5">{copy.brandPage.newsSource}</p>
               </div>
             </div>
-            {safeNews.length === 0 ? (
+            {localizedExternalNews.length === 0 ? (
               <div className="text-center py-12 text-ink-3">
                 {copy.brandPage.noNews}
               </div>

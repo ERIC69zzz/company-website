@@ -119,6 +119,8 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
   const closePanels = useCallback(() => setOpenPanel(null), []);
   const toggleLanguage = useCallback((next) => setOpenPanel(next ? 'language' : null), []);
   const toggleCompactLanguage = useCallback((next) => setOpenPanel(next ? 'language-compact' : null), []);
+  const navRef = useRef(null);
+  const menuButtonRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { copy } = useLanguage();
@@ -138,6 +140,29 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // 移动端菜单与语言浮层一样：点顶栏以外或按 Esc 收起，
+  // 否则只能再点一次右上角的 ×，手机上常被当成菜单卡住了。
+  useEffect(() => {
+    if (!mobileOpen) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (!navRef.current?.contains(event.target)) closePanels();
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closePanels();
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileOpen, closePanels]);
 
   const handleNavClick = (e, item) => {
     e.preventDefault();
@@ -171,6 +196,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
 
   return (
     <nav
+      ref={navRef}
       inert={introActive}
       className={`${brandTargetRef ? 'home-entry__nav' : ''} ${sticky ? 'sticky' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'chrome' : 'bg-surface/80 backdrop-blur-md'
@@ -225,6 +251,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
               onOpenChange={toggleCompactLanguage}
             />
             <button
+              ref={menuButtonRef}
               type="button"
               className="p-2.5 text-ink-2 hover:text-ink"
               onClick={() => setOpenPanel(mobileOpen ? null : 'nav')}
@@ -246,6 +273,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item)}
+                aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
                 className="block px-3 py-2.5 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 cursor-pointer"
               >
                 {item.label}

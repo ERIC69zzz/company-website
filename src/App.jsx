@@ -86,7 +86,9 @@ function ConsultRoute() {
 }
 
 function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+  // search 也要算进来：在 /products 页底点页脚的「固态硬盘」只改查询串，
+  // 不回顶部的话筛选结果在屏幕外，看上去像点了没反应（/consult 的服务入口同理）。
+  const { pathname, search, hash } = useLocation();
 
   useLayoutEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
@@ -105,7 +107,7 @@ function ScrollToTop() {
     }
     // 路由定位在绘制前完成，避免全局 smooth 让刷新恢复位置变成自动滚动。
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [pathname, hash]);
+  }, [pathname, search, hash]);
   return null;
 }
 

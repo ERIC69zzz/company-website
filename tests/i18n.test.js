@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { products } from '../src/data/products.js';
+import { company, contactCards } from '../src/data/site.js';
 import { localizeProducts } from '../src/i18n/products.js';
 import { translations } from '../src/i18n/translations.js';
 
@@ -13,6 +14,21 @@ test('中文、英文和日文均包含完整的核心列表', () => {
     assert.equal(copy.data.services.length, 4);
     assert.equal(copy.data.contactCards.length, 4);
     assert.equal(copy.data.consultationTypes.length, 6);
+  }
+});
+
+test('联系卡片上显示的电话、邮箱与点击拨号/发信的目标一致', () => {
+  // 卡片文字来自翻译层，链接来自 site.js 的 company；改了一边忘了另一边，
+  // 客户看到的号码和实际拨出去的号码就对不上。
+  const phoneCard = contactCards.findIndex((card) => card.anchor === 'phone');
+  const emailCard = contactCards.findIndex((card) => card.anchor === 'email');
+  assert.equal(contactCards[phoneCard].href, company.telHref);
+  assert.equal(contactCards[emailCard].href, `mailto:${company.email}`);
+
+  for (const language of ['zh', 'en', 'ja']) {
+    const cards = translations[language].data.contactCards;
+    assert.equal(cards[phoneCard].content, company.phone, `${language} 电话`);
+    assert.equal(cards[emailCard].content, company.email, `${language} 邮箱`);
   }
 });
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { MessageCircle, Phone, User, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, MessageCircle, Phone, User, CheckCircle2 } from 'lucide-react';
 import { company, initialConsultForm } from '../data/site';
 import WechatQr from '../components/WechatQr';
 import PageHeader from '../components/PageHeader';
@@ -158,11 +158,12 @@ export default function ConsultPage() {
                       <input
                         id="consult-name"
                         type="text"
+                        autoComplete="name"
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder={copy.consultPage.namePlaceholder}
-                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-base sm:text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
@@ -174,27 +175,32 @@ export default function ConsultPage() {
                       <input
                         id="consult-phone"
                         type="tel"
+                        autoComplete="tel"
                         required
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         placeholder={copy.consultPage.phonePlaceholder}
-                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
+                        className="w-full min-h-11 pl-10 pr-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-base sm:text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all"
                       />
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="consult-type" className="block text-sm text-ink-2 mb-1.5">{copy.consultPage.type}</label>
-                    <select
-                      id="consult-type"
-                      value={form.type}
-                      onChange={(e) => setForm({ ...form, type: e.target.value })}
-                      className="w-full min-h-11 px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
-                    >
-                      {copy.data.consultationTypes.map((item) => (
-                        <option key={item.value} value={item.value} className="bg-surface-2">{item.label}</option>
-                      ))}
-                    </select>
+                    {/* appearance-none 去掉了系统箭头，得自己补一个，否则看起来像只读文本框 */}
+                    <div className="relative">
+                      <select
+                        id="consult-type"
+                        value={form.type}
+                        onChange={(e) => setForm({ ...form, type: e.target.value })}
+                        className="w-full min-h-11 pl-4 pr-10 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-base sm:text-sm focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all appearance-none"
+                      >
+                        {copy.data.consultationTypes.map((item) => (
+                          <option key={item.value} value={item.value}>{item.label}</option>
+                        ))}
+                      </select>
+                      <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-3" />
+                    </div>
                   </div>
 
                   <div>
@@ -206,12 +212,12 @@ export default function ConsultPage() {
                       value={form.content}
                       onChange={(e) => setForm({ ...form, content: e.target.value })}
                       placeholder={copy.consultPage.contentPlaceholder}
-                      className="w-full px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all resize-none"
+                      className="w-full px-4 py-2.5 bg-surface-2 border border-line rounded-lg text-ink text-base sm:text-sm placeholder:text-ink-3 focus:outline-none focus:border-brand-600/50 focus:ring-1 focus:ring-brand-600/20 transition-all resize-none"
                     />
                   </div>
 
                   {error && (
-                    <div role="alert" className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-2.5">
+                    <div role="alert" className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5">
                       {error}
                     </div>
                   )}

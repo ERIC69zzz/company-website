@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { products, categories } from '../data/products';
 import PageHeader from '../components/PageHeader';
@@ -75,6 +76,8 @@ export default function ProductsPage() {
             {localizedCategories.map((cat) => (
               <button
                 key={cat.id}
+                type="button"
+                aria-pressed={activeCategory === cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
                 className={`min-h-11 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeCategory === cat.id
@@ -97,9 +100,15 @@ export default function ProductsPage() {
           ))}
         </div>
 
+        {/* 首页的机械硬盘、固态硬盘大卡片都链到这里，分类还空着时
+            不能停在一句「暂无产品」上，要给出下一步 */}
         {filteredProducts.length === 0 && (
-          <div className="text-center py-20 text-ink-3">
-            {copy.productsPage.empty}
+          <div className="flex flex-col items-center text-center py-20">
+            <p className="text-ink-2">{copy.productsPage.empty}</p>
+            <p className="mt-2 max-w-md text-sm text-ink-3">{copy.productsPage.emptyHint}</p>
+            <Link to="/consult" className="storage-button mt-6">
+              {copy.productsPage.emptyCta}<ArrowRight aria-hidden="true" />
+            </Link>
           </div>
         )}
       </div>

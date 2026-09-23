@@ -27,11 +27,12 @@ export const company = {
 };
 
 export const contactCards = [
-  // 只放翻译层不提供的东西：图标与锚点。文案一律来自
+  // 只放翻译层不提供的东西：图标、锚点与链接。文案一律来自
   // translations.js 的 data.contactCards，写在这里不会生效。
-  { icon: Phone, anchor: 'phone' },
+  // 电话、邮箱带 href：手机上这两张卡是最显眼的号码，点不了就只能手抄。
+  { icon: Phone, anchor: 'phone', href: company.telHref },
   { icon: MapPin, anchor: 'address' },
-  { icon: Mail, anchor: 'email' },
+  { icon: Mail, anchor: 'email', href: `mailto:${company.email}` },
   { icon: Clock, anchor: 'hours' },
 ];
 
