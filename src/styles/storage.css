@@ -440,6 +440,8 @@
 
 .product-detail__top { background: var(--color-surface); padding-block: 40px 8px; }
 .product-detail__layout { display: grid; grid-template-columns: 1.05fr .95fr; align-items: start; gap: clamp(32px, 5vw, 64px); }
+/* .enterprise-eyebrow 的浅橙是给深蓝 hero 配的，在详情页白底上只有 1.7:1，几乎看不见 */
+.product-detail__intro .enterprise-eyebrow { color: var(--color-accent-700); }
 .product-detail__intro h1 { color: var(--color-ink); font-size: clamp(34px, 3.6vw, 50px); font-weight: 500; line-height: 1.2; letter-spacing: -.03em; }
 .product-detail__tagline { margin-top: 10px; color: var(--color-brand-800); font-size: 17px; font-weight: 500; }
 .product-detail__summary { margin-top: 20px; color: var(--color-ink-2); font-size: 14px; line-height: 1.9; }

@@ -77,7 +77,7 @@ export const translations = {
       support: { context: '服务咨询 · 售后支持', template: '我需要售后支持。\n设备型号 / 购买时间：\n遇到的问题：\n已尝试的处理：' },
       migration: { context: '服务咨询 · 数据迁移', template: '我需要做数据迁移。\n数据来源（云 / 旧设备）：\n数据量 / 文件类型：\n可接受的停机时间：' },
     },
-    productsPage: { title: '产品中心', empty: '该分类下暂无产品' },
+    productsPage: { title: '产品中心', empty: '该分类下暂无产品', emptyHint: '这一类产品正在整理上架，型号、容量和报价可以直接问我们。', emptyCta: '咨询选型' },
     productDetail: {
       phone: '电话咨询', online: '在线咨询', specs: '规格参数',
       highlights: '关键特性', about: '产品说明',
@@ -348,7 +348,7 @@ export const translations = {
       support: { context: 'Service inquiry · After-Sales Support', template: 'I need after-sales support.\nDevice model / purchase date:\nIssue encountered:\nWhat I have already tried:' },
       migration: { context: 'Service inquiry · Data Migration', template: 'I need help migrating data.\nSource (cloud / existing device):\nData volume / file types:\nAcceptable downtime:' },
     },
-    productsPage: { title: 'Product Center', empty: 'No products are available in this category.' },
+    productsPage: { title: 'Product Center', empty: 'No products are available in this category.', emptyHint: 'We are still adding products here. Ask us directly for models, capacities and pricing.', emptyCta: 'Ask for a recommendation' },
     productDetail: {
       phone: 'Call Us', online: 'Online Consultation', specs: 'Specifications',
       highlights: 'Key features', about: 'About this product',
@@ -630,7 +630,7 @@ export const translations = {
       support: { context: 'サービス相談 · アフターサポート', template: 'アフターサポートを希望します。\n機器の型番 / 購入時期：\n発生している問題：\n試した対処：' },
       migration: { context: 'サービス相談 · データ移行', template: 'データ移行について相談したいです。\n移行元（クラウド / 既存機器）：\nデータ量 / ファイル種別：\n許容できる停止時間：' },
     },
-    productsPage: { title: '製品センター', empty: 'このカテゴリーには現在製品がありません。' },
+    productsPage: { title: '製品センター', empty: 'このカテゴリーには現在製品がありません。', emptyHint: 'このカテゴリーの製品は掲載準備中です。型番・容量・価格は直接お問い合わせください。', emptyCta: '製品選定を相談する' },
     productDetail: {
       phone: '電話で相談', online: 'オンライン相談', specs: '製品仕様',
       highlights: '主な特徴', about: '製品について',

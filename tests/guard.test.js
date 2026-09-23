@@ -44,6 +44,23 @@ test('同源请求按 IP 限流并返回 Retry-After', () => {
   assert.match(blocked?.headers?.['Retry-After'] || '', /^\d+$/);
 });
 
+test('伪造 X-Forwarded-For 不能绕过单 IP 限流', () => {
+  const options = { name: 'spoof', limit: 2, windowMs: WINDOW_MS };
+  // nginx 用 $proxy_add_x_forwarded_for 时，客户端自带的值排在最前面
+  const spoofed = (fake) => ({
+    headers: {
+      host: 'www.youzhiyes.com',
+      origin: 'https://www.youzhiyes.com',
+      'x-forwarded-for': `${fake}, 198.51.100.7`,
+      'x-real-ip': '198.51.100.7',
+    },
+  });
+
+  assert.equal(guard(spoofed('10.0.0.1'), options), null);
+  assert.equal(guard(spoofed('10.0.0.2'), options), null);
+  assert.equal(guard(spoofed('10.0.0.3'), options)?.status, 429);
+});
+
 test('实例级总量限制不能通过切换 IP 绕过', () => {
   const options = {
     name: 'global',

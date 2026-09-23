@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      # 下面要用 workflow_dispatch 触发阿里云部署
+      actions: write
     steps:
       - uses: actions/checkout@v7
 
@@ -32,3 +34,10 @@ jobs:
           git add src/data/zspace-news.json
           git commit -m "chore: 自动同步极空间新闻"
           git push
+
+          # 用 GITHUB_TOKEN 推送的提交不会触发任何 push 类 workflow（GitHub 防递归），
+          # 所以「部署到阿里云 ECS」不会自己跑：Vercel 有自己的 Git 集成照常更新，
+          # youzhiyes.com 却一直停在旧新闻。workflow_dispatch 是例外，可以显式触发。
+          gh workflow run deploy-ecs.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

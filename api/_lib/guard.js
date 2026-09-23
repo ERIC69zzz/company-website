@@ -30,12 +30,20 @@ const makeRoomForBucket = (now) => {
   if (oldestKey) buckets.delete(oldestKey);
 };
 
+// 优先取 X-Real-IP：ECS 上的 nginx 把它设为 $remote_addr，客户端无法伪造；
+// Vercel 也会用真实来源覆盖它。X-Forwarded-For 的第一段则不可信 ——
+// nginx 的 $proxy_add_x_forwarded_for 是把真实 IP 追加在客户端自带的值后面，
+// 脚本每次换一个假的 X-Forwarded-For 就能绕过单 IP 限流，
+// 几十次请求耗尽实例级总量，当天真实客户的咨询全被 429 挡掉。
 export const getClientIp = (req) => {
+  const realIp = req.headers['x-real-ip'];
+  if (typeof realIp === 'string' && realIp.trim()) return realIp.trim();
+
   const forwarded = req.headers['x-forwarded-for'];
   if (typeof forwarded === 'string' && forwarded) {
     return forwarded.split(',')[0].trim();
   }
-  return req.headers['x-real-ip'] || req.socket?.remoteAddress || 'unknown';
+  return req.socket?.remoteAddress || 'unknown';
 };
 
 // 同源判断：把 Origin 的 host 与请求自身的 host 比对，
