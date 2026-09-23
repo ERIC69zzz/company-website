@@ -72,6 +72,11 @@ test('预渲染：模板格式对不上时构建失败，不能悄悄产出标�
   assert.throws(() => buildPage(once, { route: '/', html: 'x', title: 't', description: 'd' }), /vite build/);
 });
 
+test('首页保留百度站点验证标签，删掉会失去搜索资源平台的站点权限', () => {
+  const indexHtml = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(indexHtml, /<meta name="baidu-site-verification" content="codeva-kNHq0AlOyL" \/>/);
+});
+
 test('预渲染：路由写成 xxx.html，不写成目录，避开 public/products/ 图片目录', () => {
   assert.equal(outputFile('/'), 'index.html');
   assert.equal(outputFile('/products'), 'products.html');
