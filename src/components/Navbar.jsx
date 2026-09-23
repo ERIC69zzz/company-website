@@ -164,6 +164,10 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
     };
   }, [mobileOpen, closePanels]);
 
+  // 锚点项在子页面上写成 /#services：点击由 handleNavClick 接管，
+  // 这里的 href 是给搜索引擎和「新标签页打开」用的，#services 在 /products 上指不到任何东西。
+  const hrefFor = (item) => (item.type === 'anchor' && !isHome ? `/${item.href}` : item.href);
+
   const handleNavClick = (e, item) => {
     e.preventDefault();
     closePanels();
@@ -226,7 +230,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             {navItems.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={hrefFor(item)}
                 onClick={(e) => handleNavClick(e, item)}
                 aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
                 className="px-1.5 xl:px-3 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
@@ -271,7 +275,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             {navItems.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={hrefFor(item)}
                 onClick={(e) => handleNavClick(e, item)}
                 aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
                 className="block px-3 py-2.5 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 cursor-pointer"

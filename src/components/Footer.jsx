@@ -68,7 +68,8 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 hairline flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-xs text-ink-3">
-            <span>© {new Date().getFullYear()} {copy.footer.copyright}</span>
+            {/* 年份在构建时写进静态 HTML，跨年后到下次构建前会与浏览器算的不同，属预期 */}
+            <span suppressHydrationWarning>© {new Date().getFullYear()} {copy.footer.copyright}</span>
             {/* 备案号必须链到工信部查询页，否则等于没挂 */}
             <a
               href="https://beian.miit.gov.cn/"

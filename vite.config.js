@@ -20,6 +20,8 @@ export default defineConfig({
   // 取自同一个 SITE_URL，不用 location.origin —— 预览域名会把 canonical 指错。
   define: { __SITE_URL__: JSON.stringify(SITE_URL) },
   build: {
+    // 预渲染（scripts/prerender.mjs）靠 manifest 找到每个页面的 chunk 写 modulepreload，用完即删
+    manifest: true,
     rollupOptions: {
       output: {
         // 框架单独成块：它几乎不变，发版后浏览器可以继续用缓存里的那一份。

@@ -82,6 +82,39 @@ sudo bash enable-site.sh
 - **证书续期**：certbot 自动处理，可用 `sudo certbot renew --dry-run` 验证
 - **系统更新**：建议每月 `sudo apt update && sudo apt upgrade`
 
+## 更新 nginx 配置
+
+CI 不同步 `nginx.conf`，改了它要手动应用（需要 root，只能在阿里云控制台 →
+ECS → 远程连接 → Workbench 里做）。先用 deploy 账号把文件传上去：
+
+```bash
+scp -i ~/.ssh/youzhi_deploy deploy/nginx.conf deploy@<服务器IP>:/home/deploy/youzhi-deploy/nginx.conf
+```
+
+再在 Workbench 里：
+
+```bash
+sudo cp /etc/nginx/sites-available/youzhi.conf /etc/nginx/sites-available/youzhi.conf.bak
+sudo cp /home/deploy/youzhi-deploy/nginx.conf /etc/nginx/sites-available/youzhi.conf
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+`nginx -t` 不通过时 reload 不会执行，线上仍是旧配置；用 `.bak` 还原即可。
+
+**预渲染（2026-09）的配置依赖构建产物**：`try_files $uri $uri.html =404` 要求 dist
+里已经有 `products.html` 这类预渲染文件。顺序必须是先合并部署、确认线上
+`/products.html` 能访问，再换 nginx 配置；反过来所有子页面都会 404。
+旧配置 + 新产物是安全的：子页面拿到首页的 HTML，JS 加载后按实际地址重新渲染。
+
+换完后验证：
+
+```bash
+curl -sI https://www.youzhiyes.com/products | head -1          # 200
+curl -s https://www.youzhiyes.com/products | grep -o '<title>[^<]*'   # 产品中心 - 友质科技
+curl -sI https://www.youzhiyes.com/no-such-page | head -1      # 404
+curl -sI https://www.youzhiyes.com/products/ | grep -i location     # 跳到 /products
+```
+
 ## 结构
 
 ```

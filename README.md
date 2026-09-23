@@ -38,6 +38,30 @@ npm run dev
 
 站点域名默认取 `https://www.bjyzyes.com`，可用 `SITE_URL` 环境变量覆盖。
 
+## 预渲染（搜索引擎收录）
+
+`npm run build` 在客户端构建之后还会做两步：
+
+1. `vite build --ssr src/entry-server.jsx` 打包一份服务端渲染入口到 `dist-ssr/`
+2. `scripts/prerender.mjs` 为 sitemap 里的每个地址生成带正文的静态 HTML
+   （`dist/products.html`、`dist/products/<id>.html` 等），外加 `dist/404.html`
+
+每页都写好了中文版的 title、description、canonical、og 与 schema.org 结构化数据。
+百度这类基本不执行 JS 的抓取器、微信分享卡片读到的就是这些文件；浏览器拿到后由
+`src/main.jsx` 原地 hydrate，访客的语言偏好在 hydrate 完成后再切换。
+
+写组件时要注意：**首次渲染不能读浏览器状态**（localStorage、sessionStorage、
+matchMedia、地址查询串），否则与静态 HTML 对不上。需要时用 `src/utils/hydration.js`
+里的 `mustMatchServer()` / `useClientReady()` / `whenHydrated()`，做法可参照
+`LanguageContext`、首页开场和产品分类筛选。
+
+托管端按 `xxx.html` 查找页面，未知地址返回 404 状态码：nginx 见
+`deploy/nginx.conf`（改动后需手动应用，步骤见 `deploy/README.md`），
+Vercel 见 `vercel.json` 的 `cleanUrls`。
+
+新站点上线或域名变更后，需要到[百度搜索资源平台](https://ziyuan.baidu.com/)
+验证站点并提交 `sitemap.xml`；Google、Bing 同理（Search Console / Webmaster Tools）。
+
 ## 品牌生产资料
 
 `brand-kit/` 包含新版 Logo 的矢量母版、黑白/反白版本、比例与颜色校样表、商标申请候选图以及实体标志施工需求单。运行 `npm run brand:build` 可从网站当前 Logo 重新生成派生文件。

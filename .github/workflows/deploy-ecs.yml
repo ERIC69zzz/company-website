@@ -52,6 +52,14 @@ jobs:
           grep -q 'https://www.youzhiyes.com/sitemap.xml' dist/robots.txt
           echo "✅ 产物域名正确"
 
+      # nginx 按 $uri.html 找预渲染页，缺了子页面会直接 404
+      - name: 校验预渲染页面
+        run: |
+          grep -q 'canonical" href="https://www.youzhiyes.com/products"' dist/products.html
+          grep -q 'data-route="/products"' dist/products.html
+          grep -q 'name="robots" content="noindex' dist/404.html
+          echo "✅ 预渲染页面齐全"
+
       - name: 配置 SSH
         run: |
           mkdir -p ~/.ssh

@@ -6,6 +6,7 @@ import ProductImage from '../components/ProductImage';
 import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../i18n/language';
 import { localizeProducts } from '../i18n/products';
+import { useClientReady } from '../utils/hydration';
 
 function ProductCard({ product }) {
   const { copy } = useLanguage();
@@ -42,12 +43,14 @@ function ProductCard({ product }) {
 export default function ProductsPage() {
   const { language, copy } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
+  // 预渲染的是「全部产品」；带 ?category= 落地时，hydrate 之后、绘制之前再切到对应分类
+  const clientReady = useClientReady();
   const localizedCategories = categories.map((category, index) => ({
     ...category,
     name: copy.data.categories[index],
   }));
   const localizedProducts = localizeProducts(products, language);
-  const categoryParam = searchParams.get('category');
+  const categoryParam = clientReady ? searchParams.get('category') : null;
   const activeCategory =
     categoryParam && localizedCategories.some((c) => c.id === categoryParam)
       ? categoryParam

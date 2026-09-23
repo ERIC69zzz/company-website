@@ -19,15 +19,18 @@ export default function NotFoundPage() {
     ...copy.notFound.shortcuts[index],
   }));
 
-  // 单页应用无法在客户端改 HTTP 状态码，
-  // 用 noindex 阻止搜索引擎把不存在的地址收进索引（soft 404）。
+  // 预渲染的 404.html 自带这条 noindex（nginx 同时返回 404 状态码）；
+  // 客户端路由进到这里时补上，离开时移除，免得带进下一个页面。
   useEffect(() => {
-    const meta = document.createElement('meta');
-    meta.name = 'robots';
+    let meta = document.head.querySelector('meta[name="robots"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'robots';
+      document.head.appendChild(meta);
+    }
     meta.content = 'noindex, follow';
-    document.head.appendChild(meta);
     return () => {
-      document.head.removeChild(meta);
+      meta.remove();
     };
   }, []);
 
