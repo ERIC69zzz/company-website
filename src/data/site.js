@@ -1,12 +1,8 @@
 import {
   Clock,
-  Cloud,
-  HeadphonesIcon,
   Mail,
   MapPin,
   Phone,
-  Settings,
-  Wrench,
 } from 'lucide-react';
 
 export const company = {
@@ -22,7 +18,13 @@ export const company = {
   supportEmail: 'contact@youzhiyes.com',
   address: '北京市海淀区知春路113号',
   addressDetail: '银网中心8层808室',
-  businessDays: '周一至周五',
+  // 结构化数据（schema.org PostalAddress）要分段的地址，与上面两行是同一个地址
+  postalAddress: {
+    addressRegion: '北京市',
+    addressLocality: '海淀区',
+    streetAddress: '知春路113号银网中心8层808室',
+  },
+  foundingDate: '2010-08',
   businessHours: '09:00 - 18:00',
 };
 
@@ -34,47 +36,6 @@ export const contactCards = [
   { icon: MapPin, anchor: 'address' },
   { icon: Mail, anchor: 'email', href: `mailto:${company.email}` },
   { icon: Clock, anchor: 'hours' },
-];
-
-export const services = [
-  {
-    icon: Settings,
-    title: '方案定制',
-    desc: '根据数据规模与场景，量身定制硬盘选型与NAS架构方案。',
-  },
-  {
-    icon: Wrench,
-    title: '上门部署',
-    desc: '北京地区专业技术人员上门安装调试，全程无忧。',
-  },
-  {
-    icon: HeadphonesIcon,
-    title: '售后维保',
-    desc: '全生命周期售后服务，7×12小时响应，质保跟踪到底。',
-  },
-  {
-    icon: Cloud,
-    title: '云迁移服务',
-    desc: '协助企业将公有云数据平滑迁移至私有NAS环境。',
-  },
-];
-
-export const consultationTopics = [
-  '产品选型',
-  '方案定制',
-  '售后支持',
-  '价格询价',
-  '上门部署',
-  '数据恢复',
-];
-
-export const consultationTypes = [
-  '产品咨询',
-  '方案定制',
-  '售后支持',
-  '价格询价',
-  '上门部署',
-  '其他',
 ];
 
 export const initialConsultForm = {

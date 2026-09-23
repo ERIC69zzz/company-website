@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { ChevronDown, MessageCircle, Phone, User, CheckCircle2 } from 'lucide-react';
 import { company, initialConsultForm } from '../data/site';
 import WechatQr from '../components/WechatQr';
@@ -8,9 +7,10 @@ import ScrollReveal from '../components/ScrollReveal';
 import { useLanguage } from '../i18n/language';
 import { consultErrorMessage, getConsultContext, getConsultPrefill } from '../data/consult';
 
-export default function ConsultPage() {
+// searchParams 由 App.jsx 的 ConsultRoute 传入：首屏 hydrate 那一轮要先用空参数，
+// 与不带查询串的预渲染 HTML 保持一致。
+export default function ConsultPage({ searchParams }) {
   const { language, copy } = useLanguage();
-  const [searchParams] = useSearchParams();
   const prefill = getConsultPrefill(searchParams, copy);
   const prefillContext = getConsultContext(searchParams, copy);
   const [submitted, setSubmitted] = useState(false);
@@ -62,56 +62,6 @@ export default function ConsultPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <ScrollReveal>
-            <div>
-              <div className="panel panel-raised rounded-2xl p-8 border border-line mb-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 text-brand-600" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-ink">{copy.consultPage.wechatTitle}</h2>
-                    <p className="text-xs text-ink-3">{copy.consultPage.wechatDesc}</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center py-4">
-                  <WechatQr alt={copy.consultPage.wechatTitle} fallbackText={copy.consultPage.qr} />
-                  <p className="text-sm text-ink-2 text-center">
-                    {copy.consultPage.scanHint}
-                  </p>
-                  <p className="text-xs text-ink-3 text-center mt-1">
-                    {copy.consultPage.hours}{copy.data.businessDays} {company.businessHours}
-                  </p>
-                </div>
-
-                <div className="h-px bg-line my-6" />
-
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-brand-600" />
-                  <div>
-                    <div className="text-sm text-ink-2">{copy.consultPage.call}</div>
-                    <a href={company.telHref} className="text-lg font-bold text-ink hover:text-brand-600 transition-colors">
-                      {company.phone}
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="panel panel-raised rounded-2xl p-6 border border-line">
-                <h2 className="text-sm font-bold text-ink mb-3">{copy.consultPage.scope}</h2>
-                <div className="grid grid-cols-2 gap-2">
-                  {copy.data.consultationTopics.map((t) => (
-                    <div key={t} className="flex items-center gap-2 text-sm text-ink-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-400" />
-                      {t}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
             <div className="panel panel-raised rounded-2xl p-8 border border-line">
               {prefillContext && (
                 <p className="text-xs font-medium text-brand-700 mb-4">{prefillContext}</p>
@@ -231,6 +181,58 @@ export default function ConsultPage() {
                   </button>
                 </form>
               )}
+            </div>
+          </ScrollReveal>
+
+          {/* 桌面端二维码在左、表单在右；DOM 里表单在前，手机上表单因此排在最前面 ——
+              访客就在这台手机上，扫不了自己屏幕上的二维码，要翻两屏才看到表单等于没有表单。 */}
+          <ScrollReveal className="lg:order-first">
+            <div>
+              <div className="panel panel-raised rounded-2xl p-8 border border-line mb-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center">
+                    <MessageCircle className="w-5 h-5 text-brand-600" />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-ink">{copy.consultPage.wechatTitle}</h2>
+                    <p className="text-xs text-ink-3">{copy.consultPage.wechatDesc}</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center py-4">
+                  <WechatQr alt={copy.consultPage.wechatTitle} fallbackText={copy.consultPage.qr} />
+                  <p className="text-sm text-ink-2 text-center">
+                    {copy.consultPage.scanHint}
+                  </p>
+                  <p className="text-xs text-ink-3 text-center mt-1">
+                    {copy.consultPage.hours}{copy.data.businessDays} {company.businessHours}
+                  </p>
+                </div>
+
+                <div className="h-px bg-line my-6" />
+
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-brand-600" />
+                  <div>
+                    <div className="text-sm text-ink-2">{copy.consultPage.call}</div>
+                    <a href={company.telHref} className="text-lg font-bold text-ink hover:text-brand-600 transition-colors">
+                      {company.phone}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="panel panel-raised rounded-2xl p-6 border border-line">
+                <h2 className="text-sm font-bold text-ink mb-3">{copy.consultPage.scope}</h2>
+                <div className="grid grid-cols-2 gap-2">
+                  {copy.data.consultationTopics.map((t) => (
+                    <div key={t} className="flex items-center gap-2 text-sm text-ink-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-400" />
+                      {t}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </div>

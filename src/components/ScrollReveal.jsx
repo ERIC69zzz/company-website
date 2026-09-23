@@ -6,9 +6,12 @@ import { useLayoutEffect, useRef, useState } from 'react';
 //   1. 首屏内的内容也会缺一帧 —— IO 回调发生在首次绘制之后
 //   2. 标签页不可见时 IO 根本不回调，页面会一直空白到用户切回前台
 //      （与品牌开场卡死是同一个病灶，见 HeroSection）
+//
+// 初值必须是「可见」：预渲染的静态 HTML 按初值输出，搜索引擎和 JS 还没到的访客
+// 看到的就是它。首屏之下的元素在绘制前才被藏起来。
 export default function ScrollReveal({ children, className = '', delay = 0 }) {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [animated, setAnimated] = useState(false);
 
   // useLayoutEffect 在绘制前跑完，首屏内的元素因此不会闪一下
@@ -21,10 +24,10 @@ export default function ScrollReveal({ children, className = '', delay = 0 }) {
 
     // 看不到的动画不值得等
     if (!belowFold || reduceMotion || document.hidden || typeof IntersectionObserver === 'undefined') {
-      setVisible(true);
       return undefined;
     }
 
+    setVisible(false);
     setAnimated(true);
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -58,7 +61,8 @@ export default function ScrollReveal({ children, className = '', delay = 0 }) {
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'none' : 'translateY(24px)',
-        transition: animated
+        // 只在显现时过渡：藏起来那一下必须是瞬间的，否则首屏之下的内容会先淡出再淡入
+        transition: animated && visible
           ? `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`
           : undefined,
       }}

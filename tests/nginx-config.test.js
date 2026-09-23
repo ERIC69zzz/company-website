@@ -35,6 +35,23 @@ test('nginx: SPA 回退不检查目录，public/ 下的同名目录不能吞掉�
   );
 });
 
+test('nginx: 首页单独匹配，其余按预渲染的 $uri.html 查找，未知地址返回 404 页', () => {
+  // try_files 只认文件，"/" 是目录；没有这条精确匹配，首页会落到 404
+  assert.match(conf, /location\s*=\s*\/\s*\{\s*try_files\s+\/index\.html\s+=404;/);
+
+  const root = locations.find((l) => l.path === '/' && /try_files/.test(l.body));
+  assert.match(root.body, /try_files\s+\$uri\s+\$uri\.html\s+=404;/);
+  assert.match(root.body, /error_page\s+404\s+\/404\.html;/);
+  // 不能再回退到 index.html：那样每个不存在的地址都是一份 200 的首页（soft 404）
+  assert.doesNotMatch(root.body, /\/index\.html/);
+});
+
+test('vercel: 与 nginx 同样按 xxx.html 提供预渲染页，没有兜底到首页的 rewrite', () => {
+  assert.equal(vercel.cleanUrls, true);
+  assert.equal(vercel.trailingSlash, false);
+  assert.equal(vercel.rewrites, undefined);
+});
+
 test('nginx: 安全响应头与 vercel.json 逐条一致', () => {
   const expected = Object.fromEntries(
     vercel.headers

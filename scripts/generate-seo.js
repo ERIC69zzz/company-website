@@ -5,26 +5,13 @@
 import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { enterpriseProducts } from '../src/data/enterprise.js';
-import { products } from '../src/data/products.js';
+import { siteRoutes } from '../src/data/sitemap.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITEMAP_FILE = join(__dirname, '..', 'public', 'sitemap.xml');
 const ROBOTS_FILE = join(__dirname, '..', 'public', 'robots.txt');
 
 const SITE_URL = (process.env.SITE_URL || 'https://www.bjyzyes.com').replace(/\/+$/, '');
-
-// priority 反映页面重要性，不含 lastmod：
-// 保持输出稳定，避免每次构建都产生无意义的 git diff。
-const staticRoutes = [
-  { path: '/', priority: '1.0' },
-  { path: '/products', priority: '0.9' },
-  { path: '/enterprise', priority: '0.9' },
-  { path: '/consult', priority: '0.8' },
-  { path: '/contact', priority: '0.7' },
-  { path: '/brand', priority: '0.6' },
-  { path: '/privacy', priority: '0.3' },
-];
 
 const escapeXml = (value) =>
   String(value).replace(/[<>&'"]/g, (char) => ({
@@ -35,17 +22,7 @@ const escapeXml = (value) =>
     '"': '&quot;',
   })[char]);
 
-const urls = [
-  ...staticRoutes,
-  ...enterpriseProducts.map((product) => ({
-    path: `/enterprise/${product.id}`,
-    priority: '0.7',
-  })),
-  ...products.map((product) => ({
-    path: `/products/${product.id}`,
-    priority: '0.5',
-  })),
-];
+const urls = siteRoutes;
 
 const xml = [
   '<?xml version="1.0" encoding="UTF-8"?>',
