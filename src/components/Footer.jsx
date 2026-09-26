@@ -67,7 +67,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 hairline flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-xs text-ink-3">
+          {/* 版权、两个备案号在平板宽度下一行放不下，允许折行 */}
+          <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-1 sm:gap-x-3 text-xs text-ink-3">
             {/* 年份在构建时写进静态 HTML，跨年后到下次构建前会与浏览器算的不同，属预期 */}
             <span suppressHydrationWarning>© {new Date().getFullYear()} {copy.footer.copyright}</span>
             {/* 备案号必须链到工信部查询页，否则等于没挂 */}
@@ -78,6 +79,15 @@ export default function Footer() {
               className="hover:text-brand-600 transition-colors"
             >
               {company.icp}
+            </a>
+            {/* 公安备案号链到平台的查询页，带上备案编号才能直接查到本站 */}
+            <a
+              href={`https://beian.mps.gov.cn/#/query/webSearch?code=${company.psbCode}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand-600 transition-colors"
+            >
+              {company.psb}
             </a>
           </div>
           <div className="text-xs text-ink-3">

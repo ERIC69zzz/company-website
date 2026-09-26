@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { products } from '../src/data/products.js';
 import { company, contactCards } from '../src/data/site.js';
@@ -30,6 +30,13 @@ test('联系卡片上显示的电话、邮箱与点击拨号/发信的目标一�
     assert.equal(cards[phoneCard].content, company.phone, `${language} 电话`);
     assert.equal(cards[emailCard].content, company.email, `${language} 邮箱`);
   }
+});
+
+test('页脚的公安备案号与查询链接用的是同一个备案编号', () => {
+  assert.equal(company.psb, `京公网安备${company.psbCode}号`);
+  const footer = readFileSync(new URL('../src/components/Footer.jsx', import.meta.url), 'utf8');
+  assert.match(footer, /beian\.mps\.gov\.cn\/#\/query\/webSearch\?code=\$\{company\.psbCode\}/);
+  assert.match(footer, /\{company\.psb\}/);
 });
 
 test('英文和日文产品目录覆盖全部产品', () => {
