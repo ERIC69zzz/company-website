@@ -7,6 +7,8 @@ import { company, contactCards } from '../src/data/site.js';
 import { localizeProducts } from '../src/i18n/products.js';
 import { translations } from '../src/i18n/translations.js';
 
+const publicDir = fileURLToPath(new URL('../public', import.meta.url));
+
 test('中文、英文和日文均包含完整的核心列表', () => {
   for (const language of ['zh', 'en', 'ja']) {
     const copy = translations[language];
@@ -37,6 +39,9 @@ test('页脚的公安备案号与查询链接用的是同一个备案编号', ()
   const footer = readFileSync(new URL('../src/components/Footer.jsx', import.meta.url), 'utf8');
   assert.match(footer, /beian\.mps\.gov\.cn\/#\/query\/webSearch\?code=\$\{company\.psbCode\}/);
   assert.match(footer, /\{company\.psb\}/);
+  // 备案图标是平台提供的文件，引用了就必须真的在 public/ 里
+  assert.match(footer, /src="\/beian-mps\.png"/);
+  assert.ok(existsSync(`${publicDir}/beian-mps.png`));
 });
 
 test('英文和日文产品目录覆盖全部产品', () => {
@@ -92,8 +97,6 @@ test('中英日公司介绍包含完整的企业档案与能力内容', () => {
     }
   }
 });
-
-const publicDir = fileURLToPath(new URL('../public', import.meta.url));
 
 test('产品目录里引用的图片都真实存在，图廊不重复', () => {
   for (const product of products) {

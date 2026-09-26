@@ -80,13 +80,15 @@ export default function Footer() {
             >
               {company.icp}
             </a>
-            {/* 公安备案号链到平台的查询页，带上备案编号才能直接查到本站 */}
+            {/* 公安备案号链到平台的查询页，带上备案编号才能直接查到本站；
+                前面的徽章是平台提供的备案图标（36×40，按 2 倍图显示） */}
             <a
               href={`https://beian.mps.gov.cn/#/query/webSearch?code=${company.psbCode}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand-600 transition-colors"
+              className="inline-flex items-center gap-1 hover:text-brand-600 transition-colors"
             >
+              <img src="/beian-mps.png" alt="" width="18" height="20" className="h-4 w-auto" decoding="async" />
               {company.psb}
             </a>
           </div>
