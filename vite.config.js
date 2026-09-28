@@ -1,13 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { SITE_URL } from './src/data/domain.js'
 
-// 站点地址由构建时的 SITE_URL 决定，使同一份代码能构建出
-// 两个域名的产物（阿里云 ECS 用 youzhiyes.com，Vercel 用 bjyzyes.com）。
-const SITE_URL = (process.env.SITE_URL || 'https://www.bjyzyes.com').replace(/\/+$/, '')
-
-// index.html 里的 %SITE_URL% 占位符在构建时替换为实际域名，
-// 保证 canonical、og:url、og:image 指向自身域名而非写死一个。
+// index.html 里的 %SITE_URL% 占位符在构建时替换为规范域名（见 src/data/domain.js）。
+// 阿里云和 Vercel 两份产物因此完全相同，canonical 都指向主域名 youzhiyes.com。
 const siteUrlPlugin = () => ({
   name: 'inject-site-url',
   transformIndexHtml: (html) => html.replaceAll('%SITE_URL%', SITE_URL),
@@ -16,8 +13,8 @@ const siteUrlPlugin = () => ({
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), siteUrlPlugin()],
-  // 路由切换时要重写 canonical 与 og:url，运行时也得知道自身域名。
-  // 取自同一个 SITE_URL，不用 location.origin —— 预览域名会把 canonical 指错。
+  // 路由切换时要重写 canonical 与 og:url，运行时也得知道规范域名。
+  // 不用 location.origin：备用站和预览域名都会把 canonical 指错。
   define: { __SITE_URL__: JSON.stringify(SITE_URL) },
   build: {
     // 预渲染（scripts/prerender.mjs）靠 manifest 找到每个页面的 chunk 写 modulepreload，用完即删
