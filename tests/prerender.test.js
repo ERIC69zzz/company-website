@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildPage, chunkFiles, outputFile } from '../scripts/prerender-html.mjs';
+import { SITE_URL } from '../src/data/domain.js';
 import { siteRoutes } from '../src/data/sitemap.js';
 import { products } from '../src/data/products.js';
 import { enterpriseProducts } from '../src/data/enterprise.js';
@@ -132,4 +133,14 @@ test('结构化数据：首页声明公司信息，详情页给出面包屑', ()
   ]);
 
   assert.deepEqual(structuredData('/no-such-page', site, copy), []);
+});
+
+test('canonical 等绝对地址固定用主域名，不受环境变量影响', () => {
+  // 备用站 bjyzyes.com 的产物若声明自己是正版，两个域名就会在搜索结果里互相分流
+  assert.equal(SITE_URL, 'https://www.youzhiyes.com');
+  for (const file of ['../vite.config.js', '../scripts/generate-seo.js']) {
+    const source = readFileSync(new URL(file, import.meta.url), 'utf8');
+    assert.doesNotMatch(source, /process\.env\.SITE_URL/, `${file} 不应再读 SITE_URL 环境变量`);
+    assert.match(source, /data\/domain\.js'/, `${file} 应从 domain.js 取域名`);
+  }
 });

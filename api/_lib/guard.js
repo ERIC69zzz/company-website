@@ -98,12 +98,15 @@ const takeToken = (key, limit, windowMs) => {
   return { allowed: true, retryAfter: 0 };
 };
 
-// 统一入口：校验通过返回 null，否则返回 { status, body, headers }
-export const guard = (req, { name, limit, windowMs, globalLimit }) => {
-  if (!isAllowedOrigin(req)) {
-    return { status: 403, body: { error: 'Forbidden' } };
-  }
+// 以下三个入口的约定相同：放行返回 null，否则返回 { status, body, headers }
 
+export const checkOrigin = (req) => (
+  isAllowedOrigin(req) ? null : { status: 403, body: { error: 'Forbidden' } }
+);
+
+// 计一次数。调用方应当在确认这是一次「真会发出去」的请求之后再调用，
+// 否则填错格式、被反垃圾拦下的请求也会占用真实客户的额度。
+export const checkRateLimit = (req, { name, limit, windowMs, globalLimit }) => {
   const perIp = takeToken(`${name}:${getClientIp(req)}`, limit, windowMs);
   if (!perIp.allowed) {
     return {
@@ -127,6 +130,9 @@ export const guard = (req, { name, limit, windowMs, globalLimit }) => {
 
   return null;
 };
+
+// 来源校验 + 限流一步完成，适用于没有表单校验的接口
+export const guard = (req, options) => checkOrigin(req) || checkRateLimit(req, options);
 
 // 仅供 node:test 验证限流边界，生产代码只使用 guard。
 export const __testing = {

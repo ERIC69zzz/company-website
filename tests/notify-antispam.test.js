@@ -64,3 +64,34 @@ test('蜜罐为空字符串不影响正常提交', async () => {
   await handler(makeReq({ ...validForm, fax: '', renderedAt: Date.now() - 30_000 }), res);
   assert.equal(res.statusCode, 500);
 });
+
+test('页面打开两秒后提交不算过快：预填 + 自动填充的真人会这么快', async () => {
+  const res = makeRes();
+  delete process.env.WECOM_WEBHOOK_URL;
+  await handler(makeReq({ ...validForm, renderedAt: Date.now() - 2_000 }), res);
+  // 走到发送逻辑（未配置 webhook 返回 500），而不是被当成脚本静默丢弃
+  assert.equal(res.statusCode, 500);
+});
+
+test('手机号格式不对的提交不占每日额度', async () => {
+  delete process.env.WECOM_WEBHOOK_URL;
+  const ip = '198.51.100.20';
+  const slow = { renderedAt: Date.now() - 30_000 };
+
+  // 连续填错 10 次，每次都是 400 的格式提示，不是 429
+  for (let i = 0; i < 10; i += 1) {
+    const res = makeRes();
+    await handler(makeReq({ ...validForm, ...slow, phone: '12345' }, ip), res);
+    assert.equal(res.statusCode, 400);
+  }
+
+  // 改对之后，每天 5 次的额度仍然完整
+  for (let i = 0; i < 5; i += 1) {
+    const res = makeRes();
+    await handler(makeReq({ ...validForm, ...slow }, ip), res);
+    assert.equal(res.statusCode, 500, `第 ${i + 1} 次有效提交不应被限流`);
+  }
+  const res = makeRes();
+  await handler(makeReq({ ...validForm, ...slow }, ip), res);
+  assert.equal(res.statusCode, 429);
+});

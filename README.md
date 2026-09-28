@@ -20,7 +20,7 @@ npm run dev
 
 `/api/notify` 做了来源校验和速率限制（见 `api/_lib/guard.js`）：
 
-- `/api/notify`：每 IP 每天 5 次，单函数实例每天 100 次
+- `/api/notify`：每 IP 每天 5 次，单函数实例每天 100 次。只有通过格式校验、真要发出去的提交才计数，填错手机号不占额度
 
 限流计数保存在函数实例内存中，Vercel 扩容出多个实例时实际上限会成倍放大，
 目的是挡住脚本刷量。若后续需要严格配额，应改用 Upstash / Vercel KV 等共享存储。
@@ -36,7 +36,7 @@ npm run dev
 每次 `npm run build`（含 Vercel 部署）都会重新生成，新增产品无需手动同步。
 两个文件都含绝对域名，所以必须随构建生成，不能当静态文件手工维护。
 
-站点域名默认取 `https://www.bjyzyes.com`，可用 `SITE_URL` 环境变量覆盖。
+域名固定为主域名 `https://www.youzhiyes.com`（`src/data/domain.js`）。备用站 bjyzyes.com 的产物与之完全相同，canonical 同样指向主域名，搜索引擎把两边当成同一个站。
 
 ## 预渲染（搜索引擎收录）
 

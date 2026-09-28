@@ -1,4 +1,4 @@
-import { guard, getClientIp } from './_lib/guard.js';
+import { checkOrigin, checkRateLimit, getClientIp } from './_lib/guard.js';
 
 const MAX_NAME_LENGTH = 30;
 const MAX_CONTENT_LENGTH = 800;
@@ -20,10 +20,12 @@ const ERROR_MESSAGES = {
 // 表单提交频率天然很低，按天限流
 const RATE_LIMIT = { name: 'notify', limit: 5, windowMs: 24 * 60 * 60 * 1000, globalLimit: 100 };
 
-// 真人填完姓名、电话、需求至少要十几秒，3 秒内提交的基本是脚本。
+// 页面打开后 1 秒内就提交的基本是脚本。原先是 3 秒，但从服务入口进来时
+// 需求描述已经预填好，浏览器再一键自动填上姓名电话，手快的真人两三秒就能提交，
+// 而这里的拦截对客户显示的是「提交成功」——被误拦的线索会悄无声息地丢掉。
 // 注意：renderedAt 由前端提供，可被伪造 —— 这只挡粗糙的自动化，
 // 挡不住专门针对本站构造请求的人。配合蜜罐和限流一起用。
-const MIN_FILL_MS = 3000;
+const MIN_FILL_MS = 1000;
 
 const json = (res, status, body) => res.status(status).json(body);
 
@@ -49,13 +51,8 @@ export default async function handler(req, res) {
     return json(res, 405, { error: 'Method not allowed' });
   }
 
-  const blocked = guard(req, RATE_LIMIT);
-  if (blocked) {
-    if (blocked.headers) {
-      for (const [key, value] of Object.entries(blocked.headers)) res.setHeader(key, value);
-    }
-    return json(res, blocked.status, blocked.body);
-  }
+  const forbidden = checkOrigin(req);
+  if (forbidden) return json(res, forbidden.status, forbidden.body);
 
   // 蜜罐字段：页面上视觉隐藏，真人不会填，批量脚本会把所有字段填满。
   // 命中后返回成功而非报错，避免脚本据此调整策略。
@@ -80,6 +77,15 @@ export default async function handler(req, res) {
 
   if (!/^\+?\d{8,15}$/.test(phone)) {
     return json(res, 400, { error: errors.phone });
+  }
+
+  // 限流放在校验之后：只有真要发出去的提交才占额度。手机号少打一位、
+  // 被蜜罐拦下的请求都不计数 —— 公司和手机网络常常很多人共用一个出口 IP，
+  // 每天 5 次的额度不该被填错格式耗掉。
+  const limited = checkRateLimit(req, RATE_LIMIT);
+  if (limited) {
+    for (const [key, value] of Object.entries(limited.headers || {})) res.setHeader(key, value);
+    return json(res, limited.status, limited.body);
   }
 
   const webhookUrl = process.env.WECOM_WEBHOOK_URL;

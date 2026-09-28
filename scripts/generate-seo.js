@@ -1,17 +1,16 @@
 // 生成 sitemap.xml 与 robots.txt。
-// 两者都含绝对域名，必须随构建时的 SITE_URL 变化，
-// 否则双域名部署时其中一份会指向另一个站点。
+// 两者都含绝对域名，一律用规范域名（src/data/domain.js）：
+// 备用站 bjyzyes.com 上的这两个文件也指向主域名，与页面的 canonical 一致。
 // 由 package.json 的 prebuild 钩子在每次构建前自动执行。
 import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { SITE_URL } from '../src/data/domain.js';
 import { siteRoutes } from '../src/data/sitemap.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITEMAP_FILE = join(__dirname, '..', 'public', 'sitemap.xml');
 const ROBOTS_FILE = join(__dirname, '..', 'public', 'robots.txt');
-
-const SITE_URL = (process.env.SITE_URL || 'https://www.bjyzyes.com').replace(/\/+$/, '');
 
 const escapeXml = (value) =>
   String(value).replace(/[<>&'"]/g, (char) => ({

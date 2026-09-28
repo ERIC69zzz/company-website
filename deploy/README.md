@@ -10,8 +10,9 @@
 两边由同一次 `git push` 触发更新：Vercel 用自身的 Git 集成，ECS 用
 `.github/workflows/deploy-ecs.yml`。
 
-构建时的 `SITE_URL` 决定 canonical、og:url、sitemap、robots.txt 指向哪个域名，
-所以两份产物内容相同但自引用各自的域名，不会互相干扰 SEO。
+两份产物完全相同：canonical、og:url、sitemap、robots.txt 一律指向主域名
+youzhiyes.com（`src/data/domain.js`）。搜索引擎因此把 bjyzyes.com 当成同一个站的
+副本，收录和排名集中在主域名上，不会被两个域名分走；备用站照常可以访问。
 
 ## 首次部署
 

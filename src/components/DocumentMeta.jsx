@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../i18n/language';
 import { routeMeta, trimDescription } from '../lib/routeMeta';
 
-// 构建时注入，与 index.html 里的 %SITE_URL% 同源，
-// 双域名部署（youzhiyes.com / bjyzyes.com）各自指向自身。
+// 构建时注入的规范域名，与 index.html 里的 %SITE_URL% 同源（见 src/data/domain.js）。
+// 备用站 bjyzyes.com 上也指向主域名 youzhiyes.com。
 const SITE_URL = __SITE_URL__;
 
 const upsert = (selector, create) => {

@@ -39,11 +39,9 @@ jobs:
           npm run lint
           npm test
 
-      # 关键：用 youzhiyes.com 构建，产出的 canonical / og / sitemap / robots
-      # 都指向自身域名，而不是 Vercel 那份的 bjyzyes.com
-      - name: 构建（youzhiyes.com）
-        env:
-          SITE_URL: https://www.youzhiyes.com
+      # canonical / og / sitemap / robots 的域名固定为 youzhiyes.com（src/data/domain.js），
+      # 与 Vercel 那份产物相同，下一步校验防止被改错
+      - name: 构建
         run: npm run build
 
       - name: 校验构建产物指向正确域名
