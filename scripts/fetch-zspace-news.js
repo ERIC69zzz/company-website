@@ -8,6 +8,12 @@ const __dirname = dirname(__filename);
 const API_URL = 'https://vapi.zenithspace.net/api/v1/content/contentmedia/list?pageIndex=1&pageSize=9';
 const OUTPUT_FILE = join(__dirname, '..', 'src', 'data', 'zspace-news.json');
 
+// GitHub 的 runner 在海外，连国内接口时不时在建连阶段就失败（fetch failed）：
+// 2026 年 8–10 月 12 次定时运行里失败了 5 次，每次都是一次请求不通就整周放弃。
+// 隔一会儿重试通常就通了。
+const ATTEMPT_TIMEOUT_MS = 20000;
+const RETRY_DELAYS_MS = [5000, 15000, 30000];
+
 const MAX_TITLE_LENGTH = 200;
 const MAX_DESC_LENGTH = 500;
 
@@ -36,10 +42,17 @@ const safeText = (value, maxLength) =>
     .trim()
     .slice(0, maxLength);
 
-async function fetchNews() {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 15000);
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// fetch failed 本身不说明原因，真正的原因（ECONNRESET、ETIMEDOUT、证书问题）在 cause 里
+const describe = (err) => {
+  const cause = err.cause?.code || err.cause?.message;
+  return cause ? `${err.message}（${cause}）` : err.message;
+};
+
+async function requestOnce() {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
   try {
     const res = await fetch(API_URL, { signal: controller.signal });
     if (!res.ok) {
@@ -50,6 +63,28 @@ async function fetchNews() {
     if (data.code !== 200 || !data.data?.list) {
       throw new Error(`API error: ${data.msg || 'unknown'}`);
     }
+    return data;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+async function requestWithRetry() {
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      return await requestOnce();
+    } catch (err) {
+      const delay = RETRY_DELAYS_MS[attempt];
+      if (delay === undefined) throw err;
+      console.warn(`⚠️ 第 ${attempt + 1} 次请求失败: ${describe(err)}，${delay / 1000} 秒后重试`);
+      await sleep(delay);
+    }
+  }
+}
+
+async function fetchNews() {
+  try {
+    const data = await requestWithRetry();
 
     const news = data.data.list
       .map((item) => ({
@@ -67,7 +102,7 @@ async function fetchNews() {
     console.log(`✅ 成功抓取 ${news.length} 条极空间新闻`);
     return true;
   } catch (err) {
-    console.error('❌ 抓取失败:', err.message);
+    console.error('❌ 抓取失败:', describe(err));
 
     // API 失败时不覆盖旧数据（如果存在）
     if (existsSync(OUTPUT_FILE)) {
@@ -77,8 +112,6 @@ async function fetchNews() {
       writeFileSync(OUTPUT_FILE, '[]\n', 'utf-8');
     }
     return false;
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 
