@@ -21,6 +21,7 @@ export const company = {
   supportEmail: 'contact@youzhiyes.com',
   address: '北京市海淀区知春路113号',
   addressDetail: '银网中心8层808室',
+  postalCode: '100086',
   // 结构化数据（schema.org PostalAddress）要分段的地址，与上面两行是同一个地址
   postalAddress: {
     addressRegion: '北京市',
@@ -36,7 +37,7 @@ export const contactCards = [
   // translations.js 的 data.contactCards，写在这里不会生效。
   // 电话、邮箱带 href：手机上这两张卡是最显眼的号码，点不了就只能手抄。
   { icon: Phone, anchor: 'phone', href: company.telHref },
-  { icon: MapPin, anchor: 'address' },
+  { icon: MapPin, anchor: 'address', postalCode: company.postalCode },
   { icon: Mail, anchor: 'email', href: `mailto:${company.email}` },
   { icon: Clock, anchor: 'hours' },
 ];

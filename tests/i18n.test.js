@@ -34,6 +34,16 @@ test('联系卡片上显示的电话、邮箱与点击拨号/发信的目标一�
   }
 });
 
+test('邮编文案三种语言都有占位符，英文不含汉字；地址卡与结构化数据用同一个邮编', () => {
+  assert.match(company.postalCode, /^\d{6}$/);
+  for (const language of ['zh', 'en', 'ja']) {
+    assert.match(translations[language].common.postalCode, /\{code\}/, language);
+  }
+  assert.doesNotMatch(translations.en.common.postalCode, /\p{Script=Han}/u);
+  const addressCard = contactCards.find((card) => card.anchor === 'address');
+  assert.equal(addressCard.postalCode, company.postalCode);
+});
+
 test('页脚的公安备案号与查询链接用的是同一个备案编号', () => {
   assert.equal(company.psb, `京公网安备${company.psbCode}号`);
   const footer = readFileSync(new URL('../src/components/Footer.jsx', import.meta.url), 'utf8');

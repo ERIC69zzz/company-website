@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { hasPlayedBrandIntro, markBrandIntroPlayed } from './utils/brandIntroSession';
 import { HydrationComplete, mustMatchServer, useClientReady } from './utils/hydration';
+import { RouteCommitSignal } from './utils/pageTransition';
 import {
   BrandPage,
   ConsultPage,
@@ -143,6 +144,8 @@ export default function App() {
       <DocumentMeta />
       <BrandIntroVisitTracker />
       <ScrollToTop />
+      {/* 顶部导航的换页动画要等新页面提交后才截新画面，由它发信号 */}
+      <RouteCommitSignal />
       <div className="min-h-screen bg-surface text-ink">
         <PageNavigation />
         <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>

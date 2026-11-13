@@ -255,6 +255,45 @@ body {
   }
 }
 
+/* ===== 换页过渡（顶部导航触发，见 src/utils/pageTransition.js） ===== */
+
+/* 顶栏在每个页面都长一样，单独成组、位置不做动画：换页时它原地不动，
+   只有下面的页面内容在变。每个页面同一时刻只有一个 .site-nav，名字不会重复。 */
+.site-nav {
+  view-transition-name: site-nav;
+}
+
+::view-transition-group(site-nav) {
+  animation: none;
+}
+
+/* 旧页面快速淡出，新页面稍晚一点淡入并轻微上浮：
+   比默认的等长交叉淡化更利落，两页内容也不会叠在一起糊成一片 */
+::view-transition-old(root) {
+  animation: page-leave 140ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: page-enter 340ms cubic-bezier(0.2, 0.7, 0.3, 1) 60ms both;
+}
+
+@keyframes page-leave {
+  to { opacity: 0; }
+}
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+/* 脚本里已经对「减少动态效果」直接跳转，这里再兜一层 */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 /* ===== 排版 ===== */
 
 /* 全大写 + 大字距的小标签，是这类界面最有辨识度的元素 */

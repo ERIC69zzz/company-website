@@ -53,6 +53,11 @@ export default function ContactPage() {
                   <div className="text-base font-bold text-ink mb-1">{item.content}</div>
                 )}
                 <div className="text-xs text-ink-3">{item.desc}</div>
+                {item.postalCode && (
+                  <div className="text-xs text-ink-3 mt-0.5">
+                    {copy.common.postalCode.replace('{code}', item.postalCode)}
+                  </div>
+                )}
               </div>
             ))}
           </div>

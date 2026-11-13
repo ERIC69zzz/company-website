@@ -37,6 +37,7 @@ export default function Footer() {
             </p>
             <div className="text-xs text-ink-3">
               <div>{copy.footer.address}</div>
+              <div className="mt-1">{copy.common.postalCode.replace('{code}', company.postalCode)}</div>
               <div className="mt-1">{copy.footer.phone}</div>
             </div>
           </div>
