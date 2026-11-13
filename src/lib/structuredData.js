@@ -21,6 +21,7 @@ const organization = (siteUrl) => ({
   address: {
     '@type': 'PostalAddress',
     ...company.postalAddress,
+    postalCode: company.postalCode,
     addressCountry: 'CN',
   },
   contactPoint: {

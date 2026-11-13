@@ -61,6 +61,9 @@ export default function PrivacyPage() {
                 {company.address} {company.addressDetail}
               </div>
               <div className="text-ink-2">
+                {copy.common.postalCode.replace('{code}', company.postalCode)}
+              </div>
+              <div className="text-ink-2">
                 {p.phoneLabel}：
                 <a href={company.telHref} className="text-brand-600 hover:text-brand-700">
                   {company.phone}

@@ -4,6 +4,7 @@ import { Check, ChevronDown, Languages, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import BrandWordmark from './BrandWordmark';
 import { languageOptions, useLanguage } from '../i18n/language';
+import { navigateWithTransition, prefetchRoute } from '../utils/pageTransition';
 
 // open / onOpenChange 由 Navbar 托管：语言菜单和移动端导航必须互斥，
 // 否则语言浮层会盖住展开的导航项，且点击被浮层吃掉，导航项按不动。
@@ -172,8 +173,9 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
     e.preventDefault();
     closePanels();
 
+    // 换页走过渡动画（见 utils/pageTransition.js）；首页内的锚点只是平滑滚动，不算换页
     if (item.type === 'route') {
-      navigate(item.href);
+      navigateWithTransition(navigate, item.href);
       return;
     }
 
@@ -181,7 +183,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
       const el = document.querySelector(item.href);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     } else {
-      navigate(`/${item.href}`);
+      navigateWithTransition(navigate, `/${item.href}`);
     }
   };
 
@@ -195,14 +197,14 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
       return;
     }
 
-    navigate('/');
+    navigateWithTransition(navigate, '/');
   };
 
   return (
     <nav
       ref={navRef}
       inert={introActive}
-      className={`${brandTargetRef ? 'home-entry__nav' : ''} ${sticky ? 'sticky' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`site-nav ${brandTargetRef ? 'home-entry__nav' : ''} ${sticky ? 'sticky' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'chrome' : 'bg-surface/80 backdrop-blur-md'
       }`}
     >
@@ -232,6 +234,8 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
                 key={item.href}
                 href={hrefFor(item)}
                 onClick={(e) => handleNavClick(e, item)}
+                onPointerEnter={() => prefetchRoute(hrefFor(item))}
+                onFocus={() => prefetchRoute(hrefFor(item))}
                 aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
                 className="px-1.5 xl:px-3 py-2 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 transition-colors cursor-pointer"
               >
@@ -241,6 +245,8 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             <a
               href="/consult"
               onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
+              onPointerEnter={() => prefetchRoute('/consult')}
+              onFocus={() => prefetchRoute('/consult')}
               className="ml-1 xl:ml-3 px-3 xl:px-5 py-2 text-sm font-semibold text-white bg-brand-900 hover:bg-brand-800 rounded-lg transition-colors"
             >
               {copy.nav.consult}
@@ -277,6 +283,8 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
                 key={item.href}
                 href={hrefFor(item)}
                 onClick={(e) => handleNavClick(e, item)}
+                onPointerEnter={() => prefetchRoute(hrefFor(item))}
+                onFocus={() => prefetchRoute(hrefFor(item))}
                 aria-current={item.type === 'route' && location.pathname === item.href ? 'page' : undefined}
                 className="block px-3 py-2.5 text-sm font-medium text-ink-2 hover:text-brand-600 rounded-lg hover:bg-surface-2 cursor-pointer"
               >
@@ -286,6 +294,8 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             <a
               href="/consult"
               onClick={(e) => handleNavClick(e, { href: '/consult', type: 'route' })}
+              onPointerEnter={() => prefetchRoute('/consult')}
+              onFocus={() => prefetchRoute('/consult')}
               className="block px-3 py-2.5 text-sm font-semibold text-white bg-brand-900 rounded-lg mt-2 cursor-pointer"
             >
               {copy.nav.consult}
