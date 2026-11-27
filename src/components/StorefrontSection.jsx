@@ -14,15 +14,10 @@ export default function StorefrontSection() {
   const s = copy.business.home;
 
   return (
-    <section id="products" className="storefront" aria-labelledby="storefront-title">
+    <section id="products" className="storefront" aria-labelledby="storefront-personal-title">
       <div className="storefront__inner">
-        <header className="storefront__heading">
-          <h1 id="storefront-title">{s.title}</h1>
-          <p className="storefront__description">{s.description}</p>
-        </header>
-
         <div className="storefront__group-label">
-          <h2>{s.personal}</h2>
+          <h2 id="storefront-personal-title">{s.personal}</h2>
         </div>
         <div className="storefront__products">
           {categories.map(({ id, label }) => (
@@ -36,11 +31,6 @@ export default function StorefrontSection() {
             </Link>
           ))}
         </div>
-        <div className="storefront__actions">
-          <Link to="/products" className="storage-button">{s.allProducts}<ArrowRight aria-hidden="true" /></Link>
-          <Link to="/consult" className="storage-text-link">{s.consult}<ArrowUpRight aria-hidden="true" /></Link>
-        </div>
-
         <Link to="/enterprise" className="storefront__enterprise">
           <div className="storefront__enterprise-copy">
             <p className="storefront__business-label">{s.business}</p>

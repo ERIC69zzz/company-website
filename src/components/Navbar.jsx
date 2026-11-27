@@ -1,9 +1,11 @@
-import { useCallback, useState, useEffect, useId, useRef } from 'react';
+import { useCallback, useState, useEffect, useLayoutEffect, useId, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Check, ChevronDown, Languages, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import BrandWordmark from './BrandWordmark';
 import { languageOptions, useLanguage } from '../i18n/language';
+import { hasPlayedBrandIntro, markBrandIntroPlayed } from '../utils/brandIntroSession';
+import { whenHydrated } from '../utils/hydration';
 import { navigateWithTransition, prefetchRoute } from '../utils/pageTransition';
 
 // open / onOpenChange 由 Navbar 托管：语言菜单和移动端导航必须互斥，
@@ -111,8 +113,9 @@ function LanguageSwitcher({ compact = false, open, onOpenChange }) {
   );
 }
 
-export default function Navbar({ sticky = false, brandTargetRef, introActive = false }) {
+export default function Navbar({ sticky = false }) {
   const [scrolled, setScrolled] = useState(false);
+  const [animateWordmark, setAnimateWordmark] = useState(false);
   // 顶栏同时只允许展开一个浮层。桌面端和移动端的语言开关各有自己的标识，
   // 这样被 display:none 隐藏的那一个不会跟着打开、抢走外部点击的判定。
   const [openPanel, setOpenPanel] = useState(null);
@@ -135,6 +138,16 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
     { label: copy.nav.brandWorld, href: '/brand', type: 'route' },
     { label: copy.nav.contact, href: '/contact', type: 'route' },
   ];
+
+  // 预渲染直接展示字标，首次访问首页才在导航栏内播放显现动画。
+  useLayoutEffect(() => whenHydrated(() => {
+    const { hash } = window.location;
+    if (isHome && (!hash || hash === '#home') && !hasPlayedBrandIntro()
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setAnimateWordmark(true);
+    }
+    markBrandIntroPlayed();
+  }), [isHome]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -203,8 +216,7 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
   return (
     <nav
       ref={navRef}
-      inert={introActive}
-      className={`site-nav ${brandTargetRef ? 'home-entry__nav' : ''} ${sticky ? 'sticky' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`site-nav ${sticky ? 'sticky' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'chrome' : 'bg-surface/80 backdrop-blur-md'
       }`}
     >
@@ -214,17 +226,13 @@ export default function Navbar({ sticky = false, brandTargetRef, introActive = f
             to="/"
             onClick={handleLogoClick}
             aria-label={copy.nav.home}
-            className={`brand-lockup shrink-0 text-lg group${brandTargetRef ? ' home-entry__lockup' : ''}`}
+            className="brand-lockup shrink-0 text-lg group"
           >
             <span className="brand-lockup__logo">
               <Logo className="block h-full w-full" />
             </span>
-            <span
-              ref={brandTargetRef}
-              aria-label={brandName}
-              lang="zh-CN"
-            >
-              <BrandWordmark name={brandName} />
+            <span aria-label={brandName} lang="zh-CN">
+              <BrandWordmark name={brandName} animated={animateWordmark} />
             </span>
           </Link>
 

@@ -5,6 +5,7 @@ export const businessCopy = {
       title: '硬盘、固态与 NAS 私有云',
       description: '从日常备份到企业部署，为每一份数据选择合适的存储。',
       personal: '个人与家庭',
+      playVideo: '播放背景视频', pauseVideo: '暂停背景视频',
       categories: {
         hdd: { title: '机械硬盘', detail: '大容量存储 · 文件备份' },
         ssd: { title: '固态硬盘', detail: '电脑升级 · 高速读写' },
@@ -113,6 +114,7 @@ export const businessCopy = {
       title: 'Hard drives, SSDs & private cloud NAS',
       description: 'Find the right storage for everyday backups and business deployments.',
       personal: 'Personal & home',
+      playVideo: 'Play background video', pauseVideo: 'Pause background video',
       categories: {
         hdd: { title: 'Hard drives', detail: 'More capacity · File backups' },
         ssd: { title: 'Solid state drives', detail: 'PC upgrades · Fast access' },
@@ -218,6 +220,7 @@ export const businessCopy = {
       title: 'HDD・SSD・プライベートクラウドNAS',
       description: '日々のバックアップから法人導入まで、用途に合ったストレージを。',
       personal: '個人・ご家庭向け',
+      playVideo: '背景動画を再生', pauseVideo: '背景動画を一時停止',
       categories: {
         hdd: { title: 'ハードディスク', detail: '大容量保存 · バックアップ' },
         ssd: { title: 'SSD', detail: 'PCの増強 · 高速アクセス' },

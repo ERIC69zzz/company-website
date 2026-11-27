@@ -1,135 +1,60 @@
-import { useEffect, useRef } from 'react';
-import Logo from './Logo';
-import BrandWordmark from './BrandWordmark';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowRight, ChevronRight, Pause, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../i18n/language';
 
-const INTRO_NAME = '友质科技';
-const DOCK_DURATION = 1150;
-
-export default function HeroSection({ brandTargetRef, onDock, onComplete }) {
-  const introRef = useRef(null);
+export default function HeroSection() {
+  const { copy } = useLanguage();
+  const s = copy.business.home;
+  const videoRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    const intro = introRef.current;
-    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let disposed = false;
-    let finished = false;
-    let pauseTimer;
-    let resizeFrame;
-    let dockingAnimation;
-
-    const finish = () => {
-      if (disposed || finished) return;
-      finished = true;
-      clearTimeout(pauseTimer);
-      onComplete();
+    const video = videoRef.current;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const applyPreference = () => {
+      if (motion.matches) video.pause();
+      else video.play().catch(() => {}); // 浏览器限制自动播放时保留手动播放入口。
     };
+    applyPreference();
+    motion.addEventListener('change', applyPreference);
+    return () => motion.removeEventListener('change', applyPreference);
+  }, []);
 
-    const getDockKeyframes = () => {
-      // 外层保留未缩放的布局框，窗口变化时仍能取得准确的起点。
-      const origin = intro.querySelector('.brand-intro__placement').getBoundingClientRect();
-      const destination = brandTargetRef.current.closest('a').getBoundingClientRect();
-      return [
-        { transform: 'translate(0, 0) scale(1)', transformOrigin: 'top left' },
-        {
-          transform: `translate(${destination.left - origin.left}px, ${destination.top - origin.top}px) scale(${destination.height / origin.height})`,
-          transformOrigin: 'top left',
-        },
-      ];
-    };
-
-    const dock = () => {
-      if (disposed || finished) return;
-      const composition = intro.querySelector('.brand-intro__composition');
-      const target = brandTargetRef.current?.closest('a');
-      if (!target || motionPreference.matches || !composition.getBoundingClientRect().height || !target.getBoundingClientRect().height) {
-        finish();
-        return;
-      }
-
-      // 开场与导航共用图文比例，整体缩放即可落位，不再单独调整字距和 Logo。
-      onDock();
-      dockingAnimation = composition.animate(getDockKeyframes(), {
-        duration: DOCK_DURATION,
-        easing: 'cubic-bezier(0.65, 0, 0.25, 1)',
-        fill: 'forwards',
-      });
-      dockingAnimation.finished.then(finish, finish);
-    };
-
-    const onWheel = event => {
-      if (event.deltaX || event.deltaY) finish();
-    };
-    const onResize = () => {
-      if (resizeFrame || !dockingAnimation) return;
-      // 页面初始化和移动端浏览器也会触发 resize，只更新落点，不跳过开场。
-      resizeFrame = requestAnimationFrame(() => {
-        resizeFrame = undefined;
-        if (disposed || finished) return;
-        dockingAnimation.effect.setKeyframes(getDockKeyframes());
-      });
-    };
-    // 标签页切到后台后浏览器会冻结动画，入场动画的 finished 不再 resolve，
-    // 开场就停在原地、首页内容一直是 inert + 透明的白屏。没被看到的开场
-    // 不值得等，直接按已播放收尾；回到前台时看到的是正常首页。
-    const onVisibilityChange = () => {
-      if (document.hidden) finish();
-    };
-    const onKeyDown = event => {
-      if (!['Tab', 'Escape', ' ', 'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End'].includes(event.key)) return;
-      if (event.key === 'Tab') {
-        event.preventDefault();
-        // 先开放导航，再把键盘焦点交给品牌链接，避免跳到页尾。
-        requestAnimationFrame(() => brandTargetRef.current?.closest('a')?.focus());
-      }
-      finish();
-    };
-
-    // scroll 也可能来自刷新恢复位置或布局变化，不能作为用户跳过的依据。
-    window.addEventListener('wheel', onWheel, { passive: true });
-    window.addEventListener('touchmove', finish, { passive: true });
-    window.addEventListener('resize', onResize);
-    window.addEventListener('keydown', onKeyDown);
-    document.addEventListener('visibilitychange', onVisibilityChange);
-    motionPreference.addEventListener('change', finish);
-
-    // 等实际入场动画全部完成后稍作停留，避免时长调整后提前移位。
-    // document.hidden 要在这里单独判一次：在后台标签页里打开时不会有
-    // visibilitychange 事件，只靠监听器接不住这种情况。
-    if (!intro.getAnimations || !intro.animate || motionPreference.matches || document.hidden) {
-      pauseTimer = setTimeout(finish, 0);
-    } else {
-      const entranceAnimations = intro.getAnimations({ subtree: true });
-      Promise.allSettled(entranceAnimations.map(animation => animation.finished)).then(() => {
-        if (!disposed && !finished) pauseTimer = setTimeout(dock, 420);
-      });
-    }
-
-    return () => {
-      disposed = true;
-      clearTimeout(pauseTimer);
-      cancelAnimationFrame(resizeFrame);
-      dockingAnimation?.cancel();
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('touchmove', finish);
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('keydown', onKeyDown);
-      document.removeEventListener('visibilitychange', onVisibilityChange);
-      motionPreference.removeEventListener('change', finish);
-    };
-  }, [brandTargetRef, onDock, onComplete]);
+  const togglePlayback = () => {
+    const video = videoRef.current;
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  };
 
   return (
-    <section ref={introRef} className="brand-intro" aria-label="品牌开场">
-      <div className="brand-intro__backdrop" aria-hidden="true" />
-      <div className="brand-intro__placement">
-        <div className="brand-lockup brand-intro__composition">
-          <div className="brand-lockup__logo brand-intro__reveal" aria-hidden="true">
-            <Logo className="block h-full w-full" />
+    <section className="home-hero" aria-labelledby="home-hero-title">
+      <video
+        ref={videoRef}
+        className="home-hero__background"
+        src="/media/home-loop.mp4"
+        poster="/media/home-loop.webp"
+        preload="none"
+        aria-hidden="true"
+        muted
+        loop
+        playsInline
+        onPlaying={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
+      <div className="home-hero__foreground">
+        <div className="home-hero__copy">
+          <h1 id="home-hero-title">{s.title}</h1>
+          <p>{s.description}</p>
+          <div className="home-hero__actions">
+            <Link to="/products" className="home-hero__primary">{s.allProducts}<ArrowRight aria-hidden="true" /></Link>
+            <Link to="/consult" className="home-hero__secondary">{s.consult}<ChevronRight aria-hidden="true" /></Link>
           </div>
-          <h1 className="brand-intro__wordmark" lang="zh-CN">
-            <BrandWordmark name={INTRO_NAME} animated />
-          </h1>
         </div>
+        <button type="button" className="home-hero__playback" onClick={togglePlayback}
+          aria-label={playing ? s.pauseVideo : s.playVideo} title={playing ? s.pauseVideo : s.playVideo}>
+          {playing ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+        </button>
       </div>
     </section>
   );

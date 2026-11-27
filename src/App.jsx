@@ -1,4 +1,4 @@
-import { Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Suspense, useLayoutEffect } from 'react';
 import { Routes, Route, useLocation, useSearchParams } from 'react-router-dom';
 import DocumentMeta from './components/DocumentMeta';
 import Navbar from './components/Navbar';
@@ -10,8 +10,7 @@ import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import { LanguageProvider } from './i18n/LanguageContext';
-import { hasPlayedBrandIntro, markBrandIntroPlayed } from './utils/brandIntroSession';
-import { HydrationComplete, mustMatchServer, useClientReady } from './utils/hydration';
+import { HydrationComplete, useClientReady } from './utils/hydration';
 import { RouteCommitSignal } from './utils/pageTransition';
 import {
   BrandPage,
@@ -25,50 +24,12 @@ import {
   ProductsPage,
 } from './routes';
 
-// 带锚点进来、偏好减少动效、本次会话已经播过，都跳过开场
-const shouldSkipIntro = (hash) =>
-  (hash && hash !== '#home')
-  || window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  || hasPlayedBrandIntro();
-
 function HomePage() {
-  const { hash } = useLocation();
-  const brandTargetRef = useRef(null);
-  // 预渲染的首页停在「开场中」：没播过的访客 JS 还没到时开场就已经开始，
-  // hydrate 也得先按这个状态渲染，回访等情况在下面绘制前再纠正。
-  const [fromPrerender] = useState(mustMatchServer);
-  const [introPhase, setIntroPhase] = useState(() => (
-    fromPrerender || !shouldSkipIntro(hash) ? 'intro' : 'ready'
-  ));
-
-  // 判断只做一次并记住：下面的 effect 挂载时就会标记「已播放」，
-  // StrictMode 在开发环境重跑 layout effect 时再判断，首访也会被误判成回访。
-  const skipAfterHydration = useRef(null);
-  useLayoutEffect(() => {
-    if (!fromPrerender) return;
-    skipAfterHydration.current ??= shouldSkipIntro(window.location.hash);
-    if (skipAfterHydration.current) setIntroPhase('ready');
-  }, [fromPrerender]);
-  const beginDocking = useCallback(() => setIntroPhase('docking'), []);
-  const finishIntro = useCallback(() => setIntroPhase('ready'), []);
-  const introActive = introPhase !== 'ready';
-
-  useEffect(() => {
-    // Mark on entry rather than completion: leaving midway and returning should not replay it.
-    markBrandIntroPlayed();
-  }, []);
-
   return (
-    <div id="home" className="home-entry" data-intro-phase={introPhase}>
-      {introActive && (
-        <HeroSection
-          brandTargetRef={brandTargetRef}
-          onDock={beginDocking}
-          onComplete={finishIntro}
-        />
-      )}
-      <Navbar sticky brandTargetRef={brandTargetRef} introActive={introActive} />
-      <main className="home-entry__content" inert={introActive}>
+    <div id="home">
+      <Navbar sticky />
+      <main>
+        <HeroSection />
         <StorefrontSection />
         <ScenarioSection />
         <ServicesSection />
@@ -77,17 +38,6 @@ function HomePage() {
       </main>
     </div>
   );
-}
-
-function BrandIntroVisitTracker() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    // If the first landing page is not the homepage, returning home is already a revisit.
-    if (pathname !== '/') markBrandIntroPlayed();
-  }, [pathname]);
-
-  return null;
 }
 
 function PageNavigation() {
@@ -142,7 +92,6 @@ export default function App() {
   return (
     <LanguageProvider>
       <DocumentMeta />
-      <BrandIntroVisitTracker />
       <ScrollToTop />
       {/* 顶部导航的换页动画要等新页面提交后才截新画面，由它发信号 */}
       <RouteCommitSignal />
