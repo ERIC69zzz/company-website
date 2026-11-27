@@ -5,7 +5,6 @@ import { useLayoutEffect, useRef, useState } from 'react';
 // 此前一律从 opacity: 0 起步、靠 IntersectionObserver 点亮，有两个后果：
 //   1. 首屏内的内容也会缺一帧 —— IO 回调发生在首次绘制之后
 //   2. 标签页不可见时 IO 根本不回调，页面会一直空白到用户切回前台
-//      （与品牌开场卡死是同一个病灶，见 HeroSection）
 //
 // 初值必须是「可见」：预渲染的静态 HTML 按初值输出，搜索引擎和 JS 还没到的访客
 // 看到的就是它。首屏之下的元素在绘制前才被藏起来。

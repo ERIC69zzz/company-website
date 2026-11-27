@@ -68,14 +68,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 开场覆盖在已排好的内容之上，结束时不滚动页面、不留下空白占位。 */
-.home-entry__nav {
-  transition: opacity 700ms ease;
+/* 与导航栏的 h-16 / lg:h-20 及底部分隔线同步，视频首屏使用剩余高度。 */
+#home {
+  --home-nav-height: calc(4rem + 1px);
 }
 
-.home-entry__content {
-  opacity: 1;
-  transform: none;
+@media (min-width: 64rem) {
+  #home {
+    --home-nav-height: calc(5rem + 1px);
+  }
+}
+
+#home > .site-nav:not(.chrome) {
+  border-bottom: 1px solid transparent;
 }
 
 .brand-lockup {
@@ -125,98 +130,36 @@ body {
   justify-content: space-between;
 }
 
-.home-entry[data-intro-phase='intro'] .home-entry__nav,
-.home-entry[data-intro-phase='intro'] .home-entry__content {
-  opacity: 0;
-}
-
-.home-entry[data-intro-phase='intro'] .home-entry__content {
-  transform: translateY(28px);
-}
-
-.home-entry[data-intro-phase='docking'] .home-entry__content {
-  animation: home-content-enter 1150ms cubic-bezier(0.19, 1, 0.22, 1) both;
-}
-
-.home-entry:not([data-intro-phase='ready']) .home-entry__lockup {
-  visibility: hidden;
-}
-
-@keyframes home-content-enter {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.brand-intro {
-  position: fixed;
-  inset: 0;
-  z-index: 70;
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  height: 100svh;
-  padding-inline: 6vw;
-  overflow: hidden;
-  color: var(--color-ink);
-  pointer-events: none;
-}
-
-.brand-intro__backdrop {
-  position: absolute;
-  inset: 0;
-  background: #ffffff;
-  opacity: 1;
-  transition: opacity 1100ms ease;
-}
-
-.home-entry[data-intro-phase='docking'] .brand-intro__backdrop {
-  opacity: 0;
-}
-
-.brand-intro__placement {
-  position: relative;
-  display: flex;
-  font-size: clamp(2rem, 11vw, 9rem);
-}
-
-.brand-intro__wordmark {
-  margin: 0;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-}
-
 .brand-intro__contour {
   position: absolute;
   inset: 0;
   color: transparent;
-  -webkit-text-stroke: clamp(0.6px, 0.008em, 1.1px) var(--brand-outline-color, var(--color-ink));
+  -webkit-text-stroke: 0.4px var(--brand-outline-color, var(--color-ink));
   pointer-events: none;
-  animation: brand-wordmark-outline 2400ms ease-out 120ms both;
+  animation: brand-wordmark-outline 750ms ease-out both;
 }
 
 .brand-intro__reveal {
-  /* 轮廓先显现；中文填充、Logo 与英文再使用相同的柔边遮罩同步显现。 */
+  /* 中英文字标沿同一方向逐渐填充，旁边的图形标记保持可见。 */
+  display: inline-block;
   mask-image: linear-gradient(90deg, #000 42%, transparent 58%);
   mask-size: 250% 100%;
   mask-repeat: no-repeat;
-  animation: brand-lockup-reveal 1600ms cubic-bezier(0.33, 0, 0.2, 1) 900ms both;
+  animation: brand-lockup-reveal 720ms cubic-bezier(0.33, 0, 0.2, 1) 180ms both;
 }
 
-/* 窄屏不画描边层。
-   字标在手机上只有 ~41px，而 -webkit-text-stroke 的 clamp 会撞到 0.6px 下限，
-   相对字号比桌面粗近一倍；叠加 iOS Safari 对描边的光栅化方式，
-   「友质科技」这种笔画密集的汉字会糊成一团（实机 Safari 已复现）。
-   去掉描边后由填充字标独自完成遮罩显现，观感完整且不依赖描边渲染差异。 */
+/* 英文字母保持两端对齐；窄屏的小字标只保留填充动画。 */
+.brand-lockup__letters.brand-intro__reveal {
+  display: flex;
+}
+
 @media (max-width: 640px) {
   .brand-intro__contour {
     display: none;
   }
 
   .brand-intro__reveal {
-    /* 没有轮廓打头阵，填充层不再需要等待，提前开始并缩短时长 */
-    animation-delay: 200ms;
-    animation-duration: 1300ms;
+    animation-delay: 0ms;
   }
 }
 
@@ -235,12 +178,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-entry__nav,
-  .brand-intro__backdrop {
-    transition: none;
-  }
-
-  .home-entry__content,
   .brand-intro__contour,
   .brand-intro__reveal {
     animation: none;
