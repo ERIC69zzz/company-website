@@ -13,6 +13,7 @@ export const enterpriseSeries = [
 export const enterpriseProducts = [
   {
     id: 'zspace-p8-plus',
+    buyUrl: 'https://3.cn/-3dQTzTL?jkl=@HBaz85zYS3@',
     name: 'P8+',
     brand: '极空间',
     series: 'ZES',

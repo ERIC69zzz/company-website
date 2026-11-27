@@ -6,8 +6,23 @@ import { products } from '../src/data/products.js';
 import { company, contactCards } from '../src/data/site.js';
 import { localizeProducts } from '../src/i18n/products.js';
 import { translations } from '../src/i18n/translations.js';
+import { resolvePreferredLanguage } from '../src/i18n/language.js';
 
 const publicDir = fileURLToPath(new URL('../public', import.meta.url));
+
+test('首次访问按浏览器偏好顺序匹配支持的语言和地区变体', () => {
+  assert.equal(resolvePreferredLanguage(null, ['en-GB', 'zh-CN']), 'en');
+  assert.equal(resolvePreferredLanguage(null, ['de-DE', 'ja-JP', 'en']), 'ja');
+  assert.equal(resolvePreferredLanguage(null, ['zh-Hant-TW', 'en-US']), 'zh');
+  assert.equal(resolvePreferredLanguage(null, ['fr']), 'zh');
+  assert.equal(resolvePreferredLanguage(null, []), 'zh');
+});
+
+test('保留已保存的语言，遇到无效旧值时继续识别浏览器语言', () => {
+  assert.equal(resolvePreferredLanguage('zh', ['en-US']), 'zh');
+  assert.equal(resolvePreferredLanguage('en', ['ja-JP']), 'en');
+  assert.equal(resolvePreferredLanguage('unknown', ['en-US']), 'en');
+});
 
 test('中文、英文和日文均包含完整的核心列表', () => {
   for (const language of ['zh', 'en', 'ja']) {

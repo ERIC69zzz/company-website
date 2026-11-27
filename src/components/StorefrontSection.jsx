@@ -22,7 +22,15 @@ export default function StorefrontSection() {
         <div className="storefront__products">
           {categories.map(({ id, label }) => (
             <Link key={id} to={`/products?category=${id}`} className="storefront__product">
-              <StorageVisual kind={id} />
+              <img
+                className="storefront__product-photo"
+                src={`/categories/${id}.webp`}
+                alt=""
+                width="800"
+                height="480"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="storefront__product-copy">
                 <span className="storefront__product-type" lang="en">{label}</span>
                 <h3>{s.categories[id].title}<ArrowUpRight aria-hidden="true" /></h3>

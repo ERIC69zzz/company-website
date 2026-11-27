@@ -4,6 +4,7 @@ import { company } from '../data/site';
 import { enterpriseProductInquiryUrl, findEnterpriseProduct } from '../data/enterprise';
 import PageHeader from '../components/PageHeader';
 import ProductGallery from '../components/ProductGallery';
+import ProductPurchaseButton from '../components/ProductPurchaseButton';
 import NotFoundPage from './NotFoundPage';
 import { useLanguage } from '../i18n/language';
 
@@ -15,6 +16,12 @@ export default function EnterpriseProductPage() {
   const text = product ? e.products[product.id] : null;
 
   if (!product || !text) return <NotFoundPage />;
+  const buyButton = product.buyUrl && <ProductPurchaseButton href={product.buyUrl} />;
+  const inquiryButton = (
+    <Link to={enterpriseProductInquiryUrl(product.id)} className="storage-button">
+      {e.inquiry}<ArrowRight aria-hidden="true" />
+    </Link>
+  );
 
   return (
     <main className="enterprise-page">
@@ -37,12 +44,12 @@ export default function EnterpriseProductPage() {
             <p className="product-detail__summary">{text.summary}</p>
 
             <div className="product-detail__actions">
-              <Link to={enterpriseProductInquiryUrl(product.id)} className="storage-button">
-                {e.inquiry}<ArrowRight aria-hidden="true" />
-              </Link>
-              <a href={company.telHref} className="storage-text-link">
-                <Phone aria-hidden="true" />{company.phone}
-              </a>
+              {buyButton || inquiryButton}
+              {!product.buyUrl && (
+                <a href={company.telHref} className="storage-text-link">
+                  <Phone aria-hidden="true" />{company.phone}
+                </a>
+              )}
             </div>
 
             {product.images.length === 1 && (
@@ -85,12 +92,10 @@ export default function EnterpriseProductPage() {
       <div className="enterprise-container">
         <section className="enterprise-cta" aria-labelledby="product-cta">
           <div>
-            <h2 id="product-cta">{e.ctaTitle}</h2>
-            <p>{e.ctaDescription}</p>
+            <h2 id="product-cta">{product.buyUrl ? product.name : e.ctaTitle}</h2>
+            <p>{product.buyUrl ? copy.productDetail.buyHint : e.ctaDescription}</p>
           </div>
-          <Link to={enterpriseProductInquiryUrl(product.id)} className="storage-button">
-            {e.inquiry}<ArrowRight aria-hidden="true" />
-          </Link>
+          {buyButton || inquiryButton}
         </section>
       </div>
     </main>
