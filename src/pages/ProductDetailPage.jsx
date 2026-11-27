@@ -1,10 +1,11 @@
-import { ArrowRight, ExternalLink, Phone, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { products } from '../data/products';
 import { company } from '../data/site';
 import PageHeader from '../components/PageHeader';
 import ProductGallery from '../components/ProductGallery';
 import ProductImage from '../components/ProductImage';
+import ProductPurchaseButton from '../components/ProductPurchaseButton';
 import NotFoundPage from './NotFoundPage';
 import { useLanguage } from '../i18n/language';
 import { localizeProducts } from '../i18n/products';
@@ -25,6 +26,8 @@ export default function ProductDetailPage() {
   }
 
   const highlights = product.highlights || [];
+  const buyUrl = product.buyUrl;
+  const buyButton = buyUrl && <ProductPurchaseButton href={buyUrl} />;
 
   return (
     <div className="min-h-screen bg-surface pt-16 lg:pt-20 pb-16">
@@ -64,35 +67,18 @@ export default function ProductDetailPage() {
               ))}
             </div>
 
-            {/* 有京东链接就把「立即购买」作为主按钮，没有的回落到电话咨询 ——
-                留一个点不出结果的购买按钮比没有购买按钮更糟。 */}
             <div className="product-detail__actions">
-              {product.buyUrl ? (
-                <a
-                  href={product.buyUrl}
-                  className="storage-button"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${copy.productDetail.buy}（${copy.productDetail.buyHint}）`}
-                >
-                  <ShoppingCart aria-hidden="true" />
-                  {copy.productDetail.buy}
-                  <ExternalLink aria-hidden="true" />
-                </a>
-              ) : (
-                <a href={company.telHref} className="storage-button">
-                  <Phone aria-hidden="true" />
-                  {copy.productDetail.phone}
-                </a>
+              {buyButton || (
+                <>
+                  <a href={company.telHref} className="storage-button">
+                    <Phone aria-hidden="true" />{copy.productDetail.phone}
+                  </a>
+                  <Link to="/consult" className="storage-text-link">
+                    {copy.productDetail.online}<ArrowRight aria-hidden="true" />
+                  </Link>
+                </>
               )}
-              <Link to="/consult" className="storage-text-link">
-                {copy.productDetail.online}<ArrowRight aria-hidden="true" />
-              </Link>
             </div>
-
-            {product.buyUrl && (
-              <p className="product-detail__note">{copy.productDetail.buyHint}</p>
-            )}
 
             {product.images?.length === 1 && (
               <p className="product-detail__note">{copy.common.gallery.single}</p>
@@ -144,12 +130,14 @@ export default function ProductDetailPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <section className="enterprise-cta" aria-labelledby="product-cta">
           <div>
-            <h2 id="product-cta">{copy.productDetail.ctaTitle}</h2>
-            <p>{copy.productDetail.ctaDesc}</p>
+            <h2 id="product-cta">{buyUrl ? product.name : copy.productDetail.ctaTitle}</h2>
+            <p>{buyUrl ? copy.productDetail.buyHint : copy.productDetail.ctaDesc}</p>
           </div>
-          <Link to="/consult" className="storage-button">
-            {copy.productDetail.online}<ArrowRight aria-hidden="true" />
-          </Link>
+          {buyButton || (
+            <Link to="/consult" className="storage-button">
+              {copy.productDetail.online}<ArrowRight aria-hidden="true" />
+            </Link>
+          )}
         </section>
       </div>
     </div>

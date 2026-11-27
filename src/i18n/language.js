@@ -15,3 +15,14 @@ export const languageOptions = [
   { value: 'en', label: 'English', shortLabel: 'EN' },
   { value: 'ja', label: '日本語', shortLabel: '日' },
 ];
+
+const supportedLanguages = new Set(languageOptions.map(({ value }) => value));
+
+export function resolvePreferredLanguage(savedLanguage, browserLanguages) {
+  if (supportedLanguages.has(savedLanguage)) return savedLanguage;
+  for (const tag of browserLanguages) {
+    const primary = tag.toLowerCase().split('-')[0];
+    if (supportedLanguages.has(primary)) return primary;
+  }
+  return 'zh';
+}
