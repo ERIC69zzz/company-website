@@ -40,6 +40,7 @@ test('个人分类与企业询价在三种语言中均有完整文案', () => {
     for (const scenario of Object.values(b.scenarios.items)) {
       assert.ok(scenario.label);
       assert.ok(scenario.title);
+      assert.ok(scenario.model);
       assert.ok(scenario.products.length >= 2);
     }
   }

@@ -2,13 +2,12 @@ import { useId, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n/language';
-import StorageVisual from './StorageVisual';
 
 const scenarios = [
-  { key: 'home', visual: 'nas', href: '/products?category=nas' },
-  { key: 'creator', visual: 'ssd', href: '/products?category=ssd' },
-  { key: 'team', visual: 'nas', href: '/products?category=nas' },
-  { key: 'enterprise', visual: 'enterprise', href: '/enterprise' },
+  { key: 'home', href: '/products?category=nas' },
+  { key: 'creator', href: '/products?category=ssd' },
+  { key: 'team', href: '/products?category=nas' },
+  { key: 'enterprise', href: '/enterprise' },
 ];
 
 export default function ScenarioSection() {
@@ -95,9 +94,17 @@ export default function ScenarioSection() {
             </Link>
           </div>
 
-          <div key={`visual-${active.key}`} className="scenario-selector__visual" aria-hidden="true">
-            <StorageVisual kind={active.visual} />
-          </div>
+          <figure key={active.key} className="scenario-selector__visual">
+            <img
+              src={`/scenarios/${active.key}.webp`}
+              alt=""
+              width="900"
+              height="540"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{content.model}</figcaption>
+          </figure>
         </div>
       </div>
     </section>
