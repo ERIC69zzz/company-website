@@ -32,7 +32,7 @@ export default function StorefrontSection() {
                 decoding="async"
               />
               <div className="storefront__product-copy">
-                <span className="storefront__product-type" lang="en">{label}</span>
+                <span className="storefront__product-type"><span lang="en">{label}</span> · {s.categories[id].capacity}</span>
                 <h3>{s.categories[id].title}<ArrowUpRight aria-hidden="true" /></h3>
                 <p>{s.categories[id].detail}</p>
               </div>

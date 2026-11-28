@@ -197,10 +197,13 @@
 
 .storefront__product-type {
   display: block;
-  font-size: 10px;
-  letter-spacing: .14em;
+  font-size: 11px;
   color: var(--color-ink-2);
   margin-bottom: 6px;
+}
+
+.storefront__product-type > span {
+  letter-spacing: .12em;
 }
 
 .storefront__product h3 {
