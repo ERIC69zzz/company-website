@@ -22,22 +22,22 @@ export const businessCopy = {
       tabLabel: '选择使用场景', recommended: '建议方向', cta: '查看适合的产品', status: 'STORAGE MATCH',
       items: {
         home: {
-          label: '家庭数据', title: '照片、文件和回忆，都有自己的位置。',
+          label: '家庭数据', title: '照片、文件和回忆，都有自己的位置。', model: '极空间 Z425 旗舰版',
           description: '把分散在手机和电脑里的数据集中保存，在家中共享，也为重要文件留下一份可靠备份。',
           products: ['NAS 私有云', '大容量机械硬盘'],
         },
         creator: {
-          label: '创作素材', title: '从高速编辑，到长期归档。',
+          label: '创作素材', title: '从高速编辑，到长期归档。', model: '至誉 Nitro 便携 SSD · 8 TB',
           description: '针对照片、视频和设计素材的不同阶段，兼顾当前项目的读写效率与完成项目的长期保存。',
           products: ['固态硬盘', 'NAS 私有云', '机械硬盘'],
         },
         team: {
-          label: '团队协作', title: '让文件集中，让协作更清楚。',
+          label: '团队协作', title: '让文件集中，让协作更清楚。', model: '绿联 DXP8800 Ultra',
           description: '为多人共享、版本管理和容量增长规划统一存储，减少文件散落与重复传输。',
           products: ['NAS 私有云', 'NAS 专用硬盘'],
         },
         enterprise: {
-          label: '企业业务', title: '从接口与负载开始，选对企业级存储。',
+          label: '企业业务', title: '从接口与负载开始，选对企业级存储。', model: '至誉 PE4 U.2 · 30.72 TB',
           description: '根据设备、接口、容量、业务负载和采购计划确认产品，避免只看单一参数。',
           products: ['企业级固态硬盘', '项目选型服务'], cta: '进入企业专区',
         },
@@ -131,22 +131,22 @@ export const businessCopy = {
       tabLabel: 'Select a use case', recommended: 'Suggested direction', cta: 'View suitable products', status: 'STORAGE MATCH',
       items: {
         home: {
-          label: 'Home data', title: 'A place for every photo, file and memory.',
+          label: 'Home data', title: 'A place for every photo, file and memory.', model: 'ZSpace Z425 · Core Ultra 5',
           description: 'Bring data from phones and computers into one place for sharing at home, with a reliable copy of important files.',
           products: ['Private cloud NAS', 'High-capacity HDD'],
         },
         creator: {
-          label: 'Creative work', title: 'From fast editing to long-term archiving.',
+          label: 'Creative work', title: 'From fast editing to long-term archiving.', model: 'Exascend Nitro Portable SSD · 8 TB',
           description: 'Match each stage of photo, video and design work with responsive project storage and dependable archives.',
           products: ['Solid state drives', 'Private cloud NAS', 'Hard drives'],
         },
         team: {
-          label: 'Teamwork', title: 'Central files. Clearer collaboration.',
+          label: 'Teamwork', title: 'Central files. Clearer collaboration.', model: 'UGREEN DXP8800 Ultra',
           description: 'Plan shared storage for multi-user access, organized permissions and growing capacity without scattered copies.',
           products: ['Private cloud NAS', 'NAS hard drives'],
         },
         enterprise: {
-          label: 'Enterprise', title: 'Start with interface and workload.',
+          label: 'Enterprise', title: 'Start with interface and workload.', model: 'Exascend PE4 U.2 · 30.72 TB',
           description: 'Confirm products against the device, interface, capacity, business workload and procurement plan—not one number alone.',
           products: ['Enterprise SSDs', 'Project selection service'], cta: 'Explore enterprise',
         },
@@ -237,22 +237,22 @@ export const businessCopy = {
       tabLabel: '利用シーンを選択', recommended: 'おすすめの方向性', cta: '適した製品を見る', status: 'STORAGE MATCH',
       items: {
         home: {
-          label: '家庭のデータ', title: '写真もファイルも、ひとつの場所へ。',
+          label: '家庭のデータ', title: '写真もファイルも、ひとつの場所へ。', model: 'ZSpace Z425 フラッグシップモデル',
           description: 'スマートフォンやPCに散らばるデータをまとめ、ご家庭で共有しながら、大切なファイルをバックアップします。',
           products: ['プライベートNAS', '大容量HDD'],
         },
         creator: {
-          label: '制作素材', title: '高速編集から長期保管まで。',
+          label: '制作素材', title: '高速編集から長期保管まで。', model: 'Exascend Nitro ポータブルSSD · 8 TB',
           description: '写真、映像、デザイン素材の各工程に合わせ、作業中の速度と完成後の長期保存を両立します。',
           products: ['SSD', 'プライベートNAS', 'HDD'],
         },
         team: {
-          label: 'チーム共有', title: 'ファイルを集約し、共同作業を明確に。',
+          label: 'チーム共有', title: 'ファイルを集約し、共同作業を明確に。', model: 'UGREEN DXP8800 Ultra',
           description: '複数人での共有、権限管理、容量拡張を見据え、ファイルの分散と重複転送を減らします。',
           products: ['プライベートNAS', 'NAS向けHDD'],
         },
         enterprise: {
-          label: '法人業務', title: '接続仕様と負荷から、法人向けストレージを選定。',
+          label: '法人業務', title: '接続仕様と負荷から、法人向けストレージを選定。', model: 'Exascend PE4 U.2 · 30.72 TB',
           description: '機器、接続仕様、容量、ワークロード、調達計画を確認し、単一の数値だけに頼らず製品を選びます。',
           products: ['法人向けSSD', 'プロジェクト選定支援'], cta: '法人向け製品へ',
         },
